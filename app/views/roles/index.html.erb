@@ -1,0 +1,62 @@
+<!DOCTYPE HTML> 
+
+<html>
+	<head>
+		<title>Roles</title>
+		<link rel="stylesheet" type="text/css" href="index_roles.scss">
+	</head>
+
+	<body>
+		<div class="col-md-12">
+			<div class="content">
+				<!--<div class="col-md-8">-->
+					<h1 >Roles</h1>
+				<!--</div>
+				<div class="col-md-4">
+					<b>Nuevo Rol</b>
+				</div>-->
+				<div class="row form-group" id="advance_search" border="1px">
+					<div class="col-md-12">
+				    	<div class="col-md-4">
+				    		<label>Name:</label>
+				        	<!--<%= label_tag :name, "Name", class: "control-tag" %>-->
+				        </div>
+				        <div class="col-md-8">
+				        	<input>
+				        	<!--<%= text_field_tag :name, nil, class: "form-control" %>-->
+				        </div>
+				    </div>
+					<div class="col-md-12">
+      					<div class="col-md-12">
+          					<input class="btn btn-default pull-right" type="submit" value="Search">
+      					</div>
+    				</div>
+				</div>
+
+
+				<a id="advancedSearchLink" href="#">Búsqueda avanzada</a>
+				<table id="roles_table" cellspacing="0" width="100%" border="2px">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Descripción</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Analista</th>
+							<th>Persona encargada de realizar los métodos de ensayo a las muestras</th>
+							<th></th>
+						</tr>
+						<tr>
+							<th>Secretaria</th>
+							<th>Persona encargada de la parte administrativa </th>
+							<th></th>
+						</tr>
+					</tbody>	
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
