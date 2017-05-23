@@ -1,0 +1,6 @@
+Gemfile.lock
+db/schema.rb
+log/development.log
+tmp/cache/
+tmp/pids/
+tmp/restart.txt
