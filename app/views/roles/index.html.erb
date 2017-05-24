@@ -2,34 +2,18 @@
 
 <html>
 	<head>
-		<title>Roles</title>
+		<title>Index Roles</title>
 		<link rel="stylesheet" type="text/css" href="index_roles.scss">
 	</head>
 
 	<body>
 		<div class="col-md-12">
 			<div class="content">
-				<!--<div class="col-md-8">-->
-					<h1 >Roles</h1>
-				<!--</div>
-				<div class="col-md-4">
-					<b>Nuevo Rol</b>
-				</div>-->
-				<div class="search_card" >
-					<div class="col-md-12">
-				    	<div class="col-md-4">
-				    		<label>Nombre:</label>
-				        </div>
-				        <div class="col-md-8">
-				        	<input>
-				        </div>
-				    </div>
-					<div class="col-md-12">
-      					<div class="col-md-12">
-          					<input class="btn btn-default pull-right" type="submit" value="Buscar">
-      					</div>
-    				</div>
-				</div>
+				<h1>
+					Roles
+					<%= link_to 'Nuevo Rol', new_role_path, class: "btn btn-primary align-right"  %>
+				</h1>
+				
 				<!--<a id="advancedSearchLink" href="#">Búsqueda avanzada</a>-->
 				<table id="roles_table" cellspacing="0" width="100%" border="2px">
 					<thead>
