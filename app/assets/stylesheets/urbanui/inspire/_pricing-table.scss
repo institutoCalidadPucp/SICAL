@@ -1,0 +1,124 @@
+/*
+ *----------------------------------------------------------
+ * Price Table Styles  
+ * ---------------------------------------------------------
+ */ 
+ 
+.price-table{
+	margin-top: 30px;
+	
+	.pt-top-bar{
+		padding: 5px;
+		background-color: $success-color;
+		text-align: center;
+		
+		h4, h2{
+			color: $white-color;
+			font-weight: 400;
+		}
+	}
+	
+	.pt-header{
+		border-bottom: 1px solid #edf1f2;
+		text-align: center;
+		padding: 10px;
+		
+		h4, h2{
+			color: $default-color;
+			font-weight: 400;
+		}
+		sup{
+			top:-18px
+		}
+	}
+	
+	.pt-footer{
+		padding: 0px 0 20px 0;
+		
+		.btn{
+			padding: 10px 30px;
+			color: $white-color;
+			background-color: $success-color;
+		}
+		.btn-alt{
+			color: $default-color;
+			background-color: lighten($default-color,70%);
+		}
+	}
+	
+	.pt-body{
+		padding-top: 10px;
+		padding-left: 30px;
+		margin-bottom: 0px;
+
+		.list-group-item{
+			padding: 13px 0;
+			border: 0;
+		}
+		
+		i{	
+			color: $success-color;
+			margin-right: 5px;
+			font-size: 16px;
+			top: 15px;
+		}
+		.na{
+			text-decoration: line-through;
+			color: lighten($default-color,40%);
+			
+			i{	
+				color: $danger-color;
+			}
+		}
+	}
+}
+
+.price-table.recommended{
+	margin-top: 0px;
+	
+	.pt-top-bar{
+		background-color: $yellow-600;
+	}
+	
+	.pt-header{
+		background-color: lighten($yellow-600,14%);
+	}
+	
+	.pt-footer{
+		padding: 40px 0;
+		
+		.btn{
+			color: $default-color;
+			background-color: $yellow-600;
+		}
+		.btn-alt{
+			color: $default-color;
+			background-color: lighten($default-color,50%);
+		}
+	}
+}
+
+.price-table-alt{
+	.price-table{
+		border-radius: 10px;
+		
+		.pt-top-bar{
+			padding: 8px;
+			border-top-right-radius: 10px;
+			border-top-left-radius: 10px;
+			
+			h4, h2{
+				font-size: 14px;
+				margin: 0;
+			}
+		}
+	}
+	
+	.price-table.recommended{
+		.pt-top-bar{
+			h4{
+				color: $default-color;
+			}
+		}
+	}
+}
