@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524201311) do
+ActiveRecord::Schema.define(version: 20170524211319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "menu_permit_roles", force: :cascade do |t|
+    t.bigint "menu_permit_id"
+    t.bigint "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_permit_id"], name: "index_menu_permit_roles_on_menu_permit_id"
+    t.index ["role_id"], name: "index_menu_permit_roles_on_role_id"
+  end
 
   create_table "menu_permits", force: :cascade do |t|
     t.bigint "menu_id"
@@ -32,6 +41,13 @@ ActiveRecord::Schema.define(version: 20170524201311) do
 
   create_table "permits", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
