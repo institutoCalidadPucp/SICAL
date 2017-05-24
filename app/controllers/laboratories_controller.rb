@@ -1,5 +1,5 @@
 class LaboratoriesController < ApplicationController
-
+  before_action :set_laboratory, only: [:show, :edit, :update, :destroy]
   def index
     @laboratories = Laboratory.all
   end
@@ -9,47 +9,41 @@ class LaboratoriesController < ApplicationController
   end
 
   def show
-    @laboratory = Laboratory.find(get_id)
   end
 
   def create
-    @laboratory = Laboratory.new(get_params)
+    @laboratory = Laboratory.new(laboratory_params)
 
     if @laboratory.save
       redirect_to laboratories_path
     else
-      render 'new'
+      render :new
     end
   end
 
   def edit
-    @laboratory = Laboratory.find(get_id)
   end
 
   def update
-    @laboratory = Laboratory.find(get_id)
-
-    if @laboratory.update(get_params)
+    if @laboratory.update(laboratory_params)
       redirect_to laboratories_path
     else
-      render 'edit'
+      render :edit
     end
   end
 
   def destroy
-    @laboratory = Laboratory.find(get_id)
     @laboratory.destroy
-
     redirect_to laboratories_path
   end
 
   private
-    def get_params
+    def laboratory_params
       params.require(:laboratory).permit(:nombre, :telefono, :email, :web, :direccion, :descripcion)
     end
 
-    def get_id
-      params[:id]
+    def set_laboratory
+      @laboratory = Laboratory.find params[:id]
     end
 
 end
