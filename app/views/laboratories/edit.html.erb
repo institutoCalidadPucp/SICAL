@@ -1,4 +1,4 @@
-<%=form_for :laboratory, url: laboratories_path do |l| %>
+<%=form_for @laboratory do |l| %>
   <% if @laboratory.errors.any?%>
     <% @laboratory.errors.full_messages.each do |m| %>
       <p><%= m %></p>
@@ -33,4 +33,3 @@
     </p>
 <% end %>
 <%= link_to 'Volver', laboratories_path %>
-
