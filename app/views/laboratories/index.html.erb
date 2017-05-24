@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Laboratorios</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<style type="text/css">
+		.row{
+			padding: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<h2>Laboratorios</h2>
+			</div>
+			<div class="col-md-4">
+				<button class="btn btn-success">Nuevo Laboratorio</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="col-md-4"><label>Nombre:</label></div>
+				<div class="col-md-8"><input type="text" name="name"></div>
+			</div>
+			<div class="col-md-4">
+				<div class="col-md-4"><label>Email:</label></div>
+				<div class="col-md-8"><input type="text" name="email"></div>
+			</div>
+			<div class="col-md-4">
+				<button>Buscar</button>
+			</div>
+		</div>
+		<div class="row">
+			<table class="table">
+				<thead>
+					<th>Nombre</th>
+					<th>Telefono</th>
+					<th>Email</th>
+					<th>Jefe de Laboratorio</th>
+					<th>Acciones</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Antisismica</td>
+						<td>6262121</td>
+						<td>antisismica@pucp.edu.pe</td>
+						<td>Guillerno</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Corrosion</td>
+						<td>6262121</td>
+						<td>corrosion@pucp.edu.pe</td>
+						<td>Jupiter</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
