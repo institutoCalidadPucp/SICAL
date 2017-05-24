@@ -1,16 +1,4 @@
 Rails.application.routes.draw do
-  get 'role/create'
-
-  get 'role/edit'
-
-  get 'role/update'
-
-  get 'role/delete'
-
-  get 'role/new'
-
-  get 'role/index'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
     devise_scope :user do
@@ -25,4 +13,7 @@ Rails.application.routes.draw do
       root 'devise/sessions#new'
     end
   end
+  #For routing roles new create edit update delete
+  resources :roles, :except => :show
+
 end
