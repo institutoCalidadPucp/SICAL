@@ -35,7 +35,8 @@ gem 'jbuilder', '~> 2.5'
 #gem 'sqlite3'
 
 #Pg is the Ruby interface to the {PostgreSQL RDBMS}
-gem 'pg'
+
+gem 'pg', '~> 0.20.0'
 
 #Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.3'
