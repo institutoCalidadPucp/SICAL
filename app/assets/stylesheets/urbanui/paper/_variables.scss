@@ -1,0 +1,346 @@
+$font-color:                 #66615b;
+$fill-font-color:            rgba(255, 255, 255, 0.85);
+
+$none:                       0  ;
+$border-thin:                1px;
+$border-thick:               2px;
+
+$white-color:                #FFFFFF;
+$white-bg:                   #FFFFFF;
+
+$smoke-bg:                   #F5F5F5;
+$pale-bg:                    #F9F7F3;
+$medium-pale-bg:             #F1EAE0;
+
+$table-line-color:           #CCC5B9;
+$muted-color:                #a49e93;
+
+$black-bg:                   rgba(30,30,30,.97);
+
+$popover-color:              #FAE6A4;
+
+
+$black-color:                #333333;
+$black-hr:                   #444444;
+
+$white-background-color:        #FFFFFF;
+$brown-background-color:        $font-color;
+
+$light-gray:                 #E3E3E3;
+$medium-gray:                #cfcfca;
+$dark-gray:                  #9A9A9A;
+$dark-slate-gray:            #364150;
+
+$gray-input-bg:              #F3F2EE;
+$gray-input-outline:         #e8e7e3;
+$danger-input-bg:            #FFC0A4;
+$success-input-bg:           #ABF3CB;
+$other-medium-gray:          #A49E93;
+$transparent-bg:             transparent;
+
+$default-color:              #66615B;
+$default-bg:                 #66615B;
+$default-states-color:       darken($default-color,11%);
+
+$primary-color:              #7A9E9F;
+$primary-bg:                 #7A9E9F;
+$primary-states-color:       darken($primary-color,11%);
+
+$success-color:              #7AC29A;
+$success-bg:                 #7AC29A;
+$success-states-color:       darken($success-color,11%);
+
+$info-color:                 #68B3C8;
+$info-bg:                    #68B3C8;
+$info-states-color:          darken($info-color,11%);
+
+$warning-color:              #F3BB45;
+$warning-bg:                 #F3BB45;
+$warning-states-color:       darken($warning-color,11%);
+
+
+$danger-color:               #EB5E28;
+$danger-bg:                  #EB5E28;
+$danger-states-color:        darken($danger-color,11%);
+
+
+$link-disabled-color:        #666666;
+
+// General Colors
+
+
+$color-azure:                #23CCEF;
+$color-purple:               #9368E9;
+$color-red:                  #FB404B;
+$color-green:                #7AC29A;
+$color-orange:               #FFA534;
+$color-blue:                 #447DF7;
+$color-black:                #5e5e5e;
+$color-cyan:                 #26A69A;
+
+
+/*      light colors - used for select dropdown         */
+
+$light-blue:                 rgba($primary-color, .2);
+$light-azure:                rgba($info-color, .2);
+$light-green:                rgba($success-color, .2);
+$light-orange:               rgba($warning-color, .2);
+$light-red:                  rgba($danger-color, .2);
+$placeholder-gray:           #C3C3C3;
+
+
+/*           Social buttons            */
+
+$social-facebook:       #3b5998;
+$social-twitter:      #55acee;
+$social-pinterest:      #cc2127;
+$social-google:       #dd4b39;
+$social-linkedin:       #0976b4;
+$social-dribbble:       #ea4c89;
+$social-github:       #333333;
+$social-youtube:      #e52d27;
+$social-instagram:        #125688;
+$social-reddit:       #ff4500;
+$social-tumblr:       #35465c;
+$social-stumbleupon:    #eb4924;
+$social-behance:      #1769ff;
+
+
+//== Components
+//
+
+$padding-default-vertical:     10px;
+$padding-default-horizontal:   20px;
+
+$padding-base-vertical:         7px;
+$padding-base-horizontal:       18px;
+
+$padding-round-vertical:        9px;
+$padding-round-horizontal:     18px;
+
+$padding-simple-vertical:      10px;
+$padding-simple-horizontal:    18px;
+
+$padding-large-vertical:       11px;
+$padding-large-horizontal:     30px;
+
+$padding-small-vertical:        4px;
+$padding-small-horizontal:     10px;
+
+$padding-xs-vertical:           2px;
+$padding-xs-horizontal:         5px;
+
+$padding-label-vertical:        2px;
+$padding-label-horizontal:     12px;
+
+$margin-base:                  15px;
+
+// padding for links inside dropdown menu
+$padding-dropdown-vertical:     10px;
+$padding-dropdown-horizontal:   15px;
+
+$margin-large-vertical:        30px;
+$margin-base-vertical:         15px;
+
+
+// Cristina: am schimbat aici si s-au modificat inputurile
+$margin-bottom:                0 0 10px 0;
+$border-radius-small:           3px;
+$border-radius-base:            4px;
+$border-radius-large:           6px;
+$border-radius-extreme:        6px;
+
+$border-radius-large-top:      $border-radius-large $border-radius-large 0 0;
+$border-radius-large-bottom:   0 0 $border-radius-large $border-radius-large;
+
+$btn-round-radius:             30px;
+
+$height-base:                  40px;
+
+$font-size-base:               14px;
+$font-size-xs:                 12px;
+$font-size-small:              12px;
+$font-size-medium:             16px;
+$font-size-large:              18px;
+$font-size-large-navbar:       20px;
+
+$font-size-h1:                 3.2em  ;
+$font-size-h2:                 2.6em    ;
+$font-size-h3:                 1.825em;
+$font-size-h4:                 1.5em  ;
+$font-size-h5:                 1.25em ;
+$font-size-h6:                 0.9em  ;
+$font-paragraph:               16px   ;
+$font-size-navbar:             16px   ;
+$font-size-small:              12px   ;
+
+$font-weight-light:          300;
+$font-weight-normal:         400;
+$font-weight-semi:           500;
+$font-weight-bold:           600;
+
+$line-height-small:            20px;
+$line-height-general:          1.4em;
+$line-height:                 36px;
+$line-height-lg:              54px;
+
+
+$border-radius-top:        10px 10px 0 0;
+$border-radius-bottom:     0 0 10px 10px;
+
+$dropdown-shadow:          0 2px rgba(17, 16, 15, 0.1), 0 2px 10px rgba(17, 16, 15, 0.1);
+
+$general-transition-time:  300ms;
+
+$slow-transition-time:           300ms;
+$dropdown-coordinates:      29px -50px;
+
+$fast-transition-time:           150ms;
+$select-coordinates:         50% -40px;
+
+$transition-linear:                                   linear;
+$transition-bezier:         cubic-bezier(0.34, 1.61, 0.7, 1);
+$transition-ease:           ease 0s;
+
+$navbar-padding-a:               10px 15px;
+$navbar-margin-a:                16px  0px;
+
+$padding-social-a:               10px  5px;
+
+$navbar-margin-a-btn:            17px 3px;
+
+$navbar-padding-brand:           15px 15px;
+$navbar-margin-brand:             16px  0px;
+
+$navbar-margin-brand-icons:      12px auto;
+
+$navbar-margin-btn:              20px  3px;
+$navbar-margin-btn-vertical:     0;
+
+$height-icon:          64px;
+$width-icon:           64px;
+$padding-icon:           12px;
+$border-radius-icon:         15px;
+
+
+$white-navbar:              rgba(#FFFFFF, .96);
+$blue-navbar:               rgba(#34ACDC, .98);
+$azure-navbar:              rgba(#5BCAFF, .98);
+$green-navbar:              rgba(#4CD964, .98);
+$orange-navbar:             rgba(#FF9500, .98);
+$red-navbar:                rgba(#FF4C40, .98);
+
+$bg-nude:               #f4f3ef;
+$bg-primary:            #8ECFD5;
+$bg-info:               #7CE4FE;
+$bg-success:            #8EF3C5;
+$bg-warning:            #FFE28C;
+$bg-danger:             #FF8F5E;
+
+$background-light-grey:     #E8E7E3;
+$background-lighter-grey:   #F0EFEB;
+$font-background-light-grey: #9C9B99;
+$font-hover-background-light-grey: #5E5E5C;
+
+$topbar-x:             topbar-x;
+$topbar-back:          topbar-back;
+$bottombar-x:          bottombar-x;
+$bottombar-back:       bottombar-back;
+
+$transition-linear:                                   linear;
+$transition-bezier:         cubic-bezier(0.34, 1.61, 0.7, 1);
+$transition-ease:           ease 0s;
+$transition-ease-in:              ease-in;
+$transition-ease-out:             ease-out;
+
+$general-transition-time:  300ms;
+
+$slow-transition-time:           370ms;
+$dropdown-coordinates:      29px -50px;
+
+$fast-transition-time:           150ms;
+
+$ultra-fast-transition-time:     100ms ;
+
+$select-coordinates:         50% -40px;
+
+$padding-zero:                   0px;
+
+$sidebar-width:               calc(100% - 260px);
+
+$medium-dark-gray:           #AAAAAA;
+
+
+// border radius for buttons
+$border-radius-btn-small:      26px;
+$border-radius-btn-base:       20px;
+$border-radius-btn-large:      50px;
+$border-radius-none:            0px;
+$border-radius-none-top:      $border-radius-none $border-radius-none 0 0;
+$border-radius-small-top:     $border-radius-small $border-radius-small 0 0;
+
+
+//variables used in cards
+$card-black-color:          #252422;
+$card-muted-color:          #ccc5b9;
+
+$card-background-blue:      #b8d8d8;
+$card-font-blue:            #506568;
+$card-subtitle-blue:        #7a9e9f;
+
+$card-background-green:      #d5e5a3;
+$card-font-green:            #60773d;
+$card-subtitle-green:        #92ac56;
+
+$card-background-yellow:      #ffe28c;
+$card-font-yellow:            #b25825;
+$card-subtitle-yellow:        #d88715;
+
+$card-background-brown:      #d6c1ab;
+$card-font-brown:            #75442e;
+$card-subtitle-brown:        #a47e65;
+
+$card-background-purple:      #baa9ba;
+$card-font-purple:            #3a283d;
+$card-subtitle-purple:        #5a283d;
+
+$card-background-orange:      #ff8f5e;
+$card-font-orange:            #772510;
+$card-subtitle-orange:        #e95e37;
+
+
+//variables used for sidebar
+$sidebar-background-color: $dark-slate-gray;
+$sidebar-active-color: $color-cyan;
+
+// Small screen / tablet
+//** Deprecated `$screen-sm` as of v3.0.1
+$screen-sm:                      768px;
+$screen-sm-min:                  $screen-sm;
+//** Deprecated `$screen-tablet` as of v3.0.1
+$screen-tablet:                  $screen-sm-min;
+
+// Medium screen / desktop
+//** Deprecated `$screen-md` as of v3.0.1
+$screen-md:                  992px;
+$screen-md-min:              $screen-md;
+//** Deprecated `$screen-desktop` as of v3.0.1
+$screen-desktop:             $screen-md-min;
+
+// Large screen / wide desktop
+//** Deprecated `$screen-lg` as of v3.0.1
+$screen-lg:                  1200px;
+$screen-lg-min:              $screen-lg;
+//** Deprecated `$screen-lg-desktop` as of v3.0.1
+$screen-lg-desktop:          $screen-lg-min;
+
+$filter-blue:         darken($primary-color, 10%);
+$filter-azure:        darken($info-color, 10%);
+$filter-green:        darken($success-color, 10%);
+$filter-orange:       darken($warning-color, 10%);
+$filter-red:          darken($danger-color, 10%);
+
+// variable used in footers
+$black-footer-bg:            #252422;
+$brown-font-color:    #A49E9E;
+$brown-font-color-hover: #F1EAE0;

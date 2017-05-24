@@ -35,13 +35,30 @@ gem 'jbuilder', '~> 2.5'
 #gem 'sqlite3'
 
 #Pg is the Ruby interface to the {PostgreSQL RDBMS}
-gem 'pg'
+
+gem 'pg', '~> 0.20.0'
 
 #Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.3'
 
 #Great Ruby dubugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
 gem 'awesome_print', '~> 1.7'
+
+#Autoprefixer for RoR. This will add the vendor prefixer of each browser in the styles
+gem 'autoprefixer-rails', '~> 7.1.1'
+
+#Util library with awesome fonts
+gem 'font-awesome-rails', '~> 4.7.0.2'
+
+#The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web
+gem 'bootstrap', '~> 4.0.0.alpha6'
+#Tether library for bootstrap toptiops and popovers
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
+
+#Jquery, you know the drill
+gem 'jquery-rails', '~> 4.3.1' 
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

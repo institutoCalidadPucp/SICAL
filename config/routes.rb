@@ -13,4 +13,7 @@ Rails.application.routes.draw do
       root 'devise/sessions#new'
     end
   end
+  #For routing roles new create edit update delete
+  resources :roles, :except => :show
+
 end
