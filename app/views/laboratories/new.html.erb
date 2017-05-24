@@ -1,0 +1,35 @@
+<%=form_for :laboratory, url: laboratories_path do |l| %>
+  <% if @laboratory.errors.any?%>
+    <% @laboratory.errors.full_messages.each do |m| %>
+      <p><%= m %></p>
+    <% end %>
+  <% end %>
+  <p>
+      <%= l.label :nombre %><br>
+      <%= l.text_field :nombre %>
+    </p>
+    <p>
+      <%= l.label :telefono %><br>
+      <%= l.text_field :telefono %>
+    </p>
+    <p>
+      <%= l.label :email %><br>
+      <%= l.text_field :email %>
+    </p>
+    <p>
+      <%= l.label :web %><br>
+      <%= l.text_field :web %>
+    </p>
+    <p>
+      <%= l.label :direccion %><br>
+      <%= l.text_field :direccion %>
+    </p>
+    <p>
+      <%= l.label :descripcion %><br>
+      <%= l.text_area :descripcion %>
+    </p>
+    <p>
+      <%= l.submit %>
+    </p>
+<% end %>
+<%= link_to 'Volver', laboratories_path %>
