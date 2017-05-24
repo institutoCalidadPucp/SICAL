@@ -1,0 +1,333 @@
+/*             Navigation Tabs                 */
+.nav-tabs-navigation{
+    text-align: center;
+    border-bottom: 1px solid $medium-pale-bg;
+    margin-bottom: 30px;
+}
+.nav-tabs-wrapper{
+    display: inline-block;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+    position: relative;
+    width: auto;
+}
+.nav-tabs {
+        border-bottom: 0 none;
+        font-size: $font-size-base;
+        font-weight: $font-weight-bold;
+        > li{
+            > a{
+                border: 0 none;
+                color: $other-medium-gray;
+            }
+            > a:hover{
+                color: $font-color;
+            }
+            > a.active{
+                border: 0;
+                color: $font-color;
+                position: relative;
+
+                &:hover,
+                &:focus{
+                    background-color: transparent;
+                    border: 0 none;
+                    //height: 50px;
+                }
+
+                &::after {
+                    border-bottom: 11px solid $white-color;
+                    border-left: 11px solid rgba(0, 0, 0, 0);
+                    border-right: 11px solid rgba(0, 0, 0, 0);
+                    content: "";
+                    display: inline-block;
+                    position: absolute;
+                    right: 40%;
+                    bottom: -2px;
+                }
+
+                &::before {
+                    border-bottom: 11px solid $medium-pale-bg;
+                    border-left: 11px solid rgba(0, 0, 0, 0);
+                    border-right: 11px solid rgba(0, 0, 0, 0);
+                    content: "";
+                    display: inline-block;
+                    position: absolute;
+                    right: 40%;
+                    bottom: -2px;
+                }
+            }
+        }
+}
+.nav-stacked{
+    border-right: 1px solid $medium-pale-bg;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    padding: 20px 0;
+
+    > li {
+        > a{
+            color: $other-medium-gray;
+            padding: 7px 25px;
+            text-align: right;
+        }
+        > a:hover{
+            color: $font-color;
+        }
+        > a.active{
+            color: $font-color;
+            &:after{
+                border-right: 11px solid $white-color;
+                border-top: 11px solid rgba(0, 0, 0, 0);
+                border-bottom: 11px solid rgba(0, 0, 0, 0);
+                content: "";
+                display: inline-block;
+                position: absolute;
+                right: -1px;
+                bottom: 7px;
+            }
+
+            &:before{
+                border-right: 11px solid $medium-pale-bg;
+                border-top: 11px solid rgba(0, 0, 0, 0);
+                border-bottom: 11px solid rgba(0, 0, 0, 0);
+                content: "";
+                display: inline-block;
+                position: absolute;
+                right: 0;
+                bottom: 7px;
+            }
+        }
+    }
+}
+
+.left-vertical-tabs{
+    width: 170px;
+    float: left;
+}
+
+.right-text-tabs{
+    width: calc(100% - 170px);
+    float: left;
+    padding: 6px 15px;
+
+}
+/*             Navigation Pills               */
+.nav-pills {
+    > li + li {
+        margin-left: 0;
+    }
+    > li > a {
+        border: 2px solid $default-color;
+        border-radius: 0;
+        color: $default-color;
+        font-weight: $font-weight-bold;
+        margin-left: -1px;
+        padding: 10px 20px;
+
+    }
+    > li > a.nav-link.active,
+    > li > a.nav-link.active:hover,
+    > li > a.nav-link.active:focus {
+        background-color: $default-color;
+        color: $white-color;
+    }
+    > li:first-child > a{
+        border-radius: 30px 0 0 30px;
+        margin: 0;
+    }
+    > li:last-child > a{
+        border-radius: 0 30px 30px 0;
+    }
+
+}
+
+.pagination > li:first-child > .page-link,
+.pagination > li:first-child > span,
+.pagination > li:last-child > .page-link,
+.pagination > li:last-child > span{
+    border-radius: 20px;
+}
+.pagination > li > a,
+.pagination > li > span{
+    background-color: transparent;
+    border: 2px solid $default-color;
+    border-radius: 20px;
+    color: $default-color;
+    height: $line-height;
+    font-weight: $font-weight-bold;
+    margin: 0 2px;
+    min-width: 36px;
+    padding: 6px;
+    line-height: 22px;
+    text-align: center;
+}
+.pagination > li > a:hover,
+.pagination > li > a:focus,
+.pagination > li > a:active,
+.pagination > li.active > a.page-link,
+.pagination > li.active > a > span,
+.pagination > li.active > a:hover,
+.pagination > li.active > a > span:hover,
+.pagination > li.active > a:focus,
+.pagination > li.active > a > span:focus {
+    background-color: $default-color;
+    border-color: $default-color;
+    color: $white-color;
+}
+
+.nav-pills-primary > li > a,
+.pagination-primary > li > a,
+.pagination-primary > li > span,
+.pagination-primary > li:first-child > a,
+.pagination-primary > li:first-child > span,
+.pagination-primary > li:last-child > a,
+.pagination-primary > li:last-child > span{
+    border: 2px solid $primary-color;
+    color: $primary-color;
+}
+
+.nav-pills-primary > li > a.active,
+.nav-pills-primary > li > a.active:hover,
+.nav-pills-primary > li > a.active:focus,
+.pagination-primary > li > .page-link:hover,
+.pagination-primary > li > .page-link:focus,
+.pagination-primary > li > .page-link:active,
+.pagination-primary > li.active > .page-link,
+.pagination-primary > li.active > a > span,
+.pagination-primary > li.active > .page-link:hover,
+.pagination-primary > li.active > a > span:hover,
+.pagination-primary > li.active > .page-link:focus,
+.pagination-primary > li.active > a > span:focus{
+   background-color: $primary-color;
+   border-color: $primary-color;
+   color: $white-color;
+}
+
+.nav-pills-info > li > a,
+.pagination-info > li > .page-link,
+.pagination-info > li > span,
+.pagination-info > li:first-child > .page-link,
+.pagination-info > li:first-child > span,
+.pagination-info > li:last-child > .page-link,
+.pagination-info > li:last-child > span{
+    border: 2px solid $info-color;
+    color: $info-color;
+}
+
+.nav-pills-info > li > a.active,
+.nav-pills-info > li > a.active:hover,
+.nav-pills-info > li > a.active:focus,
+.pagination-info > li > .page-link:hover,
+.pagination-info > li > .page-link:focus,
+.pagination-info > li > .page-link:active,
+.pagination-info > li.active > .page-link,
+.pagination-info > li.active > a >span,
+.pagination-info > li.active > .page-link:hover,
+.pagination-info > li.active > a > span:hover,
+.pagination-info > li.active > .page-link:focus,
+.pagination-info > li.active > a > span:focus{
+   background-color: $info-color;
+   border-color: $info-color;
+   color: $white-color;
+}
+
+.nav-pills-success > li > a,
+.pagination-success > li > .page-link,
+.pagination-success > li > span,
+.pagination-success > li:first-child > .page-link,
+.pagination-success > li:first-child > span,
+.pagination-success > li:last-child > .page-link,
+.pagination-success > li:last-child > span{
+    border: 2px solid $success-color;
+    color: $success-color;
+}
+
+.nav-pills-success > li > a.active,
+.nav-pills-success > li > a.active:hover,
+.nav-pills-success > li > a.active:focus,
+.pagination-success > li > .page-link:hover,
+.pagination-success > li > .page-link:focus,
+.pagination-success > li > .page-link:active,
+.pagination-success > li.active > .page-link,
+.pagination-success > li.active > a > span,
+.pagination-success > li.active > .page-link:hover,
+.pagination-success > li.active > a > span:hover,
+.pagination-success > li.active > .page-link:focus,
+.pagination-success > li.active > a > span:focus{
+   background-color: $success-color;
+   border-color: $success-color;
+   color: $white-color;
+}
+
+.nav-pills-warning > li > a,
+.pagination-warning > li > .page-link,
+.pagination-warning > li > span,
+.pagination-warning > li:first-child > .page-link,
+.pagination-warning > li:first-child > span,
+.pagination-warning > li:last-child > .page-link,
+.pagination-warning > li:last-child > span{
+    border: 2px solid $warning-color;
+    color: $warning-color;
+}
+
+.nav-pills-warning > li > a.active,
+.nav-pills-warning > li > a.active:hover,
+.nav-pills-warning > li > a.active:focus,
+.pagination-warning > li > .page-link:hover,
+.pagination-warning > li > .page-link:focus,
+.pagination-warning > li > .page-link:active,
+.pagination-warning > li.active > .page-link,
+.pagination-warning > li.active > a > span,
+.pagination-warning > li.active > .page-link:hover,
+.pagination-warning > li.active > a > span:hover,
+.pagination-warning > li.active > .page-link:focus,
+.pagination-warning > li.active > a > span:focus{
+   background-color: $warning-color;
+   border-color: $warning-color;
+   color: $white-color;
+}
+
+.nav-pills-danger > li > a,
+.pagination-danger > li > a,
+.pagination-danger > li > span,
+.pagination-danger > li:first-child > .page-link,
+.pagination-danger > li:first-child > span,
+.pagination-danger > li:last-child > .page-link,
+.pagination-danger > li:last-child > span{
+    border: 2px solid $danger-color;
+    color: $danger-color;
+}
+
+.nav-pills-danger > li > a.active,
+.nav-pills-danger > li > a.active:hover,
+.nav-pills-danger > li > a.active:focus,
+.pagination-danger > li > .page-link:hover,
+.pagination-danger > li > .page-link:focus,
+.pagination-danger > li > .page-link:active,
+.pagination-danger > li.active > .page-link,
+.pagination-danger > li.active > a > span,
+.pagination-danger > li.active > a > .page-link:hover,
+.pagination-danger > li.active > a > span:hover,
+.pagination-danger > li.active >.page-link:focus,
+.pagination-danger > li.active > a > span:focus{
+   background-color: $danger-color;
+   border-color: $danger-color;
+   color: $white-color;
+}
+
+
+.pagination{
+    > .disabled{
+        >span,
+        >a
+        {
+            &,
+            &:hover,
+            &:focus{
+                color: $medium-gray;
+                border-color: $medium-gray;
+            }
+        }
+    }
+}
