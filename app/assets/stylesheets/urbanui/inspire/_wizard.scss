@@ -1,0 +1,98 @@
+/*
+ *----------------------------------------------------------
+ * Wizard Styles
+ * ---------------------------------------------------------
+ */
+
+.form-wizard.form-wizard-horizontal {
+  position: relative;
+}
+.form-wizard.form-wizard-horizontal .form-wizard-nav .progress {
+  position: absolute;
+  display: inline-block;
+  top: 23px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 10px;
+}
+@media (max-width: 768px) {
+  .form-wizard.form-wizard-horizontal .form-wizard-nav .progress {
+    display: none;
+  }
+}
+.form-wizard.form-wizard-horizontal .nav {
+  position: relative;
+}
+.form-wizard.form-wizard-horizontal .nav a {
+  margin-bottom: 15px;
+}
+.form-wizard.form-wizard-horizontal .nav li a.active,
+.form-wizard.form-wizard-horizontal .nav li:hover a {
+  color: inherit;
+  background-color: transparent;
+}
+.form-wizard.form-wizard-horizontal .nav li a.active .step,
+.form-wizard.form-wizard-horizontal .nav li:hover .step {
+  -webkit-transition: border-color 0.4s linear;
+  -o-transition: border-color 0.4s linear;
+  transition: border-color 0.4s linear;
+  border-color: $primary-color;
+}
+.form-wizard.form-wizard-horizontal .nav li a.active .form-wizard-title,
+.form-wizard.form-wizard-horizontal .nav li:hover .form-wizard-title {
+  color: #313534;
+}
+.form-wizard.form-wizard-horizontal .nav li.done .step {
+  color: #ffffff;
+  border-color: $primary-color;
+  background-color: $primary-color;
+  font-weight: 500;
+  -webkit-transition: background-color 0.2s linear;
+  -o-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+}
+.form-wizard.form-wizard-horizontal .nav .step {
+  display: inline-block;
+  line-height: 28px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 4px solid #e5e6e6;
+  background: #ffffff;
+}
+.form-wizard.form-wizard-horizontal .nav .form-wizard-title {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: -15px;
+  color: #969c9c;
+}
+.form-wizard.form-wizard-horizontal .nav-pills > li > a.active,
+.nav-pills > li > a.active:hover,
+.nav-pills > li> a.active:focus {
+  border-top-color: transparent;
+  box-shadow:none;
+}
+.no-padding .form-wizard .pager {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.fw-container {
+    .tab-content {
+        padding: 25px 0;
+    }
+
+    .fw-footer {
+        text-align: center;
+        margin: 30px 0 0;
+        width: 100%;
+        border-top: 2px solid #eee;
+        padding: 15px 0;
+    }
+}
+
+.form-wizard.form-wizard-horizontal .nav-pills > li > a {
+    border: none;
+    }

@@ -1,0 +1,135 @@
+/*-------------------------------------------------------------------
+
+* Inspire Admin Dashboard V1.1
+
+* Copyright 2017 Inspire
+
+---------------------
+[Table of contents]
+---------------------
+[Plugins]
+
+- animate
+- sweetalert2
+- datatables.net
+- fullcalendar
+- perfect-scrollbar
+- jquery.jvectormap
+- datetime-picker
+- select-bootstrap
+
+[Inspire]
+
+- Typography
+- Sidebar and Main Panel
+- Buttons
+- Inputs
+- Progress
+- Sliders
+- forms
+- alerts
+- tables
+- tooltips-and-popovers
+- navbars
+- footers
+- cards
+- timeline
+- labels
+- chat-message
+- checkbox-radio
+
+- dropdown
+- social
+- tags
+- collapse
+- carousel
+- animated-buttons
+- switch
+- tabs-navs-pagination
+- circlechart
+- chart
+- accordion
+- pricing-table
+- modal
+- wizard
+- fileupload
+- pages
+
+
+-------------------------------------------------------------------*/
+
+@import "inspire/colors";
+
+@import "paper/variables";
+@import "inspire/variables";
+
+
+@import "paper/mixins";
+
+
+
+
+//plugins css
+@import "paper/plugins/animate";
+@import "paper/plugins/sweetalert2";
+@import "paper/plugins/dataTables.bootstrap4";
+@import "paper/plugins/fullcalendar";
+@import "paper/plugins/chartist";
+@import "paper/plugins/perfect-scrollbar";
+@import "paper/plugins/jquery.jvectormap";
+@import "paper/plugins/bootstrap-select";
+@import "paper/plugins/datetime-picker";
+
+// Core CSS
+@import "paper/typography";
+@import "paper/sidebar-and-main-panel";
+@import "paper/buttons";
+@import "paper/misc";
+@import "paper/inputs";
+@import "paper/progress-bars";
+@import "paper/sliders";
+@import "paper/forms";
+@import "paper/alerts";
+@import "paper/tables";
+@import "paper/tooltips-and-popovers";
+@import "paper/navbars";
+@import "paper/footers";
+@import "paper/cards";
+@import "paper/timeline";
+@import "paper/labels";
+@import "paper/chat-message";
+@import "paper/checkbox-radio";
+
+// Fancy Stuff
+@import "paper/dropdown";
+@import "paper/social";
+@import "paper/tags";
+@import "paper/collapse";
+@import "paper/carousel";
+@import "paper/animated-buttons";
+@import "paper/switch";
+@import "paper/modal";
+
+
+//SCSS for Pages
+@import "paper/pages";
+
+@import "paper/tabs-navs-pagination";
+@import "paper/circlechart";
+
+@import "bootstrap-mixins/text-overflow";
+@import "bootstrap-mixins/vendor-prefixes";
+@import "bootstrap-mixins/clearfix";
+
+@import "inspire/mixins/misc";
+
+@import "inspire/chart";
+@import "inspire/misc2";
+@import "inspire/accordion";
+@import "inspire/pricing-table";
+//@import "inspire/modal";
+@import "inspire/wizard";
+@import "inspire/fileupload";
+@import "inspire/pages";
+@import "inspire/responsive";
+
