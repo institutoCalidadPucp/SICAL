@@ -1,0 +1,9 @@
+<h1>LABORATORIOS</h1>
+<% @laboratories.each do |l| %>
+	<p>
+		<%= l.nombre %>
+		<%= link_to 'Editar', edit_laboratory_path(l)%>
+		<%= link_to 'Eliminar', laboratory_path(l), method: :delete%>
+	</p>
+<% end %>
+<%= link_to 'Nuevo', new_laboratory_path%>
