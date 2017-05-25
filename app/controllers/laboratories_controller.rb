@@ -1,5 +1,7 @@
 class LaboratoriesController < ApplicationController
+
   before_action :set_laboratory, only: [:show, :edit, :update, :destroy]
+
   def index
     @laboratories = Laboratory.all
   end
@@ -12,8 +14,7 @@ class LaboratoriesController < ApplicationController
   end
 
   def create
-    @laboratory = Laboratory.new(laboratory_params)
-
+    @laboratory = Laboratory.new laboratory_params
     if @laboratory.save
       redirect_to laboratories_path
     else
@@ -25,7 +26,8 @@ class LaboratoriesController < ApplicationController
   end
 
   def update
-    if @laboratory.update(laboratory_params)
+    @laboratory.assign_attributes laboratory_params
+    if @laboratory.save
       redirect_to laboratories_path
     else
       render :edit
@@ -33,13 +35,16 @@ class LaboratoriesController < ApplicationController
   end
 
   def destroy
-    @laboratory.destroy
-    redirect_to laboratories_path
+    if @laboratory.destroy
+      redirect_to laboratories_path, notice: 'Laboratorio fue eliminado exitosamente'
+    else
+      redirect_to laboratories_path,  notice: 'Ocurrio un error'
+    end
   end
 
   private
     def laboratory_params
-      params.require(:laboratory).permit(:nombre, :telefono, :email, :web, :direccion, :descripcion)
+      params.require(:laboratory).permit(:name, :phone, :email, :address, :description)
     end
 
     def set_laboratory
