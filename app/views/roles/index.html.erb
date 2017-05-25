@@ -1,42 +1,7 @@
-<!DOCTYPE HTML> 
+<h1>
+  	Roles
+</h1>
 
-<html>
-	<head>
-		<title>Index Roles</title>
-		<link rel="stylesheet" type="text/css" href="index_roles.scss">
-	</head>
-
-	<body>
-		<div class="col-md-12">
-			<div class="content">
-				<h1>
-					Roles
-					<%= link_to 'Nuevo Rol', new_role_path, class: "btn btn-primary align-right"  %>
-				</h1>
-				
-				<!--<a id="advancedSearchLink" href="#">Búsqueda avanzada</a>-->
-				<table class="dataTable" id="roles_table" cellspacing="0" width="100%" border="2px">
-					<thead>
-						<tr>
-							<th>Nombre</th>
-							<th>Descripción</th>
-							<th>Acciones</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th>Analista</th>
-							<th>Persona encargada de realizar los métodos de ensayo a las muestras</th>
-							<th></th>
-						</tr>
-						<tr>
-							<th>Secretaria</th>
-							<th>Persona encargada de la parte administrativa </th>
-							<th></th>
-						</tr>
-					</tbody>	
-				</table>
-			</div>
-		</div>
-	</body>
-</html>
+<div id="table-roles">
+  	<%= render 'roles_table', roles: @roles %>
+</div>
