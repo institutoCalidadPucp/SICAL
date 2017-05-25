@@ -1,0 +1,31 @@
+<div class="table-responsive">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>nombre</th>
+        <th>apellido</th>
+        <th>Correo</th>
+        <th>Direccion</th>
+        <th>Fecha nacimiento</th>
+        <th>Genero</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% employees.each do |employee| %>
+        <tr>
+          <td><%= employee.name %></td>
+          <td><%= employee.last_name %></td>
+          <td><%= employee.email %></td>
+          <td><%= employee.address %></td>
+          <td><%= employee.date_of_birth %></td>
+          <td><%= employee.gender %></td>
+          <td>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_employee_path(employee), class: "btn btn-default btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
+        		<%= link_to 'Eliminar', employee_path(employee), method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

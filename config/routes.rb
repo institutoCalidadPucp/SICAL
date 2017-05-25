@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :laboratories
-  resources :clients
-
   devise_for :users
     devise_scope :user do
     get "signup", to: "devise/registrations#new"
@@ -16,7 +13,10 @@ Rails.application.routes.draw do
       root 'devise/sessions#new'
     end
   end
-  #For routing roles new create edit update delete
-  resources :roles, :except => :show
+  #WEB ROUTES
+  resources :roles
+  resources :laboratories
+  resources :clients
+  resources :employees  
 
 end

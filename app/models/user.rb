@@ -8,4 +8,5 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   enum category: [:employee, :client]
+  enum gender: [:male, :female]
 end
