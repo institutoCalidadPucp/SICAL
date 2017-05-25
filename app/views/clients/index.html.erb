@@ -1,9 +1,8 @@
-<h1>CLIENTES</h1>
-<% @clients.each do |l| %>
-    <p>
-        <%= l.name %>
-        <%= link_to 'Editar', edit_client_path(l)%>
-        <%= link_to 'Eliminar', client_path(l), method: :delete%>
-    </p>
-<% end %>
-<%= link_to 'Nuevo', new_client_path%>
+<h1>
+  Clientes
+  <%= link_to 'Nuevo Cliente', new_client_path, class: "btn btn-primary align-right"  %>
+</h1>
+
+<div id="table-users">
+  <%= render 'clients_table', clients: @clients %>
+</div>
