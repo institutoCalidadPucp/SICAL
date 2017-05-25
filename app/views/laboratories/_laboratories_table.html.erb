@@ -1,0 +1,29 @@
+<div class="table-responsive">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>nombre</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>Direccion</th>
+        <th>Descripcion</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% laboratories.each do |laboratory| %>
+        <tr>
+          <td><%= laboratory.name %></td>
+          <td><%= laboratory.phone %></td>
+          <td><%= laboratory.email %></td>
+          <td><%= laboratory.address %></td>
+          <td><%= laboratory.description %></td>
+          <td>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_laboratory_path(laboratory), class: "btn btn-default btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
+        		<%= link_to 'Eliminar', laboratory_path(laboratory), method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
