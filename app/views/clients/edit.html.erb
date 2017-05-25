@@ -1,0 +1,40 @@
+<%=form_for @client , method: :put, url: client_path  do |l| %>
+  <% if @client.errors.any?%>
+    <% @client.errors.full_messages.each do |m| %>
+      <p><%= m %></p>
+    <% end %>
+  <% end %>
+  <p>
+      <%= l.label :name %><br>
+      <%= l.text_field :name %>
+    </p>
+    <p>
+      <%= l.label :phone %><br>
+      <%= l.text_field :phone %>
+    </p>
+    <p>
+    <p>
+      <%= l.label :ruc %><br>
+      <%= l.text_field :ruc %>
+    </p>
+    <p>
+      <%= l.label :email %><br>
+      <%= l.text_field :email %>
+    </p>
+    <p>
+      <%= l.label :username %><br>
+      <%= l.text_field :username %>
+    </p>
+    <p>
+      <%= l.label :address %><br>
+      <%= l.text_field :address %>
+    </p>
+    <p>
+      <%= l.label :password %><br>
+      <%= l.text_area :password %>
+    </p>
+    <p>
+      <%= l.submit %>
+    </p>
+<% end %>
+<%= link_to 'Volver', clients_path %>
