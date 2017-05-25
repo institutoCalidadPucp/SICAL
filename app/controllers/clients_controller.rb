@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:edit, :update, :destroy, :show]
 
   def index
-    @clients = User.all
+    @clients = User.all.client
   end
 
   def new

@@ -4,3 +4,5 @@ log/development.log
 tmp/cache/
 tmp/pids/
 tmp/restart.txt
+config/database.yml
+config/database.yml
