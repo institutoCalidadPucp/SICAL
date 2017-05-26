@@ -1,30 +1,33 @@
-<div class="material-datatables">
-    <div class="dataTables_wrapper container-fluid dt-bootstrap4">
-        <div class="row">
-          <table class="table table-striped table-no-bordered table-hover dataTable" style="width: 100%;">
+
+<div class="content">
+        <div class="table-responsive">
+          <table class="table" style="width: 100%;">
             <thead>
               <tr>
                 <th>Nombre</th>
-                <th>Telefono</th>
-                <th>Email</th>
-                <th>Jefe de Laboratorio</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Dirección</th>
+                <th>Descripción</th>
                 <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
               <% laboratories.each do |laboratory| %>
                 <tr>
-                  <td><%= laboratory.name%></td>
+                  <td><%= laboratory.name %></td>
                   <td><%= laboratory.phone %></td>
                   <td><%= laboratory.email %></td>
-                  <td><%= laboratory.boss %></td><!--boss-->
+                  <td><%= laboratory.address %></td>
+                  <td><%= laboratory.description %></td>
                   <td>
                     <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_laboratory_path(laboratory), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
+                    <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, laboratory_path(laboratory),class: "btn btn-warning btn-sm", method: :delete %>
                   </td>
                 </tr>
               <% end %>
             </tbody>
           </table>
         </div>
-    </div>
 </div>
+

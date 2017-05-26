@@ -1,0 +1,8 @@
+<h1>
+  Roles
+  <%= link_to 'Nuevo Rol', new_role_path, class: "btn btn-primary align-right"  %>
+</h1>
+
+<div id="table-users">
+  <%= render 'roles_table', roles: @roles %>
+</div>

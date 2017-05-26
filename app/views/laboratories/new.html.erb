@@ -1,2 +1,12 @@
+
+
+
 <h1 class="page-header">Laboratorio <small>Nuevo</small></h1>
+
 <%= render 'form', laboratory: @laboratory, method: :post, path: laboratories_path %>
+
+
+
+<div class="col-sm-12 text-left">
+       <%= link_to '<i class="fa fa-chevron-left" aria-hidden="true"></i>'.html_safe, laboratories_path ,class: "btn btn-fill btn-default"  %>
+</div>
