@@ -1,31 +1,52 @@
-<div class="table-responsive">
-  <table class="table table-hover table-striped">
-    <thead>
-      <tr>
-        <th>nombre</th>
-        <th>apellido</th>
-        <th>Correo</th>
-        <th>Direccion</th>
-        <th>Fecha nacimiento</th>
-        <th>Genero</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% employees.each do |employee| %>
+<div class="content">
+  <div class="material-datatables">
+    <table id="datatables" class="table table-hover">
+      <thead class="text-primary">
         <tr>
-          <td><%= employee.name %></td>
-          <td><%= employee.last_name %></td>
-          <td><%= employee.email %></td>
-          <td><%= employee.address %></td>
-          <td><%= employee.date_of_birth %></td>
-          <td><%= employee.gender %></td>
-          <td>
-            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_employee_path(employee), class: "btn btn-default btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
-        		<%= link_to 'Eliminar', employee_path(employee), method: :delete %>
-          </td>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo</th>
+          <th>Cargo</th>
+          <th>Actions</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% employees.each do |employee| %>
+          <tr>
+            <td><%= employee.name %></td>
+            <td><%= employee.last_name %></td>
+            <td><%= employee.email %></td>
+            <td><%= employee.category %></td>
+            <td>
+              <%= link_to edit_employee_path(employee), class: "btn btn-simple btn-warning btn-icon edit" do %>
+                <i class="ti-pencil-alt"></i>
+              <% end %>
+              <%= link_to employee_path(employee), class: "btn btn-simple btn-danger btn-icon remove", method: :delete do %>
+                <i class="ti-close"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
+
+<script>
+  $(document).on('ready', function() {
+    $('#datatables').DataTable({
+        "pagingType": "full_numbers",
+        "lengthMenu": [ 
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        responsive: true,
+        destroy: true,
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Buscar Empleados",
+        },
+    });
+  })
+</script>
+
