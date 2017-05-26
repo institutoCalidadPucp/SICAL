@@ -18,8 +18,12 @@
       </div>
 
       <% if devise_mapping.rememberable? -%>
-        <div class="field">
-          <%= f.check_box :remember_me, class: "second-icon fa fa-square"%>
+        <div class="checkbox form-check-label">
+         <span class="icons">
+            <span class="first-icon fa fa-square"></span>
+            <span class="second-icon fa fa-check-square "></span>
+          </span>
+          <%= f.check_box :remember_me, class: "form-check-input"%>
           <%= f.label :recuerdame %>
         </div>
       <% end -%>
