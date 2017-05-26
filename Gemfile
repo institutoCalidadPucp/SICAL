@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -50,10 +50,11 @@ gem 'autoprefixer-rails', '~> 7.1.1'
 #Util library with awesome fonts
 gem 'font-awesome-rails', '~> 4.7.0.2'
 
+
 #The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web
 gem 'bootstrap', '~> 4.0.0.alpha6'
 #Tether library for bootstrap toptiops and popovers
-source 'https://rails-assets.org' do
+source 'http://insecure.rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 

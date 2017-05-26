@@ -16,4 +16,6 @@
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require turbolinks
+//= require urbanui/vendor/flot/jquery.flot.js
+//= require urbanui/vendor/moment.js
 //= require_tree .
