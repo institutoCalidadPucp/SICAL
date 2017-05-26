@@ -1,36 +1,32 @@
 <div class="content">
   <div class="material-datatables">
-    <div class="dataTables_wrapper container-fluid dt-bootstrap4">
-      <div class ="row">
-        <table id="roles_table" class="table table-striped table-no-bordered table-hover dataTable" aria-describedby="datatables_info" role="grid" style="width: 100%;" >
-          <thead>
+      <table id="roles-table" class="table table-striped table-no-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% roles.each do |role| %>
             <tr>
-              <th>Nombre</th>
-              <th>Descripción</th>
-              <th>Acciones</th>
+              <td><%= role.name %></td>
+              <td><%= role.description %></td>
+              <td>
+                <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_role_path(role), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
+                <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, role_path(role),class: "btn btn-warning btn-sm", method: :delete %>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            <% roles.each do |role| %>
-              <tr>
-                <td><%= role.name %></td>
-                <td><%= role.description %></td>
-                <td>
-                  <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_role_path(role), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
-                  <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, role_path(role),class: "btn btn-warning btn-sm", method: :delete %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>  
-        </table>
-      </div>
-    </div>    
+          <% end %>
+        </tbody>  
+      </table>
   </div>
 </div>
 
 <script>
   $(document).on('ready', function() {
-    $('#roles_table').DataTable({
+    $('#roles-table').DataTable({
         "pagingType": "full_numbers",
         "lengthMenu": [ 
             [10, 25, 50, -1],
