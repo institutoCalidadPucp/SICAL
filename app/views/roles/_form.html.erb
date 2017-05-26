@@ -1,38 +1,39 @@
 <%= form_for @role, url: path, method: method, :html => { class: "form-horizontal validate" } do |f| %>
 
-	<% if @role.errors.any?%>
-		<% @role.errors.full_messages.each do |error| %>
-	  		<p><%= error %></p>
-		<% end %>
-	<% end %>
-	<fieldset>
-		<div class="form-group row">
-			<%= f.label :Nombre, class: "col-lg-3 col-fom-label" %>
-			<div class="col-md-9">
-				<%= f.text_field :name, class: "form-control" %>
-			</div>
-		</div>
-	</fieldset>
-	<fieldset>
-		<div class="form-group row">
-			<%= f.label :Descripción, class: "col-lg-3 col-fom-label" %>
-			<div class="col-lg-9">
-			  <%= f.text_area :description, class: "form-control" %>
-			</div>
-		</div>
-	</fieldset>
-    <fieldset>
-		<div class="form-group row">
-			<%= f.label :Permisos, class: "col-lg-3 col-fom-label" %>
-			<div class="col-lg-4">
-				<%= f.submit "Seleccionar Permisos", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
-			</div>
-		</div>
-	</fieldset>
+  <% if @role.errors.any?%>
+    <% @role.errors.full_messages.each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+  <% end %>
+  <fieldset>
+    <div class="form-group row">
+      <%= f.label :Nombre, class: "col-lg-3 col-fom-label" %>
+      <div class="col-md-9">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <div class="form-group row">
+      <%= f.label :Descripción, class: "col-lg-3 col-fom-label" %>
+      <div class="col-lg-9">
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <div class="form-group row">
+      <%= f.label :Permisos, class: "col-lg-3 col-fom-label" %>
+      <div class="col-lg-4">
+        <%= f.submit "Seleccionar Permisos", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+      </div>
+    </div>
+  </fieldset>
 
-	<div class="col-sm-12 text-right">
-		<%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
-	</div>
+  <div class="col-sm-12 text-right">
+    <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+  </div>
 
-	<%= link_to 'Volver', roles_path %>
+  <%= link_to 'Volver', roles_path %>
+  
 <% end %>
