@@ -5,31 +5,24 @@
       <p><%= error %></p>
     <% end %>
   <% end %>
-  <fieldset>
-    <div class="form-group row">
-      <%= f.label :Nombre, class: "col-lg-3 col-fom-label" %>
-      <div class="col-md-9">
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
+  <div class="form-group row">
+    <%= f.label :Nombre, class: "col-lg-3 col-fom-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :name, class: "form-control" %>
     </div>
-  </fieldset>
-  <fieldset>
-    <div class="form-group row">
-      <%= f.label :Descripción, class: "col-lg-3 col-fom-label" %>
-      <div class="col-lg-9">
-        <%= f.text_area :description, class: "form-control" %>
-      </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :Descripción, class: "col-lg-3 col-fom-label" %>
+    <div class="col-lg-9">
+      <%= f.text_area :description, class: "form-control" %>
     </div>
-  </fieldset>
-  <fieldset>
-    <div class="form-group row">
-      <%= f.label :Permisos, class: "col-lg-3 col-fom-label" %>
-      <div class="col-lg-4">
-        <%= f.submit "Seleccionar Permisos", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
-      </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :Permisos, class: "col-lg-3 col-fom-label" %>
+    <div class="col-lg-4">
+      <%= f.submit "Seleccionar Permisos", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
     </div>
-  </fieldset>
-
+  </div>
   <div class="col-sm-12 text-right">
     <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
   </div>
