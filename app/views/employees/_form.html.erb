@@ -6,61 +6,79 @@
     <% end %>
   <% end %>
   
-  <div class="form-group col-sm-12">
-    <%= f.label :nombre, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
+  <div class="form-group">
+    <div>
+      <%= f.label :nombre %>
+    </div>
+    <div>
       <%= f.text_field :name, class: "form-control" %>
     </div>
   </div>
 
-  <div class="form-group col-sm-12">
-    <%= f.label :apellido, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
+  <div class="form-group">
+    <div>
+      <%= f.label :apellido %>
+    </div>
+    <div>
       <%= f.text_field :last_name, class: "form-control" %>
     </div>
   </div>
 
 
-  <div class="form-group col-sm-12">
-    <%= f.label :email  , class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
+  <div class="form-group">
+    <div>
+      <%= f.label :email %>
+    </div>
+    <div>
       <%= f.text_field :email, class: "form-control " %>
     </div>
   </div>
 
-  <div class="form-group col-sm-12">
-    <%= f.label :direccion, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
+  <div class="form-group">
+    <div>
+      <%= f.label :direccion %>
+    </div>
+    <div>
       <%= f.text_field :address, class: "form-control " %>
     </div>
   </div>
 
-  <div class="form-group col-sm-12">
-    <%= f.label :telefono, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
+  <div class="form-group">
+    <div>
+      <%= f.label :telefono %>
+    </div>
+    <div>
       <%= f.text_field :phone, class: "form-control" %>
     </div>
   </div>
 
-  <div class="form-group col-sm-12">
-    <%= f.label :fecha_nacimiento, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
-      <%= f.date_field :date_of_birth, value: Time.now.strftime('%Y-%m-%d'),  class: "form-control" %>
+  <div class="form-group">
+    <%= f.label :fecha_nacimiento %>
+    <div class="input-group date" id="employee-form-datepicker">
+      <%= f.text_field :date_of_birth, class: "form-control" %>
+      <div class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+      </div>
     </div>
   </div>
 
-  <div class="form-group col-sm-12">
-    <%= f.label :genero, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
+  <div class="form-group">
+    <div>
+      <%= f.label :genero %>
+    </div>
+    <div>
       <%= f.select :gender, User.genders.keys, {}, class: "form-control" %>
     </div>
   </div>  
 
   <div class="form-group">
-    <div class="col-md-8 col-sm-8 col-xs-12">
-      <div class="col-sm-12 text-right">
-        <%= f.submit "Save", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
-      </div>
+    <div class="text-center">
+      <%= f.submit "Save", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
     </div>
   </div>
 <% end %>
+<script>
+  $(function() {
+    $("#employee-form-datepicker").datepicker({});
+  })
+</script>
