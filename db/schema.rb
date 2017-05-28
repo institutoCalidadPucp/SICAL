@@ -15,6 +15,17 @@ ActiveRecord::Schema.define(version: 20170524211319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "laboratories", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "telefono"
+    t.string "email"
+    t.string "web"
+    t.string "direccion"
+    t.text "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "menu_permit_roles", force: :cascade do |t|
     t.bigint "menu_permit_id"
     t.bigint "role_id"
