@@ -42,21 +42,15 @@ class EmployeesController < ApplicationController
     end
   end
   
-
-  # DELETE /employees/1
-  # DELETE /employees/1.json
   def destroy
     @employee.destroy
     redirect_to employees_url              
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_employee
     @employee = User.find(params[:id])
   end
-  
-  
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def employee_params
