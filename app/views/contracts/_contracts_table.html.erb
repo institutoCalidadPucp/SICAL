@@ -11,20 +11,6 @@
                 <th>Acciones</th>
               </tr>
             </thead>
-            <tbody>
-              <% contract.each do |c| %>
-                <tr>
-                  <td><%= c.code %></td>
-                  <td><%= c.code_Quotations %></td>
-                  <td><%= c.laboratory %></td>
-                  <td><%= c.date %></td>
-                  <td><%= c.state %></td>
-                  <td>
-                    <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, contract_path(contract),class: "btn btn-primary btn-sm",title: "Ver", method: :delete %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
           </table>
         </div>
 </div>
