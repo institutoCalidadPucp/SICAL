@@ -9,6 +9,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div>
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="page-content main-panel">
+      <%= render 'layouts/navbar' %>
+      <div class="content">
+        <%= yield %>
+      </div>
+      <%= render 'layouts/footer' %>
+    </div>
+    
   </body>
 </html>
