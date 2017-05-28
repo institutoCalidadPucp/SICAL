@@ -1,6 +1,6 @@
 <div class="content">
   <div class="material-datatables">
-      <table id="roles-table" class="table table-striped table-no-bordered table-hover">
+      <table id="roles-table" class="table table-no-bordered table-hover"> <!--table-striped -->
         <thead>
           <tr>
             <th>Nombre</th>
@@ -14,8 +14,8 @@
               <td><%= role.name %></td>
               <td><%= role.description %></td>
               <td>
-                <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_role_path(role), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
-                <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, role_path(role),class: "btn btn-warning btn-sm", method: :delete %>
+                <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_role_path(role), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
+                <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, role_path(role),class: "btn btn-warning btn-sm", data: { "toggle" => "tooltip" }, title: "Eliminar", method: :delete %>
               </td>
             </tr>
           <% end %>
