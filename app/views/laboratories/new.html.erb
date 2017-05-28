@@ -1,5 +1,19 @@
-<h1 class="page-header">Laboratorio <small>Nuevo</small></h1>
 
-<%= render 'form', laboratory: @laboratory, method: :post, path: laboratories_path %>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header card-header-text">            
+              <h1 class="page-header">Laboratorio <small>Nuevo</small></h1>
+          </div>
+          <div class="content">
+            <%= render 'form', laboratory: @laboratory, method: :post, path: laboratories_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Volver', laboratories_path %>
+

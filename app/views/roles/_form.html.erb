@@ -5,26 +5,28 @@
       <p><%= error %></p>
     <% end %>
   <% end %>
-  
-  <div class="form-group col-sm-12">
-    <%= f.label :nombre, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
+  <div class="form-group row">
+    <%= f.label :Nombre, class: "col-lg-3 col-fom-label" %>
+    <div class="col-md-9">
       <%= f.text_field :name, class: "form-control" %>
     </div>
   </div>
-
-  <div class="form-group col-sm-12">
-    <%= f.label :descripcion, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
-      <%= f.text_field :description, class: "form-control" %>
+  <div class="form-group row">
+    <%= f.label :Descripción, class: "col-lg-3 col-fom-label" %>
+    <div class="col-lg-9">
+      <%= f.text_area :description, class: "form-control" %>
     </div>
   </div>
-
-  <div class="form-group">
-    <div class="col-md-8 col-sm-8 col-xs-12">
-      <div class="col-sm-12 text-right">
-        <%= f.submit "Save", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
-      </div>
+  <div class="form-group row">
+    <%= f.label :Permisos, class: "col-lg-3 col-fom-label" %>
+    <div class="col-lg-4">
+      <%= f.submit "Seleccionar Permisos", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
     </div>
   </div>
+  <div class="col-sm-12 text-right">
+    <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+  </div>
+
+  <%= link_to 'Volver', roles_path %>
+  
 <% end %>

@@ -18,4 +18,5 @@
 //= require turbolinks
 //= require urbanui/vendor/flot/jquery.flot.js
 //= require urbanui/vendor/moment.js
+//= require urbanui/inspire.js
 //= require_tree .
