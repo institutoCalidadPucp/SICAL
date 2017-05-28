@@ -1,0 +1,51 @@
+<div class="content">
+        <div class="material-datatables">
+          <table id="sample_table" class="table table-no-bordered table-hover" >
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Identificación de la Muestra</th>
+                <th>Tipo de Muestra</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Encargado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% quotation.each do |q| %>
+                <tr>
+                  <td><%= q.code %></td>
+                  <td><%= q.description %></td>
+                  <td><%= q.type_sample %></td>
+                  <td><%= q.client %></td>
+                  <td><%= q.date %></td>
+                  <td><%= q.boss %></td>
+                  <td>
+                    <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_sample_path(sample), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
+                    <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, sample_path(sample),class: "btn btn-warning btn-sm",title: "Eliminar", method: :delete %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+</div>
+
+
+<script>
+  $(document).on('ready', function() {
+    $('#sample_table').DataTable({
+        "pagingType": "full_numbers",
+        "lengthMenu": [ 
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        responsive: true,
+        destroy: true,
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Buscar Muestras",
+        },
+    });
+  })
