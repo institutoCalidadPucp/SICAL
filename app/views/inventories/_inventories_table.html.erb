@@ -1,0 +1,45 @@
+<div class="content">
+  <div class="material-datatables">
+      <table id="inventories-table" class="table table-no-bordered table-hover"> <!--table-striped -->
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% inventories.each do |inventory| %>
+            <tr>
+              <td><%= inventory.code %></td>
+              <td><%= inventory.name %></td>
+              <td><%= inventory.description %></td>
+              <td>
+                <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_inventory_path(inventory), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
+                <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, inventory_path(inventory),class: "btn btn-warning btn-sm", data: { "toggle" => "tooltip" }, title: "Eliminar", method: :delete %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>  
+      </table>
+  </div>
+</div>
+
+<script>
+  $(document).on('ready', function() {
+    $('#inventories-table').DataTable({
+        "pagingType": "full_numbers",
+        "lengthMenu": [ 
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        responsive: true,
+        destroy: true,
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Buscar Item",
+        },
+    });
+  })
+</script>
