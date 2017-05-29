@@ -1,6 +1,7 @@
 class RolesController < ApplicationController
 
   before_action :set_role, only: [:edit, :update, :destroy]
+  before_action :menus, only: [:new, :edit]
 
   def index
     @roles = Role.all
@@ -41,10 +42,14 @@ class RolesController < ApplicationController
 
   private 
     def role_params
-      params.require(:role).permit(:name, :description)
+      params.require(:role).permit(:name, :description, menu_permits_attributes: [:name, :create_permit, :view_permit, :edit_permit, :delete_permit])
     end
 
     def set_role
       @role = Role.find params[:id]
+    end
+
+    def menus
+      @menus = MenuPermit.names
     end
 end

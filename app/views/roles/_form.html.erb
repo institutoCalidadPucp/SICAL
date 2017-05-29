@@ -1,4 +1,4 @@
-<%= simple_nested_form_for @role, url: path, method: method, :html => { class: "form-horizontal validate" } do |f| %>
+<%= nested_form_for @role, url: path, method: method, :html => { class: "form-horizontal validate" } do |f| %>
 
   <% if @role.errors.any?%>
     <% @role.errors.full_messages.each do |error| %>
@@ -19,70 +19,29 @@
   </div>
   <div class="form-group row">
     <%= f.label :Permisos, class: "col-lg-3 col-fom-label" %>
-    <div class="col-lg-4">
-      <div class="content">
-        <div class="material-datatables">
-            <table id="roles-table" class="table table-no-bordered table-hover"> <!--table-striped -->
-              <thead>
-                <tr>
-                  <th>Menú</th>
-                  <th>Ver</th>
-                  <th>Crear</th>
-                  <th>Editar</th>
-                  <th>Hab/Deshab</th>
-                </tr>
-              </thead>
-              <tbody>
-                <%  f.simple_fields_for :menus, @Menu.all.tags_for_form do |menu| %>
-                  <tr>
-                    <td><%= menu.name %></td>
-                    <%  f.simple_fields_for :permits, @Permit.all.tags_for_form do |permit| %>
-                      <td>                      
-                        <div class="checkbox form-check-label">
-                         <span class="icons">
-                            <span class="first-icon fa fa-square"></span>
-                            <span class="second-icon fa fa-check-square "></span>
-                          </span>                        
-                          <%= f.check_box ver_check, class: "form-check-input"%>                          
-                        </div>
-                      </td>
-                      <td>
-                        <div class="checkbox form-check-label">
-                         <span class="icons">
-                            <span class="first-icon fa fa-square"></span>
-                            <span class="second-icon fa fa-check-square "></span>
-                          </span>                        
-                          <%= f.check_box :crear_check, class: "form-check-input"%>                          
-                        </div>
-                      </td>
-                      <td>
-                        <div class="checkbox form-check-label">
-                         <span class="icons">
-                            <span class="first-icon fa fa-square"></span>
-                            <span class="second-icon fa fa-check-square "></span>
-                          </span>                          
-                          <%= f.check_box editar_check, class: "form-check-input"%>                          
-                        </div>
-                      </td>
-                      <td>
-                        <div class="checkbox form-check-label">
-                         <span class="icons">
-                            <span class="first-icon fa fa-square"></span>
-                            <span class="second-icon fa fa-check-square "></span>
-                          </span>
-                          <label>Hab/Deshab</label>
-                          <%= f.check_box :hab_deshab_check, class: "form-check-input"%>                          
-                        </div>                      
-                      </td>
-                    <% end %>
-                  </tr>
-                <% end %>
-              </tbody>  
-            </table>
-        </div>
-      </div>
+    <div class="col-lg-9">
+      <p><%= f.link_to_add "Agregar un menú", :menu_permits %></p>
     </div>
   </div>
+
+  <%= f.fields_for :menu_permits do |mp_form| %>
+    <%= mp_form.select :name, @menus, {}, class: "form-control" %>
+
+    <%= mp_form.label :crear %>
+    <%= mp_form.check_box :create_permit, class: "form-control" %>
+    
+    <%= mp_form.label :ver %>
+    <%= mp_form.check_box :view_permit, class: "form-control" %>
+    
+    <%= mp_form.label :editar %>
+    <%= mp_form.check_box :edit_permit, class: "form-control" %>
+
+    <%= mp_form.label :eliminar %>
+    <%= mp_form.check_box :delete_permit, class: "form-control" %>
+    
+    <%= mp_form.link_to_remove "Remover el menú" %>
+  <% end %>
+  
   <div class="col-sm-12 text-right">
     <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
   </div>

@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   
   before_action :set_client, only: [:edit, :update, :destroy, :show]
+  before_action :roles, only: [:new, :create, :update, :edit]
 
   def index
     @clients = User.all.client
@@ -15,7 +16,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = User.new client_params
-    if @client.save
+    if (@client.set_password).save
       @client.client!
       redirect_to clients_path
     else 
@@ -46,10 +47,14 @@ class ClientsController < ApplicationController
   private 
 
     def client_params
-      params.require(:user).permit(:password, :phone, :email, :address, :ruc, :name, :username)
+      params.require(:user).permit(:phone, :email, :address, :ruc, :name)
     end
 
     def set_client
       @client = User.find params[:id]
+    end
+
+    def roles
+      @roles = Role.all
     end
 end
