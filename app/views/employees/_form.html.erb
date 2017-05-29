@@ -1,11 +1,9 @@
 <%= form_for @employee, url: path, method: method, :html => { class: "form-horizontal validate" } do |f| %>
-
-  <% if @employee.errors.any?%>
+  <% if @employee.errors.any? %>
     <% @employee.errors.full_messages.each do |m| %>
       <p><%= m %></p>
     <% end %>
   <% end %>
-  
   <div class="form-group">
     <div>
       <%= f.label :nombre %>
@@ -14,7 +12,6 @@
       <%= f.text_field :name, class: "form-control" %>
     </div>
   </div>
-
   <div class="form-group">
     <div>
       <%= f.label :apellido %>
@@ -23,8 +20,6 @@
       <%= f.text_field :last_name, class: "form-control" %>
     </div>
   </div>
-
-
   <div class="form-group">
     <div>
       <%= f.label :email %>
@@ -33,7 +28,6 @@
       <%= f.text_field :email, class: "form-control " %>
     </div>
   </div>
-
   <div class="form-group">
     <div>
       <%= f.label :direccion %>
@@ -42,7 +36,6 @@
       <%= f.text_field :address, class: "form-control " %>
     </div>
   </div>
-
   <div class="form-group">
     <div>
       <%= f.label :telefono %>
@@ -51,17 +44,15 @@
       <%= f.text_field :phone, class: "form-control" %>
     </div>
   </div>
-
   <div class="form-group">
     <%= f.label :fecha_nacimiento %>
-    <div class="input-group date" id="employee-form-datepicker">
-      <%= f.text_field :date_of_birth, class: "form-control" %>
+    <div class="input-group date">
+      <%= f.text_field :date_of_birth, class: "form-control", id: "employee-form-datepicker" %>
       <div class="input-group-addon">
         <i class="fa fa-calendar"></i>
       </div>
     </div>
   </div>
-
   <div class="form-group">
     <div>
       <%= f.label :genero %>
@@ -70,15 +61,10 @@
       <%= f.select :gender, User.genders.keys, {}, class: "form-control" %>
     </div>
   </div>  
-
   <div class="form-group">
     <div class="text-center">
-      <%= f.submit "Save", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+      <%= link_to "Cancelar", employees_path, class: "btn btn-primary sical-btn-cancel" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
     </div>
   </div>
 <% end %>
-<script>
-  $(function() {
-    $("#employee-form-datepicker").datepicker({});
-  })
-</script>

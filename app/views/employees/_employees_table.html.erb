@@ -1,6 +1,6 @@
 <div class="content">
   <div class="material-datatables">
-    <table id="datatables" class="table table-hover">
+    <table id="employee-datatable" class="table table-hover">
       <thead class="text-primary">
         <tr>
           <th>Nombre</th>
@@ -31,22 +31,3 @@
     </table>
   </div>
 </div>
-
-<script>
-  $(document).on('ready', function() {
-    $('#datatables').DataTable({
-        "pagingType": "full_numbers",
-        "lengthMenu": [ 
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        responsive: true,
-        destroy: true,
-        language: {
-            search: "_INPUT_",
-            searchPlaceholder: "Buscar Empleados",
-        },
-    });
-  })
-</script>
-

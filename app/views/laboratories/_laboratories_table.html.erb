@@ -1,51 +1,31 @@
-
 <div class="content">
-        <div class="material-datatables">
-          <table id="laboratory_table" class="table table-no-bordered table-hover" >
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Teléfono</th>
-                <th>Correo</th>
-                <th>Dirección</th>
-                <th>Descripción</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% laboratories.each do |laboratory| %>
-                <tr>
-                  <td><%= laboratory.name %></td>
-                  <td><%= laboratory.phone %></td>
-                  <td><%= laboratory.email %></td>
-                  <td><%= laboratory.address %></td>
-                  <td><%= laboratory.description %></td>
-                  <td>
-                    <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_laboratory_path(laboratory), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
-                    <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, laboratory_path(laboratory),class: "btn btn-warning btn-sm",title: "Eliminar", method: :delete %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+  <div class="material-datatables">
+    <table id="laboratory-table" class="table table-no-bordered table-hover" >
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
+          <th>Dirección</th>
+          <th>Descripción</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% laboratories.each do |laboratory| %>
+          <tr>
+            <td><%= laboratory.name %></td>
+            <td><%= laboratory.phone %></td>
+            <td><%= laboratory.email %></td>
+            <td><%= laboratory.address %></td>
+            <td><%= laboratory.description %></td>
+            <td>
+              <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_laboratory_path(laboratory), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
+              <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, laboratory_path(laboratory),class: "btn btn-warning btn-sm",title: "Eliminar", method: :delete %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-
-<script>
-  $(document).on('ready', function() {
-    $('#laboratory_table').DataTable({
-        "pagingType": "full_numbers",
-        "lengthMenu": [ 
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        responsive: true,
-        destroy: true,
-        language: {
-            search: "_INPUT_",
-            searchPlaceholder: "Buscar Laboratorios",
-        },
-    });
-  })
-</script>
