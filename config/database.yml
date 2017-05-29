@@ -13,7 +13,7 @@ default: &default
 development:
   <<: *default
   database: sical_web
-  username: Jauma
+  username: Owlz
   password: slicer96
 
 # Warning: The database defined as "test" will be erased and
