@@ -1,6 +1,11 @@
 class MenuPermit < ApplicationRecord
-  belongs_to :menu
-  belongs_to :permit
-  has_many :menu_permit_roles
-  has_many :roles, :through => :menu_permit_roles
+  
+  belongs_to :role, required: false
+
+  validates_associated :role
+
+  def self.names
+  	MenuPermit.pluck(:name)	
+  end
+
 end
