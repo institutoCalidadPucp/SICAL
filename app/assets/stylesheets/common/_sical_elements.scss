@@ -5,3 +5,34 @@
   font-weight: bold;
   font-family: sans-serif;
 }
+
+// Sical SideBar
+
+.sical-sidebar {
+  position: relative !important;
+}
+
+.sical-sidebar-logo,
+.sical-sidebar-mini-logo,
+.sical-sidebar-wrapper {
+  background: #001F4F;
+}
+
+// Sical Container
+
+.sical-container {
+  display: flex;
+}
+
+// Sical main-panel
+
+.sical-main-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+// Sical content
+
+.sical-content {
+  margin-bottom: auto;
+}

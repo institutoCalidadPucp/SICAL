@@ -8,15 +8,15 @@
   </head>
 
   <body>
-    <div>
+    <div class="sical-container">
       <%= render 'layouts/sidebar' %>
-    </div>
-    <div class="page-content main-panel">
-      <%= render 'layouts/navbar' %>
-      <div class="content">
-        <%= yield %>
+      <div class="page-content main-panel sical-main-panel">
+        <%= render 'layouts/navbar' %>
+        <div class="content sical-content">
+          <%= yield %>
+        </div>
+        <%= render 'layouts/footer' %>
       </div>
-      <%= render 'layouts/footer' %>
     </div>
   </body>
   <%= javascript_include_tag 'application' %>
