@@ -60,7 +60,15 @@
     <div>
       <%= f.select :gender, User.genders.keys, {}, class: "form-control" %>
     </div>
-  </div>  
+  </div>
+  <div class="form-group">
+    <div>
+      <%= f.label :rol %>
+    </div>
+    <div>
+      <%= f.collection_select :role_id, @roles, :id, :name, {}, class: "form-control" %>
+    </div>
+  </div> 
   <div class="form-group">
     <div class="text-center">
       <%= link_to "Cancelar", employees_path, class: "btn btn-primary sical-btn-cancel" %>

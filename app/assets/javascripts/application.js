@@ -14,9 +14,11 @@
 //= require tether
 //= require bootstrap-sprockets
 //= require bootstrap
+//= require jquery_nested_form
 //= require urbanui/vendor/flot/jquery.flot.js
 //= require urbanui/vendor/moment.js
 //= require urbanui/vendor/jquery.dataTables.min.js
 //= require urbanui/inspire.js
 //= require_tree ./urbanui
 //= require_tree ./pages
+//= require_tree .
