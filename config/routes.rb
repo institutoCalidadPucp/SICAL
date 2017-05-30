@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'quotations/index'
-
-  get 'quotation/index'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
     devise_scope :user do
@@ -25,5 +21,6 @@ Rails.application.routes.draw do
   resources :samples
   resources :sample_methods
   resources :inventories 
+  resources :quotations
 
 end
