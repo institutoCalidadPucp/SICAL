@@ -19,28 +19,44 @@
   </div>
   <div class="form-group row">
     <%= f.label :Permisos, class: "col-lg-3 col-fom-label" %>
+    <div class="col-lg-3"></div>
+    <label class="col-lg-1">Crear</label>
+    <label class="col-lg-1">Ver</label>
+    <label class="col-lg-1">Editar</label>
+    <label class="col-lg-1">Eliminar</label>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-lg-3"></div>
     <div class="col-lg-9">
       <p><%= f.link_to_add "Agregar un menú", :menu_permits %></p>
     </div>
   </div>
 
   <%= f.fields_for :menu_permits do |mp_form| %>
-    <%= mp_form.select :name, @menus, {}, class: "form-control" %>
+    <!--<label class="col-lg-7 "></label>-->
 
-    <%= mp_form.label :crear %>
-    <%= mp_form.check_box :create_permit, class: "form-control" %>
-    
-    <%= mp_form.label :ver %>
-    <%= mp_form.check_box :view_permit, class: "form-control" %>
-    
-    <%= mp_form.label :editar %>
-    <%= mp_form.check_box :edit_permit, class: "form-control" %>
+    <%# mp_form.label :crear, class: "col-lg-1 " %>
+    <%# mp_form.label :ver, class: "col-lg-1 " %>
+    <%# mp_form.label :editar, class: "col-lg-1 " %>
+    <%# mp_form.label :eliminar, class: "col-lg-1 " %>
 
-    <%= mp_form.label :eliminar %>
-    <%= mp_form.check_box :delete_permit, class: "form-control" %>
-    
-    <%= mp_form.link_to_remove "Remover el menú" %>
+    <div class="form-group ">
+      <%= mp_form.select :name, @menus, {}, class: "col-lg-4"%>
+      
+      <%= mp_form.check_box :create_permit, class: "col-lg-1" %>      
+      
+      <%= mp_form.check_box :view_permit, class: "col-lg-1" %>      
+      
+      <%= mp_form.check_box :edit_permit, class: "col-lg-2" %>
+      
+      <%= mp_form.check_box :delete_permit, class: "col-lg-1" %>
+
+      <%= mp_form.link_to_remove "Borrar", class: "col-lg-1" %>
+    </div>
   <% end %>
+
+
   
   <div class="col-sm-12 text-right">
     <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
