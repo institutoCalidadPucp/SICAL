@@ -1,13 +1,16 @@
-<h1>
-  <div class="row">
-    <div class="col-sm-12 col-md-10">
-      Contratos
-    </div>
+
+<div class="card">
+  <div class="header card-header-text">
+    <h1>
+      <div class="row">
+        <div class="col-sm-12 col-md-10">
+          Contratos
+        </div>
+      </div>
+    </h1>
+    <%= render 'search', contracts: @contracts %>
   </div>
-</h1>
-
-<%= render 'search', contracts: @contracts %>
-
-<div>
-  <%= render 'contracts_table', contracts: @contracts %>
+  <div>
+    <%= render 'contracts_table', contracts: @contracts %>
+  </div>
 </div>
