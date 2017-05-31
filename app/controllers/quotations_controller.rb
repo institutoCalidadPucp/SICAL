@@ -3,7 +3,7 @@ class QuotationsController < ApplicationController
     @quotations = Quotation.all
   end
 
-  # Used in the view
+  # New Test Upload
   def show
   end
 
