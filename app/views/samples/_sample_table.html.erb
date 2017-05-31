@@ -1,35 +1,17 @@
 <div class="content">
-        <div class="material-datatables">
-          <table id="sample_table" class="table table-no-bordered table-hover" >
-            <thead>
-              <tr>
-                <th>Código</th>
-                <th>Identificación de la Muestra</th>
-                <th>Tipo de Muestra</th>
-                <th>Cliente</th>
-                <th>Fecha</th>
-                <th>Encargado</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-          </table>
-        </div>
+  <div class="material-datatables">
+    <table id="sample-table" class="table table-no-bordered table-hover" >
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Identificación de la Muestra</th>
+          <th>Tipo de Muestra</th>
+          <th>Cliente</th>
+          <th>Fecha</th>
+          <th>Encargado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
 </div>
-
-
-<script>
-  $(document).on('ready', function() {
-    $('#sample_table').DataTable({
-        "pagingType": "full_numbers",
-        "lengthMenu": [ 
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        responsive: true,
-        destroy: true,
-        language: {
-            search: "_INPUT_",
-            searchPlaceholder: "Buscar Muestras",
-        },
-    });
-  })
