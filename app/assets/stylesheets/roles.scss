@@ -1,0 +1,7 @@
+.menus-permit-table{
+  background: red;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  &:last-child { border-bottom: 1px solid black; }
+}

@@ -28,7 +28,7 @@
 
   <div class="form-group row">
     <div class="col-lg-3"></div>
-    <div class="col-lg-9">
+    <div class="col-lg-9 menus-permit-table">
       <p><%= f.link_to_add "Agregar un menú", :menu_permits %></p>
     </div>
   </div>
@@ -41,7 +41,7 @@
     <%# mp_form.label :editar, class: "col-lg-1 " %>
     <%# mp_form.label :eliminar, class: "col-lg-1 " %>
 
-    <div class="form-group ">
+    <div class="form-group menus-permit-table">
       <%= mp_form.select :name, @menus, {}, class: "col-lg-4"%>
       
       <%= mp_form.check_box :create_permit, class: "col-lg-1" %>      
@@ -55,8 +55,6 @@
       <%= mp_form.link_to_remove "Borrar", class: "col-lg-1" %>
     </div>
   <% end %>
-
-
   
   <div class="col-sm-12 text-right">
     <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
