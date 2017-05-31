@@ -1,0 +1,18 @@
+<p>Click on the buttons inside the tabbed menu:</p>
+
+<div class="tab">
+  <button class="tablinks" onclick="openData(event, 'Cliente')">Cliente</button>
+  <button class="tablinks" onclick="openData(event, 'MuestrasGeneral')">MuestrasGeneral</button>
+</div>
+
+<%= nested_form_for @sample, url: path, method: method do |sample| %>
+  <div id="Cliente" class="tabcontent">
+    <h3>Cliente</h3>
+    <%= render 'client', form: sample %>
+  </div>
+
+  <div id="MuestrasGeneral" class="tabcontent">
+    <h3>Informacion General</h3>
+    <%= render 'client', form: sample %>
+  </div>
+<% end %>
