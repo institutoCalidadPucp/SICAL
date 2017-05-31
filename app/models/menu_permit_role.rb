@@ -1,2 +1,0 @@
-class MenuPermitRole < ApplicationRecord
-end

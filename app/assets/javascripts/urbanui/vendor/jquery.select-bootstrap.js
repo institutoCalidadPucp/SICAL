@@ -28,7 +28,7 @@
     // only CommonJS-like environments that support module.exports,
     // like Node.
     module.exports = factory(require("jquery"));
-  } else {
+  } else { 
     factory(jQuery);
   }
 }(this, function (jQuery) {
