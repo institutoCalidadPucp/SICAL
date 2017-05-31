@@ -1,6 +1,4 @@
 class InventoriesController < ApplicationController
-
-  def index
+  def new
   end
-  
 end
