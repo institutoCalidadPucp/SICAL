@@ -3,6 +3,8 @@ class QuotationsController < ApplicationController
     @quotations = Quotation.all
   end
 
+  # Used in the view
   def show
   end
+
 end
