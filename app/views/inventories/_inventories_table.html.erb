@@ -13,8 +13,44 @@
         </tr>
       </thead>
       <tbody>
-        <% inventories.each do |inventory| %>
-          <tr>
+        <tr>
+          <td>Impresora</td>
+          <td>EPSON</td>
+          <td>J47A</td>
+          <td>Impresora con conexión wifi</td>
+          <td>01/04/2010</td>
+          <td>10</td>
+          <td>
+              <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_role_path(role), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
+              <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, role_path(role),class: "btn btn-warning btn-sm", method: :delete %>
+            </td>
+        </tr>
+        <tr>
+          <td>Computadora</td>
+          <td>Intel</td>
+          <td>corei3</td>
+          <td>Computadora primera generación</td>
+          <td>06/11/2011</td>
+          <td>5</td>
+          <td>
+              <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_role_path(role), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
+              <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, role_path(role),class: "btn btn-warning btn-sm", method: :delete %>
+            </td>
+        </tr>
+        <tr>
+          <td>Impresora</td>
+          <td>EPSON</td>
+          <td>J24P</td>
+          <td>Impresora multi-funcional con wifi</td>
+          <td>08/06/2012</td>
+          <td>10</td>
+          <td>
+              <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_role_path(role), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
+              <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, role_path(role),class: "btn btn-warning btn-sm", method: :delete %>
+            </td>
+        </tr>
+        <%# inventories.each do |inventory| %>
+          <!--<tr>
             <td><%= inventory.name %></td>
             <td><%= inventory.brand %></td>
             <td><%= inventory.model %></td>
@@ -22,12 +58,12 @@
             <td><%= inventory.admission %></td>
             <td><%= inventory.lifetime %></td>
             <td>
-              <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_role_path(role), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
-              <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, role_path(role),class: "btn btn-warning btn-sm", method: :delete %>
+              <%=# link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_role_path(role), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
+              <%=# link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, role_path(role),class: "btn btn-warning btn-sm", method: :delete %>
             </td>
-          </tr>
-        <% end %>
-      </tbody>  
+          </tr>-->
+        <%# end %>
+      </tbody>
     </table>
   </div>
 </div>
