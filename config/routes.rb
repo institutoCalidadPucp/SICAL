@@ -22,5 +22,6 @@ Rails.application.routes.draw do
   resources :samples
   resources :sample_methods 
   resources :quotations
+  resources :requests
 
 end
