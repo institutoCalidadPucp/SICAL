@@ -19,16 +19,16 @@
   </div>
   <div class="form-group row">
     <%= f.label :Permisos, class: "col-lg-3 col-fom-label" %>
-    <div class="col-lg-3"></div>
-    <label class="col-lg-1">Crear</label>
-    <label class="col-lg-1">Ver</label>
-    <label class="col-lg-1">Editar</label>
-    <label class="col-lg-1">Eliminar</label>
+    <div class="col-lg-3 "></div>
+    <label class="col-lg-1 ">Crear</label>
+    <label class="col-lg-1 ">Ver</label>
+    <label class="col-lg-1 ">Editar</label>
+    <label class="col-lg-1 ">Eliminar</label>
   </div>
 
   <div class="form-group row">
     <div class="col-lg-3"></div>
-    <div class="col-lg-9 menus-permit-table">
+    <div class="col-lg-9">
       <p><%= f.link_to_add "Agregar un menú", :menu_permits %></p>
     </div>
   </div>
@@ -42,7 +42,7 @@
     <%# mp_form.label :eliminar, class: "col-lg-1 " %>
 
     <div class="form-group menus-permit-table">
-      <%= mp_form.select :name, @menus, {}, class: "col-lg-4"%>
+      <%= mp_form.select :name, @menus, {}, class: "col-lg-4 "%>
       
       <%= mp_form.check_box :create_permit, class: "col-lg-1" %>      
       
