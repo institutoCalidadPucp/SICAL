@@ -13,5 +13,6 @@
             searchPlaceholder: "Buscar Item",
         },
     });
-  })
+    $("#employee-form-datepicker").datepicker({});
+  });
 })();
