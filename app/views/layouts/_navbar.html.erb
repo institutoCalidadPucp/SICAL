@@ -5,32 +5,35 @@
       </button>
   </div>
   <div class="collapse navbar-collapse" id="navbarItems">
-      <ul class="nav navbar-nav ml-auto">
-          <li class="dropdown">
-              <a href="#" class="dropdown-toggle nav-link" id="notificationList" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="ti-bell nav-icon"></i>
-                  <span class="notification">6</span>
-                  <p class="hidden-lg-up">
-                      Notifications
-                      <i class="fa fa-sort-desc submenu-toggle"></i>
-                  </p>
-              </a>
-              <div class="dropdown-menu only-dropdown" aria-labelledby="notificationList">
-                  <a class="dropdown-item" href="#">You have 5 new messages</a>
-                  <a class="dropdown-item" href="#">You're now friend with Mike</a>
-                  <a class="dropdown-item" href="#">Wish Mary on her birthday!</a>
-                  <a class="dropdown-item" href="#">5 warnings in Server Console</a>
-                  <a class="dropdown-item" href="#">Jane completed 'Induction Training'</a>
-                  <a class="dropdown-item" href="#">'Prepare Marketing Report' is overdue</a>
-              </div>
-          </li>
-          <li>
-              <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <i class="ti-user nav-icon"></i>
-                  <p class="hidden-lg-up">Profile</p>
-              </a>
-          </li>
-          <li class="separator hidden-lg-up"></li>
-      </ul>
+    <ul class="nav navbar-nav ml-auto">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle nav-link sical-dropdown" id="notificationList" data-toggle="dropdown">
+          <i class="ti-bell nav-icon"></i>
+          <span class="notification">6</span>
+          <p class="hidden-lg-up">
+              Notifications
+              <i class="fa fa-sort-desc submenu-toggle"></i>
+          </p>
+        </a>
+        <div class="dropdown-menu only-dropdown" aria-labelledby="notificationList">
+          <a class="dropdown-item" href="#">You have 5 new messages</a>
+          <a class="dropdown-item" href="#">You're now friend with Mike</a>
+          <a class="dropdown-item" href="#">Wish Mary on her birthday!</a>
+          <a class="dropdown-item" href="#">5 warnings in Server Console</a>
+          <a class="dropdown-item" href="#">Jane completed 'Induction Training'</a>
+          <a class="dropdown-item" href="#">'Prepare Marketing Report' is overdue</a>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="dropdown-toggle nav-link sical-dropdown" data-toggle="dropdown">
+          <i class="ti-user nav-icon"></i>
+          <p class="hidden-lg-up">Profile</p>
+        </a>
+        <div class="dropdown-menu only-dropdown" aria-labelledby="notificationList">
+          <%= link_to "Logout", destroy_user_session_path, :method=>'delete', class: "dropdown-item" %>
+        </div>
+      </li>
+      <li class="separator hidden-lg-up"></li>
+    </ul>
   </div>
 </nav>
