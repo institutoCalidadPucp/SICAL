@@ -3,7 +3,6 @@ class CreateQuotations < ActiveRecord::Migration[5.1]
     create_table :quotations do |t|
       t.float :total
       t.integer :status
-
       t.timestamps
     end
   end
