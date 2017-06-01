@@ -1,0 +1,42 @@
+<%= nested_form_for @request, url: path, method: method, :html => { class: "form-horizontal validate" } do |f| %>
+
+  <% if @request.errors.any?%>
+    <% @request.errors.full_messages.each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+  <% end %>
+  <div class="form-group row">
+    <%= f.label :Codigo, class: "col-lg-3 col-fom-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :code, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :Laboratorio, class: "col-lg-3 col-fom-label" %>
+    <div class="col-lg-9">
+      <%= f.text_area :laboratory, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :fecha_de_envio %>
+    <div class="input-group date">
+      <%= f.text_field :shipping_date, class: "form-control", id: "request-form-datepicker" %>
+      <div class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :Estado, class: "col-lg-3 col-fom-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :estate, class: "form-control" %>
+    </div>
+  </div>  
+
+  <div class="col-sm-12 text-right">
+    <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+  </div>
+
+  <%= link_to 'Volver', roles_path %>
+  
+<% end %>
