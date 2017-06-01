@@ -37,11 +37,8 @@ class ClientsController < ApplicationController
   end
 
   def destroy
-    if @client.destroy
-      redirect_to clients_path, notice: 'Cliente fue eliminado exitosamente'
-    else
-      redirect_to clients_path,  notice: 'Ocurrio un error'
-    end
+    @client.inactive!
+    redirect_to clients_path 
   end
 
   private 

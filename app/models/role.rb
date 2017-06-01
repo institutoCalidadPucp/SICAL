@@ -7,4 +7,6 @@ class Role < ApplicationRecord
   
   accepts_nested_attributes_for :menu_permits, allow_destroy: true
 
+  enum status: [:active, :inactive]
+
 end
