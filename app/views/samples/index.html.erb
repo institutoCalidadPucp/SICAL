@@ -1,16 +1,18 @@
-<h1>
-  <div class="row">
-    <div class="col-sm-12 col-md-10">
-          Muestras
+<div class="card">
+  <div class="header card-header-text">
+    <h1>
+      <div class="row">
+        <div class="col-sm-12 col-md-10">
+              Muestras
+          </div>
+          <div class="col-sm-12 col-md-2">
+              <%= link_to 'Nuevo Muestra', new_sample_path, class: "btn btn-primary align-right"  %>
+          </div>
       </div>
-      <div class="col-sm-12 col-md-2">
-          <%= link_to 'Nuevo Muestra', new_sample_path, class: "btn btn-primary align-right"  %>
-      </div>
+    </h1>
   </div>
-</h1>
-
-<%= render 'search', samples: @samples %>
-
-<div id="table-users">
-    <%= render 'sample_table', samples: @samples %>
+  <%= render 'search', samples: @samples %>
+  <div id="content">
+      <%= render 'sample_table', samples: @samples %>
+  </div>
 </div>
