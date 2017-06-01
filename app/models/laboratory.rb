@@ -3,4 +3,8 @@ class Laboratory < ApplicationRecord
   validates :phone, length: { in: 7..9}
   validates :phone, numericality: true
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+
+  belongs_to :user, required: false
+  belongs_to :sample
+
 end

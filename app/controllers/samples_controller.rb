@@ -1,12 +1,13 @@
 class SamplesController < ApplicationController
 
+  before_action :clients, only: [:new, :edit]
+  
   def index
     @samples = Sample.all
   end
 
   def new
     @sample = Sample.new
-    @sample.features.build
   end
 
   def create
@@ -28,6 +29,11 @@ class SamplesController < ApplicationController
   end
 
   private
+
+    def clients
+      @clients = User.clients_name  
+    end
+
     def samples_params
       params.require(:sample).permit(:description, :category, features_attributes: [:name, :value, :_destroy])
     end

@@ -1,0 +1,15 @@
+<h2 class="page-header">Informacion General</h2>
+<%= form.label :description %>
+<%= form.text_field :description %>
+
+<h2 class="page-header">Cliente</h2>
+<%= form.fields_for :users do |client| %>
+	<%= client.label :cliente %>
+	<%= client.select :client_id, @clients, {} %>
+<% end %>
+
+<h2 class="page-header">Muestreado por</h2>
+<%= form.fields_for :users do |client| %>
+	<%= client.label :muestreado_por %>
+	<%= client.select :client_id, @clients, {} %>
+<% end %>
