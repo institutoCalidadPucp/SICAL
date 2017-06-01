@@ -1,6 +1,8 @@
 <div class="card">
   <div class="content">
-    <h1 class="page-header title">Nuevo <small>Empleado</small></h1>
+    <div class="header card-header-text employees-header">
+      <h1 class="page-header title employee-card-title">Nuevo <small>Empleado</small></h1>  
+    </div>
     <%= render 'form', employee: @employee, method: :post, path: employees_path %>
   </div>
 </div>
