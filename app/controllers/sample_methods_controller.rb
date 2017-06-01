@@ -43,7 +43,7 @@ class SampleMethodsController < ApplicationController
 
   private
     def sample_method_params
-      params.require(:sample_method).permit(:description, :unitCost, :accreditation)
+      params.require(:sample_method).permit(:description, :unit_cost, :accreditation)
     end
 
     def set_sample_method
