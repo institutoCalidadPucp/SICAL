@@ -3,7 +3,6 @@ class SampleMethodsController < ApplicationController
 
   def index
     @sample_methods = SampleMethod.all
-    p 'Llegue al index'
   end
 
   def new
