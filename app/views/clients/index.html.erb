@@ -1,7 +1,14 @@
 <h1>
-  Clientes
-  <%= link_to 'Nuevo Cliente', new_client_path, class: "btn btn-primary align-right"  %>
+	<div class="row">
+		<div class="col-sm-12 col-md-10">
+        	Clientes
+    	</div>
+    	<div class="col-sm-12 col-md-2">
+        	<%= link_to 'Nuevo Cliente', new_client_path, class: "btn btn-primary align-right"  %>
+    	</div>
+    </div>
 </h1>
+
 
 <div id="table-users">
   <%= render 'clients_table', clients: @clients %>
