@@ -36,9 +36,8 @@ class EmployeesController < ApplicationController
   end
 
   def destroy
-    if @employee.destroy
-      redirect_to employees_path    
-    end
+    @employee.inactive!
+    redirect_to employees_path 
   end
 
   private
