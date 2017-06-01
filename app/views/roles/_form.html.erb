@@ -1,4 +1,4 @@
-<%= form_for @role, url: path, method: method, :html => { class: "form-horizontal validate" } do |f| %>
+<%= nested_form_for @role, url: path, method: method, :html => { class: "form-horizontal validate" } do |f| %>
 
   <% if @role.errors.any?%>
     <% @role.errors.full_messages.each do |error| %>
@@ -23,6 +23,26 @@
       <%= f.submit "Seleccionar Permisos", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
     </div>
   </div>
+
+  <%= f.fields_for :menu_permits do |mp_form| %>
+    <%= mp_form.select :name, @menus, {}, class: "form-control" %>
+
+    <%= mp_form.label :crear %>
+    <%= mp_form.check_box :create_permit, class: "form-control" %>
+    
+    <%= mp_form.label :ver %>
+    <%= mp_form.check_box :view_permit, class: "form-control" %>
+    
+    <%= mp_form.label :editar %>
+    <%= mp_form.check_box :edit_permit, class: "form-control" %>
+
+    <%= mp_form.label :eliminar %>
+    <%= mp_form.check_box :delete_permit, class: "form-control" %>
+    
+    <%= mp_form.link_to_remove "Remove this task" %>
+  <% end %>
+  <p><%= f.link_to_add "Add a task", :menu_permits %></p>
+
   <div class="col-sm-12 text-right">
     <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
   </div>

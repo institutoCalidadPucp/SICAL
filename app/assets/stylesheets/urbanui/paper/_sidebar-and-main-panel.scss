@@ -9,11 +9,9 @@
 
     .sidebar-wrapper{
         position: relative;
-        height: calc(100vh - 75px);
         z-index: 4;
         box-shadow: inset -1px 0px 0px 0px $medium-gray;
         width: 270px;
-
     }
 
     .logo-mini{
@@ -164,7 +162,7 @@
         width: 100%;
         height: 100%;
         top: 0;
-        left: 0;
+        left: -1px;
         z-index: 2;
     }
         .info{
@@ -218,7 +216,6 @@
 .sidebar,
 .main-panel{
     max-height: 100%;
-    height: 100%;
 }
 
 // windows os settings for perfect scrollbar off
@@ -435,7 +432,6 @@
         }
         .main-panel{
             width: calc(100% - 90px);
-            margin-left: 90px;
 
             &:before{
                 position: absolute;
