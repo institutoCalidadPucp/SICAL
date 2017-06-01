@@ -4,12 +4,21 @@
 
 <h2 class="page-header">Cliente</h2>
 <%= form.fields_for :users do |client| %>
-	<%= client.label :cliente %>
-	<%= client.select :client_id, @clients, {} %>
+  <%= client.label :cliente %>
+  <%= client.select :client_id, @clients, {} %>
 <% end %>
 
 <h2 class="page-header">Muestreado por</h2>
 <%= form.fields_for :users do |client| %>
-	<%= client.label :muestreado_por %>
-	<%= client.select :client_id, @clients, {} %>
+  <%= client.label :muestreado_por %>
+  <%= client.select :client_id, @clients, {} %>
 <% end %>
+
+<div class="category-container">
+  <div class="category" id="category-id">
+    <input id="category-content" type="text">
+    <span class="fa fa-plus" onClick="javascript:createCategoryTab()" aria-hidden="true" ></span>
+    <span class="fa fa-times" onClick="javascript:removeCategoryTab()" aria-hidden="true"></span>
+  </div>
+</div>
+
