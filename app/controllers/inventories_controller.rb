@@ -1,10 +1,21 @@
 class InventoriesController < ApplicationController
-  def create
-    @inventory = Inventory.new inventory_params
-    if @inventory.save
-      redirect_to inventory_path
-    else
-      render :new
-    end
+
+  def index
   end
+
+  def new
+  end
+
+  def create
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
 end

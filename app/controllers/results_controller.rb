@@ -1,4 +1,4 @@
-class SamplesController < ApplicationController
+class ResultsController < ApplicationController
 
   def index
   end
@@ -17,5 +17,5 @@ class SamplesController < ApplicationController
 
   def destroy
   end
-  
+
 end

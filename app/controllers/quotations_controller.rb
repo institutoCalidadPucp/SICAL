@@ -1,10 +1,21 @@
 class QuotationsController < ApplicationController
+	
   def index
-    @quotations = Quotation.all
   end
 
-  # New Test Upload
-  def show
+  def new
+  end
+
+  def create
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
   end
 
 end

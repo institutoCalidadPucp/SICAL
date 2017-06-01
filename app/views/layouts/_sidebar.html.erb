@@ -41,14 +41,14 @@
           <p>Cotizaciones</p>
         </a>
       </li>
-      <li class="d-flex flex-column <%#= @controller == "results" ? "active" : "" %>">
-        <a data-toggle="collapse" href="#">
+      <li class="d-flex flex-column <%= @controller == "results" ? "active" : "" %>">
+        <a data-toggle="collapse" href="/results">
           <i class="nav-icon ti-view-list-alt"></i>
           <p>Resultados</p>
         </a>
       </li>
-      <li class="d-flex flex-column <%#= @controller == "work_orders" ? "active" : "" %>">
-        <a data-toggle="collapse" href="#">
+      <li class="d-flex flex-column <%= @controller == "work_orders" ? "active" : "" %>">
+        <a data-toggle="collapse" href="/work_orders">
           <i class="nav-icon ti-hummer"></i>
           <p>Ordenes de trabajo</p>
         </a>
@@ -59,14 +59,14 @@
           <p>Solicitudes de servicio</p>
         </a>
       </li>
-      <li class="d-flex flex-column <%#= @controller == "quotations" ? "active" : "" %>">
-        <a class="nav-link" href="#">
+      <li class="d-flex flex-column <%= @controller == "service_quotations" ? "active" : "" %>">
+        <a class="nav-link" href="/service_quotations">
           <i class="nav-icon ti-clipboard"></i>
           <p>Cotizaciones de Servicio</p>
         </a>
       </li>
-      <li class="d-flex flex-column <%#= @controller == "services" ? "active" : "" %>">
-        <a class="nav-link" href="#">
+      <li class="d-flex flex-column <%= @controller == "sample_methods" ? "active" : "" %>">
+        <a class="nav-link" href="/sample_methods">
           <i class="nav-icon ti-receipt"></i>
           <p>Servicios</p>
         </a>
@@ -83,8 +83,8 @@
           <p>Roles</p>
         </a>
       </li>
-      <li class="d-flex flex-column <%#= @controller == "logs" ? "active" : "" %>">
-        <a class="nav-link" href="#">
+      <li class="d-flex flex-column <%= @controller == "logs" ? "active" : "" %>">
+        <a class="nav-link" href="/logs">
           <i class="nav-icon ti-write"></i>
           <p>Logs</p>
         </a>

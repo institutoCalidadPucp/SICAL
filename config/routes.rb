@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'inventories/create'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
     devise_scope :user do
@@ -26,5 +24,9 @@ Rails.application.routes.draw do
   resources :sample_methods 
   resources :quotations
   resources :requests
-
+  resources :inventories
+  resources :results
+  resources :work_orders
+  resources :logs
+  resources :service_quotations
 end
