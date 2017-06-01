@@ -1,5 +1,4 @@
 <%= nested_form_for @role, url: path, method: method, :html => { class: "form-horizontal validate" } do |f| %>
-
   <% if @role.errors.any?%>
     <% @role.errors.full_messages.each do |error| %>
       <p><%= error %></p>

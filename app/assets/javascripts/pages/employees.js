@@ -15,5 +15,7 @@
     });
 
     $("#employee-form-datepicker").datepicker({});
+
+    $("#employee-form").validate();
   });
 })();
