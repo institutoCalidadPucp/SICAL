@@ -6,5 +6,5 @@ class Laboratory < ApplicationRecord
   
   has_many :sample_methods
 
-  enum :status [:active, :inactive]
+  enum status: [:active, :inactive]
 end
