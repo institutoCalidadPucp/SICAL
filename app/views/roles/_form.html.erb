@@ -7,46 +7,51 @@
   <% end %>
   <div class="form-group row">
     <%= f.label :Nombre, class: "col-lg-3 col-fom-label" %>
-    <div class="col-md-9">
-      <%= f.text_field :name, class: "form-control" %>
+    <div class="col-lg-9">
+      <%= f.text_field :name, class: "form-control", required:"required" %>
     </div>
   </div>
   <div class="form-group row">
     <%= f.label :Descripción, class: "col-lg-3 col-fom-label" %>
     <div class="col-lg-9">
-      <%= f.text_area :description, class: "form-control" %>
+      <%= f.text_area :description, class: "form-control", required:"required" %>
     </div>
   </div>
   <div class="form-group row">
     <%= f.label :Permisos, class: "col-lg-3 col-fom-label" %>
-    <div class="col-lg-4">
-      <%= f.submit "Seleccionar Permisos", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+    <div class="col-md-9" >
+      <p><%= f.link_to_add "Agregar un menú", :menu_permits, :data => { :target => "#table-permits" } %></p>
     </div>
   </div>
 
-  <%= f.fields_for :menu_permits do |mp_form| %>
-    <%= mp_form.select :name, @menus, {}, class: "form-control" %>
-
-    <%= mp_form.label :crear %>
-    <%= mp_form.check_box :create_permit, class: "form-control" %>
-    
-    <%= mp_form.label :ver %>
-    <%= mp_form.check_box :view_permit, class: "form-control" %>
-    
-    <%= mp_form.label :editar %>
-    <%= mp_form.check_box :edit_permit, class: "form-control" %>
-
-    <%= mp_form.label :eliminar %>
-    <%= mp_form.check_box :delete_permit, class: "form-control" %>
-    
-    <%= mp_form.link_to_remove "Remove this task" %>
-  <% end %>
-  <p><%= f.link_to_add "Add a task", :menu_permits %></p>
-
-  <div class="col-sm-12 text-right">
-    <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+  <div class="col-md-9 offset-md-3">
+    <table class="table table-no-bordered table-hover">
+      <thead>
+        <th>Menú</th>
+        <th>Crear</th>
+        <th>Ver</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+        <th></th>
+      </thead>
+      <tbody id="table-permits">
+        <%= f.fields_for :menu_permits, :wrapper => false do |mp_form| %>
+          <tr>
+            <td><%= mp_form.select :name, @menus, {}%></td>
+            <td><%= mp_form.check_box :create_permit %></td>
+            <td><%= mp_form.check_box :view_permit %></td>
+            <td><%= mp_form.check_box :edit_permit %></td>
+            <td><%= mp_form.check_box :delete_permit %></td>
+            <td><%= mp_form.link_to_remove "Borrar" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>  
   </div>
-
-  <%= link_to 'Volver', roles_path %>
-  
+  <div class="form-group">
+    <div class="text-center">
+      <%= link_to "Cancelar", roles_path, class: "btn btn-primary sical-btn-cancel" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+    </div>
+  </div>  
 <% end %>

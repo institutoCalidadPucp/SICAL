@@ -1,16 +1,8 @@
-<div class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="header card-header-text">
-            <h1 class="page-header">Roles <small>Nuevo</small></h1>
-          </div>
-          <div class="content">
-            <%= render 'form', rol: @rol, method: :post, path: roles_path %>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="card">
+  <div class="header card-header-text">
+    <h1 class="page-header">Roles <small>Nuevo</small></h1>
+  </div>
+  <div class="content">
+    <%= render 'form', role: @role, method: :post, path: roles_path %>
   </div>
 </div>
