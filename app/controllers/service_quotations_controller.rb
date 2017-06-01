@@ -1,5 +1,4 @@
-class SamplesController < ApplicationController
-
+class ServiceQuotationsController < ApplicationController
   def index
   end
 
@@ -16,6 +15,5 @@ class SamplesController < ApplicationController
   end
 
   def destroy
-  end
-  
+  end	
 end

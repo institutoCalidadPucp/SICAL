@@ -1,5 +1,5 @@
-class SamplesController < ApplicationController
-
+class LogsController < ApplicationController
+  
   def index
   end
 
@@ -16,6 +16,6 @@ class SamplesController < ApplicationController
   end
 
   def destroy
-  end
+  end	
   
 end

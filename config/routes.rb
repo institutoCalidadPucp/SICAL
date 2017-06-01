@@ -24,5 +24,9 @@ Rails.application.routes.draw do
   resources :sample_methods 
   resources :quotations
   resources :requests
-
+  resources :inventories
+  resources :results
+  resources :work_orders
+  resources :logs
+  resources :service_quotations
 end

@@ -1,6 +1,6 @@
-class SamplesController < ApplicationController
-
-  def index
+class WorkOrdersController < ApplicationController
+	
+	def index
   end
 
   def new
@@ -17,5 +17,5 @@ class SamplesController < ApplicationController
 
   def destroy
   end
-  
+
 end
