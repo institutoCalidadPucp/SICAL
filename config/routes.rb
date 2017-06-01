@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   resources :employees    
   resources :inventories
   resources :samples
+  resources :contracts
   resources :sample_methods 
   resources :quotations
+  resources :requests
 
 end
