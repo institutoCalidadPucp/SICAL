@@ -17,6 +17,12 @@ Rails.application.routes.draw do
   resources :roles
   resources :laboratories
   resources :clients
-  resources :employees  
+  resources :employees    
+  resources :inventories
+  resources :samples
+  resources :contracts
+  resources :sample_methods 
+  resources :quotations
+  resources :requests
 
 end

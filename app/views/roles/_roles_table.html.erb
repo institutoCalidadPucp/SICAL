@@ -1,23 +1,25 @@
-<div class="table-responsive">
-  <table class="table table-hover table-striped">
-    <thead>
-      <tr>
-        <th>nombre</th>
-        <th>Descripcion</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% roles.each do |role| %>
-        <tr>
-          <td><%= role.name %></td>
-          <td><%= role.description %></td>
-          <td>
-            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_role_path(role), class: "btn btn-default btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
-        		<%= link_to 'Eliminar', role_path(role), method: :delete %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="content">
+  <div class="material-datatables">
+      <table id="roles-table" class="table table-no-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% roles.each do |role| %>
+            <tr>
+              <td><%= role.name %></td>
+              <td><%= role.description %></td>
+              <td>
+                <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_role_path(role), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
+                <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, role_path(role),class: "btn btn-warning btn-sm", data: { "toggle" => "tooltip" }, title: "Eliminar", method: :delete %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>  
+      </table>
+  </div>
 </div>

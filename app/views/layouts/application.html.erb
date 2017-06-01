@@ -3,12 +3,22 @@
   <head>
     <title>Sical</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application_header', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag :defaults, "nested_form" %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="sical-container">
+      <%= render 'layouts/sidebar' %>
+      <div class="page-content main-panel sical-main-panel">
+        <%= render 'layouts/navbar' %>
+        <div class="content sical-content">
+          <%= yield %>
+        </div>
+        <%= render 'layouts/footer' %>
+      </div>
+    </div>
   </body>
+  <%= javascript_include_tag 'application' %>
 </html>

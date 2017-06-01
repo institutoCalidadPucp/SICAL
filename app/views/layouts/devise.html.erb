@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sical</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application_header', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="sical-devise-body">
+    <div>
+      <%= yield %>
+    </div>
+  </body>
+  <%= javascript_include_tag 'application' %>
+</html>
