@@ -1,92 +1,92 @@
 <div class="sidebar sical-sidebar">
   <div class="logo sical-sidebar-logo">
-    <a href="#" class="simple-text">
+    <a href="/" class="simple-text">
       Sical
     </a>
   </div>
   <div class="logo logo-mini sical-sidebar-mini-logo">
-    <a href="#" class="simple-text">
+    <a href="/" class="simple-text">
       S
     </a>
   </div>
   <div class="sidebar-wrapper sical-sidebar-wrapper">
     <ul class="nav flex-column">
-      <li class="d-flex flex-column">
-        <a class="nav-link" href="#">
+      <li class="d-flex flex-column <%= @controller == "employees" ? "active" : "" %>">
+        <a class="nav-link" href="/employees">
           <i class="nav-icon ti-user"></i>
           <p>Empleados</p>
         </a>
       </li>
-      <li class="d-flex flex-column">
-        <a class="nav-link" href="#">
+      <li class="d-flex flex-column <%= @controller == "clients" ? "active" : "" %>">
+        <a class="nav-link" href="/clients">
           <i class="nav-icon ti-user"></i>
           <p>Clientes</p>
         </a>
       </li>
-      <li class="d-flex flex-column">
-        <a data-toggle="collapse" href="#">
+      <li class="d-flex flex-column <%= @controller == "inventories" ? "active" : "" %>">
+        <a class="nav-link" href="/inventories">
           <i class="nav-icon ti-bar-chart-alt"></i>
           <p>Inventario</p>
         </a>
       </li>
-      <li class="d-flex flex-column">
-        <a data-toggle="collapse" href="#">
+      <li class="d-flex flex-column <%= @controller == "samples" ? "active" : "" %>">
+        <a class="nav-link" href="/samples">
           <i class="nav-icon ti-package"></i>
           <p>Muestras</p>
         </a>
       </li>
-      <li class="d-flex flex-column">
-        <a data-toggle="collapse" href="#">
+      <li class="d-flex flex-column <%= @controller == "quotations" ? "active" : "" %>">
+        <a class="nav-link" href="/quotations">
           <i class="nav-icon ti-clipboard"></i>
           <p>Cotizaciones</p>
         </a>
       </li>
-      <li class="d-flex flex-column">
+      <li class="d-flex flex-column <%#= @controller == "results" ? "active" : "" %>">
         <a data-toggle="collapse" href="#">
           <i class="nav-icon ti-view-list-alt"></i>
           <p>Resultados</p>
         </a>
       </li>
-      <li class="d-flex flex-column">
+      <li class="d-flex flex-column <%#= @controller == "work_orders" ? "active" : "" %>">
         <a data-toggle="collapse" href="#">
           <i class="nav-icon ti-hummer"></i>
           <p>Ordenes de trabajo</p>
         </a>
       </li>
-      <li class="d-flex flex-column">
-        <a class="nav-link" href="#">
+      <li class="d-flex flex-column <%= @controller == "requests" ? "active" : "" %>">
+        <a class="nav-link" href="/requests">
           <i class="nav-icon ti-clipboard"></i>
           <p>Solicitudes de servicio</p>
         </a>
       </li>
-      <li class="d-flex flex-column">
+      <li class="d-flex flex-column <%#= @controller == "quotations" ? "active" : "" %>">
         <a class="nav-link" href="#">
           <i class="nav-icon ti-clipboard"></i>
           <p>Cotizaciones de Servicio</p>
         </a>
       </li>
-      <li class="d-flex flex-column">
+      <li class="d-flex flex-column <%#= @controller == "services" ? "active" : "" %>">
         <a class="nav-link" href="#">
-            <i class="nav-icon ti-receipt"></i>
-            <p>Servicios</p>
+          <i class="nav-icon ti-receipt"></i>
+          <p>Servicios</p>
         </a>
       </li>
-      <li class="d-flex flex-column">
-        <a class="nav-link" href="#">
-            <i class="nav-icon ti-ruler"></i>
-            <p>Laboratorios</p>
+      <li class="d-flex flex-column <%= @controller == "laboratories" ? "active" : "" %>">
+        <a class="nav-link" href="/laboratories">
+          <i class="nav-icon ti-ruler"></i>
+          <p>Laboratorios</p>
         </a>
       </li>
-      <li class="d-flex flex-column active">
-          <a class="nav-link" href="#">
-              <i class="nav-icon ti-id-badge"></i>
-              <p>Roles</p>
-          </a>
+      <li class="d-flex flex-column <%= @controller == "roles" ? "active" : "" %>">
+        <a class="nav-link" href="/roles">
+          <i class="nav-icon ti-id-badge"></i>
+          <p>Roles</p>
+        </a>
       </li>
-      <li class="d-flex flex-column">
+      <li class="d-flex flex-column <%#= @controller == "logs" ? "active" : "" %>">
         <a class="nav-link" href="#">
-            <i class="nav-icon ti-write"></i>
-            <p>Logs</p>
+          <i class="nav-icon ti-write"></i>
+          <p>Logs</p>
         </a>
       </li>
     </ul>
