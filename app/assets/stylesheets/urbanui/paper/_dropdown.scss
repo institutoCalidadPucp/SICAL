@@ -63,27 +63,28 @@
     }
 
 
+    &.only-dropdown {
+        &:before{
+            border-bottom: 11px solid $medium-pale-bg;
+            border-left: 11px solid rgba(0, 0, 0, 0);
+            border-right: 11px solid rgba(0, 0, 0, 0);
+            content: "";
+            display: inline-block;
+            position: absolute;
+            right: 12px;
+            top: -12px;
+        }
 
-    &:before{
-        border-bottom: 11px solid $medium-pale-bg;
-        border-left: 11px solid rgba(0, 0, 0, 0);
-        border-right: 11px solid rgba(0, 0, 0, 0);
-        content: "";
-        display: inline-block;
-        position: absolute;
-        right: 12px;
-        top: -12px;
-    }
-
-    &:after{
-        border-bottom: 11px solid $white-color;
-        border-left: 11px solid rgba(0, 0, 0, 0);
-        border-right: 11px solid rgba(0, 0, 0, 0);
-        content: "";
-        display: inline-block;
-        position: absolute;
-        right: 12px;
-        top: -11px;
+        &:after{
+            border-bottom: 11px solid $white-color;
+            border-left: 11px solid rgba(0, 0, 0, 0);
+            border-right: 11px solid rgba(0, 0, 0, 0);
+            content: "";
+            display: inline-block;
+            position: absolute;
+            right: 12px;
+            top: -11px;
+        }
     }
 
 

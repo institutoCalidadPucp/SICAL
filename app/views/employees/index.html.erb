@@ -1,8 +1,15 @@
-<h1>
-  Empleados
-  <%= link_to 'Nuevo Empleado', new_employee_path, class: "btn btn-primary align-right"  %>
-</h1>
-
-<div id="table-users">
-  <%= render 'employees_table', employees: @employees %>
-</div>
+<section class="employees-index">
+  <div class="employees-header">
+    <h1>
+      Empleados
+    </h1>
+    <div>
+      <%= link_to 'Nuevo Empleado', new_employee_path, class: "btn btn-primary align-right"  %>
+    </div>
+  </div>
+  <div class="employees-content">
+    <div id="employees-table">
+      <%= render 'employees_table', employees: @employees %>
+    </div>
+  </div>
+</section>

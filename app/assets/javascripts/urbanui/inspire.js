@@ -53,47 +53,9 @@
       }
    });
 
-  $(document).ready(function(){
-    var window_width = $window.width();
-
-    if($body.hasClass('sidebar-mini')){
-      pdp.misc.sidebar_mini_active = true;
-    }
-
-    pdp.initSidebarsCheck();
-
-    pdp.initMinimizeSidebar();
-
-    $('.form-control').on("focus", function(){
-      $(this).parent('.input-group').addClass("input-group-focus");
-    }).on("blur", function(){
-      $(this).parent(".input-group").removeClass("input-group-focus");
-    });
-
-    //  Activate the tooltips
-    $('[rel="tooltip"]').tooltip();
-
-    // Init Tags Input
-    if($(".tagsinput").length != 0){
-      $(".tagsinput").tagsInput();
-    }
-
-    //  Init Bootstrap Select Picker
-    if($(".selectpicker").length != 0){
-      $(".selectpicker").selectpicker({
-        size: 9
-      });
-    }
-
-
-  });
-
-
-
   // activate collapse right menu when the windows is resized
   $window.resize(function(){
     pdp.initSidebarsCheck();
-
   });
 
   var pdp = {
@@ -196,7 +158,6 @@
 
         $(".sidebar-wrapper .dropdown .dropdown-menu > li > a").on('click',function(event) {
           event.stopPropagation();
-
         });
 
         mobile_menu_initialized = true;
@@ -234,7 +195,6 @@
             $layer.css('height',main_panel_height + 'px');
             $layer.appendTo(".main-panel");
 
-
             setTimeout(function(){
               $layer.addClass('visible');
             }, 100);
@@ -245,24 +205,20 @@
 
               $layer.removeClass('visible');
 
-               setTimeout(function(){
-                $layer.remove();
-                $toggle.removeClass('toggled');
-
-               }, 400);
+             setTimeout(function(){
+              $layer.remove();
+              $toggle.removeClass('toggled');
+             }, 400);
             });
 
             $html.addClass('nav-open');
             mobile_menu_visible = 1;
-
           }
         });
 
         toggle_initialized = true;
       }
-
     },
-
       initBootstrapNavbarMenu: debounce(function(){
 
       if(!bootstrap_nav_initialized){
@@ -313,7 +269,6 @@
               $layer.addClass('visible');
             }, 100);
 
-
             $layer.on('click',function() {
               $html.removeClass('nav-open');
               mobile_menu_visible = 0;
@@ -323,26 +278,22 @@
                setTimeout(function(){
                 $layer.remove();
                 $toggle.removeClass('toggled');
-
                }, 400);
             });
 
             $html.addClass('nav-open');
             mobile_menu_visible = 1;
-
           }
-
         });
         bootstrap_nav_initialized = true;
       }
     }, 500),
   }
 
-
-  // Returns a function, that, as long as it continues to be invoked, will not
-  // be triggered. The function will be called after it stops being called for
-  // N milliseconds. If `immediate` is passed, trigger the function on the
-  // leading edge, instead of the trailing.
+  /* Returns a function, that, as long as it continues to be invoked, will not
+  be triggered. The function will be called after it stops being called for
+  N milliseconds. If `immediate` is passed, trigger the function on the
+  leading edge, instead of the trailing. */
 
   function debounce(func, wait, immediate) {
     var timeout;
@@ -357,4 +308,36 @@
     };
   };
 
+  $(document).ready(function(){
+    var window_width = $window.width();
+
+    if($body.hasClass('sidebar-mini')){
+      pdp.misc.sidebar_mini_active = true;
+    }
+
+    pdp.initSidebarsCheck();
+
+    pdp.initMinimizeSidebar();
+
+    $('.form-control').on("focus", function(){
+      $(this).parent('.input-group').addClass("input-group-focus");
+    }).on("blur", function(){
+      $(this).parent(".input-group").removeClass("input-group-focus");
+    });
+
+    //  Activate the tooltips
+    $('[rel="tooltip"]').tooltip();
+
+    // Init Tags Input
+    if($(".tagsinput").length != 0){
+      $(".tagsinput").tagsInput();
+    }
+
+    //  Init Bootstrap Select Picker
+    if($(".selectpicker").length != 0){
+      $(".selectpicker").selectpicker({
+        size: 9
+      });
+    }
+  });
 })();

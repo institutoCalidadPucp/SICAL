@@ -1,49 +1,26 @@
 <div class="content">
-        <div class="material-datatables">
-          <table id="contract_table" class="table table-no-bordered table-hover" >
-            <thead>
-              <tr>
-                <th>Código</th>
-                <th>Código de Cotización</th>
-                <th>Laboratorio</th>
-                <th>Fecha de Registro</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% contract.each do |c| %>
-                <tr>
-                  <td><%= c.code %></td>
-                  <td><%= c.code_Quotations %></td>
-                  <td><%= c.laboratory %></td>
-                  <td><%= c.date %></td>
-                  <td><%= c.state %></td>
-                  <td>
-                    <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, contract_path(contract),class: "btn btn-primary btn-sm",title: "Ver", method: :delete %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+  <div class="material-datatables">
+    <table id="contract-table" class="table table-no-bordered table-hover" >
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Código de Cotización</th>
+          <th>Laboratorio</th>
+          <th>Fecha de Registro</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2</td>
+          <td>C65</td>
+          <td>Laboratorio de Corrosión</td>
+          <td>13/06/2017</td>
+          <td>En Proceso</td>
+          <td><i class="fa fa-eye" aria-hidden="true"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-
-<script>
-  $(document).on('ready', function() {
-    $('#contract_table').DataTable({
-        "pagingType": "full_numbers",
-        "lengthMenu": [ 
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        responsive: true,
-        destroy: true,
-        language: {
-            search: "_INPUT_",
-            searchPlaceholder: "Buscar Contratos",
-        },
-    });
-  })
-</script>
