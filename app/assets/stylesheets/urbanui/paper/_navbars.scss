@@ -87,8 +87,8 @@
 .navbar-nav > li > .dropdown-menu {
     border-radius: $border-radius-extreme;
     left: auto;
-    right: 0;
-    top: calc(100% + .625rem);
+    right: 1.5%;
+    top: calc(85% + .025rem); // Sical change
 
     .dropdown-item {
       font-size: .875rem;
