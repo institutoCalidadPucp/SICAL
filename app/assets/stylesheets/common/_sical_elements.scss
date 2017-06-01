@@ -31,8 +31,21 @@
   flex-direction: column;
 }
 
-// Sical content
+// Sical Page Content
 
 .sical-content {
   margin-bottom: auto;
+}
+
+// Sical Radio Button
+
+.sical-radio-button {
+  margin-right: 15px;
+  padding-left: 20px;
+}
+
+// Sical Cancel Button
+
+.sical-cancel-btn {
+  margin-right: 20px;
 }
