@@ -1,5 +1,17 @@
-<h1 class="page-header">Clientes <small>Edicion</small></h1>
 
-<%= render 'form', client: @client, method: :put, path: client_path %>
-
-<%= link_to 'Volver', clients_path %>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header card-header-text">            
+              <h1 class="page-header">Clientes <small>Edición</small></h1>
+          </div>
+          <div class="content">
+            <%= render 'form', client: @client, method: :put, path: client_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
