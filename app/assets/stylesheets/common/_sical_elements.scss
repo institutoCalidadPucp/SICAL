@@ -1,9 +1,12 @@
 // Sical Cancel Form Button
+// Sical Add Menu Form Button
 
-.sical-btn-cancel {
+.sical-btn-cancel,
+.sical-btn-add-menu {
   padding: 9px 16px;
   font-weight: bold;
   font-family: sans-serif;
+  margin-right: 20px;
 }
 
 // Sical SideBar
@@ -44,8 +47,25 @@
   padding-left: 20px;
 }
 
-// Sical Cancel Button
+// Sical Card Elements
 
-.sical-cancel-btn {
-  margin-right: 20px;
+.sical-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px !important;
+}
+
+.sical-card-title {
+  margin: 15px 0 30px 0;
+}
+
+// Sical Form
+
+.sical-form {
+  padding: 0 15px;
+}
+
+.sical-form-buttons {
+  margin: 30px 0;
 }

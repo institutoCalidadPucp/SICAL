@@ -1,17 +1,8 @@
-
-<div class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="header card-header-text">            
-              <h1 class="page-header">Laboratorio <small>Edición</small></h1>
-          </div>
-          <div class="content">
-            <%= render 'form', laboratory: @laboratory, method: :put, path: laboratories_path %>
-          </div>
-        </div>
-      </div>
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text employees-header">
+      <h1 class="page-header title employee-card-title">Laboratorio <small>Edición</small></h1>
     </div>
+    <%= render 'form', laboratory: @laboratory, method: :put, path: laboratories_path %>
   </div>
 </div>

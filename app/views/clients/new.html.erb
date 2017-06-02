@@ -1,16 +1,8 @@
-<div class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="header card-header-text">            
-              <h1 class="page-header">Cliente <small>Nuevo</small></h1>
-          </div>
-          <div class="content">
-            <%= render 'form', client: @client, method: :post, path: clients_path %>
-          </div>
-        </div>
-      </div>
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Cliente <small>Nuevo</small></h1>
     </div>
+    <%= render 'form', client: @client, method: :post, path: clients_path %>
   </div>
 </div>
