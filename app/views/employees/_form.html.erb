@@ -1,4 +1,4 @@
-<%= form_for employee, url: path, method: method, :html => { class: "form-horizontal validate sical-form sical-form-validated", id: "employee-form" } do |f| %>
+<%= form_for employee, url: path, method: method, :html => { class: "form-horizontal validate sical-form", id: "employee-form" } do |f| %>
   <% if @employee.errors.any? %>
     <% @employee.errors.full_messages.each do |m| %>
       <p><%= m %></p>
@@ -9,7 +9,7 @@
       <%= f.label :nombre %>
     </div>
     <div class="col-md-9">
-      <%= f.text_field :name, class: "form-control valid", required: "required" %>
+      <%= f.text_field :name, class: "form-control", required: "required" %>
     </div>
   </div>
   <div class="form-group row">
@@ -17,7 +17,7 @@
       <%= f.label :apellido %>
     </div>
     <div class="col-md-9">
-      <%= f.text_field :last_name, class: "form-control" %>
+      <%= f.text_field :last_name, class: "form-control", required: "required" %>
     </div>
   </div>
   <div class="form-group row">
@@ -25,7 +25,7 @@
       <%= f.label :email %>
     </div>
     <div class="col-md-9">
-      <%= f.text_field :email, class: "form-control " %>
+      <%= f.text_field :email, class: "form-control", email: "true", required: "required" %>
     </div>
   </div>
   <div class="form-group row">
@@ -33,7 +33,7 @@
       <%= f.label :direccion %>
     </div>
     <div class="col-md-9">
-      <%= f.text_field :address, class: "form-control " %>
+      <%= f.text_field :address, class: "form-control", required: "required" %>
     </div>
   </div>
   <div class="form-group row">
@@ -41,7 +41,7 @@
       <%= f.label :telefono %>
     </div>
     <div class="col-md-9">
-      <%= f.text_field :phone, class: "form-control" %>
+      <%= f.text_field :phone, class: "form-control", minLength: "9", required: "required" %>
     </div>
   </div>
   <div class="form-group row">
@@ -49,7 +49,7 @@
       <%= f.label :fecha_nacimiento %>
     </div>
     <div class="input-group date col-md-9">
-      <%= f.text_field :date_of_birth, class: "form-control sical-datepicker", id: "employee-form-datepicker" %>
+      <%= f.text_field :date_of_birth, class: "form-control sical-datepicker", required: "required" %>
       <div class="input-group-addon">
         <i class="fa fa-calendar"></i>
       </div>
@@ -97,9 +97,9 @@
       <%= f.label :rol %>
     </div>
     <div class="col-md-9">
-      <%= f.collection_select :role_id, @roles, :id, :name, {}, class: "form-control" %>
+      <%= f.collection_select :role_id, @roles, :id, :name, {}, class: "form-control", required: "required" %>
     </div>
-  </div> 
+  </div>
   <div class="sical-form-buttons">
     <div class="text-center">
       <%= link_to "Cancelar", employees_path, class: "btn btn-primary sical-btn-cancel" %>

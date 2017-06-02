@@ -1,4 +1,4 @@
-<%= form_for @client, url: path, method: method, :html => { class: "form-horizontal sical-form sical-form-validated" } do |f| %>
+<%= form_for @client, url: path, method: method, :html => { class: "form-horizontal sical-form" } do |f| %>
   <% if @client.errors.any?%>
     <% @client.errors.full_messages.each do |m| %>
       <p><%= m %></p>

@@ -49,7 +49,7 @@
         case 'datepicker':
           addDatePicker($element, dataName);
           break;
-        case 'validate':
+        case 'form-validated':
           addFormValidation($element, dataName);
         default:
           break;
