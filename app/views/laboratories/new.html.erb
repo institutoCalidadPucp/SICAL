@@ -1,9 +1,8 @@
-
 <div class="card">
-  <div class="header card-header-text">            
-      <h1 class="page-header">Laboratorio <small>Nuevo</small></h1>
-  </div>
   <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Laboratorio <small>Nuevo</small></h1>
+    </div>
     <%= render 'form', laboratory: @laboratory, method: :post, path: laboratories_path %>
   </div>
 </div>
