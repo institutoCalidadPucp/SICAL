@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529173844) do
+ActiveRecord::Schema.define(version: 20170531045257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "features", force: :cascade do |t|
+    t.float "value"
+    t.string "name"
+    t.bigint "sample_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_id"], name: "index_features_on_sample_id"
+  end
 
   create_table "laboratories", force: :cascade do |t|
     t.string "name"
@@ -23,36 +32,19 @@ ActiveRecord::Schema.define(version: 20170529173844) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "menu_permit_roles", force: :cascade do |t|
-    t.bigint "menu_permit_id"
-    t.bigint "role_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["menu_permit_id"], name: "index_menu_permit_roles_on_menu_permit_id"
-    t.index ["role_id"], name: "index_menu_permit_roles_on_role_id"
+    t.integer "status"
   end
 
   create_table "menu_permits", force: :cascade do |t|
-    t.bigint "menu_id"
-    t.bigint "permit_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["menu_id"], name: "index_menu_permits_on_menu_id"
-    t.index ["permit_id"], name: "index_menu_permits_on_permit_id"
-  end
-
-  create_table "menus", force: :cascade do |t|
+    t.boolean "view_permit", default: false
+    t.boolean "create_permit", default: false
+    t.boolean "edit_permit", default: false
+    t.boolean "delete_permit", default: false
+    t.bigint "role_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "permits", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_menu_permits_on_role_id"
   end
 
   create_table "quotations", force: :cascade do |t|
@@ -65,6 +57,14 @@ ActiveRecord::Schema.define(version: 20170529173844) do
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status"
+  end
+
+  create_table "samples", force: :cascade do |t|
+    t.string "description"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20170529173844) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.bigint "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ruc"
@@ -93,6 +94,7 @@ ActiveRecord::Schema.define(version: 20170529173844) do
     t.integer "gender"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
 end

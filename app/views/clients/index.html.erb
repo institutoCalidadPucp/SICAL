@@ -1,8 +1,19 @@
-<h1>
-  Clientes
-  <%= link_to 'Nuevo Cliente', new_client_path, class: "btn btn-primary align-right"  %>
-</h1>
-
-<div id="table-users">
-  <%= render 'clients_table', clients: @clients %>
-</div>
+<section class="clients-index">
+  <div class="card">
+    <div class="content">
+      <div class="header card-header-text sical-card-header">
+        <h1 class="sical-card-title">
+          Clientes
+        </h1>
+        <div>
+          <%= link_to 'Nuevo Cliente', new_client_path, class: "btn btn-primary align-right" %>
+        </div>
+      </div>
+      <div class="client-content">
+        <div id="client-table">
+          <%= render 'clients_table', clients: @clients %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

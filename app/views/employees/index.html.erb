@@ -1,15 +1,19 @@
 <section class="employees-index">
-  <div class="employees-header">
-    <h1>
-      Empleados
-    </h1>
-    <div>
-      <%= link_to 'Nuevo Empleado', new_employee_path, class: "btn btn-primary align-right"  %>
-    </div>
-  </div>
-  <div class="employees-content">
-    <div id="employees-table">
-      <%= render 'employees_table', employees: @employees %>
+  <div class="card">
+    <div class="content">
+      <div class="header card-header-text sical-card-header">
+        <h1 class="sical-card-title">
+          Empleados
+        </h1>
+        <div>
+          <%= link_to 'Nuevo Empleado', new_employee_path, class: "btn btn-primary align-right" %>
+        </div>
+      </div>
+      <div class="employees-content">
+        <div id="employees-table">
+          <%= render 'employees_table', employees: @employees %>
+        </div>
+      </div>
     </div>
   </div>
 </section>

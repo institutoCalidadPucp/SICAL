@@ -34,13 +34,10 @@ class EmployeesController < ApplicationController
       render :edit         
     end
   end
-  
+
   def destroy
-    if @employee.destroy
-      redirect_to employees_path
-    else
-      redirect_to employees_path
-    end    
+    @employee.inactive!
+    redirect_to employees_path 
   end
 
   private

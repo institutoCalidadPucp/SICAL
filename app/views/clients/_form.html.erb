@@ -1,61 +1,43 @@
-<%= form_for @client, url: path, method: method, :html => { class: "form-horizontal validate" } do |f| %>
-
+<%= form_for @client, url: path, method: method, :html => { class: "form-horizontal sical-form" } do |f| %>
   <% if @client.errors.any?%>
     <% @client.errors.full_messages.each do |m| %>
       <p><%= m %></p>
     <% end %>
   <% end %>
-  
-  <div class="form-group col-sm-12">
-    <%= f.label :nombre, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
-      <%= f.text_field :name, class: "form-control" %>
+  <div class="form-group row">
+    <%= f.label :nombre, class: "col-md-3 col-form-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :name, class: "form-control", required:"required" %>
     </div>
   </div>
-
-
-  <div class="form-group col-sm-12">
-    <%= f.label :email	, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
+  <div class="form-group row">
+    <%= f.label :ruc, class: "col-md-3 col-form-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :ruc, class: "form-control", required:"required" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :email	, class: "col-md-3 col-form-label" %>
+    <div class="col-md-9">
       <%= f.text_field :email, class: "form-control " %>
     </div>
   </div>
-
-  <div class="form-group col-sm-12">
-    <%= f.label :direccion, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
-      <%= f.text_field :address, class: "form-control " %>
+  <div class="form-group row">
+    <%= f.label :telefono, class: "col-md-3 col-form-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :phone, class: "form-control", required:"required" %>
     </div>
   </div>
-
-  <div class="form-group col-sm-12">
-    <%= f.label :telefono, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
-      <%= f.text_field :phone, class: "form-control" %>
+  <div class="form-group row">
+    <%= f.label :direccion, class: "col-md-3 col-form-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :address, class: "form-control", required:"required" %>
     </div>
   </div>
-
-  <div class="form-group col-sm-12">
-    <%= f.label :ruc, class: "col-sm-2 text-left" %>
-    <div class="col-sm-6">
-      <%= f.text_field :ruc, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div>
-      <%= f.label :rol %>
-    </div>
-    <div>
-      <%= f.collection_select :role_id, @roles, :id, :name, {}, class: "form-control" %>
-    </div>
-  </div> 
-
-  <div class="form-group">
-    <div class="col-md-8 col-sm-8 col-xs-12">
-      <div class="col-sm-12 text-right">
-        <%= f.submit "Save", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
-      </div>
+  <div class="sical-form-buttons">
+    <div class="text-center">
+      <%= link_to "Cancelar", clients_path, class: "btn btn-primary sical-btn-cancel"  %>
+      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
     </div>
   </div>
 <% end %>
