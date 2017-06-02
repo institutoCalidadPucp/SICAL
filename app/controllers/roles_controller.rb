@@ -33,11 +33,8 @@ class RolesController < ApplicationController
   end
 
   def destroy
-    if @role.destroy
-      redirect_to roles_path, notice: 'Rol fue eliminado exitosamente'
-    else
-      redirect_to roles_path, notice: 'Ocurrio un error'
-    end  
+    @role.inactive!
+    redirect_to roles_path
   end
 
   private 
