@@ -5,6 +5,8 @@
   }
 
   function addTable(table, dataName) {
+    var tablePlaceholder = table.data('placeholder');
+
     table.DataTable({
       "pagingType": "full_numbers",
       "lengthMenu": [ 
@@ -15,11 +17,21 @@
       destroy: true,
       language: {
         search: "_INPUT_",
-        searchPlaceholder: "Buscar Laboratorios",
+        searchPlaceholder: tablePlaceholder,
       },
     });
 
     table.attr(dataName, true);
+  }
+
+  function addDatePicker(datepicker, dataName) {
+    datepicker.datepicker({});
+    datepicker.attr(dataName, true);
+  }
+
+  function addFormValidation(form, dataName) {
+    form.validate();
+    form.attr(dataName, true);
   }
 
   function initializeElements(index, element, name) {
@@ -34,6 +46,11 @@
         case 'table':
           addTable($element, dataName);
           break;
+        case 'datepicker':
+          addDatePicker($element, dataName);
+          break;
+        case 'validate':
+          addFormValidation($element, dataName);
         default:
           break;
       }
@@ -43,22 +60,24 @@
   $(function() {
     var $dropdowns = $('.sical-dropdown');
     var $tables = $('.sical-data-table');
+    var $datepickers = $('.sical-datepicker');
+    var $formsValidated = $('.sical-form-validated');
     var $loader = $('#loader');
     var $content = $('#content');
+    var $elements = {
+      'dropdown': $dropdowns,
+      'table': $tables,
+      'datepicker': $datepickers,
+      'form-validated': $formsValidated,
+    };
 
-    $dropdowns.each(function(index, element) {
-      initializeElements(index, element, 'dropdown');
+    $.each($elements, function(key, value) {
+      value.each(function(index, element) {
+        initializeElements(index, element, key);
+      });
     });
 
-    $tables.each(function(index, element) {
-      console.log(index, element);
-      initializeElements(index, element, 'table');
-    });
-
-    setTimeout(function () {
-      $loader.addClass('hidden');
-      $content.removeClass('hidden');
-    }, 500);
+    $loader.addClass('hidden');
+    $content.removeClass('hidden');
   });
-
 })();
