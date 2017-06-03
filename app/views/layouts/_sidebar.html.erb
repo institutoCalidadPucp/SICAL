@@ -11,84 +11,14 @@
   </div>
   <div class="sidebar-wrapper sical-sidebar-wrapper">
     <ul class="nav flex-column">
-      <li class="d-flex flex-column <%= @controller == "employees" ? "active" : "" %>">
-        <a class="nav-link" href="/employees">
-          <i class="nav-icon ti-user"></i>
-          <p>Empleados</p>
-        </a>
-      </li>
-      <li class="d-flex flex-column <%= @controller == "clients" ? "active" : "" %>">
-        <a class="nav-link" href="/clients">
-          <i class="nav-icon ti-user"></i>
-          <p>Clientes</p>
-        </a>
-      </li>
-      <li class="d-flex flex-column <%= @controller == "inventories" ? "active" : "" %>">
-        <a class="nav-link" href="/inventories">
-          <i class="nav-icon ti-bar-chart-alt"></i>
-          <p>Inventario</p>
-        </a>
-      </li>
-      <li class="d-flex flex-column <%= @controller == "samples" ? "active" : "" %>">
-        <a class="nav-link" href="/samples">
-          <i class="nav-icon ti-package"></i>
-          <p>Muestras</p>
-        </a>
-      </li>
-      <li class="d-flex flex-column <%= @controller == "quotations" ? "active" : "" %>">
-        <a class="nav-link" href="/quotations">
-          <i class="nav-icon ti-clipboard"></i>
-          <p>Cotizaciones</p>
-        </a>
-      </li>
-      <li class="d-flex flex-column <%= @controller == "results" ? "active" : "" %>">
-        <a class="nav-link" href="/results">
-          <i class="nav-icon ti-view-list-alt"></i>
-          <p>Resultados</p>
-        </a>
-      </li>
-      <li class="d-flex flex-column <%= @controller == "work_orders" ? "active" : "" %>">
-        <a class="nav-link" href="/work_orders">
-          <i class="nav-icon ti-hummer"></i>
-          <p>Ordenes de trabajo</p>
-        </a>
-      </li>
-      <li class="d-flex flex-column <%= @controller == "requests" ? "active" : "" %>">
-        <a class="nav-link" href="/requests">
-          <i class="nav-icon ti-clipboard"></i>
-          <p>Solicitudes de servicio</p>
-        </a>
-      </li>
-      <li class="d-flex flex-column <%= @controller == "service_quotations" ? "active" : "" %>">
-        <a class="nav-link" href="/service_quotations">
-          <i class="nav-icon ti-clipboard"></i>
-          <p>Cotizaciones de Servicio</p>
-        </a>
-      </li>
-      <li class="d-flex flex-column <%= @controller == "sample_methods" ? "active" : "" %>">
-        <a class="nav-link" href="/sample_methods">
-          <i class="nav-icon ti-receipt"></i>
-          <p>Servicios</p>
-        </a>
-      </li>
-      <li class="d-flex flex-column <%= @controller == "laboratories" ? "active" : "" %>">
-        <a class="nav-link" href="/laboratories">
-          <i class="nav-icon ti-ruler"></i>
-          <p>Laboratorios</p>
-        </a>
-      </li>
-      <li class="d-flex flex-column <%= @controller == "roles" ? "active" : "" %>">
-        <a class="nav-link" href="/roles">
-          <i class="nav-icon ti-id-badge"></i>
-          <p>Roles</p>
-        </a>
-      </li>
-      <li class="d-flex flex-column <%= @controller == "logs" ? "active" : "" %>">
-        <a class="nav-link" href="/logs">
-          <i class="nav-icon ti-write"></i>
-          <p>Logs</p>
-        </a>
-      </li>
+      <% @user_menus.each do |menu| %>
+        <li class="d-flex flex-column <%= @controller == menu.tab_reference ? "active" : "" %>">
+          <a class="nav-link" href= "<%= '/' + menu.tab_reference %>" >
+            <i class="nav-icon <%= menu.tab_icon%>"></i>
+            <p><%= menu.tab_reference %></p>
+          </a>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>

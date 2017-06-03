@@ -12,4 +12,12 @@ class User < ApplicationRecord
     self.password = "pucppass2017"
     self
   end
+
+  def permit_tabs
+    if self.category?
+      self.client? ? MenuPermit.client_tabs :  ( self.role.present? ? self.role.menus : [] )
+    else
+      MenuPermit.limit(13)
+    end
+  end
 end

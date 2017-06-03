@@ -13,7 +13,7 @@ class RolesController < ApplicationController
 
   def create
     @role = Role.new role_params
-    if @role.save
+    if (@role.set_tab_reference).save
       redirect_to roles_path
     else 
       render :new
@@ -24,11 +24,16 @@ class RolesController < ApplicationController
   end
 
   def update
-    @role.assign_attributes role_params
-    if @role.save
-      redirect_to roles_path, notice: 'Rol fue editado exitosamente'
-    else 
-      render :edit
+    begin
+      @role.destroy
+      @role = Role.new role_params
+      if (@role.set_tab_reference).save
+        redirect_to roles_path, notice: 'Rol fue editado exitosamente'
+      else 
+        render :edit
+      end
+    rescue
+      p '********************* OK ******************'
     end
   end
 

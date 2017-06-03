@@ -7,6 +7,9 @@ class CreateMenuPermits < ActiveRecord::Migration[5.1]
       t.boolean :delete_permit, default: false
       t.belongs_to :role, index: true
       t.string :name
+      t.string :tab_reference
+      t.string :tab_icon
+      t.boolean :available_for_client, default: false
       t.timestamps
     end
   end
