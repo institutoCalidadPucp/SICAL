@@ -11,7 +11,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_variables
-    @controller = params[:controller]
-    @action = params[:action]
+    begin
+      @user_menus = current_user.permit_tabs
+      @controller = params[:controller]
+      @action = params[:action]
+    rescue
+      p '************* LOG OUT ***************'
+    end
   end
 end
