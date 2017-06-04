@@ -1,13 +1,13 @@
-<div class="table-responsive">
-  <table class="table table-hover table-striped">
+<div class="material-datatables">
+  <table id="laboratory-table" class="table table-no-bordered table-hover sical-data-table" data-placeholder="Buscar Laboratorios">
     <thead>
       <tr>
-        <th>nombre</th>
-        <th>Telefono</th>
+        <th>Nombre</th>
+        <th>Teléfono</th>
         <th>Correo</th>
-        <th>Direccion</th>
-        <th>Descripcion</th>
-        <th>Actions</th>
+        <th>Dirección</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -19,8 +19,8 @@
           <td><%= laboratory.address %></td>
           <td><%= laboratory.description %></td>
           <td>
-            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_laboratory_path(laboratory), class: "btn btn-default btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
-        		<%= link_to 'Eliminar', laboratory_path(laboratory), method: :delete %>
+            <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_laboratory_path(laboratory), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
+            <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, laboratory_path(laboratory),class: "btn btn-warning btn-sm",title: "Eliminar", method: :delete %>
           </td>
         </tr>
       <% end %>

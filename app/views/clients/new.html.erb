@@ -1,5 +1,8 @@
-<h1 class="page-header">Clientes <small>Nuevo</small></h1>
-
-<%= render 'form', client: @client, method: :post, path: clients_path %>
-
-<%= link_to 'Volver', clients_path %>
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Cliente <small>Nuevo</small></h1>
+    </div>
+    <%= render 'form', client: @client, method: :post, path: clients_path %>
+  </div>
+</div>

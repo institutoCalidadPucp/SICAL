@@ -1,28 +1,26 @@
-<div class="table-responsive">
-  <table class="table table-hover table-striped">
+<div class="material-datatable">
+  <table id="client-table" class="table table-no-bordered table-hover sical-data-table" data-placeholder="Buscar Clientes">
     <thead>
       <tr>
-        <th>nombre</th>
-        <th>Telefono</th>
-        <th>Ruc</th>
-        <th>Correo</th>
-        <th>Username</th>
-        <th>Password</th>
-        <th>Actions</th>
+        <th>Nombre</th>
+        <th>RUC</th>
+        <th>Dirección</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
       <% clients.each do |client| %>
         <tr>
           <td><%= client.name %></td>
-          <td><%= client.phone %></td>
           <td><%= client.ruc %></td>
+          <td><%= client.address %></td>
           <td><%= client.email %></td>
-          <td><%= client.username %></td>
-          <td>************</td>
+          <td><%= client.phone %></td>
           <td>
-            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_client_path(client), class: "btn btn-default btn-sm", data: { "toggle" => "tooltip" }, title: "Edit" %>
-        		<%= link_to 'Eliminar', client_path(client), method: :delete %>
+            <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_client_path(client), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
+            <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, client_path(client),class: "btn btn-warning btn-sm",title: "Eliminar", method: :delete %>
           </td>
         </tr>
       <% end %>
