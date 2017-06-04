@@ -14,7 +14,7 @@
   <div class="form-group row">
     <%= f.label :ruc, class: "col-md-3 col-form-label" %>
     <div class="col-md-9">
-      <%= f.text_field :ruc, class: "form-control", onkeypress:"return (event.charCode >= 48 && event.charCode <=57) || event.charCode == 0", required:"required",maxlength:"11" %>
+      <%= f.text_field :ruc, class: "form-control only-numbers", required:"required",maxlength:"11" %>
     </div>
   </div>
   <div class="form-group row">
@@ -26,7 +26,7 @@
   <div class="form-group row">
     <%= f.label :telefono, class: "col-md-3 col-form-label" %>
     <div class="col-md-9">
-      <%= f.text_field :phone, class: "form-control", onkeypress:"return (event.charCode >= 48 && event.charCode <=57) || event.charCode == 0", maxlength:"9",required:"required" %>
+      <%= f.text_field :phone, class: "form-control only-numbers", maxlength:"9",required:"required" %>
     </div>
   </div>
   <div class="form-group row">
