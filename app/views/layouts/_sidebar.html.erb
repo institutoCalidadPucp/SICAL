@@ -15,7 +15,8 @@
         <li class="d-flex flex-column <%= @controller == menu.tab_reference ? "active" : "" %>">
           <a class="nav-link" href= "<%= '/' + menu.tab_reference %>" >
             <i class="nav-icon <%= menu.tab_icon%>"></i>
-            <p><%= menu.tab_reference %></p>
+            <!--<p><%= menu.tab_reference %></p>-->
+            <p><%= menu.name %></p>
           </a>
         </li>
       <% end %>
