@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="header card-header-text">
+    <h1 class="page-header">Inventario <small>Nuevo</small></h1>
+  </div>
+  <div class="content">
+    <%= render 'form', inventory: @inventory, method: :post, path: inventories_path %>
+  </div>
+</div>
