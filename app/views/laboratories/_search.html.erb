@@ -1,0 +1,25 @@
+<%= form_tag "#{}", class: "validate", method: :get, remote: true do %>
+  <div class="row form-group">
+    <div class="col-sm-5">
+      <div class="col-sm-4">
+        <%= label_tag :name, "Nombre", class: "control-tag" %>
+      </div>
+      <div class="col-sm-8">
+        <%= text_field_tag :name, nil, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="col-sm-4">
+        <%= label_tag :email, " Email", class: "control-tag" %>
+      </div>
+      <div class="col-sm-8">
+        <%= text_field_tag :email, nil, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="col-md-12">
+        <input class="btn btn-success" type="submit" value="Buscar">
+      </div>
+    </div>
+  </div>
+<% end %>

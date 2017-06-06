@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -8,8 +8,6 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -22,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -32,6 +30,38 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# Use sqlite3 as the database for Active Record
+#gem 'sqlite3'
+
+#Pg is the Ruby interface to the {PostgreSQL RDBMS}
+gem 'pg', '~> 0.20.0'
+
+#This is a Rails gem for conveniently manage multiple nested models in a single form. It does so in an unobtrusive way through jQuery or Prototype.
+gem "nested_form"
+
+#Flexible authentication solution for Rails with Warden
+gem 'devise', '~> 4.3'
+
+#Great Ruby dubugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
+gem 'awesome_print', '~> 1.7'
+
+#Autoprefixer for RoR. This will add the vendor prefixer of each browser in the styles
+gem 'autoprefixer-rails', '~> 7.1.1'
+
+#Util library with awesome fonts
+gem 'font-awesome-rails', '~> 4.7.0.2'
+
+
+#The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web
+gem 'bootstrap', '~> 4.0.0.alpha6'
+#Tether library for bootstrap toptiops and popovers
+source 'http://insecure.rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
+
+#Jquery, you know the drill
+gem 'jquery-rails', '~> 4.3.1' 
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

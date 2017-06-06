@@ -1,0 +1,24 @@
+<div class="sidebar sical-sidebar">
+  <div class="logo sical-sidebar-logo">
+    <a href="/" class="simple-text">
+      Sical
+    </a>
+  </div>
+  <div class="logo logo-mini sical-sidebar-mini-logo">
+    <a href="/" class="simple-text">
+      S
+    </a>
+  </div>
+  <div class="sidebar-wrapper sical-sidebar-wrapper">
+    <ul class="nav flex-column">
+      <% @user_menus.each do |menu| %>
+        <li class="d-flex flex-column <%= @controller == menu.tab_reference ? "active" : "" %>">
+          <a class="nav-link" href= "<%= '/' + menu.tab_reference %>" >
+            <i class="nav-icon <%= menu.tab_icon%>"></i>
+            <p><%= menu.name %></p>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

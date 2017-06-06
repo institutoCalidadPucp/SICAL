@@ -1,0 +1,20 @@
+<section class="quotations-index">
+  <div class="card">
+    <div class="content">
+      <div class="header card-header-text sical-card-header">
+        <h1 class="sical-card-title">
+          Cotizaciones
+        </h1>
+        <div>
+          <%#= link_to 'Nueva Cotizacion de Servicio', new_quotation_path, class: "btn btn-primary align-right" %>
+        </div>
+      </div>
+      <%#= render 'search', quotations: @quotations %>
+      <div class="quotations-content">
+        <div id="quotations-table">
+          <%= render 'quotations_table', quotations: @quotations %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

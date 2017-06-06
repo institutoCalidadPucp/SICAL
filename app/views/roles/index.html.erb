@@ -1,0 +1,19 @@
+<section class="roles-index">
+  <div class="card">
+    <div class="content">
+      <div class="header card-header-text sical-card-header">
+        <h1 class="sical-card-title">
+          Roles
+        </h1>
+        <div>
+          <%= link_to 'Nuevo Rol', new_role_path, class: "btn btn-primary align-right" %>
+        </div>
+      </div>
+      <div class="roles-content">
+        <div id="roles-table">
+          <%= render 'roles_table', roles: @roles %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

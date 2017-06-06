@@ -1,0 +1,19 @@
+<section class="laboratories-index">
+  <div class="card">
+    <div class="content">
+      <div class="header card-header-text sical-card-header">
+        <h1 class="sical-card-title">
+          Laboratorios
+        </h1>
+        <div>
+          <%= link_to 'Nuevo Laboratorio', new_laboratory_path, class: "btn btn-primary align-right"  %>
+        </div>
+      </div>
+      <div class="laboratories-content">
+        <div id="laboratories-table">
+          <%= render 'laboratories_table', laboratories: @laboratories %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

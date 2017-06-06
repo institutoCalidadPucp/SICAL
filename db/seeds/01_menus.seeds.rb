@@ -1,0 +1,15 @@
+MenuPermit.create(name: 'Empleados', tab_reference: 'employees', tab_icon: 'ti-user', available_for_client: false)
+MenuPermit.create(name: 'Cliente', tab_reference: 'clients', tab_icon: 'ti-user', available_for_client: false)
+MenuPermit.create(name: 'Inventario', tab_reference: 'inventories', tab_icon: 'ti-bar-chart-alt', available_for_client: false)
+MenuPermit.create(name: 'Muestras', tab_reference: 'samples', tab_icon: 'ti-package', available_for_client: true)
+MenuPermit.create(name: 'Cotizaciones', tab_reference: 'quotations', tab_icon: 'ti-clipboard', available_for_client: true)
+MenuPermit.create(name: 'Resultados', tab_reference: 'results', tab_icon: 'ti-view-list-alt', available_for_client: true)
+MenuPermit.create(name: 'Orden de Trabajo', tab_reference: 'work_orders', tab_icon: 'ti-hummer', available_for_client: true)
+MenuPermit.create(name: 'Solicitudes de Servicio', tab_reference: 'requests', tab_icon: 'ti-clipboard', available_for_client: true)
+MenuPermit.create(name: 'Cotizacion de Servicio', tab_reference: 'service_quotations', tab_icon: 'ti-clipboard', available_for_client: true)
+MenuPermit.create(name: 'Servicio', tab_reference: 'sample_methods', tab_icon: 'ti-receipt', available_for_client: false)
+MenuPermit.create(name: 'Laboratorios', tab_reference: 'laboratories', tab_icon: 'ti-ruler', available_for_client: false)
+MenuPermit.create(name: 'Roles', tab_reference: 'roles', tab_icon: 'ti-id-badge', available_for_client: false)
+MenuPermit.create(name: 'Logs', tab_reference: 'logs', tab_icon: 'ti-write', available_for_client: false)
+
+

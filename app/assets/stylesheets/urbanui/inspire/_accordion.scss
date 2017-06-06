@@ -1,0 +1,106 @@
+/*
+ *----------------------------------------------------------
+ * Short Desc: Accordion Styles  
+ * Author    : Inspire
+ * ---------------------------------------------------------
+ */ 
+
+ 
+/*  Accordion - Style 1  */
+/*-----------------------*/
+.accordion{
+	.accordion-header {
+		margin: 4px 0 0 0;
+		color: $font-color;
+		background: $light-gray;
+		border-radius: 0;
+    	border: none;
+		
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 24px;
+		
+		&:before, &:after {
+			font-family: 'Material Icons';
+			font-size: 18px;
+			position: absolute;
+			display: block;
+			-webkit-transition: -webkit-transform 280ms;
+			transition: -webkit-transform 280ms;
+			transition: transform 280ms;
+			transition: transform 280ms,-webkit-transform 280ms;
+		}
+		
+		&:after {
+			content: 'keyboard_arrow_down';
+			top: 8px;
+			right: 8px;
+		}
+		
+		&.ui-state-active:before, &.ui-state-active:after {
+			@include rotate(-180deg);
+		}
+	}
+	
+	.accordion-content{
+		padding: 16px;
+		border: 0;
+		line-height: 20px;
+		
+		p {
+			margin-bottom: 0px;
+		}
+	}
+}
+
+/*  Accordion - Style 2  */
+/*-----------------------*/
+.accordion-alt{
+	.accordion-header {
+		background: $white-color;
+		padding: 14px 20px 12px 40px !important;
+		border-top: 1px solid $light-gray ;
+		
+		&:after {
+			content: '';
+		}
+		&:before {
+			content: 'add';
+			left: 10px;
+    		top: 13px;
+			color: $info-color;
+		}
+		
+		&.ui-state-active {
+			border-bottom: 0;
+		}
+		
+		&.ui-state-active:before {
+			content: 'remove';
+		}
+		
+		&:first-child {
+			border-top: none !important;
+		}
+	}
+	
+	.accordion-content{
+		padding: 16px 20px;
+	}
+}
+
+
+
+.ui-state-default,  .ui-widget-header .ui-state-default {
+    box-shadow: inherit;
+    height: inherit;
+    width: inherit;
+    }
+
+:focus {
+	outline: none;
+}
+
+.accordion .ui-widget-content{
+	background-color: $white;
+}
