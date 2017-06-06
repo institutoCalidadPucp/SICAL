@@ -9,7 +9,7 @@
       <%= f.label :Nombre %>
     </div>
     <div>
-      <%= f.text_field :name, class: "form-control" %>
+      <%= f.text_field :name, class: "form-control", maxlength:"30" %>
     </div>
   </div>
   <div class="form-group">
@@ -17,7 +17,7 @@
       <%= f.label :Marca %>
     </div>
     <div>
-      <%= f.text_field :brand, class: "form-control" %>
+      <%= f.text_field :brand, class: "form-control", maxlength:"20" %>
     </div>
   </div>
   <div class="form-group">
@@ -25,7 +25,7 @@
       <%= f.label :Modelo %>
     </div>
     <div>
-      <%= f.text_field :model, class: "form-control " %>
+      <%= f.text_field :model, class: "form-control ", maxlength:"10" %>
     </div>
   </div>
   <div class="form-group">
@@ -33,7 +33,7 @@
       <%= f.label :Descripción %>
     </div>
     <div>
-      <%= f.text_field :description, class: "form-control " %>
+      <%= f.text_field :description, class: "form-control ", maxlength:"80" %>
     </div>
   </div>
   <div class="form-group">
@@ -50,7 +50,7 @@
       <%= f.label :Vida_útil %>
     </div>
     <div>
-      <%= f.text_field :time_of_life, class: "form-control" %>
+      <%= f.text_field :time_of_life, class: "form-control only-numbers", maxlength:"2" %>
     </div>
   </div>
   <div class="form-group">
