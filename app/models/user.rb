@@ -9,6 +9,26 @@ class User < ApplicationRecord
   enum gender: [:male, :female]
   enum status: [:active, :inactive]
 
+  def can_action tab_reference
+    permit_tabs.where(tab_reference: tab_reference).first.create_permit
+  end
+
+  def can_view tab_reference
+    can_action(tab_reference)
+  end
+
+  def can_create tab_reference
+    can_action(tab_reference)
+  end
+
+  def can_edit tab_reference
+    can_action(tab_reference)
+  end
+
+  def can_delete tab_reference
+    can_action(tab_reference)
+  end
+
   def set_password
     self.password = "pucppass2017"
     self
