@@ -17,7 +17,7 @@ class User < ApplicationRecord
     if self.category?
       self.client? ? MenuPermit.client_tabs :  ( self.role.present? ? self.role.menus : [] )
     else
-      MenuPermit.limit(13)
+      MenuPermit.order(:order)
     end
   end
 end
