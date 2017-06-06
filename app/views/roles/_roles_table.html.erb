@@ -15,9 +15,8 @@
           <td><%= role.description %></td>
           <td><%= role.status %><</td>
           <td>
-            <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, view_role_path(role), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>
             <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_role_path(role), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
-            <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, role_path(role),class: "btn btn-warning btn-sm", data: { "toggle" => "tooltip" }, title: "Activar/Desactivar", method: :delete %>
+            <%= link_to '<i class="fa fa-lock" aria-hidden="true"></i>'.html_safe, role_path(role),class: "btn btn-warning btn-sm", data: { "toggle" => "tooltip" }, title: "Activar/Desactivar", method: :delete %>
           </td>
         </tr>
       <% end %>
