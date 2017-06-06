@@ -18,8 +18,8 @@
   </div>
   <div class="form-group row">
     <%= f.label :Permisos, class: "col-md-3 col-fom-label" %>
-    <div class="col-md-9" >
-      <p><%= f.link_to_add "Agregar un menú", :menu_permits, :data => { :target => "#table-permits" }, class: "btn btn-primary sical-btn-add-menu" %></p>
+    <div class="col-md-9 text-right" >
+      <p><%= f.link_to_add "Agregar permiso", :menu_permits, :data => { :target => "#permits-table" }, class: "btn btn-primary sical-btn-add-menu " %></p>
     </div>
   </div>
 
@@ -33,7 +33,7 @@
         <th>Eliminar</th>
         <th></th>
       </thead>
-      <tbody id="table-permits">
+      <tbody id="permits-table">
         <%= f.fields_for :menu_permits, :wrapper => false do |mp_form| %>
           <tr>
             <td><%= mp_form.select :name, @menus, {}%></td>
