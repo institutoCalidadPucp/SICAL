@@ -10,6 +10,10 @@ class RolesController < ApplicationController
     @role = Role.new
   end
 
+  def show
+
+  end
+
   def create
     @role = Role.new role_params
     if @role.save
