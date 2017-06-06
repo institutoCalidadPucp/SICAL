@@ -1,6 +1,6 @@
 class RolesController < ApplicationController
 
-  before_action :set_role, only: [:edit, :update, :destroy]
+  before_action :set_role, only: [:edit, :update, :destroy, :toggle_status]
   before_action :menus, only: [:new, :edit]
 
   def index
@@ -33,13 +33,20 @@ class RolesController < ApplicationController
         render :edit
       end
     rescue
-      p '********************* OK ******************'
+      false
     end
   end
 
   def destroy
     @role.inactive!
     redirect_to roles_path
+  end
+
+  def toggle_status
+    @role.change_status
+    respond_to do |format|
+      format.js
+    end
   end
 
   private 

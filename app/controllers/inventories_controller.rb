@@ -1,5 +1,7 @@
 class InventoriesController < ApplicationController
 
+  before_action :set_inventory, only: [:show, :edit, :update, :destroy, :toggle_status]
+
   def index
   end
 
@@ -15,7 +17,15 @@ class InventoriesController < ApplicationController
   def update
   end
 
-  def destroy
+  def toggle_status
+    @inventory.change_status
+    respond_to do |format|
+      format.js
+    end
   end
 
+  private
+    def set_inventory
+      @inventory = Laboratory.find params[:id]
+    end
 end
