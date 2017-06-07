@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   include ApplicationHelper
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :role, required: false
 
@@ -36,7 +38,7 @@ class User < ApplicationRecord
 
   def permit_tabs
     if self.category?
-      self.client? ? MenuPermit.client_tabs :  ( self.role.present? ? self.role.menus : [] )
+      self.client? ? MenuPermit.client_tabs : ( self.role.present? ? self.role.menus : [] )
     else
       MenuPermit.order(:order)
     end
@@ -47,11 +49,8 @@ class User < ApplicationRecord
     if login = conditions.delete(:login)
       where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
     else
-      begin
-        where(conditions).first.active?
-      rescue
-        false
-      end
+      current_user = where(conditions).first
+      current_user.active? ? current_user : false
     end
   end
 end
