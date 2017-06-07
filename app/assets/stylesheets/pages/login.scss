@@ -32,3 +32,25 @@
   margin: 20px auto;
   padding-bottom: 40px;
 }
+
+.login-position{
+  margin : 160px;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    width: 800px;
+}

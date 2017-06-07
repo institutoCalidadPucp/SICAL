@@ -1,39 +1,44 @@
-<div class="card sical-login">
-  <div class="login-title"><h1>Inicio de Sesión</h1></div>
-  <div class="login-content">
-    <div class="login-logo">
-      <%= image_tag "Instituto-calidad.jpg", class: "login-img" %>
-    </div>
-    <div class="login-form">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field login-field">
-          <%= f.label :usuario %><br />
-          <%= f.email_field :email, autofocus: true, class: "form-control" %>
-        </div>
-
-        <div class="field login-field">
-          <%= f.label :contraseña %><br />
-          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-        </div>
-
-        <% if devise_mapping.rememberable? -%>
-          <div class="checkbox form-check-label">
-           <span class="icons">
-              <span class="first-icon fa fa-square"></span>
-              <span class="second-icon fa fa-check-square "></span>
-            </span>
-            <%= f.check_box :remember_me, class: "form-check-input"%>
-            <%= f.label :recuerdame %>
+<div class="outer">
+  <div class="middle">
+    <div class="inner">
+      <div class="card sical-login">
+        <div class="login-title"><h1>Inicio de Sesión</h1></div>
+        <div class="login-content">
+          <div class="login-logo">
+            <%= image_tag "Instituto-calidad.jpg", class: "login-img" %>
           </div>
-        <% end -%>
+          <div class="login-form">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="field login-field">
+                <%= f.label :usuario %><br />
+                <%= f.email_field :email, autofocus: true, class: "form-control" %>
+              </div>
 
-        <div class="text-center">
-          <%= f.submit "Entrar", class: "btn btn-info btn-fill btn-wd login-button"%>
+              <div class="field login-field">
+                <%= f.label :contraseña %><br />
+                <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+              </div>
+
+              <% if devise_mapping.rememberable? -%>
+                <div class="checkbox form-check-label">
+                 <span class="icons">
+                    <span class="first-icon fa fa-square"></span>
+                    <span class="second-icon fa fa-check-square "></span>
+                  </span>
+                  <%= f.check_box :remember_me, class: "form-check-input"%>
+                  <%= f.label :recuerdame %>
+                </div>
+              <% end -%>
+
+              <div class="text-center">
+                <%= f.submit "Entrar", class: "btn btn-info btn-fill btn-wd login-button"%>
+              </div>
+            <% end %>
+
+            <%#= render "devise/shared/links" %>
+          </div>
         </div>
-      <% end %>
-
-      <%#= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
-</div>
-
+</div>    
