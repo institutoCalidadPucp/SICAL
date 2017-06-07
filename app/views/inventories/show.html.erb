@@ -1,0 +1,58 @@
+<div class="card">
+  <div class="header card-header-text">
+    <h1 class="page-header">Inventario <small>Ver</small></h1>
+  </div>
+  <div class="content">
+    <div class="form-group">
+      <div>
+        <label class="col-md-3 col-fom-label">Nombre:</label>
+      </div>
+      <div class="col-md-9">
+        <%= @Inventory.name %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label class="col-md-3 col-fom-label">Marca:</label>
+      </div>
+      <div class="col-md-9">
+        <%= @Inventory.brand %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label class="col-md-3 col-fom-label">Modelo:</label>
+      </div>
+      <div class="col-md-9">
+        <%= @Inventory.model %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label class="col-md-3 col-fom-label">Descripción:</label>
+      </div>
+      <div>
+        <%= @Inventory.description %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 col-fom-label">Fecha de Ingreso:</label>
+      <div class="col-md-9 date">
+        <%= @Inventory.date_of_admission %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label class="col-md-3 col-fom-label">Vida útil(años):</label>
+      </div>
+      <div class="col-md-9">
+        <%= @Inventory.time_of_life %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="text-center">
+        <%= link_to "Regresar", inventories_path, class: "btn btn-primary sical-btn-cancel" %>
+      </div>
+    </div>
+  </div>
+</div>
