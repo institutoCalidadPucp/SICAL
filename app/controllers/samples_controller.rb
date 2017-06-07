@@ -1,4 +1,5 @@
 class SamplesController < ApplicationController
+  before_action :set_sample, only: [:show, :edit, :update]
 
   def index
     @samples = Sample.all
@@ -18,6 +19,9 @@ class SamplesController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def edit
 
   end
@@ -29,5 +33,9 @@ class SamplesController < ApplicationController
   private
     def samples_params
       params.require(:sample).permit(:description, :category, features_attributes: [:name, :value, :_destroy])
+    end
+
+    def set_sample
+      @sample = Sample.find params[:id]
     end
 end
