@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   
-  before_action :set_client, only: [:edit, :update, :destroy, :show]
+  before_action :set_client, only: [:edit, :update, :destroy, :show, :toggle_status]
   before_action :roles, only: [:new, :create, :update, :edit]
 
   def index
@@ -39,6 +39,13 @@ class ClientsController < ApplicationController
   def destroy
     @client.inactive!
     redirect_to clients_path 
+  end
+
+  def toggle_status
+    @client.change_status
+    respond_to do |format|
+      format.js
+    end
   end
 
   private 
