@@ -3,7 +3,7 @@ class InventoriesController < ApplicationController
   before_action :set_inventory, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   def index
-    @inventories = User.all.inventory
+    @inventories = Inventory.all.inventory
   end
 
   def new
