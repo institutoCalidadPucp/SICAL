@@ -1,5 +1,6 @@
 class Role < ApplicationRecord
-
+  include ApplicationHelper
+  
   validates :name, presence: true
 
   has_many  :menu_permits, dependent: :destroy
