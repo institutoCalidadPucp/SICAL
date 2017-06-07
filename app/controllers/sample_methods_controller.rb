@@ -7,6 +7,7 @@ class SampleMethodsController < ApplicationController
 
   def new
     @sample_method = SampleMethod.new
+    @laboratories = Laboratory.all
   end
 
   def show
@@ -15,7 +16,7 @@ class SampleMethodsController < ApplicationController
   def create
     @sample_method = SampleMethod.new sample_method_params
     if @sample_method.save
-      redirect_to sample_method_path
+      redirect_to sample_methods_path
     else
       render :new
     end
@@ -43,7 +44,7 @@ class SampleMethodsController < ApplicationController
 
   private
     def sample_method_params
-      params.require(:sample_method).permit(:description, :unit_cost, :accreditation)
+      params.require(:sample_method).permit(:description, :unit_cost, :accreditation, :name, :laboratory_id)
     end
 
     def set_sample_method
