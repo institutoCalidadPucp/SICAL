@@ -1,6 +1,6 @@
 class LaboratoriesController < ApplicationController
 
-  before_action :set_laboratory, only: [:show, :edit, :update, :destroy]
+  before_action :set_laboratory, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   def index
     @laboratories = Laboratory.all
@@ -34,11 +34,10 @@ class LaboratoriesController < ApplicationController
     end
   end
 
-  def destroy
-    if @laboratory.destroy
-      redirect_to laboratories_path, notice: 'Laboratorio fue eliminado exitosamente'
-    else
-      redirect_to laboratories_path,  notice: 'Ocurrio un error'
+  def toggle_status
+    @laboratory.change_status
+    respond_to do |format|
+      format.js
     end
   end
 

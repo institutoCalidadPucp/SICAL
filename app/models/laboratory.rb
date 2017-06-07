@@ -1,4 +1,6 @@
 class Laboratory < ApplicationRecord
+  include ApplicationHelper
+	
   validates :name, presence: true
   validates :phone, length: { in: 7..9}
   validates :phone, numericality: true

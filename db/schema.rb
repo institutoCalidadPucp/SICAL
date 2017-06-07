@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20170531045257) do
     t.string "last_name"
     t.date "date_of_birth"
     t.integer "gender"
+    t.string "job_position"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
