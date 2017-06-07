@@ -9,6 +9,9 @@ class RequestsController < ApplicationController
   def create
   end
 
+  def show
+  end
+
   def edit
   end
 
