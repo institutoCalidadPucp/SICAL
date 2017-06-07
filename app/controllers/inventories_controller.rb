@@ -15,6 +15,12 @@ class InventoriesController < ApplicationController
   end
 
   def update
+    @inventory.assign_attributes inventory_params
+    if @inventory.save
+      redirect to inventories_path
+    else 
+      render: edit
+    end
   end
 
   def toggle_status
