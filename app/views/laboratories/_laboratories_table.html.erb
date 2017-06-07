@@ -21,7 +21,13 @@
           <td>
             <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, show_laboratory_path(laboratory), class: "btn btn-primary btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>
             <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_laboratory_path(laboratory), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
-            <%= link_to '<i class="fa fa-lock" aria-hidden="true"></i>'.html_safe, laboratory_path(laboratory),class: "btn btn-warning btn-sm",title: "Deshabilitar", method: :delete %>
+            <%= link_to inventory_path(inventory),class: "btn btn-default btn-sm", data: { "toggle" => "tooltip" }, title: "Activar/Desactivar", method: :delete do%>
+                  <% if inventory.status == "active" %>
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                  <% else %>
+                    <i class="fa fa-unlock" aria-hidden="true"></i>
+                  <% end %>
+            <% end %>
 
           </td>
         </tr>
