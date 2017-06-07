@@ -9,6 +9,9 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.new
   end
 
+  def show
+  end
+
   def create
   end
 
@@ -27,6 +30,6 @@ class InventoriesController < ApplicationController
 
   private
     def set_inventory
-      @inventory = Laboratory.find params[:id]
+      @inventory = Inventory.find params[:id]
     end
 end
