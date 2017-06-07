@@ -6,6 +6,7 @@ class InventoriesController < ApplicationController
   end
 
   def new
+    @inventory = Inventory.new
   end
 
   def create
