@@ -6,6 +6,14 @@
   <% end %>
   <div class="form-group">
     <div>
+      <%= f.label :Código, class: "col-md-3 col-fom-label" %>
+    </div>
+    <div class="col-md-9">
+      <%= f.text_field :code, class: "form-control", maxlength:"10" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div>
       <%= f.label :Nombre, class: "col-md-3 col-fom-label" %>
     </div>
     <div class="col-md-9">
@@ -25,7 +33,23 @@
       <%= f.label :Modelo, class: "col-md-3 col-fom-label" %>
     </div>
     <div class="col-md-9">
-      <%= f.text_field :model, class: "form-control ", maxlength:"10" %>
+      <%= f.text_field :product_model, class: "form-control ", maxlength:"10" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div>
+      <%= f.label :Cantidad, class: "col-md-3 col-fom-label" %>
+    </div>
+    <div class="col-md-9">
+      <%= f.text_field :amount, class: "form-control only-numbers", maxlength:"10" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div>
+      <%= f.label :Unidad, class: "col-md-3 col-fom-label" %>
+    </div>
+    <div class="col-md-9">
+      <%= f.text_field :amount_unit, class: "form-control ", maxlength:"20" %>
     </div>
   </div>
   <div class="form-group">

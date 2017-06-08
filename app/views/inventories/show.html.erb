@@ -24,7 +24,23 @@
         <label class="col-md-3 col-fom-label">Modelo:</label>
       </div>
       <div class="col-md-9">
-        <%= @Inventory.model %>
+        <%= @Inventory.product_model %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label class="col-md-3 col-fom-label">Cantidad:</label>
+      </div>
+      <div class="col-md-9">
+        <%= @Inventory.amount %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label class="col-md-3 col-fom-label">Unidad:</label>
+      </div>
+      <div class="col-md-9">
+        <%= @Inventory.amount_unit %>
       </div>
     </div>
     <div class="form-group">
