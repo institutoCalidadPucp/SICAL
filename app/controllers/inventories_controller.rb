@@ -14,6 +14,12 @@ class InventoriesController < ApplicationController
   end
 
   def create
+    @inventory = Inventory.new inventory_params
+    if @inventory.save
+      redirect_to inventories_path
+    else 
+      render new
+    end  
   end
 
   def edit
@@ -36,6 +42,9 @@ class InventoriesController < ApplicationController
   end
 
   private
+    def inventory_params
+      params.require(:inventory).permit(:code, :name, :brand, :product_model, :float, :description, :date_of_entry)
+    end  
     def set_inventory
       @inventory = Inventory.find params[:id]
     end
