@@ -18,7 +18,7 @@ class InventoriesController < ApplicationController
     if @inventory.save
       redirect_to inventories_path
     else 
-      render new
+      render :new
     end  
   end
 
@@ -30,7 +30,7 @@ class InventoriesController < ApplicationController
     if @inventory.save
       redirect to inventories_path
     else 
-      render: edit
+      render :edit
     end
   end
 
