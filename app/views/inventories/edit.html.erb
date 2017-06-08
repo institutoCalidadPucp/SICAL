@@ -1,8 +1,8 @@
 <div class="card">
-  <div class="header card-header-text">
-    <h1 class="page-header">Inventario <small>Edición</small></h1>
-  </div>
   <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Inventario <small>Editar</small></h1>
+    </div>
     <%= render 'form', inventory: @inventory, method: :put, path: inventories_path %>
   </div>
 </div>
