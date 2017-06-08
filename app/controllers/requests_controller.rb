@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-   before_action :set_role, only: [:edit, :update, :destroy, :toggle_status]
+   before_action :set_request, only: [:edit, :update, :destroy, :toggle_status]
   
   def index
      @requests = Request.all
@@ -48,7 +48,7 @@ class RequestsController < ApplicationController
   end
   private 
     def request_params
-      params.require(:request).permit(:laboratory, :topic )
+      params.require(:request).permit(:laboratory, :topic, :status, :code, :shipping_date, request_service_descriptions_attributes: [:sample_name, :amount, :description]  )
     end
 
     def set_request

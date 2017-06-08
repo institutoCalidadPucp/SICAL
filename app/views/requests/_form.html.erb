@@ -8,30 +8,24 @@
 
   <div class="form-group row">
     <%= f.label :Laboratorio, class: "col-lg-3 col-fom-label" %>
-    <div class="col-lg-9">
-      <%= f.text_area :laboratory, class: "form-control" %>
+   <div class="col-md-9">
+      <%= f.text_field :laboratory, class: "form-control",required:"required" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :Asunto %>    
-      <%= f.text_field :Asunto %>
-  </div>
+    <%= f.label :Asunto,class: "col-lg-3 col-fom-label"  %>   
+    <div class="col-md-9"> 
+    <%= f.text_field :topic ,class: "form-control", required:"required"%>
+    </div>
+  </div> 
 
-
-  <div class="col-sm-12 text-right">
-    <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
-  </div>
-
-  <%= link_to 'Volver', roles_path %>
-  
-   <%= f.fields_for :humo do |mp| %>
-
-      <%= mp.title :title %>
-
-      <%= mp.amount :amount %>
-
-      <%= mp.description :description %>
-
+   <%= f.fields_for :request_service_descriptions, :wrapper => false do |mp_form| %>
+       <tr>
+            <td><%= mp_form.text_field :sample_name, @menus, {}%></td>
+            <td><%= mp_form.text_field :amount %></td>
+            <td><%= mp_form.text_field :description %></td>         
+     </tr>     
   <% end %>
+
 <% end %>
