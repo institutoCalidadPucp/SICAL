@@ -9,7 +9,7 @@
   <div class="form-group row">
     <%= f.label :Laboratorio, class: "col-lg-3 col-fom-label" %>
    <div class="col-md-9">
-      <%= f.text_field :laboratory, class: "form-control",required:"required" %>
+      <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, class: "form-control", required: "required" %>
     </div>
   </div>
 
@@ -20,12 +20,18 @@
     </div>
   </div> 
 
-   <%= f.fields_for :request_service_descriptions, :wrapper => false do |mp_form| %>
-       <tr>
-            <td><%= mp_form.text_field :sample_name, @menus, {}%></td>
-            <td><%= mp_form.text_field :amount %></td>
-            <td><%= mp_form.text_field :description %></td>         
-     </tr>     
+   <%= f.fields_for :request_service_descriptions do |service_form| %>
+      <%= service_form.label :sample_name %>
+      <%= service_form.text_field :sample_name %>
+        
+      <%= service_form.label :amount %>
+      <%= service_form.text_field :amount %>
+
+      <%= service_form.label :description %>         
+      <%= service_form.text_field :description %>         
+      
+      <%= service_form.link_to_remove "Remove" %>
   <% end %>
+  <p><%= f.link_to_add "Add", :request_service_descriptions %></p>
 
 <% end %>
