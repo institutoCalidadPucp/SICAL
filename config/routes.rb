@@ -14,19 +14,37 @@ Rails.application.routes.draw do
     end
   end
   #WEB ROUTES
-  resources :roles
-  resources :laboratories
-  resources :clients
-  resources :employees    
-  resources :inventories
-  resources :samples
-  resources :contracts
-  resources :sample_methods 
-  resources :quotations
-  resources :requests
-  resources :inventories
-  resources :results
-  resources :work_orders
-  resources :logs
-  resources :service_quotations
+  resources :roles do
+    put 'toggle_status', on: :member
+  end
+  resources :laboratories do
+    put 'toggle_status', on: :member
+  end
+  resources :clients do
+    put 'toggle_status', on: :member
+  end
+  resources :employees do
+    put 'toggle_status', on: :member
+  end
+  resources :inventories do
+    put 'toggle_status', on: :member
+  end
+  resources :samples do
+  end
+  resources :contracts do
+  end
+  resources :sample_methods do
+  end
+  resources :quotations do
+  end
+  resources :requests do
+  end
+  resources :results do
+  end
+  resources :work_orders do
+  end
+  resources :logs do
+  end
+  resources :service_quotations do
+  end
 end
