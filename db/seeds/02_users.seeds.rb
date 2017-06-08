@@ -1,1 +1,1 @@
-User.create(email: 'sical@pucp.pe', password: "pucppass2017")
+User.create(email: 'sical@pucp.pe', password: "pucppass2017", status: 0)

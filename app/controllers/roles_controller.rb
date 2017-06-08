@@ -1,6 +1,6 @@
 class RolesController < ApplicationController
 
-  before_action :set_role, only: [:edit, :update, :destroy, :toggle_status]
+  before_action :set_role, only: [:edit, :update, :destroy, :toggle_status, :show]
   before_action :menus, only: [:new, :edit]
 
   def index
@@ -9,6 +9,9 @@ class RolesController < ApplicationController
 
   def new
     @role = Role.new
+  end
+
+  def show
   end
 
   def create

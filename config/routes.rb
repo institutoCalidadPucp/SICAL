@@ -39,8 +39,6 @@ Rails.application.routes.draw do
   end
   resources :requests do
   end
-  resources :inventories do
-  end
   resources :results do
   end
   resources :work_orders do
