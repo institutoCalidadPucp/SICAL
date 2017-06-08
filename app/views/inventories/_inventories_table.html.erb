@@ -5,7 +5,7 @@
         <th>Nombre</th>
         <th>Marca</th>
         <th>Modelo</th>
-        <th>Estado</th>
+        <th>Cantidad</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -15,17 +15,11 @@
               <td><%= item.name %></td>
               <td><%= item.brand %></td>
               <td><%= item.product_model %></td>
-              <td><%= item.status %></td>
+              <td><%= item.cantity %></td>
               <td>
                 <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, inventory_path(item), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>
                 <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_inventory_path(item), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
-                <%= link_to inventories_path(item),class: "btn btn-default btn-sm", data: { "toggle" => "tooltip" }, title: "Activar/Desactivar", method: :delete do%>
-                  <% if item.status == "active" %>
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                  <% else %>
-                    <i class="fa fa-unlock" aria-hidden="true"></i>
-                  <% end %>
-                <% end -%>
+                <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, inventories_path(item),class: "btn btn-danger btn-sm", data: { "toggle" => "tooltip" }, title: "Eliminar", method: :delete %>
               </td>
             </tr>
         <% end %>
