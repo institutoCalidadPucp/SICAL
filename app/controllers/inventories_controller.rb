@@ -43,7 +43,7 @@ class InventoriesController < ApplicationController
 
   private
     def inventory_params
-      params.require(:inventory).permit(:code, :name, :brand, :product_model, :float, :description, :date_of_entry)
+      params.require(:inventory).permit(:code, :name, :brand, :product_model, :amount, :amount_unit, :description, :date_of_entry)
     end  
     def set_inventory
       @inventory = Inventory.find params[:id]
