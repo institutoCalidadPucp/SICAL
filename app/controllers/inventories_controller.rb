@@ -34,6 +34,11 @@ class InventoriesController < ApplicationController
     end
   end
 
+  def destroy
+    @inventory.destroy
+    redirect_to inventories_path
+  end
+
   def toggle_status
     @inventory.change_status
     respond_to do |format|

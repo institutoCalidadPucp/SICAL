@@ -1,65 +1,55 @@
 <div class="card">
-  <div class="header card-header-text">
-    <h1 class="page-header">Inventario <small>Ver</small></h1>
-  </div>
   <div class="content">
-    <div class="form-group">
-      <div>
-        <label class="col-md-3 col-fom-label">Nombre:</label>
-      </div>
-      <div class="col-md-9">
-        <%= @Inventory.name %>
-      </div>
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Inventario <small>Ver</small></h1>
     </div>
-    <div class="form-group">
-      <div>
-        <label class="col-md-3 col-fom-label">Marca:</label>
+    <div class="form-horizontal validate sical-form sical-form-validated">
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Nombre:</label>
+        <div class="col-md-9">
+          <%= @inventory.name %>
+        </div>
       </div>
-      <div class="col-md-9">
-        <%= @Inventory.brand %>
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Marca:</label>
+        <div class="col-md-9">
+          <%= @inventory.brand %>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <div>
-        <label class="col-md-3 col-fom-label">Modelo:</label>
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Modelo:</label>
+        <div class="col-md-9">
+          <%= @inventory.product_model %>
+        </div>
       </div>
-      <div class="col-md-9">
-        <%= @Inventory.product_model %>
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Cantidad:</label>
+        <div class="col-md-9">
+          <%= @inventory.amount %>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <div>
-        <label class="col-md-3 col-fom-label">Cantidad:</label>
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Unidad:</label>
+        <div class="col-md-9">
+          <%= @inventory.amount_unit %>
+        </div>
       </div>
-      <div class="col-md-9">
-        <%= @Inventory.amount %>
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Descripción:</label>
+        <div class="col-md-9">
+          <%= @inventory.description %>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <div>
-        <label class="col-md-3 col-fom-label">Unidad:</label>
+      <div class="form-group row">
+        <label class="col-md-3 col-fom-label">Fecha de Ingreso:</label>
+        <div class="col-md-9 date">
+          <%= @inventory.date_of_entry %>
+        </div>
       </div>
-      <div class="col-md-9">
-        <%= @Inventory.amount_unit %>
-      </div>
-    </div>
-    <div class="form-group">
-      <div>
-        <label class="col-md-3 col-fom-label">Descripción:</label>
-      </div>
-      <div>
-        <%= @Inventory.description %>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-md-3 col-fom-label">Fecha de Ingreso:</label>
-      <div class="col-md-9 date">
-        <%= @Inventory.date_of_entry %>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="text-center">
-        <%= link_to "Regresar", inventories_path, class: "btn btn-primary sical-btn-cancel" %>
+      <div class="form-group">
+        <div class="text-center">
+          <%= link_to "Regresar", inventories_path, class: "btn btn-primary sical-btn-cancel" %>
+        </div>
       </div>
     </div>
   </div>
