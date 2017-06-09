@@ -1,5 +1,6 @@
 class SampleMethodsController < ApplicationController
   before_action :set_sample_method, only: [:show, :edit, :update, :destroy]
+  before_action :set_laboratories, only: [:show, :edit, :new]
 
   def index
     @sample_methods = SampleMethod.all
@@ -7,7 +8,7 @@ class SampleMethodsController < ApplicationController
 
   def new
     @sample_method = SampleMethod.new
-    @laboratories = Laboratory.all
+    #@laboratories = Laboratory.all
   end
 
   def show
@@ -28,7 +29,7 @@ class SampleMethodsController < ApplicationController
   def update
     @sample_method.assign_attributes sample_method_params
     if @sample_method.save
-      redirect_to sample_method_path
+      redirect_to sample_methods_path
     else
       render :edit
     end
@@ -49,6 +50,10 @@ class SampleMethodsController < ApplicationController
 
     def set_sample_method
       @sample_method = SampleMethod.find params[:id]
+    end
+
+    def set_laboratories
+      @laboratories = Laboratory.all
     end
 
 end
