@@ -7,6 +7,7 @@ class Laboratory < ApplicationRecord
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   
   has_many :sample_methods
+  has_many :requests
 
   enum status: [:active, :inactive]
 end

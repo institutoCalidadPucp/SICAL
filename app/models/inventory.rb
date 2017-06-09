@@ -1,7 +1,7 @@
 class Inventory < ApplicationRecord
   include ApplicationHelper
 	
-  validates :inventoryCode, presence: true
+  validates :code, presence: true
   validates :description, presence: true
   
   enum status: [:active, :inactive]
