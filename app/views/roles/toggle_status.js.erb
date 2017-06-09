@@ -3,9 +3,9 @@ $(function(){
 
   <% if @role.status=="active" %>
     console.log('Active');
-    $roleLock.removeClass('fa-lock').addClass('fa-unlock');
+    $roleLock.removeClass('fa-unlock').addClass('fa-lock');
   <% else %>
     console.log('Inactive');
-    $roleLock.removeClass('fa-unlock').addClass('fa-lock');
+    $roleLock.removeClass('fa-lock').addClass('fa-unlock');
   <% end %>
 });

@@ -21,9 +21,9 @@
             <% end %>
             <%= link_to toggle_status_role_path(role),class: "btn btn-danger btn-sm", data: { "toggle" => "tooltip" }, title: "Activar/Desactivar", method: :put, remote: true do %>
               <% if role.status=="active" %>
-                <i class="fa fa-lock role-lock" aria-hidden="true"></i>
-              <% else %>
                 <i class="fa fa-unlock role-lock" aria-hidden="true"></i>
+              <% else %>
+                <i class="fa fa-lock role-lock" aria-hidden="true"></i>
               <% end %>
             <% end %>
           </td>
