@@ -1,18 +1,19 @@
-
-<div class="card">
-  <div class="header card-header-text">
-    <h1>
-      <div class="row" >
-        <div class="col-sm-12 col-md-10">
-          Métodos de Muestreo
-        </div>
-        <div class="col-sm-12 col-md-2 ">
-          <%= link_to 'Nuevo Método', new_sample_path, class: "btn btn-primary align-right"  %>
+<section class="sample-index">
+  <div class="card">
+    <div class="content">
+      <div class="header card-header-text sical-card-header">
+        <h1 class="sical-card-title">
+          Métodos de Ensayo
+        </h1>
+        <div>
+          <%= link_to 'Nuevo Método', new_sample_method_path, class: "btn btn-primary align-right" %>
         </div>
       </div>
-    </h1>
+      <div class="sample-content">
+        <div id="sample-table">
+          <%= render 'sample_methods_table', samples: @sample_methods %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= render 'sample_methods_table', samples: @sample_methods %>
-  </div>
-</div>
+</section>

@@ -3,6 +3,6 @@ class SampleMethod < ApplicationRecord
   validates :unit_cost, numericality: { :greater_than_or_equal_to => 0 }
 
   # Relations
-  belongs_to :Laboratory  
+  belongs_to :laboratory  
   enum accreditation: [:accredited, :non_accredited]  
 end
