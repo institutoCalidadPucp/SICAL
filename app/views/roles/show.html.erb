@@ -32,26 +32,18 @@
             <% @role.menu_permits.each do |menu_permit| %>
               <tr>
                 <td><%= menu_permit.name %></td>
-                <% if menu_permit.create_permit==true  %>
-                  <td><input disabled="" checked="checked" type="checkbox"></input></td>
-                <% else %>
-                  <td><input disabled="" type="checkbox"></input></td>
-                <% end %>
-                <% if menu_permit.view_permit==true  %>
-                  <td><input disabled="" checked="checked" type="checkbox"></input></td>
-                <% else %>
-                  <td><input disabled="" type="checkbox"></input></td>
-                <% end %>
-                <% if menu_permit.edit_permit==true  %>
-                  <td><input disabled="" checked="checked" type="checkbox"></input></td>
-                <% else %>
-                  <td><input disabled="" type="checkbox"></input></td>
-                <% end %>
-                <% if menu_permit.delete_permit==true  %>
-                  <td><input disabled="" checked="checked" type="checkbox"></input></td>
-                <% else %>
-                  <td><input disabled="" type="checkbox"></input></td>
-                <% end %>
+                <td>
+                  <input disabled="" type="checkbox" <%= menu_permit.create_permit ? "checked" : "" %> />
+                </td>
+                <td>
+                  <input disabled="" type="checkbox" <%= menu_permit.view_permit ? "checked" : "" %> />
+                </td>
+                <td>
+                  <input disabled="" type="checkbox" <%= menu_permit.edit_permit ? "checked" : "" %> />
+                </td>
+                <td>
+                  <input disabled="" type="checkbox" <%= menu_permit.delete_permit ? "checked" : "" %> />
+                </td>
               </tr>
             <% end %>
           </tbody>

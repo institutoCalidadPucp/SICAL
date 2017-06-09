@@ -1,0 +1,11 @@
+$(function(){
+  var $roleLock = $('.role-lock');
+
+  <% if @role.status=="active" %>
+    console.log('Active');
+    $roleLock.removeClass('fa-lock').addClass('fa-unlock');
+  <% else %>
+    console.log('Inactive');
+    $roleLock.removeClass('fa-unlock').addClass('fa-lock');
+  <% end %>
+});
