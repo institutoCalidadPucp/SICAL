@@ -1,0 +1,11 @@
+$(function () {
+  var $laboratoryLock = $('.laboratory-lock');
+
+  <% if @laboratory.status == "active" %>
+    console.log('Active');
+    $laboratoryLock.removeClass('fa-lock').addClass('fa-unlock');
+  <% else %>
+    console.log('Lock');
+    $laboratoryLock.removeClass('fa-unlock').addClass('fa-lock');
+  <% end %>
+});
