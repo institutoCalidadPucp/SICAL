@@ -3,9 +3,11 @@ $(function () {
 
   <% if @laboratory.status == "active" %>
     console.log('Active');
-    $laboratoryLock.removeClass('fa-lock').addClass('fa-unlock');
+    $laboratoryLock.removeClass('fa-unlock');
+    $laboratoryLock.addClass('fa-lock');
   <% else %>
     console.log('Lock');
-    $laboratoryLock.removeClass('fa-unlock').addClass('fa-lock');
+    $laboratoryLock.removeClass('fa-lock');
+    $laboratoryLock.addClass('fa-unlock');
   <% end %>
 });
