@@ -8,27 +8,29 @@
     $fields.each(function(index,elem){
       var $this = $(elem);
       $this.on('keypress',onlyNumbers);
-    })
-  })
+    });
 
-  $(".removeBtn").click(function(){
-    $(this).parent('button').next('div').andSelf().remove();
-  });
+    // var $accordions = $(".accordion");
+    // $accordions.each(function(accordion) {
+    //   var $accordion = $(accordion);
+    //   $accordion.accordion({});
+    // })
+    // $accordions.each(function(accordion) {
+    //   var $accordion = $(accordion);
+    //   $accordion.toggleClass('active');
 
-  $(function(){
-    var $accordions = $(".accordion");
-    $accordions.each(function (accordion) {
-      var $accordion = $(accordion);
-      this.classList.toggle("active");
-      var panel = this.nextElementSibling;
-      if (panel.style.display === "block") {
-          panel.style.display = "none";
-      } else {
-          panel.style.display = "block";
-      }
-    })
+    //   var $panel = $accordion.next();
+    //   if ($panel.css('display') == 'block' ){
+    //     $panel.css('display','none');
+    //   } else {
+    //     $panel.css('display','block');
+    //   }
+    // });
+
+    $(".removeBtn").click(function(){
+      $(this).parent('button').next('div').andSelf().remove();
+    });
   })
-  
 
 })();
 

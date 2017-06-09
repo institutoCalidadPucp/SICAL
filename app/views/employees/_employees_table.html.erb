@@ -21,7 +21,11 @@
             <i class="fa fa-pencil" aria-hidden="true"></i>
           <% end %>
           <%= link_to employee_path(employee),class: "btn btn-warning btn-sm", method: :delete do %>
-            <i class="fa fa-trash" aria-hidden="true"></i>
+            <% if employee.status == "active" %>
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            <% else %>
+              <i class="fa fa-unlock" aria-hidden="true"></i>
+            <% end %>
           <% end %>
           </td>
         </tr>
