@@ -1,17 +1,17 @@
 (function() {
-  $(function() {
-  });
-})();
-function openData(evt, tabName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(tabName).style.display = "block";
-      evt.currentTarget.className += " active";
+  function onlyNumbers(event){
+    return (event.charCode >= 48 && event.charCode <=57) || event.charCode==0;
   }
+
+  $(function() {
+    var $fields = $('.only-numbers');
+    $fields.each(function(index,elem){
+      var $this = $(elem);
+      $this.on('keypress',onlyNumbers);
+    })
+  })
+})();
+
+
+
+

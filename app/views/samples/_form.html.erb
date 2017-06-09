@@ -17,7 +17,7 @@
   <div class="col-md-4">
       <div class="col-md-10">
           <label class="select-float-label">RUC</label>
-          <input id="txtRuc" name="txtRuc" type="text" class="form-control required" maxlength="80" required>
+          <input id="txtRuc" name="txtRuc" type="text" class="form-control required only-numbers"  maxlength="11" >
       </div>
   </div>
   <div class="col-md-2">
@@ -53,7 +53,7 @@
 </div>
 <div class="form-group row">
   <div class="col-md-6">
-    <button class="accordion">Muestra: Agua <i class="fa fa-trash pull-right" aria-hidden="true"></i></button>
+    <button class="accordion">Muestra: Agua <i class="fa fa-trash pull-right removeBtn" aria-hidden="true"></i></button>
     <div class="panel">
       <div class="form-group row">
         <div class="col-md-6">
@@ -277,14 +277,19 @@
   var i;
 
   for (i = 0; i < acc.length; i++) {
-      acc[i].onclick = function(){
-          this.classList.toggle("active");
-          var panel = this.nextElementSibling;
-          if (panel.style.display === "block") {
-              panel.style.display = "none";
-          } else {
-              panel.style.display = "block";
-          }
-      }
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    }
   }
+
+  $(".removeBtn").click(function(){
+      $(this).parent('button').next('div').andSelf().remove();
+    });
+  
 </script>
