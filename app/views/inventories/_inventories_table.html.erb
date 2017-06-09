@@ -6,8 +6,6 @@
         <th>Nombre</th>
         <th>Marca</th>
         <th>Modelo</th>
-        <th>Cantidad</th>
-        <th>Unidad</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -18,8 +16,6 @@
               <td><%= item.name %></td>
               <td><%= item.brand %></td>
               <td><%= item.product_model %></td>
-              <td><%= item.amount %></td>
-              <td><%= item.amount_unit %></td>
               <td>
                 <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, inventory_path(item), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>
                 <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_inventory_path(item), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
