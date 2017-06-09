@@ -11,22 +11,21 @@
         </tr>
       </thead>
       <tbody>
-        <%# requests.each do |request| %>
-          <!-- <tr>
-            <td><%#= request.code %></td>
-            <td><%#= request.laboratory %></td>
-            <td><%#= request.shipping_date %></td>
-            <td><%#= request.estate %></td>
+        <% requests.each do |request| %>
+            <td><%= request.code %></td>
+            <td><%= request.laboratory %></td>
+            <td><%= request.shipping_date %></td>
+            <td><%= request.status %></td>
             <td>
-              <%#= link_to edit_request_path(request), class: "btn btn-simple btn-warning btn-icon edit" do %>
+              <%= link_to edit_request_path(request), class: "btn btn-simple btn-warning btn-icon edit" do %>
                 <i class="ti-pencil-alt"></i>
-              <%# end %>
-              <%#= link_to employee_path(request), class: "btn btn-simple btn-danger btn-icon remove", method: :delete do %>
+              <% end %>
+              <%= link_to request_path(request), class: "btn btn-simple btn-danger btn-icon remove", method: :delete do %>
                 <i class="ti-close"></i>
-              <%# end %>
+              <% end %>
             </td>
-          </tr> -->
-        <%# end %>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
