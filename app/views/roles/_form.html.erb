@@ -7,22 +7,21 @@
   <div class="form-group row">
     <%= f.label :Nombre, class: "col-md-3 col-fom-label" %>
     <div class="col-md-9">
-      <%= f.text_field :name, class: "form-control", required:"required" %>
+      <%= f.text_field :name, class: "form-control",maxLength:"30", required:"required" %>
     </div>
   </div>
   <div class="form-group row">
     <%= f.label :Descripción, class: "col-md-3 col-fom-label" %>
     <div class="col-md-9">
-      <%= f.text_area :description, class: "form-control", required:"required" %>
+      <%= f.text_area :description, class: "form-control",maxLength:"100", required:"required" %>
     </div>
   </div>
   <div class="form-group row">
     <%= f.label :Permisos, class: "col-md-3 col-fom-label" %>
-    <div class="col-md-9" >
-      <p><%= f.link_to_add "Agregar un menú", :menu_permits, :data => { :target => "#table-permits" }, class: "btn btn-primary sical-btn-add-menu" %></p>
+    <div class="col-md-9 text-right" >
+      <p><%= f.link_to_add "Agregar permiso", :menu_permits, :data => { :target => "#permits-table" }, class: "btn btn-primary sical-btn-add-menu " %></p>
     </div>
   </div>
-
   <div class="col-md-9 offset-md-3">
     <table class="table table-no-bordered table-hover">
       <thead>
@@ -33,7 +32,7 @@
         <th>Eliminar</th>
         <th></th>
       </thead>
-      <tbody id="table-permits">
+      <tbody id="permits-table">
         <%= f.fields_for :menu_permits, :wrapper => false do |mp_form| %>
           <tr>
             <td><%= mp_form.select :name, @menus, {}%></td>
@@ -52,5 +51,5 @@
       <%= link_to "Cancelar", roles_path, class: "btn btn-primary sical-btn-cancel" %>
       <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
     </div>
-  </div>  
+  </div>
 <% end %>
