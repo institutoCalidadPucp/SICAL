@@ -48,10 +48,12 @@
     <div class="col-md-3 col-fom-label">
       <%= f.label :fecha_nacimiento %>
     </div>
-    <div class="input-group date col-md-9">
-      <%= f.text_field :date_of_birth, class: "form-control sical-datepicker", required: "required", date: true %>
-      <div class="input-group-addon">
-        <i class="fa fa-calendar"></i>
+    <div class="date col-md-9">
+      <div class="input-group  sical-input-group">
+        <%= f.text_field :date_of_birth, class: "form-control sical-datepicker", required: "required", date: true, birth: true %>
+        <div class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </div>
       </div>
     </div>
   </div>

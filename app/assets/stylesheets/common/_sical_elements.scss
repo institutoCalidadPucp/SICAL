@@ -1,14 +1,3 @@
-// Sical Cancel Form Button
-// Sical Add Menu Form Button
-
-.sical-btn-cancel,
-.sical-btn-add-menu {
-  padding: 9px 16px;
-  font-weight: bold;
-  font-family: sans-serif;
-  margin-right: 20px;
-}
-
 // Sical SideBar
 
 .sical-sidebar {
@@ -68,4 +57,23 @@
 
 .sical-form-buttons {
   margin: 30px 0;
+}
+
+// Sical Cancel Form Button
+// Sical Add Menu Form Button
+
+.sical-btn-cancel,
+.sical-btn-add-menu {
+  padding: 9px 16px;
+  font-weight: bold;
+  font-family: sans-serif;
+  margin-right: 20px;
+}
+
+// Sical Input Group
+
+.form-group {
+  .sical-input-group {
+    margin-bottom: 0;
+  }
 }
