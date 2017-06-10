@@ -1,0 +1,11 @@
+$(function () {
+  var $clientLock = $('.client-lock');
+
+  <% if @client.status == "active" %>
+    $clientLock.removeClass('fa-unlock');
+    $clientLock.addClass('fa-lock');
+  <% else %>
+    $clientLock.removeClass('fa-lock');
+    $clientLock.addClass('fa-unlock');
+  <% end %>
+});
