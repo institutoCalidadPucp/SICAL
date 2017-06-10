@@ -4,5 +4,5 @@ class SampleMethod < ApplicationRecord
 
   # Relations
   belongs_to :laboratory  
-  enum accreditation: [:accredited, :non_accredited]  
+  enum accreditation: [:Acreditado, :No_acreditado]  
 end

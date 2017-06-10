@@ -14,13 +14,13 @@
   <div class="form-group row">
     <%= f.label :descripcion, class: "col-md-3 col-form-label" %>
     <div class="col-md-9">
-      <%= f.text_field :description, class: "form-control",maxlength:"30" %>
+      <%= f.text_area :description, class: "form-control description",maxlength:"200",height:"100px" %>
   </div>
   </div>
   <div class="form-group row">
     <%= f.label :costo_unitario	, class: "col-md-3 col-form-label" %>
     <div class="col-md-9">
-      <%= f.text_field :unit_cost, class: "form-control only-numbers", unit_cost: true ,required:"required"%>
+      <%= f.text_field :unit_cost, class: "form-control only-money-value", unit_cost: true ,required:"required"%>
     </div>
   </div>
   <div class="form-group row">
@@ -38,7 +38,7 @@
           class="form-check-input"
           data-toggle="radio"
           name="sample_method[accreditation]"
-          value="accredited"
+          value="Acreditado"
           <%#= sample_method.accreditation == "accredited" ? "checked" : "" %>
         >
         Acreditado
@@ -53,7 +53,7 @@
           class="form-check-input"
           data-toggle="radio"
           name="sample_method[accreditation]"
-          value="non_accredited"
+          value="No_acreditado"
           <%#= sample_method.accreditation == "non_accredited" ? "checked" : "" %>
         >
         No acreditado
