@@ -2,11 +2,9 @@ $(function () {
   var $laboratoryLock = $('.laboratory-lock');
 
   <% if @laboratory.status == "active" %>
-    console.log('Active');
     $laboratoryLock.removeClass('fa-unlock');
     $laboratoryLock.addClass('fa-lock');
   <% else %>
-    console.log('Lock');
     $laboratoryLock.removeClass('fa-lock');
     $laboratoryLock.addClass('fa-unlock');
   <% end %>
