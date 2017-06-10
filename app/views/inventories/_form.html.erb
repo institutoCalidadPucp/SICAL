@@ -1,0 +1,64 @@
+<%= form_for @inventory, url: path, method: method, :html => { class: "form-horizontal validate sical-form sical-form-validated" } do |f| %>
+  <% if @inventory.errors.any? %>
+    <% @inventory.errors.full_messages.each do |m| %>
+      <p><%= m %></p>
+    <% end %>
+  <% end %>
+  <div class="form-group row">
+      <%= f.label :Código, class: "col-md-3 col-fom-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :code, class: "form-control", maxlength:"10", required:"required" %>
+    </div>
+  </div>
+  <div class="form-group row">
+      <%= f.label :Nombre, class: "col-md-3 col-fom-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :name, class: "form-control", maxlength:"30", required:"required" %>
+    </div>
+  </div>
+  <div class="form-group row">
+      <%= f.label :Marca, class: "col-md-3 col-fom-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :brand, class: "form-control", maxlength:"20", required:"required" %>
+    </div>
+  </div>
+  <div class="form-group row">
+      <%= f.label :Modelo, class: "col-md-3 col-fom-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :product_model, class: "form-control ", maxlength:"10", required:"required" %>
+    </div>
+  </div>
+  <div class="form-group row">
+      <%= f.label :Cantidad, class: "col-md-3 col-fom-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :amount, class: "form-control only-numbers", maxlength:"10", required:"required" %>
+    </div>
+  </div>
+  <div class="form-group row">
+      <%= f.label :Unidad, class: "col-md-3 col-fom-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :amount_unit, class: "form-control ", maxlength:"20", required:"required" %>
+    </div>
+  </div>
+  <div class="form-group row">
+      <%= f.label :Descripción, class: "col-md-3 col-fom-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :description, class: "form-control ", maxlength:"120" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :Fecha_de_ingreso, class: "col-md-3 col-fom-label" %>
+    <div class="input-group date col-md-9">
+      <%= f.text_field :date_of_entry, class: "form-control sical-datepicker", required:"required" %>
+      <div class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+      </div>
+    </div>
+  </div>
+  <div class="form-group ">
+    <div class="text-center">
+      <%= link_to "Cancelar", inventories_path, class: "btn btn-primary sical-btn-cancel" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+    </div>
+  </div>
+<% end %>
