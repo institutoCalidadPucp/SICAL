@@ -1,4 +1,4 @@
-<%= form_for employee, url: path, method: method, :html => { class: "form-horizontal validate sical-form", id: "employee-form" } do |f| %>
+<%= form_for employee, url: path, method: method, :html => { class: "form-horizontal validate sical-form sical-form-validated", id: "employee-form" } do |f| %>
   <% if @employee.errors.any? %>
     <% @employee.errors.full_messages.each do |m| %>
       <p><%= m %></p>
@@ -41,7 +41,7 @@
       <%= f.label :telefono %>
     </div>
     <div class="col-md-9">
-      <%= f.text_field :phone, class: "form-control", minLength: "9", required: "required" %>
+      <%= f.text_field :phone, class: "form-control only-numbers", minLength: "9", required: "required" %>
     </div>
   </div>
   <div class="form-group row">
@@ -49,7 +49,7 @@
       <%= f.label :fecha_nacimiento %>
     </div>
     <div class="input-group date col-md-9">
-      <%= f.text_field :date_of_birth, class: "form-control sical-datepicker", required: "required" %>
+      <%= f.text_field :date_of_birth, class: "form-control sical-datepicker", required: "required", date: true %>
       <div class="input-group-addon">
         <i class="fa fa-calendar"></i>
       </div>
@@ -60,36 +60,23 @@
       <%= f.label :genero %>
     </div>
     <div class="col-md-9">
-      <label class="radio form-check-label sical-radio-button">
-        <span class="icons">
-          <span class="first-icon fa fa-circle-o"></span>
-          <span class="second-icon fa fa-dot-circle-o"></span>
-        </span>
-        <input
-          type="radio"
-          class="form-check-input"
-          data-toggle="radio"
-          name="user[gender]"
-          value="male"
-          <%= employee.gender == "male" ? "checked" : "" %>
-        >
-        Male
-      </label>
-      <label class="radio form-check-label sical-radio-button">
-        <span class="icons">
-          <span class="first-icon fa fa-circle-o"></span>
-          <span class="second-icon fa fa-dot-circle-o"></span>
-        </span>
-        <input
-          type="radio"
-          class="form-check-input"
-          data-toggle="radio"
-          name="user[gender]"
-          value="female"
-          <%= employee.gender == "female" ? "checked" : "" %>
-        >
-        Female
-      </label>
+      <% User.genders.keys.each do |gender|  %>
+        <label class="radio form-check-label sical-radio-button">
+          <span class="icons">
+            <span class="first-icon fa fa-circle-o"></span>
+            <span class="second-icon fa fa-dot-circle-o"></span>
+          </span>
+          <input
+            type="radio"
+            class="form-check-input"
+            data-toggle="radio"
+            name="user[gender]"
+            value=<%= gender %>
+            <%= employee.gender == gender ? "checked" : "" %>
+          >
+          <%= gender.capitalize %>
+        </label>
+      <% end %>
     </div>
   </div>
   <div class="form-group row">
