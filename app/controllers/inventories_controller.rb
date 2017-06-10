@@ -28,7 +28,7 @@ class InventoriesController < ApplicationController
   def update
     @inventory.assign_attributes inventory_params
     if @inventory.save
-      redirect to inventories_path
+      redirect_to inventories_path
     else 
       render :edit
     end
