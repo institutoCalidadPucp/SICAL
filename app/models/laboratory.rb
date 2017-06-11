@@ -8,6 +8,7 @@ class Laboratory < ApplicationRecord
   
   has_many :sample_methods
   has_many :requests
+  has_many  :inventories, dependent: :destroy
 
   enum status: [:active, :inactive]
 end
