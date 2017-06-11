@@ -109,7 +109,6 @@
 
     $onlyNumbersFields.each(function(index,elem) {
       var $this = $(elem);
-
       $this.on('keydown', onlyNumbers);
     }) 
 

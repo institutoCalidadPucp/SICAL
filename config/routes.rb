@@ -47,4 +47,6 @@ Rails.application.routes.draw do
   end
   resources :service_quotations do
   end
+  resources :services do
+  end
 end

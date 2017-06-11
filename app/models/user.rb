@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :role, required: false
-
+  has_many :services
   enum category: [:employee, :client]
   enum gender: [:male, :female]
   enum status: [:active, :inactive]
