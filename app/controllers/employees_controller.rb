@@ -2,9 +2,10 @@ class EmployeesController < ApplicationController
 
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   before_action :roles, only: [:new, :create, :update, :edit]
+  before_action :laboratories, only: [:new, :create, :update, :edit]
 
   def index
-    @employees = User.all.employee
+    @employees = User.own_per_user(current_user).employee
   end
 
   def show
@@ -43,7 +44,7 @@ class EmployeesController < ApplicationController
   private
 
     def employee_params
-      params.require(:user).permit(:phone, :email, :address, :name, :last_name, :date_of_birth, :gender, :role_id, :job_position)
+      params.require(:user).permit(:phone, :email, :address, :name, :last_name, :date_of_birth, :gender, :role_id, :job_position, :laboratory_id)
     end   
 
     def set_employee
@@ -52,6 +53,10 @@ class EmployeesController < ApplicationController
 
     def roles
       @roles = Role.all
+    end
+
+    def laboratories
+      @laboratories = Laboratory.all
     end
 end 
 
