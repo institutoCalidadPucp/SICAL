@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :role, required: false
+  belongs_to :laboratory, required: false
+  #  class_name: "User"
 
   enum category: [:employee, :client]
   enum gender: [:male, :female]
@@ -42,6 +44,11 @@ class User < ApplicationRecord
     else
       MenuPermit.order(:order)
     end
+  end
+
+  def laboratory_id
+    @laboratory=self.laboratory_id
+
   end
 
   def self.find_for_database_authentication(warden_conditions)

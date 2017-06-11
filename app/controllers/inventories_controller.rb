@@ -1,6 +1,7 @@
 class InventoriesController < ApplicationController
 
   before_action :set_inventory, only: [:show, :edit, :update, :destroy, :toggle_status]
+  before_action :set_laboratory, only: [:new, :create]
 
   def index
     @inventories = Inventory.all
@@ -15,6 +16,7 @@ class InventoriesController < ApplicationController
 
   def create
     @inventory = Inventory.new inventory_params
+    @laboratory.inventories << @inventory
     if @inventory.save
       redirect_to inventories_path
     else 
@@ -52,5 +54,8 @@ class InventoriesController < ApplicationController
     end  
     def set_inventory
       @inventory = Inventory.find(params[:id])
+    end
+    def set_laboratory
+      @laboratory = Laboratory.find_by_id(current_user.laboratory)
     end
 end
