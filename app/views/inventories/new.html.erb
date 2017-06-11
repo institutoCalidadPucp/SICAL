@@ -1,32 +1,8 @@
-<%= form_for @inventory, url: inventories_path, method: :post, html: {class: "nifty_form"} do |f| %>
-  <div>
-<%= f.label :Codigo %>
-<%= f.text_field :code %>
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Inventario <small>Nuevo</small></h1>
+    </div>
+    <%= render 'form', inventory: @inventory, method: :post, path: inventories_path %>
+  </div>
 </div>
-<div>
-<%= f.label :Nombre %>
-<%= f.text_field :name %>
-</div>
-<div>
-<%= f.label :Marca %>
-<%= f.text_field :name %>
-</div>
-<div>
-<%= f.label :Modelo %>
-<%= f.text_field :product_model %>
-</div>
-
-<div>
-<%= f.label :Vida_util %>
-<%= f.text_field :float %>
-</div>
-<div>
-<%= f.label :Descripcion %>
-<%= f.text_field :description %>
-</div>
-<div>
-<%= f.label :Fecha_de_Ingreso %>
-<%= f.text_field :date_of_entry %>
-</div>
-  <%= f.submit "Create" %>
-<% end %>

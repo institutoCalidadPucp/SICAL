@@ -1,37 +1,37 @@
-<%= form_for @laboratory, url: path, method: method, :html => { class: "form-horizontal validate sical-form sical-form-validated" } do |f| %>
+<%= form_for laboratory, url: path, method: method, :html => { class: "form-horizontal validate sical-form sical-form-validated" } do |f| %>
   <% if @laboratory.errors.any?%>
     <% @laboratory.errors.full_messages.each do |m| %>
       <p><%= m %></p>
     <% end %>
   <% end %>
   <div class="form-group row">
-    <%= f.label :nombre, class: "col-md-3 col-form-label" %>
-    <div class="col-md-9">
-      <%= f.text_field :name, class: "form-control", required:"required" %>
+    <%= f.label :Nombre, class: "col-md-3 col-form-label" %>
+    <div class="col-md-9 input-wrapper">
+      <%= f.text_field :name, class: "form-control", required:"required" , maxlength:"80" %>
     </div>
   </div>
   <div class="form-group row">
-    <%= f.label :email  , class: "col-md-3 col-form-label" %>
-    <div class="col-sm-9">
-      <%= f.text_field :email, class: "form-control ", required:"required" %>
+    <%= f.label :Correo  , class: "col-md-3 col-form-label" %>
+    <div class="col-md-9 input-wrapper">
+      <%= f.text_field :email, class: "form-control ", required:"required" ,maxlength:"60", email: true %>
     </div>
   </div>
   <div class="form-group row">
-    <%= f.label :direccion, class: "col-md-3 col-form-label" %>
-    <div class="col-sm-9">
-      <%= f.text_field :address, class: "form-control ", required:"required" %>
+    <%= f.label :Dirección, class: "col-md-3 col-form-label" %>
+    <div class="col-md-9 input-wrapper">
+      <%= f.text_field :address, class: "form-control ", required:"required" , maxlength:"60" %>
     </div>
   </div>
   <div class="form-group row">
-    <%= f.label :telefono, class: "col-md-3 col-form-label" %>
-    <div class="col-sm-9">
-      <%= f.text_field :phone, class: "form-control", maxlength:"9",required:"required" %>
+    <%= f.label :Teléfono, class: "col-md-3 col-form-label" %>
+    <div class="col-md-9 input-wrapper">
+      <%= f.text_field :phone, class: "form-control only-numbers",maxlength:"9",required:"required" %>
     </div>
   </div>
   <div class="form-group row">
-    <%= f.label :descripcion, class: "col-md-3 col-form-label" %>
-    <div class="col-sm-9">
-      <%= f.text_field :description, class: "form-control", required:"required" %>
+    <%= f.label :Descripción, class: "col-md-3 col-form-label" %>
+    <div class="col-md-9 input-wrapper">
+      <%= f.text_field :description, class: "form-control", maxlength:"90", required:"required" %>
     </div>
   </div>
   <div class="sical-form-buttons">

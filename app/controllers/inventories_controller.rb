@@ -18,7 +18,7 @@ class InventoriesController < ApplicationController
     if @inventory.save
       redirect_to inventories_path
     else 
-      render new
+      render :new
     end  
   end
 
@@ -30,8 +30,13 @@ class InventoriesController < ApplicationController
     if @inventory.save
       redirect to inventories_path
     else 
-      render: edit
+      render :edit
     end
+  end
+
+  def destroy
+    @inventory.destroy
+    redirect_to inventories_path
   end
 
   def toggle_status
@@ -43,7 +48,7 @@ class InventoriesController < ApplicationController
 
   private
     def inventory_params
-      params.require(:inventory).permit(:code, :name, :brand, :product_model, :float, :description, :date_of_entry)
+      params.require(:inventory).permit(:code, :name, :brand, :product_model, :amount, :amount_unit, :description, :date_of_entry)
     end  
     def set_inventory
       @inventory = Inventory.find params[:id]

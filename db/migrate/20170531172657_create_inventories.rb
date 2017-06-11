@@ -6,7 +6,8 @@ class CreateInventories < ActiveRecord::Migration[5.1]
       t.string  :brand
       t.string  :product_model
       t.integer :status
-      t.float   :float
+      t.float   :amount
+      t.string  :amount_unit
       t.text :description
       t.date :date_of_entry
       t.timestamps

@@ -1,18 +1,328 @@
-<p>Click on the buttons inside the tabbed menu:</p>
 
-<div class="tab">
-  <button class="tablinks" onclick="openData(event, 'Cliente')">Cliente</button>
-  <button class="tablinks" onclick="openData(event, 'MuestrasGeneral')">MuestrasGeneral</button>
+<div class="form-group row">
+  <div class="col-md-12">
+      <div class="border-bottom col-md-12">
+          <h4><strong><i class="fa fa-user" aria-hidden="true"></i> Cliente</strong></h4>
+      </div>
+  </div>
 </div>
 
-<%= nested_form_for @sample, url: path, method: method do |sample| %>
-  <div id="Cliente" class="tabcontent">
-    <h3>Cliente</h3>
-    <%= render 'client', form: sample %>
+<div class="form-group row">
+  <div class="col-md-6">
+      <div class="col-md-10">
+          <label class="select-float-label">Razón Social</label>
+          <input id="txtRazonSocial" name="txtRazonSocial" type="text" class="form-control required" maxlength="80" required>
+      </div>
   </div>
+  <div class="col-md-4">
+      <div class="col-md-10">
+          <label class="select-float-label">RUC</label>
+          <input id="txtRuc" name="txtRuc" type="text" class="form-control required only-numbers required" maxlength="11" required>
+      </div>
+  </div>
+  <div class="col-md-2">
+    <labexl class="label-control">Fecha </label>
+    <div class="input-group date" data-provide="datepicker">
+      <input class="form-control" type="text">
+      <div style="" class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <div id="MuestrasGeneral" class="tabcontent">
-    <h3>Informacion General</h3>
-    <%= render 'client', form: sample %>
+<div class="form-group row">
+  <div class="col-md-12">
+      <div class="border-bottom col-md-12">
+          <h4><strong><i class="fa fa-file-text-o" aria-hidden="true"></i> Cadena de Custodia</strong></h4>
+      </div>
   </div>
-<% end %>
+</div>
+<div class="form-group row">
+  <div class="col-md-6">
+      <div class="col-md-10">
+          <label class="select-float-label">Muestra</label>
+          <input id="txtMuestra" name="txtMuestra" type="text" class="form-control required" maxlength="80" required>
+      </div>
+  </div>
+  <div class="col-md-2">
+      <div class="col-md-10">
+          <button  class="btn btn-primary">Agregar</button>
+      </div>
+  </div>
+</div>
+<div class="form-group row">
+  <div class="col-md-6">
+    <button class="accordion">Muestra: Agua <i class="fa fa-trash pull-right removeBtn" aria-hidden="true"></i></button>
+    <div class="panel">
+      <div class="form-group row">
+        <div class="col-md-6">
+            <div class="col-md-10">
+                <label class="select-float-label">Procedencia</label>
+                <input id="txtMuestra" name="txtMuestra" type="text" class="form-control required" maxlength="80" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-10">
+              <label class="select-float-label">Identificación de la Muestra</label>
+              <input id="txtMuestra" name="txtMuestra" type="text" class="form-control required" maxlength="80" required>
+            </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-6">
+            <div class="col-md-10">
+                <label class="select-float-label">Muestrado por</label>
+                <select class="form-control"><option>Selecciona una opcion</option> </select>
+                
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-10">
+              <label class="select-float-label">Recibido por</label>
+              <select class="form-control"> <option>Selecciona una opcion</option></select>
+             
+            </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-12">
+          <div class="border-bottom col-md-12">
+              <h4><strong><i class="fa fa-eye" aria-hidden="true"></i> Información Preliminar</strong></h4>
+          </div>
+        </div>
+        <div class="col-md-6 row">
+            <div class="col-md-8">
+                <label class="select-float-label">Tipo de Muestra</label>
+                <select class="form-control"><option>Selecciona una opcion</option> </select>
+            </div>
+            <div class="col-md-4">
+              <label class="checkbox text-center">
+                  <span class="icons">
+                    <span class="first-icon fa fa-square"></span>
+                    <span class="second-icon fa fa-check-square "></span>
+                  </span>
+                  <input data-toggle="checkbox" value="" type="checkbox">
+                  Otros
+              </label>
+            </div>
+        </div>
+        <div class="col-md-6 row">
+            <div class="col-md-6">
+              <label class="select-float-label">Valor</label>
+              <input id="txtMuestra" name="txtMuestra" type="text" class="form-control required" maxlength="80" required>
+            </div>
+            <div class="col-md-6">
+              <label class="checkbox text-center">
+                  <span class="icons">
+                    <span class="first-icon fa fa-square"></span>
+                    <span class="second-icon fa fa-check-square "></span>
+                  </span>
+                  <input data-toggle="checkbox" value="" type="checkbox">
+                  Observaciones
+                </label>
+            </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-12">
+          <div class="border-bottom col-md-12">
+              <h4><strong><i class="fa fa-bar-chart" aria-hidden="true"></i> Información del Ensayo</strong></h4>
+          </div>
+        </div>
+        <div class="col-md-6 row">
+            <div class="col-md-8">
+                <label class="select-float-label">Categoría</label>
+                <select class="form-control"><option>Selecciona una opcion</option> </select>
+            </div>
+            <div class="col-md-2">
+              <label class="checkbox text-center">
+                  <span class="icons">
+                    <span class="first-icon fa fa-square"></span>
+                    <span class="second-icon fa fa-check-square "></span>
+                  </span>
+                  <input data-toggle="checkbox" value="" type="checkbox">
+                  Otros
+                </label>
+            </div>
+        </div>
+        <div class="col-md-6 row">
+            <div class="col-md-6">
+              <label class="select-float-label">Valor</label>
+              <input id="txtMuestra" name="txtMuestra" type="text" class="form-control required" maxlength="80" required>
+            </div>
+            <div class="col-md-6">
+              <label class="checkbox text-center">
+                  <span class="icons">
+                    <span class="first-icon fa fa-square"></span>
+                    <span class="second-icon fa fa-check-square "></span>
+                  </span>
+                  <input data-toggle="checkbox" value="" type="checkbox">
+                  Observaciones
+                </label>
+            </div>
+        </div>
+        <div class="col-md-4">
+          <label class="checkbox text-center">
+              <span class="icons">
+                <span class="first-icon fa fa-square"></span>
+                <span class="second-icon fa fa-check-square "></span>
+              </span>
+              <input data-toggle="checkbox" value="" type="checkbox">
+              Sub Categoría
+            </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <button class="accordion primary">Muestra: Hierro <i class="fa fa-trash pull-right" aria-hidden="true"></i></button>
+    <div class="panel">
+      <div class="form-group row">
+        <div class="col-md-6">
+            <div class="col-md-10">
+                <label class="select-float-label">Procedencia</label>
+                <input id="txtMuestra" name="txtMuestra" type="text" class="form-control required" maxlength="80" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-10">
+              <label class="select-float-label">Identificación de la Muestra</label>
+              <input id="txtMuestra" name="txtMuestra" type="text" class="form-control required" maxlength="80" required>
+            </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-6">
+            <div class="col-md-10">
+                <label class="select-float-label">Muestrado por</label>
+                <select class="form-control"><option>Selecciona una opcion</option> </select>
+                
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-10">
+              <label class="select-float-label">Recibido por</label>
+              <select class="form-control"> <option>Selecciona una opcion</option></select>
+             
+            </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-12">
+          <div class="border-bottom col-md-12">
+              <h4><strong><i class="fa fa-eye" aria-hidden="true"></i> Información Preliminar</strong></h4>
+          </div>
+        </div>
+        <div class="col-md-6 row">
+            <div class="col-md-8">
+                <label class="select-float-label">Tipo de Muestra</label>
+                <select class="form-control"><option>Selecciona una opcion</option> </select>
+            </div>
+            <div class="col-md-4">
+              <label class="checkbox text-center">
+                  <span class="icons">
+                    <span class="first-icon fa fa-square"></span>
+                    <span class="second-icon fa fa-check-square "></span>
+                  </span>
+                  <input data-toggle="checkbox" value="" type="checkbox">
+                  Otros
+                </label>
+            </div>
+        </div>
+        <div class="col-md-6 row">
+            <div class="col-md-6">
+              <label class="select-float-label">Valor</label>
+              <input id="txtMuestra" name="txtMuestra" type="text" class="form-control required" maxlength="80" required>
+            </div>
+            <div class="col-md-6">
+              <label class="checkbox text-center">
+                  <span class="icons">
+                    <span class="first-icon fa fa-square"></span>
+                    <span class="second-icon fa fa-check-square "></span>
+                  </span>
+                  <input data-toggle="checkbox" value="" type="checkbox">
+                  Observaciones
+                </label>
+            </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-12">
+          <div class=" border-bottom col-md-12">
+              <h4><strong><i class="fa fa-bar-chart" aria-hidden="true"></i> Información del Ensayo</strong></h4>
+          </div>
+        </div>
+        <div class="col-md-6 row">
+            <div class="col-md-8">
+                <label class="select-float-label">Categoría</label>
+                <select class="form-control"><option>Selecciona una opcion</option> </select>
+            </div>
+            <div class="col-md-2">
+              <label class="checkbox text-center">
+                  <span class="icons">
+                    <span class="first-icon fa fa-square"></span>
+                    <span class="second-icon fa fa-check-square "></span>
+                  </span>
+                  <input data-toggle="checkbox" value="" type="checkbox">
+                  Otros
+                </label>
+            </div>
+        </div>
+        <div class="col-md-6 row">
+            <div class="col-md-6">
+              <label class="select-float-label">Valor</label>
+              <input id="txtMuestra" name="txtMuestra" type="text" class="form-control required" maxlength="80" required>
+            </div>
+            <div class="col-md-6">
+              <label class="checkbox text-center">
+                  <span class="icons">
+                    <span class="first-icon fa fa-square"></span>
+                    <span class="second-icon fa fa-check-square "></span>
+                  </span>
+                  <input data-toggle="checkbox" value="" type="checkbox">
+                  Observaciones
+                </label>
+            </div>
+        </div>
+        <div class="col-md-4">
+          <label class="checkbox text-center">
+              <span class="icons">
+                <span class="first-icon fa fa-square"></span>
+                <span class="second-icon fa fa-check-square "></span>
+              </span>
+              <input data-toggle="checkbox" value="" type="checkbox">
+              Sub Categoría
+            </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="sical-form-buttons">
+  <div class="text-center">
+    <%= link_to "Cancelar", samples_path, class: "btn btn-primary sical-btn-cancel" %>
+    <button  class="btn btn-fill btn-default">Guardar</button>
+  </div>
+</div>  
+
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+  for (i = 0; i < acc.length; i++) {
+      acc[i].onclick = function(){
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+              panel.style.display = "none";
+          } else {
+              panel.style.display = "block";
+          }
+      }
+  }
+</script>
