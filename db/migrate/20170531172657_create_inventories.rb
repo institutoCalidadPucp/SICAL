@@ -10,6 +10,7 @@ class CreateInventories < ActiveRecord::Migration[5.1]
       t.string  :amount_unit
       t.text :description
       t.date :date_of_entry
+      t.belongs_to :laboratory
       t.timestamps
     end
   end
