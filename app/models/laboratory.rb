@@ -8,6 +8,7 @@ class Laboratory < ApplicationRecord
   
   has_many :sample_methods
   has_many :requests
+  has_many :services
 
   enum status: [:active, :inactive]
 end
