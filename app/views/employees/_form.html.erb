@@ -41,7 +41,7 @@
       <%= f.label :telefono %>
     </div>
     <div class="col-md-9 input-wrapper">
-      <%= f.text_field :phone, class: "form-control only-numbers", maxLength: "9", required: "required" %>
+      <%= f.text_field :phone, class: "form-control only-numbers", minLength: "9", maxLength: "9", required: "required" %>
     </div>
   </div>
   <div class="form-group row">
