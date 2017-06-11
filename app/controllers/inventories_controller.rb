@@ -15,7 +15,7 @@ class InventoriesController < ApplicationController
 
   def create
     @inventory = Inventory.new inventory_params
-    if @inventory.save and @inventory.set_laboratory(current_user)
+    if @inventory.set_laboratory(current_user) and @inventory.save
       redirect_to inventories_path
     else 
       render :new

@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
   before_action :laboratories, only: [:new, :create, :update, :edit]
 
   def index
-    @employees = User.all.employee
+    @employees = User.own_per_user(current_user).employee
   end
 
   def show
