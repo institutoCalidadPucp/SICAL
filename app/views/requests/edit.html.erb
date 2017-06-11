@@ -1,0 +1,16 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header card-header-text">
+            <h1 class="page-header">Servicios <small>Edicion</small></h1>
+          </div>
+          <div class="content">
+            <%= render 'form', requests: @requests, method: :put, path: request_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
