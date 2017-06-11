@@ -19,11 +19,11 @@
             <%= link_to edit_role_path(role), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" do%>
               <i class="fa fa-pencil" aria-hidden="true"></i>
             <% end %>
-            <%= link_to toggle_status_role_path(role),class: "btn btn-danger btn-sm", data: { "toggle" => "tooltip" }, title: "Activar/Desactivar", method: :put, remote: true do %>
+            <%= link_to toggle_status_role_path(role), id: "role-lock-#{role.id}", class: "btn btn-danger btn-sm", data: { "toggle" => "tooltip" }, title: "Activar/Desactivar", method: :put, remote: true do %>
               <% if role.status=="active" %>
-                <i class="fa fa-unlock role-lock" aria-hidden="true"></i>
+                <i class="fa fa-unlock" aria-hidden="true"></i>
               <% else %>
-                <i class="fa fa-lock role-lock" aria-hidden="true"></i>
+                <i class="fa fa-lock" aria-hidden="true"></i>
               <% end %>
             <% end %>
           </td>
