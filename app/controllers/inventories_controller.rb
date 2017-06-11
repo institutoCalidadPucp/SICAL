@@ -28,7 +28,7 @@ class InventoriesController < ApplicationController
   def update
     @inventory.assign_attributes inventory_params
     if @inventory.save
-      redirect to inventories_path
+      redirect_to inventories_path
     else 
       render :edit
     end
@@ -51,6 +51,6 @@ class InventoriesController < ApplicationController
       params.require(:inventory).permit(:code, :name, :brand, :product_model, :amount, :amount_unit, :description, :date_of_entry)
     end  
     def set_inventory
-      @inventory = Inventory.find params[:id]
+      @inventory = Inventory.find(params[:id])
     end
 end
