@@ -1,0 +1,30 @@
+<%= nested_form_for @service, url: services_path, method: :post do |f| %>
+
+  <%= f.label :Laboratorio %>
+  <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {} %>
+  
+  <%= f.label :Asunto %>
+  <%= f.text_field :subject %>
+
+  <%= f.label :Fecha_aproximada_de_recojo %>
+  <%= f.text_field :pick_up_date %>
+
+  <%= f.link_to_add "Agregar muestra" , :sample_preliminaries%>
+
+  <%= f.fields_for :sample_preliminaries do |sp_form| %>
+
+    <%= sp_form.label :Nombre %>
+    <%= sp_form.text_field :name %>
+
+    <%= sp_form.label :Cantidad %>
+    <%= sp_form.text_field :quantity %>
+
+    <%= sp_form.label :Descripcion %>
+    <%= sp_form.text_field :description %>
+
+    <%= sp_form.link_to_remove "Borrar" %>
+
+  <% end %>
+
+  <%= f.submit "Guardar" %>
+<% end %>
