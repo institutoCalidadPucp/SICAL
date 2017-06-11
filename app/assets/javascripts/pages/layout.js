@@ -109,7 +109,7 @@
 
     $onlyNumbersFields.each(function(index,elem) {
       var $this = $(elem);
-      $this.on('keypress', onlyNumbers);
+      $this.on('keydown', onlyNumbers);
     }) 
 
     $loader.addClass('hidden');
