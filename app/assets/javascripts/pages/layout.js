@@ -30,6 +30,7 @@
 
     datepicker.datepicker({
       startDate: startDate,
+      format: 'dd/mm/yyyy',
     });
 
     datepicker.attr(dataName, true);
@@ -45,11 +46,7 @@
       errorPlacement: function(error, element) {
         var $element = $(element);
 
-        if ($element.hasClass('sical-datepicker')) {
-          $element.parent().parent().append(error);
-        } else {
-          $element.parent().append(error);
-        }
+        $element.closest('.input-wrapper').append(error);
       }
     });
     // form.attr(dataName, true);
