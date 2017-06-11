@@ -2,16 +2,16 @@
   <table id="roles-table" class="table table-hover sical-data-table sical-data-table" data-placeholder="Buscar Rol">
     <thead>
       <tr>
-        <th>Código</th>
         <th>Nombre</th>
+        <th>Descripción</th>
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
       <% roles.each do |role| %>
         <tr>
-          <td><%= role.id %></td>
           <td><%= role.name %></td>
+          <td><%= role.description %></td>
           <td>
             <%= link_to role_path(role), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" do %>
               <i class="fa fa-eye" aria-hidden="true"></i>
