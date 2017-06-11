@@ -5,8 +5,11 @@ class Role < ApplicationRecord
 
   has_many  :menu_permits, dependent: :destroy
   has_many  :users, dependent: :destroy
-  
+  belongs_to :laboratory, required: false
+
   accepts_nested_attributes_for :menu_permits, allow_destroy: true
+
+  scope :own_per_user, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
   enum status: [:active, :inactive]
 
