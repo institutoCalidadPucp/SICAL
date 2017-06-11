@@ -1,3 +1,12 @@
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Solicitud de Servicio <small>Nuevo</small></h1>
+    </div>
+    <%= render 'form_client', service: @service, method: :post, path: services_path %>
+  </div>
+</div>
+
 
 
 <!--Cliente/Secretaria crear nueva solicitud-->
@@ -29,7 +38,7 @@
 
   <% end %>
 
-  <%= f.link_to_add "Agregar muestra" , :sample_processeds%>
+  <%= f.link_to_add "Agregar SubMuestra" , :sample_processeds%>
 
   <%= f.fields_for :sample_processeds do |spro_form| %>
 
@@ -47,7 +56,7 @@
 
     <%= spro_form.link_to_remove "Borrar" %>
 
-    <%= spro_form.link_to_add "Agregar caracteristida" , :sample_features%>
+    <%= spro_form.link_to_add "Agregar Caracteristica" , :sample_features%>
 
     <%= spro_form.fields_for :sample_features do |feature_form| %>
 
