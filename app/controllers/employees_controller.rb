@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
 
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :set_employee, only: [:show, :edit, :update, :toggle_status, :destroy]
   before_action :roles, only: [:new, :create, :update, :edit]
   before_action :laboratories, only: [:new, :create, :update, :edit]
 
@@ -33,6 +33,13 @@ class EmployeesController < ApplicationController
       redirect_to employees_path    
     else
       render :edit         
+    end
+  end
+
+  def toggle_status
+    @employee.change_status
+    respond_to do |format|
+      format.js
     end
   end
 
