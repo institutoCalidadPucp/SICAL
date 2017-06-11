@@ -37,11 +37,6 @@
   }
 
   function addFormValidation(form, dataName) {
-    // var $temp = form.find(':input');
-    // var $inputs = $temp.slice(2, $temp.length - 1);
-
-    // console.log($inputs);
-    // console.log($(form).attr('prefix'));
     form.validate({
       errorPlacement: function(error, element) {
         var $element = $(element);
