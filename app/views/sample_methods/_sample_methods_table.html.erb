@@ -1,25 +1,29 @@
-<div class="content">
-  <div class="material-datatables">
-    <table class="table table-no-bordered table-hover sical-data-table" data-placeholder="Buscar Metodos">
-      <thead>
+<div class="material-datatables">
+  <table id="method-table" class="table table-no-bordered table-hover sical-data-table" data-placeholder="Buscar Métodos">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Costo Unitario</th>
+        <th>Acreditación</th>
+        <th>Laboratorio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% samples.each do |sample| %>
         <tr>
-          <th>Código</th>
-          <th>Identificación de la Muestra</th>
-          <th>Acciones</th>
+          <td><%= sample.name %></td>
+          <td><%= sample.description %></td>
+          <td><%= sample.unit_cost %></td>
+          <td><%= sample.accreditation %></td>
+          <td><%= sample.laboratory.name %></td>
+          <td>
+            <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, sample_method_path(sample), class: "btn btn-info btn-sm",title: "Ver", method: :get%>
+            <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_sample_method_path(sample), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>4</td>
-          <td>A52</td>
-          <td><i class="fa fa-eye " aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>A50</td>
-          <td><i class="fa fa-eye " aria-hidden="true"></i></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      <% end %>
+     </tbody>
+  </table>
 </div>
