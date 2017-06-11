@@ -20,4 +20,5 @@
 //= require urbanui/vendor/jquery.dataTables.min.js
 //= require urbanui/inspire.js
 //= require_tree ./urbanui
+//= require_tree ./common
 //= require_tree ./pages

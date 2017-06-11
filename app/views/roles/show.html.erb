@@ -1,1 +1,59 @@
-@role.name
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Roles <small>Ver</small></h1>
+    </div>
+    <div class="form-horizontal validate sical-form sical-form-validated">
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3 col-fom-label">Nombre :</label>
+        <div class="col-md-9">
+          <%= @role.name %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3">Descripción :</label>
+        <div class="col-md-9">
+          <%= @role.description %>
+        </div>
+      </div>
+      <div class="form-group ">
+        <label class="col-md-3 col-fom-label">Permisos :</label>
+      </div>
+      <div class="col-md-9 offset-md-3">
+        <table class="table table-no-bordered table-hover">
+          <thead>
+            <th>Menú</th>
+            <th>Crear</th>
+            <th>Ver</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </thead>
+          <tbody>
+            <% @role.menu_permits.each do |menu_permit| %>
+              <tr>
+                <td><%= menu_permit.name %></td>
+                <td>
+                  <input disabled="" type="checkbox" <%= menu_permit.create_permit ? "checked" : "" %> />
+                </td>
+                <td>
+                  <input disabled="" type="checkbox" <%= menu_permit.view_permit ? "checked" : "" %> />
+                </td>
+                <td>
+                  <input disabled="" type="checkbox" <%= menu_permit.edit_permit ? "checked" : "" %> />
+                </td>
+                <td>
+                  <input disabled="" type="checkbox" <%= menu_permit.delete_permit ? "checked" : "" %> />
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>  
+      </div>
+      <div class="form-group">
+        <div class="text-center">
+          <%= link_to "Cancelar", roles_path, class: "btn btn-primary sical-btn-cancel" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
