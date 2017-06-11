@@ -15,7 +15,7 @@ class SampleMethodsController < ApplicationController
 
   def create
     @sample_method = SampleMethod.new sample_method_params
-    if @sample_method.save and @sample_method.set_laboratory(current_user)
+    if @sample_method.set_laboratory(current_user) and @sample_method.save
       redirect_to sample_methods_path
     else
       render :new

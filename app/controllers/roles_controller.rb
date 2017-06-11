@@ -1,7 +1,7 @@
 class RolesController < ApplicationController
 
   before_action :set_role, only: [:edit, :update, :destroy, :toggle_status, :show]
-  before_action :menus, only: [:new, :edit]
+  before_action :menus, only: [:new, :edit, :create]
 
   def index
     @roles = Role.own_per_user(current_user)
@@ -16,7 +16,7 @@ class RolesController < ApplicationController
 
   def create
     @role = Role.new role_params
-    if (@role.set_tab_reference).save and @role.set_laboratory(current_user)
+    if @role.set_laboratory(current_user) and (@role.set_tab_reference).save
       redirect_to roles_path
     else 
       render :new
@@ -30,7 +30,7 @@ class RolesController < ApplicationController
     begin
       @role.destroy
       @role = Role.new role_params
-      if (@role.set_tab_reference).save and @role.set_laboratory(current_user)
+      if @role.set_laboratory(current_user) and (@role.set_tab_reference).save
         redirect_to roles_path, notice: 'Rol fue editado exitosamente'
       else 
         render :edit
