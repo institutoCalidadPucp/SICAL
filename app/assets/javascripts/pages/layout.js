@@ -44,7 +44,7 @@
         $element.closest('.input-wrapper').append(error);
       }
     });
-    // form.attr(dataName, true);
+    form.attr(dataName, true);
   }
 
   function onlyNumbers(e) {
