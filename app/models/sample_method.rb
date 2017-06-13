@@ -3,6 +3,7 @@ class SampleMethod < ApplicationRecord
 	validates :description, presence: true
   validates :unit_cost, numericality: { :greater_than_or_equal_to => 0 }
 
+  has_many :sample_processeds
   belongs_to :laboratory  
 
   scope :own_per_user, -> (current_user) {where(laboratory_id: current_user.laboratory)}

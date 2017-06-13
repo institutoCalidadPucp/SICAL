@@ -1,6 +1,9 @@
 class QuotationsController < ApplicationController
 	
-  before_action :set_service, only: [:edit, :update, :destroy, :show]
+  before_action :set_service, only: [:new, :edit, :update, :destroy, :show]
+  before_action :set_sample_methods, only: [:edit, :update]
+  before_action :set_laboratories, only: [:edit, :new]
+
 
   def index
     @quotations = Service.prepared
@@ -39,5 +42,13 @@ class QuotationsController < ApplicationController
 
   def set_service
     @service = Service.find params[:id]
+  end
+
+  def set_sample_methods
+    @sample_methods = SampleMethod.all
+  end
+
+  def set_laboratories
+    @laboratories = Laboratory.all
   end
 end
