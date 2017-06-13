@@ -15,7 +15,7 @@ class ServicesController < ApplicationController
 
   private
     def service_params
-      params.require(:service).permit(:subject, :pick_up_date)
+      params.require(:service).permit(:subject, :pick_up_date, sample_preliminaries_attributes: [:name, :quantity, :description,:add_subSample,:delete_sample])
     end
 
 end
