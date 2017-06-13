@@ -1,5 +1,8 @@
 class Service < ApplicationRecord
 
+  #validates :subject, presence: true
+  #validates :pick_up_date, presence: true
+
   belongs_to :user, required: false
   belongs_to :laboratory, required: false
 
