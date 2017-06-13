@@ -1,11 +1,14 @@
-<%= nested_form_for @service, url: services_path, method: :post do |f| %>
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Solicitud de Servicio <small>Nuevo</small></h1>
+    </div>
+    <%= render 'form_client', service: @service, method: :post, path: services_path %>
+  </div>
+</div>
 
-  <%= f.label :Laboratorio %>
-  <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {} %>
-  
-  <%= f.label :Asunto %>
-  <%= f.text_field :subject %>
 
+<<<<<<< HEAD
   <%= f.label :Fecha_aproximada_de_recojo %>
   <%= f.text_field :pick_up_date %>
 
@@ -57,3 +60,5 @@
   <%= f.submit "Guardar" %>
 
 <% end %>
+=======
+>>>>>>> e8e8b6d8e1866284d355f44c3d7d860721b1fe3c
