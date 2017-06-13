@@ -4,6 +4,8 @@ class ServicesController < ApplicationController
 
   def index
     @services = Service.all
+    @attended = Service.all
+    @unattended = Service.all
   end
 
   def create

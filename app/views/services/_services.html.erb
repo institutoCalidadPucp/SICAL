@@ -1,0 +1,34 @@
+<div class="title"><%= title %></div>
+<hr>
+<div class='mailbox-messages flex-1'>
+  <div class="scroll">
+    <table>
+      <% if services.empty?%>
+        <div class="mailbox-unread-messages">
+          You have no unread messages.
+        </div>
+      <% else %>
+        <% services.each do |current_service| %>
+          <tr class='message-row' >
+            <td class="time">
+              <%= current_service.created_at.strftime('%I:%M %p')[0...-1] %><br>
+              <%= current_service.created_at.strftime('%^b %d') %>
+            </td>
+            <td>
+              <%= link_to edit_service_path(current_service) do %>
+                <%= current_service.subject %><br>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+    <%#= link_to , id: 'more-messages', class: 'flex-container' do %>
+      <span class='mailbox'></span><span class='text flex-1'>View All Messages</span><span class='next'></span>
+    <%# end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+//$(document).ready(scroll('y'));
+</script>
