@@ -19,19 +19,45 @@
     <%= f.text_field :topic ,class: "form-control", required:"required"%>
     </div>
   </div> 
+  <div class="form-group row">
+    <%= f.label :Muestras, class: "col-md-3 col-fom-label" %>
+    <div class="col-md-9" >
+      <p><%= f.link_to_add "Agregar muestra", :request_service_descriptions, :data => { :target => "#table-services" }, class: "btn btn-primary sical-btn-add-menu" %></p>
+    </div>
+  </div>  
 
-   <%= f.fields_for :request_service_descriptions do |service_form| %>
-      <%= service_form.label :sample_name %>
-      <%= service_form.text_field :sample_name %>
+
+  <div class="col-md-9 offset-md-3">
+    <table class="table table-no-bordered table-hover">
+      <thead>
+        <th>Nombre muestra</th>
+        <th>Cantidad</th>
+        <th>Description</th>
+        <th></th>
+      </thead> 
+      <tbody id="table-services">
+        <%= f.fields_for :request_service_descriptions, :wrapper => false do |service_form| %>
+          <tr>  
+            <%#= service_form.label :sample_name %>
+            <td><%= service_form.text_field :sample_name %></td>
         
-      <%= service_form.label :amount %>
-      <%= service_form.text_field :amount %>
+            <%#= service_form.label :amount %>
+            <td><%= service_form.text_field :amount, :size=>"3", maxLength: "4", numericality: { only_integer: true }%></td>
 
-      <%= service_form.label :description %>         
-      <%= service_form.text_field :description %>         
-      
-      <%= service_form.link_to_remove "Remove" %>
-  <% end %>
-  <p><%= f.link_to_add "Add", :request_service_descriptions %></p>
-
+            <%#= service_form.label :description %>         
+            <td><%= service_form.text_area :description, :rows => 2, :cols => 40, :maxlength => 80, class: "request-description" %></td>
+              
+            <td><%= service_form.link_to_remove "Borrar" %></td>
+          </tr>  
+        <% end %>
+      </tbody>
+    </table> 
+  </div>      
+  <!--p><%#= f.link_to_add "Add", :request_service_descriptions %></p-->
+  <div class="form-group">
+    <div class="text-center">
+      <%= link_to "Cancelar", roles_path, class: "btn btn-primary sical-btn-cancel" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+    </div>
+  </div>   
 <% end %>
