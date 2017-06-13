@@ -1,5 +1,7 @@
 class SampleProcessed < ApplicationRecord
 
+
+
   belongs_to :service, required: false
   has_many :sample_features
 
