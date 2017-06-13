@@ -1,0 +1,7 @@
+<div class="row content">
+  <div id="unread-card" class="card">
+    <%= render 'services', services: @unattended, title: "Servicios sin atender" %>
+  </div>
+  <div id="read-card" class="card">
+    <%= render 'services', services: @attended, title: "Servicios atendidos" %>
+  </div>

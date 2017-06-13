@@ -1,0 +1,105 @@
+// Place all the styles related to the services controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.content{
+}
+
+.card{
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  margin: 5px;
+  padding: 10px;
+  .card-title{
+    .btn{
+      width: inherit;
+      margin: 6px 3px;
+    }
+  }
+}
+
+#unread-card{
+  overflow: hidden;
+  .title, hr{
+    flex: none;
+    -webkit-flex: none;
+  }
+}
+
+#read-card{
+  flex: 1;
+  -webkit-flex: 1;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  overflow: hidden;
+  .title, hr{
+    flex: none;
+    -webkit-flex: none;
+  }
+  .mailbox-messages{
+    flex: 1;
+    -webkit-flex: 1;
+  }
+}
+
+.title{
+  font-size: 24px;
+  color: color(client);
+  margin-top: 15px;
+}
+
+.mailbox-messages{
+  margin: -10px;
+  margin-right: -11px;
+  table{
+    width: 100%;
+    tr{
+      td{
+        vertical-align: middle;
+      }
+      &.time-group-tag{
+        background-color: color(disabled_gray);
+        height: 30px;
+        text-transform: uppercase;
+        td{
+          border-right: 1px solid color(gray);
+          padding-left: 8px;
+        }
+      }
+      &.message-row{
+        cursor: pointer;
+        border-bottom: 1px solid color(gray);
+        td{
+          padding: 5px;
+          &.time{
+            width: 65px;
+            text-align: center;
+          }
+          &.read{
+            width: 55px;
+            text-align: center;
+            vertical-align: middle;
+            .read-icon{
+              display: inline-block;
+              height: 13px;
+              width: 15px;
+            }
+            .resolved-icon{
+              display: inline-block;
+              height: 13px;
+              width: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
