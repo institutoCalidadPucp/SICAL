@@ -7,6 +7,5 @@
       <%= render 'quotations', quotations: @funded, title: "Servicios costedos" %>
     </div>
 <% else %>
-  <%= link_to 'Nuevo Servicio', new_quotation_path, class: "btn btn-primary align-right"  %>
   <%= render 'quotations_table', quotations: @quotations %>
 <% end %>
