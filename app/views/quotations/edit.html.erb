@@ -1,0 +1,78 @@
+<%= nested_form_for @service, url: service_path, method: :put do |f| %>
+
+  <%= f.label :Laboratorio %>
+  <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {} %>
+  
+  <%= f.label :Asunto %>
+  <%= f.text_field :subject %>
+
+  <%= f.label :Fecha_aproximada_de_recojo %>
+  <%= f.text_field :pick_up_date %>
+
+  <%= f.link_to_add "Agregar muestra" , :sample_preliminaries%>
+
+  <%= f.fields_for :sample_preliminaries do |spre_form| %>
+
+    <%= spre_form.label :Nombre %>
+    <%= spre_form.text_field :name %>
+
+    <%= spre_form.label :Cantidad %>
+    <%= spre_form.text_field :quantity %>
+
+    <%= spre_form.label :Descripcion %>
+    <%= spre_form.text_field :description %>
+
+    <%= spre_form.link_to_remove "Borrar" %>
+
+  <% end %>
+
+  <%= f.link_to_add "Agregar muestra" , :sample_processeds%>
+
+  <%= f.fields_for :sample_processeds do |spro_form| %>
+
+    <%= spro_form.label :Categoria %>
+    <%= spro_form.text_field :category %>
+
+    <%= spro_form.label :Descripcion %>
+    <%= spro_form.text_field :description %>
+
+    <%= spro_form.label :Codigo_pucp %>
+    <%= spro_form.text_field :pucp_code %>
+
+    <%= spro_form.label :client_code %>
+    <%= spro_form.text_field :client_code %>
+
+    <%= spro_form.label :sample_methods %>
+    <%= spro_form.collection_select :sample_method_id, @sample_methods, :id, :name, {}, class: "form-control", required: "required" %>
+
+    <%= spro_form.label :unit_cost %>
+    <%= spro_form.text_field :unit_cost %>
+
+    <%= spro_form.label :amount %>
+    <%= spro_form.text_field :amount %>
+
+    <%= spro_form.label :discount %>
+    <%= spro_form.text_field :discount %>
+
+    <%= spro_form.label :subtotal_cost %>
+    <%= spro_form.text_field :subtotal_cost %>
+
+    <%= spro_form.link_to_remove "Borrar" %>
+
+    <%= spro_form.link_to_add "Agregar caracteristida" , :sample_features%>
+
+    <%= spro_form.fields_for :sample_features do |feature_form| %>
+
+      <%= feature_form.label :Descripcion %>
+      <%= feature_form.text_field :description %>
+      
+      <%= feature_form.label :Valor %>
+      <%= feature_form.text_field :value %>
+
+    <% end %>
+
+  <% end %>
+
+  <%= f.submit "Guardar" %>
+
+<% end %>

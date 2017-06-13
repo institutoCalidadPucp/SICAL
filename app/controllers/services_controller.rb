@@ -1,16 +1,18 @@
 class ServicesController < ApplicationController
+  
   before_action :set_service, only: [:edit, :update, :destroy, :show]
   before_action :laboratories, only: [:edit, :new]
 
   def index
     @services = Service.all
-    @attended = Service.all
-    @unattended = Service.all
+    @attended = Service.own_per_user(current_user).prepared
+    @unattended = Service.own_per_user(current_user).initialized
   end
 
   def create
     @service = Service.new service_params
     if @service.save
+      @service.set_work_flow(current_user)
       redirect_to services_path
     else
       render :new
@@ -30,6 +32,8 @@ class ServicesController < ApplicationController
   def update
     @service.assign_attributes service_params
     if @service.save
+      #we need a time validation for edit
+      @service.set_work_flow(current_user)
       redirect_to services_path
     else
       render :edit
