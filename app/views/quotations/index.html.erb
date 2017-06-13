@@ -1,0 +1,12 @@
+<% if current_user.employee? %>
+  <div class="row content">
+    <div id="unread-card" class="card">
+      <%= render 'quotations', quotations: @unfunded, title: "Servicios sin costeados" %>
+    </div>
+    <div id="read-card" class="card">
+      <%= render 'quotations', quotations: @funded, title: "Servicios costedos" %>
+    </div>
+<% else %>
+  <%= link_to 'Nuevo Servicio', new_quotation_path, class: "btn btn-primary align-right"  %>
+  <%= render 'quotations_table', quotations: @quotations %>
+<% end %>

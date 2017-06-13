@@ -1,0 +1,16 @@
+<div class="material-datatables">
+  <table id="laboratory-table" class="table table-no-bordered table-hover sical-data-table" data-placeholder="Buscar Laboratorios">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% services.each do |current_service| %>
+        <tr>
+          <td><%= current_service.subject %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

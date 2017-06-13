@@ -1,0 +1,1 @@
+Laboratory.create(name: "Laboratorio Test 1", phone: "993702585", email: "laboratorio@test.com", address: "pucp", description: "test", status: 0)

@@ -9,6 +9,7 @@ module ApplicationHelper
   		if current_user.laboratory.present?
   			current_user.laboratory.send(self.class.name.pluralize.downcase) << self
   		end
+      true
   	rescue Exception => e
   		false
   	end
