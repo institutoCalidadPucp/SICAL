@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170608044138) do
+=======
+ActiveRecord::Schema.define(version: 20170611174551) do
+>>>>>>> 42d4076842d4f6c96c86a4f8d749af880b9c2894
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +107,18 @@ ActiveRecord::Schema.define(version: 20170608044138) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
+=======
+  create_table "sample_features", force: :cascade do |t|
+    t.bigint "sample_processed_id"
+    t.string "description"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_processed_id"], name: "index_sample_features_on_sample_processed_id"
+  end
+
+>>>>>>> 42d4076842d4f6c96c86a4f8d749af880b9c2894
   create_table "sample_methods", force: :cascade do |t|
     t.string "description"
     t.float "unit_cost"
@@ -112,6 +128,30 @@ ActiveRecord::Schema.define(version: 20170608044138) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.index ["laboratory_id"], name: "index_sample_methods_on_laboratory_id"
+<<<<<<< HEAD
+=======
+  end
+
+  create_table "sample_preliminaries", force: :cascade do |t|
+    t.bigint "service_id"
+    t.string "name"
+    t.integer "quantity"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_sample_preliminaries_on_service_id"
+  end
+
+  create_table "sample_processeds", force: :cascade do |t|
+    t.bigint "service_id"
+    t.string "category"
+    t.string "description"
+    t.string "pucp_code"
+    t.string "client_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_sample_processeds_on_service_id"
+>>>>>>> 42d4076842d4f6c96c86a4f8d749af880b9c2894
   end
 
   create_table "samples", force: :cascade do |t|
@@ -119,6 +159,17 @@ ActiveRecord::Schema.define(version: 20170608044138) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.bigint "laboratory_id"
+    t.bigint "user_id"
+    t.string "subject"
+    t.date "pick_up_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["laboratory_id"], name: "index_services_on_laboratory_id"
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

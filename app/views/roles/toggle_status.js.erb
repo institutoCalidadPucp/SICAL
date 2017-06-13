@@ -1,11 +1,8 @@
-$(function(){
-  var $roleLock = $('.role-lock');
+(function() {
+  $(function() {
+    var $currentLock = $('#role-lock-<%= @role.id %>');
+    var status = "<%= @role.status %>";
 
-  <% if @role.status=="active" %>
-    console.log('Active');
-    $roleLock.removeClass('fa-unlock').addClass('fa-lock');
-  <% else %>
-    console.log('Inactive');
-    $roleLock.removeClass('fa-lock').addClass('fa-unlock');
-  <% end %>
-});
+    toggleLockStatus($currentLock, status);
+  });
+})();

@@ -1,11 +1,8 @@
-$(function () {
-  var $laboratoryLock = $('.laboratory-lock');
+(function() {
+  $(function() {
+    var $currentLock = $('#laboratory-lock-<%= @laboratory.id %>');
+    var status = "<%= @laboratory.status %>";
 
-  <% if @laboratory.status == "active" %>
-    $laboratoryLock.removeClass('fa-unlock');
-    $laboratoryLock.addClass('fa-lock');
-  <% else %>
-    $laboratoryLock.removeClass('fa-lock');
-    $laboratoryLock.addClass('fa-unlock');
-  <% end %>
-});
+    toggleLockStatus($currentLock, status);
+  });
+})();
