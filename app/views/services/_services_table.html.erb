@@ -1,16 +1,27 @@
-<div class="material-datatables">
-  <table id="laboratory-table" class="table table-no-bordered table-hover sical-data-table" data-placeholder="Buscar Laboratorios">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% services.each do |current_service| %>
+<div class="content">
+  <div class="material-datatables">
+    <table class="table table-hover sical-data-table sical-data-table" data-placeholder="Buscar Solicitudes">
+      <thead>
         <tr>
-          <td><%= current_service.subject %></td>
+          <th>Asunto</th>
+          <th>Fecha de Recojo</th>
+          <th>Estado</th>
+          <th>Acciones</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% services.each do |service| %>
+          <tr>
+            <td><%= service.subject %></td>
+            <td><%= service.pick_up_date %></td>
+            <td><%= service.status %></td>
+            <td>
+              <%#= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, edit_service_path(service), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
+              <%#= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, service_path(service), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

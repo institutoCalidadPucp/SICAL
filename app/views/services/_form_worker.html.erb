@@ -1,0 +1,30 @@
+<!--Trabajador ve la solicitud con los tabs Servicios/Muestra-->
+
+<%= f.link_to_add "Agregar evaluacion de la muestra" , :sample_processeds%>
+<%= f.fields_for :sample_processeds do |spro_form| %>
+
+  <%= spro_form.label :Categoria %>
+  <%= spro_form.text_field :category %>
+
+  <%= spro_form.label :Descripcion %>
+  <%= spro_form.text_field :description %>
+
+  <%= spro_form.label :Codigo_pucp %>
+  <%= spro_form.text_field :pucp_code %>
+
+  <%= spro_form.label :client_code %>
+  <%= spro_form.text_field :client_code %>
+
+  <%= spro_form.link_to_remove "Borrar" %>
+
+  <%= spro_form.link_to_add "Agregar caracteristida" , :sample_features%>
+
+  <%= spro_form.fields_for :sample_features do |feature_form| %>
+    <%= feature_form.label :Descripcion %>
+    <%= feature_form.text_field :description %>
+    
+    <%= feature_form.label :Valor %>
+    <%= feature_form.text_field :value %>
+  <% end %>
+  
+<% end %>

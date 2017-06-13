@@ -1,0 +1,55 @@
+<div class="form-group row">
+  <%= f.label :Laboratorio, class: "col-md-3 col-fom-label" %>
+   <div class="col-md-9">
+      <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, class: "form-control", required: "required" %>
+  </div>
+</div>
+
+<div class="form-group row">
+  <div class="col-md-3 col-fom-label">
+    <%= f.label :Fecha_Aproximada_de_Recojo  %>
+  </div>
+  <div class="date col-md-9 input-wrapper">
+    <div class="input-group sical-input-group">
+      <%= f.text_field :pick_up_date, value: service.pick_up_date ? service.pick_up_date.strftime("%d/%m/%Y") : '' , class: "form-control sical-datepicker", required: "required", date: true, birth: true %>
+      <div class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group row">
+  <%= f.label :Asunto, class: "col-md-3 col-fom-label" %>
+   <div class="col-md-9">
+      <%= f.text_field :subject,class: "form-control", maxLength:"80", required: "required" %>
+  </div>
+</div>
+
+<div class="form-group row">
+  <%= f.label :Muestras, class: "col-md-3 col-fom-label" %>
+    <div class="col-md-9 text-right" >
+      <p><%= f.link_to_add "Agregar muestra", :sample_preliminaries, :data => { :target => "#sample-table" },class: "btn btn-primary sical-btn-add-menu " %></p>
+    </div>
+</div>
+
+<div class="col-md-9 offset-md-3">
+  <table class="table table-no-bordered table-hover">
+    <thead>
+      <th>Nombre</th>
+      <th>Cantidad</th>
+      <th>Descripcion</th>
+    </thead>
+    <tbody id="sample-table">
+      <%= f.fields_for :sample_preliminaries, :wrapper => false do |spre_form| %>
+        <tr>
+          <td><%= spre_form.text_field :name, class: "form-control", maxLength:"40", required:"required"%></td>
+          <td><%= spre_form.text_field :quantity, class: "form-control only-numbers", maxLength:"5", required:"required" %></td>
+          <td><%= spre_form.text_field :description , class: "form-control", maxLength:"50",required:"required"%></td>
+          <td><%= f.link_to_add "Sub-Muestras" ,:sample_processeds, class: "btn btn-default sical-btn-add-menu "%></td>
+          <td><%= spre_form.link_to_remove "Borrar" , class: "btn btn-default sical-btn-add-menu "%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>  
+</div>
