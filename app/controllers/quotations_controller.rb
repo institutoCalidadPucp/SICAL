@@ -27,7 +27,7 @@ class QuotationsController < ApplicationController
   def update
     @service.assign_attributes quotation_params
     if @service.valid?
-      @service.funded!
+      @service.set_work_flow(current_user, params[:service][:work_flow])
       redirect_to  quotations_path
     else
       render :edit
@@ -44,7 +44,7 @@ class QuotationsController < ApplicationController
   private 
 
     def quotation_params
-      params.require(:service).permit(:laboratory_id, :user_id, :subject, :pick_up_date, sample_preliminaries_attributes: [:name, :quantity, :description], sample_processeds_attributes: [:category, :description, :pucp_code, :client_code, :amount, :unit_cost, :subtotal_cost, :discount,  sample_features_attributes: [:value, :description]])
+      params.require(:service).permit(:laboratory_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: [:id, :name, :quantity, :description], sample_processeds_attributes: [:category, :description, :pucp_code, :client_code, :amount, :unit_cost, :subtotal_cost, :discount,  sample_features_attributes: [:id, :value, :description]])
     end
 
     def set_service

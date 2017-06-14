@@ -12,7 +12,7 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new service_params
     if @service.valid?
-      @service.set_work_flow(current_user)
+      @service.set_work_flow(current_user, params[:work_flow])
       redirect_to services_path
     else
       render :new
@@ -32,7 +32,7 @@ class ServicesController < ApplicationController
   def update
     @service.assign_attributes service_params
     if @service.valid?
-      @service.set_work_flow(current_user)
+      @service.set_work_flow(current_user, params[:service][:work_flow])
       redirect_to services_path
     else
       render :edit

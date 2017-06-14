@@ -1,4 +1,5 @@
 <% if service.funded? and current_user.client? %>
 	<%= f.label :aceptado %>
+	<%= f.radio_button :work_flow, Service.work_flows[:accepted] %>
   <%#= selecioanr la aceptacion%>
 <% end %>
