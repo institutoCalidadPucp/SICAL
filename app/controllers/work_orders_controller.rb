@@ -1,6 +1,7 @@
 class WorkOrdersController < ApplicationController
 	
 	def index
+    @work_orders = Service.work_order_per_user(current_user)
   end
 
   def new
@@ -18,7 +19,8 @@ class WorkOrdersController < ApplicationController
   def update
   end
 
-  def destroy
-  end
-
+  private
+    def set_service
+      @service = Service.find params[:id]
+    end
 end
