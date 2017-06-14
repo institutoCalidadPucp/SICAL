@@ -54,7 +54,7 @@ class RolesController < ApplicationController
 
   private 
     def role_params
-      params.require(:role).permit(:name, :description, menu_permits_attributes: [:name, :create_permit, :view_permit, :edit_permit, :delete_permit])
+      params.require(:role).permit(:name, :description, menu_permits_attributes: [:name, :create_permit, :view_permit, :edit_permit, :delete_permit, :_destroy])
     end
 
     def set_role
