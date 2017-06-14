@@ -1,50 +1,8 @@
-<%#= f.link_to_add "Agregar muestra" , :sample_processeds%>
 <div id="costeo" class="tabcontent">
   <h3>Costeo</h3>
-  <%= f.fields_for :sample_processeds do |spro_form| %>
 
-    MUESTRA
-    <br>
-    <%= spro_form.label :Categoria %>
-    <%= spro_form.text_field :category,readonly: true %>
+  <div class="form-group row">
+    <%= link_to_add_association "Agregar muestra", f, :sample_processeds%>
+  </div>
 
-    <%= spro_form.label :Descripcion %>
-    <%= spro_form.text_field :description,readonly: true %>
-
-    <%= spro_form.label :Codigo_pucp %>
-    <%= spro_form.text_field :pucp_code,readonly: true %>
-
-    <%= spro_form.label :client_code %>
-    <%= spro_form.text_field :client_code,readonly: true %>
-
-    <%= spro_form.label :sample_methods %>
-    <%= spro_form.collection_select :sample_method_id, @sample_methods, :id, :name, {}, readonly: true, class: "sample-methods" %>
-
-    <%= spro_form.label :unit_cost %>
-    <%= spro_form.text_field :unit_cost,readonly: true %>
-
-    <%= spro_form.label :amount %>
-    <%= spro_form.text_field :amount,readonly: true %>
-
-    <%= spro_form.label :discount %>
-    <%= spro_form.text_field :discount %>
-
-    <%= spro_form.label :subtotal_cost %>
-    <%= spro_form.text_field :subtotal_cost, readonly: true %>
-
-    <%#= spro_form.link_to_remove "Borrar" %>
-
-    <%#= spro_form.link_to_add "Agregar caracteristida" , :sample_features%>
-
-    <%= spro_form.fields_for :sample_features do |feature_form| %>
-
-      <%= feature_form.label :Descripcion %>
-      <%= feature_form.text_field :description, readonly: true %>
-      
-      <%= feature_form.label :Valor %>
-      <%= feature_form.text_field :value, readonly: true %>
-
-    <% end %>
-    <br>
-  <% end %>
 </div>

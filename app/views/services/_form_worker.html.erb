@@ -37,7 +37,9 @@
         </div>
     </div>
   <div>
-    <%= link_to_remove_association "Borrar", f, class: "btn btn-default sical-btn-add-menu delete-worker"%>
+    <%= link_to_remove_association f do %>
+      <i class="fa fa-times" aria-hidden="true"></i>
+    <% end %>
   </div>
 
 </div>
