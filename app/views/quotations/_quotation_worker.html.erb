@@ -1,4 +1,4 @@
-<% if service.accepted? %>
+<% if service.accepted? and current_user.employee? %>
 	<%= f.label :trabajador %>
-  <%#= seleccionar el usuario %>
+  <%= f.collection_select :employee_id, @users, :id, :name, {} %>
 <% end %>
