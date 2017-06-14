@@ -4,7 +4,7 @@
     <button class="tablinks" onclick="openSection(event, 'samples')">Muestras</button>
   </div>
 
-  <%= form_for @service, url: service_path, :wrapper => false,  method: :put do |f| %>
+  <%= nested_form_for @service, url: service_path, :wrapper => false,  method: :put do |f| %>
 
 
     <div id="service" class="tabcontent" style="display: block;">
