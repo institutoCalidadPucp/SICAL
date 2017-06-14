@@ -34,13 +34,17 @@
       </thead>
       <tbody id="permits-table">
         <%= f.fields_for :menu_permits, :wrapper => false do |mp_form| %>
-          <tr>
+          <tr class="fields">
             <td><%= mp_form.select :name, @menus, {}%></td>
             <td><%= mp_form.check_box :create_permit %></td>
             <td><%= mp_form.check_box :view_permit %></td>
             <td><%= mp_form.check_box :edit_permit %></td>
             <td><%= mp_form.check_box :delete_permit %></td>
-            <td><%= mp_form.link_to_remove "Borrar" %></td>
+            <td>
+              <%= mp_form.link_to_remove do %>
+                <i class="fa fa-times" aria-hidden="true"></i>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
