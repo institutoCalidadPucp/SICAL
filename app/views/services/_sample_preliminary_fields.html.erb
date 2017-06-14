@@ -6,7 +6,7 @@
         <th>Cantidad</th>
         <th>Descripcion</th>
       </thead>
-      <tbody id="sample-table">
+      <tbody>
         <%= f.fields_for :sample_preliminaries, :wrapper => false do |spre_form| %>
           <tr>
             <td><%= spre_form.text_field :name, class: "form-control", maxLength:"40", required:"required"%></td>
@@ -20,6 +20,6 @@
           </tr>
         <% end %>
       </tbody>
-    </table>  
+    </table>
   </div>
 </div>
