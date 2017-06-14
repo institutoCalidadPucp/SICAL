@@ -4,9 +4,12 @@
       <%= render 'quotations', quotations: @unfunded, title: "Servicios sin costeados" %>
     </div>
 <% end %>
-<div id="read-card" class="card">
-  <%= render 'quotations', quotations: @funded, title: "Servicios costedos" %>
+
+<div class="row">
+  <div id="read-card" class="col-md-6 card">
+    <%= render 'quotations', quotations: @funded, title: "Servicios costeados" %>
+  </div>
+  <div id="read-card" class="col-md-6 card">
+    <%= render 'quotations', quotations: @accepted, title: "Servicios aceptados" %> 
+  </div>
 </div>
-<div id="read-card" class="card">
-  <%= render 'quotations', quotations: @accepted, title: "Servicios aceptados" %>
-</div>    
