@@ -1,1 +1,2 @@
-Laboratory.create(name: "Laboratorio Test 1", phone: "993702585", email: "laboratorio@test.com", address: "pucp", description: "test", status: 0)
+Laboratory.create(name: "Laboratorio de Corrosion", phone: "993702585", email: "corrosion@test.com", address: "pucp", description: "Laboratorio encargado de ....", status: 0)
+Laboratory.create(name: "Laboratorio de Antisismica", phone: "993702585", email: "antisismica@test.com", address: "pucp", description: "Laboratorio encargado de ....", status: 0)
