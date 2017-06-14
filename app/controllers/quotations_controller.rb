@@ -26,7 +26,7 @@ class QuotationsController < ApplicationController
 
   def update
     @service.assign_attributes quotation_params
-    if @service.valid?
+    if @service.save
       @service.set_work_flow(current_user, params[:service][:work_flow])
       redirect_to  quotations_path
     else
