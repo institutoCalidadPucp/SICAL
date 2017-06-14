@@ -1,0 +1,28 @@
+<div class="material-datatables">
+  <table class="table table-hover sical-data-table sical-data-table" data-placeholder="Buscar work_order">
+    <thead>
+      <tr>
+        <th>Asunto</th>
+        <th>Dia de recojo</th>
+        <th>Cantidad de muestras</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% work_orders.each do |work_order| %>
+            <tr>
+              <td><%= work_order.subject %></td>
+              <td><%= work_order.pick_up_date %></td>
+              <td><%= work_order.sample_processeds.count %></td>
+              <td><%= work_order.status %></td>
+              <td>
+                <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, work_order_path(work_order), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>
+                <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_work_order_path(work_order), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
+                <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, work_order_path(work_order),class: "btn btn-warning btn-sm", data: { "toggle" => "tooltip" }, title: "Eliminar", method: :delete %>
+              </td>
+            </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
