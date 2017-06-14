@@ -1,36 +1,27 @@
-<div class="material-datatables">
-  <table class="table table-no-bordered table-hover sical-data-table" data-placeholder="Buscar Cotizaciones">
-    <thead>
-      <tr>
-        <th>Código</th>
-        <th>Código de Solicitud</th>
-        <th>Laboratorio</th>
-        <th>Fecha de Recepción</th>
-        <th>Estado</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>4</td>
-        <td>C36</td>
-        <td>Laboratorio de Antisismica</td>
-        <td>20/06/2017</td>
-        <td>Aprobada</td>
-        <td class="text-center">
-          <span class= "btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></span>
-        </td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>C36</td>
-        <td>Laboratorio de Corrosión</td>
-        <td>20/06/2017</td>
-        <td>Por Revisar</td>
-        <td class="text-center">
-          <span class= "btn btn-danger btn-sm"><i class="fa fa-check" aria-hidden="true"></i></span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="content">
+  <div class="material-datatables">
+    <table class="table table-hover sical-data-table sical-data-table" data-placeholder="Buscar Solicitudes">
+      <thead>
+        <tr>
+          <th>Asunto</th>
+          <th>Fecha de Recojo</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% quotations.each do |quotation| %>
+          <tr>
+            <td><%= quotation.subject %></td>
+            <td><%= quotation.pick_up_date %></td>
+            <td><%= quotation.status %></td>
+            <td>
+              <%#= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, edit_quotation_path(quotation), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
+              <%#= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, quotation_path(quotation), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

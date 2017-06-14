@@ -1,11 +1,16 @@
 class User < ApplicationRecord
   include ApplicationHelper
 
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :role, required: false
+  belongs_to :laboratory, required: false
+  has_many :client_services, class_name: "Service", foreign_key: 'client_id'
+  has_many :employee_services, class_name: "Service", foreign_key: 'employee_id'
+
+
+  scope :own_per_user, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
   enum category: [:employee, :client]
   enum gender: [:male, :female]
@@ -40,7 +45,7 @@ class User < ApplicationRecord
     if self.category?
       self.client? ? MenuPermit.client_tabs : ( self.role.present? ? self.role.menus : [] )
     else
-      MenuPermit.order(:order)
+      MenuPermit.order(:order).where(default: true)
     end
   end
 

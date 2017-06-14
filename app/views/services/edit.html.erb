@@ -1,0 +1,24 @@
+<div class="tab">
+  <button class="tablinks active" onclick="openSection(event, 'Cliente')">Cliente</button>
+  <button class="tablinks" onclick="openSection(event, 'Trabajador')">Trabajador</button>
+</div>
+
+<%= nested_form_for @service, url: service_path, method: :put do |f| %>
+
+
+  <div id="Cliente" class="tabcontent" style="display: block;">
+    <h3>Cliente</h3>
+      <%= render 'form_client', service: @service, f: f %>
+  </div>
+
+  <div id="Trabajador" class="tabcontent">
+    <h3>Trabajador</h3>
+      <% if current_user.employee? %>
+        <%= render 'form_worker', service: @service, f: f %>
+      <% end %>
+
+  </div>
+
+  <%= f.submit "Guardar" %>
+
+<% end %>

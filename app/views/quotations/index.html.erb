@@ -1,20 +1,12 @@
-<section class="quotations-index">
-  <div class="card">
-    <div class="content">
-      <div class="header card-header-text sical-card-header">
-        <h1 class="sical-card-title">
-          Proformas
-        </h1>
-        <div>
-          <%= link_to 'Nueva Proforma', new_quotation_path, class: "btn btn-primary align-right" %>
-        </div>
-      </div>
-      <%#= render 'search', quotations: @quotations %>
-      <div class="quotations-content">
-        <div id="quotations-table">
-          <%= render 'quotations_table', quotations: @quotations %>
-        </div>
-      </div>
+<% if current_user.employee? %>
+  <div class="row content">
+    <div id="unread-card" class="card">
+      <%= render 'quotations', quotations: @unfunded, title: "Servicios sin costeados" %>
     </div>
-  </div>
-</section>
+<% end %>
+<div id="read-card" class="card">
+  <%= render 'quotations', quotations: @funded, title: "Servicios costedos" %>
+</div>
+<div id="read-card" class="card">
+  <%= render 'quotations', quotations: @accepted, title: "Servicios aceptados" %>
+</div>    

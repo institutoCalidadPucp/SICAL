@@ -1,0 +1,31 @@
+<% if current_user.employee? %>
+  <div class="row content">
+    <div id="unread-card" class="card">
+      <%= render 'services', services: @unattended, title: "Servicios sin atender" %>
+    </div>
+    <div id="read-card" class="card">
+      <%= render 'services', services: @attended, title: "Servicios atendidos" %>
+    </div>
+<% else %>
+  <section class="requests-index">
+    <div class="card">
+      <div class="content">
+        <div class="header card-header-text sical-card-header">
+          <h1 class="sical-card-title">
+            Solicitudes de Servicio
+          </h1>
+          <div>
+            <%= link_to 'Nueva Solicitud', new_service_path, class: "btn btn-primary align-right"  %>
+          </div>
+        </div>
+        <div class="sical-content">
+          <div id="service-table">
+          
+            <%= render 'services_table', services: @services %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
