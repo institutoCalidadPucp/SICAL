@@ -1,32 +1,58 @@
-<!--Trabajador ve la solicitud con los tabs Servicios/Muestra-->
-
 <%= f.link_to_add "Agregar evaluacion de la muestra" , :sample_processeds, class: "btn btn-default sical-btn-add-menu"%>
 <%= f.fields_for :sample_processeds do |spro_form| %>
 
-  <%= spro_form.label :Categoria %>
-  <%= spro_form.text_field :category %>
 
-  <%= spro_form.label :Descripcion %>
-  <%= spro_form.text_field :description %>
+  <div class="form-group row">
+    <%= spro_form.label :Codigo_cliente, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= spro_form.text_field :client_code,class: "form-control", maxLength:"8", required: "required" %>
+    </div>
+  </div>
 
-  <%= spro_form.label :Codigo_pucp %>
-  <%= spro_form.text_field :pucp_code %>
+  <div class="form-group row">
+    <%= spro_form.label :Codigo_pucp, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= spro_form.text_field :pucp_code,class: "form-control", maxLength:"8", required: "required" %>
+    </div>
+  </div>
 
-  <%= spro_form.label :client_code %>
-  <%= spro_form.text_field :client_code %>
+  <div class="form-group row">
+    <%= spro_form.label :Categoria, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= spro_form.text_field :category,class: "form-control", maxLength:"30", required: "required" %>
+    </div>
+  </div>
 
-  <%= spro_form.link_to_add "Agregar caracteristida" , :sample_features%>
+  <div class="form-group row">
+    <%= spro_form.label :Descripcion, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= spro_form.text_field :description,class: "form-control", maxLength:"80", required: "required" %>
+    </div>
+  </div>
 
-  <%= spro_form.fields_for :sample_features do |feature_form| %>
-    <%= feature_form.label :Descripcion %>
-    <%= feature_form.text_field :description %>
-    
-    <%= feature_form.label :Valor %>
-    <%= feature_form.text_field :value %>
-    
-    <%= feature_form.link_to_remove "Borrar" , class: "btn btn-default sical-btn-add-menu "%></td>
-  <% end %>
+  <div class="form-group row">
+    <%= spro_form.label :Valores, class: "col-md-3 col-fom-label" %>
+      <div class="col-md-9 text-right" >
+        <p><%= spro_form.link_to_add "Agregar valores", :sample_features, :data => { :target => "#worker-table" },class: "btn btn-primary sical-btn-add-menu " %></p>
+      </div>
+  </div>
 
-   <%= spro_form.link_to_remove "Borrar" , class: "btn btn-default sical-btn-add-menu "%></td>
+  <div class="col-md-9 offset-md-3">
+    <table class="table table-no-bordered table-hover">
+      <thead>
+        <th>Descripcion</th>
+        <th>Valor</th>
+      </thead>
+      <tbody id="worker-table">
+        <%= spro_form.fields_for :sample_features, :wrapper => false do |feature_form| %>
+          <tr class="fields">
+            <td><%= feature_form.text_field :description, class: "form-control", maxLength:"40", required:"required"%></td>
+            <td><%= feature_form.text_field :value, class: "form-control only-numbers", maxLength:"5", required:"required" %></td>
+            <td><%= feature_form.link_to_remove "Borrar" , class: "btn btn-default sical-btn-add-menu "%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>  
+  </div>
 
 <% end %>
