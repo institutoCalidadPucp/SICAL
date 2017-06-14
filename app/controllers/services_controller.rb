@@ -53,7 +53,7 @@ class ServicesController < ApplicationController
 
   private
     def service_params
-      params.require(:service).permit(:laboratory_id, :user_id, :subject, :pick_up_date, sample_preliminaries_attributes: [:name, :quantity, :description], sample_processeds_attributes: [:category, :description, :pucp_code, :client_code, sample_features_attributes: [:value, :description]])
+      params.require(:service).permit(:laboratory_id, :user_id, :subject, :pick_up_date, sample_preliminaries_attributes: [:id, :name, :quantity, :description], sample_processeds_attributes: [:id, :category, :description, :pucp_code, :client_code, sample_features_attributes: [:id, :value, :description]])
     end
 
     def set_service

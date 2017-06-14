@@ -44,7 +44,7 @@ class QuotationsController < ApplicationController
   private 
 
     def quotation_params
-      params.require(:service).permit(:laboratory_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: [:id, :name, :quantity, :description], sample_processeds_attributes: [:category, :description, :pucp_code, :client_code, :amount, :unit_cost, :subtotal_cost, :discount,  sample_features_attributes: [:id, :value, :description]])
+      params.require(:service).permit(:laboratory_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: [:id, :name, :quantity, :description], sample_processeds_attributes: [:id, :category, :description, :pucp_code, :client_code, :amount, :unit_cost, :subtotal_cost, :discount,  sample_features_attributes: [:id, :value, :description]])
     end
 
     def set_service
