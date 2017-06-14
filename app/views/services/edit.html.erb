@@ -1,22 +1,28 @@
 <div class="tab">
-  <button class="tablinks active" onclick="openSection(event, 'Cliente')">Cliente</button>
-  <button class="tablinks" onclick="openSection(event, 'Trabajador')">Trabajador</button>
+  <button class="tablinks active" onclick="openSection(event, 'service')">Servicios</button>
+  <button class="tablinks" onclick="openSection(event, 'samples')">Muestras</button>
 </div>
 
-<%= nested_form_for @service, url: service_path, method: :put do |f| %>
+<%= nested_form_for @service, url: service_path, :wrapper => false,  method: :put do |f| %>
 
 
-  <div id="Cliente" class="tabcontent" style="display: block;">
-    <h3>Cliente</h3>
-      <%= render 'form_client', service: @service, f: f %>
+  <div id="service" class="tabcontent" style="display: block;">
+    <h3>Servicios</h3>
+    <%= render 'form_client', service: @service, f: f %>
   </div>
 
-  <div id="Trabajador" class="tabcontent">
-    <h3>Trabajador</h3>
+  <div id="samples" class="tabcontent">
+    <div class="samples-title-wrapper ">
+      <div class= "samples-title">Muestras</div>
+      <div>
+        <%= f.link_to_add "Agregar evaluacion de la muestra" , :sample_processeds, :data => { target: '#sample-information' }, class: "btn btn-default sical-btn-add-menu"%>
+      </div>
+    </div>
+    <div id="sample-information" class="samples-information">
       <% if current_user.employee? %>
         <%= render 'form_worker', service: @service, f: f %>
       <% end %>
-
+    </div>
   </div>
 
   <%= f.submit "Guardar" %>

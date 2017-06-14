@@ -138,3 +138,29 @@ div.tab button.active {
     border: 1px solid #ccc;
     border-top: none;
 }
+
+.samples-title {
+  font-size: 25.55px;
+  line-height: 1.4;
+  margin: 0px 0 10px;
+}
+
+.samples-title-wrapper {
+  padding-bottom: 40px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sample-fields {
+  position: relative; 
+  padding-top: 30px;
+  padding-bottom: 20px; 
+}
+
+.delete-worker {
+  position: absolute;
+  right: 0;
+  top: -30px;
+}
