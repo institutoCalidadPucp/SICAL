@@ -3,9 +3,10 @@
     <div id="unread-card" class="card">
       <%= render 'quotations', quotations: @unfunded, title: "Servicios sin costeados" %>
     </div>
-    <div id="read-card" class="card">
-      <%= render 'quotations', quotations: @funded, title: "Servicios costedos" %>
-    </div>
-<% else %>
-  <%= render 'quotations_table', quotations: @quotations %>
 <% end %>
+<div id="read-card" class="card">
+  <%= render 'quotations', quotations: @funded, title: "Servicios costedos" %>
+</div>
+<div id="read-card" class="card">
+  <%= render 'quotations', quotations: @accepted, title: "Servicios aceptados" %>
+</div>    
