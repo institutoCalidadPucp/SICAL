@@ -11,8 +11,8 @@ class ServicesController < ApplicationController
 
   def create
     @service = Service.new service_params
-    if @service.save
-      @service.set_work_flow(current_user)
+    if @service.valid?
+      @service.set_work_flow(current_user, params[:work_flow])
       redirect_to services_path
     else
       render :new
@@ -31,9 +31,8 @@ class ServicesController < ApplicationController
 
   def update
     @service.assign_attributes service_params
-    if @service.save
-      #we need a time validation for edit
-      @service.set_work_flow(current_user)
+    if @service.valid?
+      @service.set_work_flow(current_user, params[:service][:work_flow])
       redirect_to services_path
     else
       render :edit
@@ -54,7 +53,7 @@ class ServicesController < ApplicationController
 
   private
     def service_params
-      params.require(:service).permit(:laboratory_id, :user_id, :subject, :pick_up_date, sample_preliminaries_attributes: [:name, :quantity, :description], sample_processeds_attributes: [:category, :description, :pucp_code, :client_code, sample_features_attributes: [:value, :description]])
+      params.require(:service).permit(:laboratory_id, :user_id, :subject, :pick_up_date, sample_preliminaries_attributes: [:id, :name, :quantity, :description], sample_processeds_attributes: [:id, :category, :description, :pucp_code, :client_code, sample_features_attributes: [:id, :value, :description]])
     end
 
     def set_service

@@ -5,35 +5,35 @@
   <div class="form-group row">
     <%= spro_form.label :Codigo_cliente, class: "col-md-3 col-fom-label" %>
      <div class="col-md-9">
-        <%= f.text_field :subject,class: "form-control", maxLength:"8", required: "required" %>
+        <%= spro_form.text_field :client_code,class: "form-control", maxLength:"8", required: "required" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :Codigo_pucp, class: "col-md-3 col-fom-label" %>
+    <%= spro_form.label :Codigo_pucp, class: "col-md-3 col-fom-label" %>
      <div class="col-md-9">
-        <%= f.text_field :subject,class: "form-control", maxLength:"8", required: "required" %>
+        <%= spro_form.text_field :pucp_code,class: "form-control", maxLength:"8", required: "required" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :Categoria, class: "col-md-3 col-fom-label" %>
+    <%= spro_form.label :Categoria, class: "col-md-3 col-fom-label" %>
      <div class="col-md-9">
-        <%= f.text_field :subject,class: "form-control", maxLength:"30", required: "required" %>
+        <%= spro_form.text_field :category,class: "form-control", maxLength:"30", required: "required" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :Descripcion, class: "col-md-3 col-fom-label" %>
+    <%= spro_form.label :Descripcion, class: "col-md-3 col-fom-label" %>
      <div class="col-md-9">
-        <%= f.text_field :subject,class: "form-control", maxLength:"80", required: "required" %>
+        <%= spro_form.text_field :description,class: "form-control", maxLength:"80", required: "required" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :Valores, class: "col-md-3 col-fom-label" %>
+    <%= spro_form.label :Valores, class: "col-md-3 col-fom-label" %>
       <div class="col-md-9 text-right" >
-        <p><%= spro_form.link_to_add "Agregar valores", :sample_features, :data => { :target => "#sample-table" },class: "btn btn-primary sical-btn-add-menu " %></p>
+        <p><%= spro_form.link_to_add "Agregar valores", :sample_features, :data => { :target => "#worker-table" },class: "btn btn-primary sical-btn-add-menu " %></p>
       </div>
   </div>
 
@@ -43,9 +43,9 @@
         <th>Descripcion</th>
         <th>Valor</th>
       </thead>
-      <tbody id="sample-table">
+      <tbody id="worker-table">
         <%= spro_form.fields_for :sample_features, :wrapper => false do |feature_form| %>
-          <tr>
+          <tr class="fields">
             <td><%= feature_form.text_field :description, class: "form-control", maxLength:"40", required:"required"%></td>
             <td><%= feature_form.text_field :value, class: "form-control only-numbers", maxLength:"5", required:"required" %></td>
             <td><%= feature_form.link_to_remove "Borrar" , class: "btn btn-default sical-btn-add-menu "%></td>
