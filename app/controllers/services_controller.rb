@@ -11,7 +11,7 @@ class ServicesController < ApplicationController
 
   def create
     @service = Service.new service_params
-    if @service.save
+    if @service.valid?
       @service.set_work_flow(current_user)
       redirect_to services_path
     else
@@ -31,8 +31,7 @@ class ServicesController < ApplicationController
 
   def update
     @service.assign_attributes service_params
-    if @service.save
-      #we need a time validation for edit
+    if @service.valid?
       @service.set_work_flow(current_user)
       redirect_to services_path
     else
