@@ -9,7 +9,7 @@
       <%= render 'form_client', service: @service, f: f %>
 
       <% if current_user.employee? %>
-      <%= render 'form_worker', service: @service, f: f %>
+        <%= render 'form_worker', service: @service, f: f %>
       <% end %>
 
       <div class="form-group">
@@ -21,3 +21,5 @@
     <% end %>
   </div>
 </div>
+
+
