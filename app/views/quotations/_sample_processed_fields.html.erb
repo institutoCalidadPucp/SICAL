@@ -1,42 +1,83 @@
 <div class="nested-fields">
-    <br>
-    <%= f.label :Categoria %>
-    <%= f.text_field :category,readonly: true %>
+  <div class="form-group row">
+    <%= f.label :Codigo_cliente, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= f.text_field :client_code,class: "form-control", maxLength:"8", required: "required" %>
+    </div>
+  </div>
 
-    <%= f.label :Descripcion %>
-    <%= f.text_field :description,readonly: true %>
+  <div class="form-group row">
+    <%= f.label :Codigo_pucp, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= f.text_field :pucp_code,class: "form-control", maxLength:"8", required: "required" %>
+    </div>
+  </div>
 
-    <%= f.label :Codigo_pucp %>
-    <%= f.text_field :pucp_code,readonly: true %>
+  <div class="form-group row">
+    <%= f.label :Categoria, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= f.text_field :category,class: "form-control", maxLength:"30", required: "required" %>
+    </div>
+  </div>
 
-    <%= f.label :client_code %>
-    <%= f.text_field :client_code,readonly: true %>
+  <div class="form-group row">
+    <%= f.label :Descripcion, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= f.text_field :description,class: "form-control", maxLength:"80", required: "required" %>
+    </div>
+  </div>
 
+  <div class="form-group inline-block     ">
     <%= f.label :sample_methods %>
-    <%= f.collection_select :sample_method_id, @sample_methods, :id, :name, {}, readonly: true, class: "sample-methods" %>
+     <div class="col-md-2">
+        <%= f.collection_select :sample_method_id, @sample_methods, :id, :name, {}, readonly: true, class: "sample-methods" %>
+    </div>
+  </div>
 
+  <div class="form-group inline-block">
     <%= f.label :unit_cost %>
-    <%= f.text_field :unit_cost,readonly: true %>
+     <div class="col-md-2">
+      <%= f.text_field :unit_cost,readonly: true %>
+    </div>
+  </div>
 
+  <div class="form-group inline-block">
     <%= f.label :amount %>
-    <%= f.text_field :amount,readonly: true %>
+    <div class="col-md-2">
+      <%= f.text_field :amount,readonly: true %>
+    </div>
+  </div>
 
+  <div class="form-group inline-block">
     <%= f.label :discount %>
-    <%= f.text_field :discount %>
+    <div class="col-md-2">
+      <%= f.text_field :discount %>
+    </div>
+  </div>
 
+  <div class="form-group inline-block">
     <%= f.label :subtotal_cost %>
-    <%= f.text_field :subtotal_cost, readonly: true %>
+    <div class="col-md-2">
+      <%= f.text_field :subtotal_cost, readonly: true %>
+    </div>
+  </div>
 
     <%= link_to_remove_association f do %>
       <i class="fa fa-times" aria-hidden="true"></i>
     <% end %>
 
-    <%= f.fields_for :sample_features do |s_f| %>
-        <%= render 'sample_feature_fields', f: s_f %>
-    <% end %>
+    <div class="sample-feature-container">
+      <div class="header">
+        <span>Mas Detalles</span>
+      </div>
+      <div class="sample-feature-content">
+        <%= f.fields_for :sample_features do |s_f| %>
+            <%= render 'sample_feature_fields', f: s_f %>
+        <% end %>
+      </div>
+    </div>
 
     <div class="form-group row">
-      <%= link_to_add_association "Agregar caracteristica", f, :sample_features%>
+      <%= link_to_add_association "", f, :sample_features%>
     </div>
-    <br>
 </div>

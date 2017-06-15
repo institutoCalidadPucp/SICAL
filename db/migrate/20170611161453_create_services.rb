@@ -8,6 +8,8 @@ class CreateServices < ActiveRecord::Migration[5.1]
       t.date :pick_up_date
       t.integer :status, default: 0
       t.integer :work_flow, default: 0
+      t.boolean :engagement
+      t.text :engagement_observation
       t.timestamps
     end
   end

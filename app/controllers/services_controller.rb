@@ -12,7 +12,7 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new service_params
     if @service.valid?
-      @service.set_work_flow(current_user, params[:work_flow])
+      @service.set_work_flow(current_user)
       redirect_to services_path
     else
       render :new
@@ -32,7 +32,7 @@ class ServicesController < ApplicationController
   def update
     @service.assign_attributes service_params
     if @service.valid?
-      @service.set_work_flow(current_user, params[:service][:work_flow])
+      @service.set_work_flow(current_user)
       redirect_to services_path
     else
       render :edit
@@ -53,7 +53,19 @@ class ServicesController < ApplicationController
 
   private
     def service_params
-      params.require(:service).permit(:laboratory_id, :user_id, :subject, :pick_up_date, sample_preliminaries_attributes: [:id, :name, :quantity, :description], sample_processeds_attributes: [:id, :category, :description, :pucp_code, :client_code, sample_features_attributes: [:id, :value, :description]])
+      params.require(:service).permit(:laboratory_id, :user_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+    end
+
+    def sample_preliminaries
+      [:id, :name, :quantity, :description]
+    end
+
+    def sample_processeds
+      [:id, :category, :description, :pucp_code, :client_code, sample_features_attributes: sample_features]
+    end
+
+    def sample_features
+      [:id, :value, :description]
     end
 
     def set_service
