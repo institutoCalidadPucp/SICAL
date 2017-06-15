@@ -3,7 +3,7 @@ class Role < ApplicationRecord
   
   validates :name, presence: true
 
-  has_many  :menu_permits, dependent: :destroy
+  has_many  :menu_permits, inverse_of: :role, dependent: :destroy
   has_many  :users, dependent: :destroy
   belongs_to :laboratory, required: false
 

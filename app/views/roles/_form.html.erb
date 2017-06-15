@@ -16,36 +16,14 @@
       <%= f.text_area :description, class: "form-control",maxLength:"100", required:"required" %>
     </div>
   </div>
+
   <div class="form-group row">
     <%= f.label :Permisos, class: "col-md-3 col-fom-label" %>
     <div class="col-md-9 text-right" >
-      <p><%= f.link_to_add "Agregar permiso", :menu_permits, :data => { :target => "#permits-table" }, class: "btn btn-primary sical-btn-add-menu " %></p>
+      <p><%= link_to_add_association "Agregar permiso", f, :menu_permits, class: "btn btn-primary sical-btn-add-menu " %></p>
     </div>
   </div>
-  <div class="col-md-9 offset-md-3">
-    <table class="table table-no-bordered table-hover">
-      <thead>
-        <th>Menú</th>
-        <th>Crear</th>
-        <th>Ver</th>
-        <th>Editar</th>
-        <th>Eliminar</th>
-        <th></th>
-      </thead>
-      <tbody id="permits-table">
-        <%= f.fields_for :menu_permits, :wrapper => false do |mp_form| %>
-          <tr>
-            <td><%= mp_form.select :name, @menus, {}%></td>
-            <td><%= mp_form.check_box :create_permit %></td>
-            <td><%= mp_form.check_box :view_permit %></td>
-            <td><%= mp_form.check_box :edit_permit %></td>
-            <td><%= mp_form.check_box :delete_permit %></td>
-            <td><%= mp_form.link_to_remove "Borrar" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>  
-  </div>
+
   <div class="form-group">
     <div class="text-center">
       <%= link_to "Cancelar", roles_path, class: "btn btn-primary sical-btn-cancel" %>

@@ -1,0 +1,26 @@
+<div class="nested-fields">
+  <div class="col-md-9 offset-md-3">
+    <table class="table table-no-bordered table-hover">
+      <thead>
+        <th>Menú</th>
+        <th>Crear</th>
+        <th>Ver</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+        <th></th>
+      </thead>
+      <tbody id="permits-table">
+        <%= f.fields_for :menu_permits, :wrapper => false do |mp_form| %>
+          <tr>
+            <td><%= mp_form.select :name, @menus, {}%></td>
+            <td><%= mp_form.check_box :create_permit %></td>
+            <td><%= mp_form.check_box :view_permit %></td>
+            <td><%= mp_form.check_box :edit_permit %></td>
+            <td><%= mp_form.check_box :delete_permit %></td>
+            <td><%= link_to_remove_association "Borrar", f %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>  
+  </div>
+</div>
