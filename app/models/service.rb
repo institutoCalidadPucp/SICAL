@@ -18,15 +18,15 @@ class Service < ApplicationRecord
   enum work_flow: [:initialized, :prepared, :funded, :accepted]
   enum status: [:active, :inactive]
 
-  def set_work_flow current_user, work_flow
+  def set_work_flow current_user
   	if current_user.client?
       self.client = current_user
   		self.initialized!
-  	else
+      self.accepted! if self.engagement
+    else
       self.funded! if self.prepared? 
       self.prepared! if self.initialized?
     end
-    (self.accepted! if work_flow.to_i == Service.work_flows[:accepted]) if work_flow.present?
   end
 
   def self.own_per_user current_user

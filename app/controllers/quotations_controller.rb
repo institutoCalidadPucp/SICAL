@@ -27,7 +27,7 @@ class QuotationsController < ApplicationController
   def update
     @service.assign_attributes quotation_params
     if @service.save
-      @service.set_work_flow(current_user, params[:service][:work_flow])
+      @service.set_work_flow(current_user)
       redirect_to  quotations_path
     else
       render :edit
@@ -44,7 +44,19 @@ class QuotationsController < ApplicationController
   private 
 
     def quotation_params
-      params.require(:service).permit(:laboratory_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: [:id, :name, :quantity, :description], sample_processeds_attributes: [:id, :category, :description, :pucp_code, :client_code, :amount, :unit_cost, :subtotal_cost, :discount,  sample_features_attributes: [:id, :value, :description]])
+      params.require(:service).permit(:laboratory_id, :employee_id, :subject, :pick_up_date, :engagement, :engagement_observation, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+    end
+
+    def sample_processeds
+      [:id, :category, :description, :pucp_code, :client_code, :amount, :unit_cost, :subtotal_cost, :discount,  sample_features_attributes: sample_features]
+    end
+
+    def sample_features
+      [:id, :value, :description]
+    end
+
+    def sample_preliminaries
+      [:id, :name, :quantity, :description]
     end
 
     def set_service

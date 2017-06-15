@@ -1,5 +1,52 @@
-<% if service.funded? and current_user.client? %>
-	<%= f.label :aceptado %>
-	<%= f.radio_button :work_flow, Service.work_flows[:accepted] %>
-  <%#= selecioanr la aceptacion%>
-<% end %>
+<div id="terminos-condiciones" class="tabcontent">
+  <% if service.funded? and current_user.client? %>
+    <div class="">
+      <%= f.label :compromiso %>
+    </div>
+    <br>
+    <div class="engagement ">
+      <%= render 'engagement' %>
+    </div>
+    <div class="form-group">
+      <div class="col-md-3 col-fom-label">
+        <%= f.label :validacion %>
+      </div>
+      <div class="col-md-9">
+        <label class="radio form-check-label sical-radio-button">
+          <span class="icons">
+            <span class="first-icon fa fa-circle-o"></span>
+            <span class="second-icon fa fa-dot-circle-o"></span>
+          </span>
+          <input
+            id="accepted"
+            type="radio"
+            class="form-check-input"
+            data-toggle="radio"
+            name="service[engagement]"
+            value="true"
+          >
+          Aceptado
+        </label>
+        <label class="radio form-check-label sical-radio-button">
+          <span class="icons">
+            <span class="first-icon fa fa-circle-o"></span>
+            <span class="second-icon fa fa-dot-circle-o"></span>
+          </span>
+          <input
+            id="rejected"
+            type="radio"
+            class="form-check-input"
+            data-toggle="radio"
+            name="service[engagement]"
+            value="false"
+          >
+          No Aceptado
+        </label>
+      </div>
+    </div>
+    <div class="engagement-observation hide">
+      <%= f.label :observaciones %>
+      <%= f.text_area :engagement_observation %>
+    </div>
+  <% end %>
+</div>

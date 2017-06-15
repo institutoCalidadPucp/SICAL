@@ -1,42 +1,83 @@
 <div class="nested-fields">
-  <%= f.fields_for :sample_processeds do |spro_form| %>
+  <div class="form-group row">
+    <%= f.label :Codigo_cliente, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= f.text_field :client_code,class: "form-control", maxLength:"8", required: "required" %>
+    </div>
+  </div>
 
-    MUESTRA
-    <br>
-    <%= spro_form.label :Categoria %>
-    <%= spro_form.text_field :category,readonly: true %>
+  <div class="form-group row">
+    <%= f.label :Codigo_pucp, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= f.text_field :pucp_code,class: "form-control", maxLength:"8", required: "required" %>
+    </div>
+  </div>
 
-    <%= spro_form.label :Descripcion %>
-    <%= spro_form.text_field :description,readonly: true %>
+  <div class="form-group row">
+    <%= f.label :Categoria, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= f.text_field :category,class: "form-control", maxLength:"30", required: "required" %>
+    </div>
+  </div>
 
-    <%= spro_form.label :Codigo_pucp %>
-    <%= spro_form.text_field :pucp_code,readonly: true %>
+  <div class="form-group row">
+    <%= f.label :Descripcion, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= f.text_field :description,class: "form-control", maxLength:"80", required: "required" %>
+    </div>
+  </div>
 
-    <%= spro_form.label :client_code %>
-    <%= spro_form.text_field :client_code,readonly: true %>
+  <div class="form-group inline-block     ">
+    <%= f.label :sample_methods %>
+     <div class="col-md-2">
+        <%= f.collection_select :sample_method_id, @sample_methods, :id, :name, {}, readonly: true, class: "sample-methods" %>
+    </div>
+  </div>
 
-    <%= spro_form.label :sample_methods %>
-    <%= spro_form.collection_select :sample_method_id, @sample_methods, :id, :name, {}, readonly: true, class: "sample-methods" %>
+  <div class="form-group inline-block">
+    <%= f.label :unit_cost %>
+     <div class="col-md-2">
+      <%= f.text_field :unit_cost,readonly: true %>
+    </div>
+  </div>
 
-    <%= spro_form.label :unit_cost %>
-    <%= spro_form.text_field :unit_cost,readonly: true %>
+  <div class="form-group inline-block">
+    <%= f.label :amount %>
+    <div class="col-md-2">
+      <%= f.text_field :amount,readonly: true %>
+    </div>
+  </div>
 
-    <%= spro_form.label :amount %>
-    <%= spro_form.text_field :amount,readonly: true %>
+  <div class="form-group inline-block">
+    <%= f.label :discount %>
+    <div class="col-md-2">
+      <%= f.text_field :discount %>
+    </div>
+  </div>
 
-    <%= spro_form.label :discount %>
-    <%= spro_form.text_field :discount %>
-
-    <%= spro_form.label :subtotal_cost %>
-    <%= spro_form.text_field :subtotal_cost, readonly: true %>
+  <div class="form-group inline-block">
+    <%= f.label :subtotal_cost %>
+    <div class="col-md-2">
+      <%= f.text_field :subtotal_cost, readonly: true %>
+    </div>
+  </div>
 
     <%= link_to_remove_association f do %>
       <i class="fa fa-times" aria-hidden="true"></i>
     <% end %>
 
-    <div class="form-group row">
-      <%= link_to_add_association "Agregar caracteristica", f, :sample_features%>
+    <div class="sample-feature-container">
+      <div class="header">
+        <span>Mas Detalles</span>
+      </div>
+      <div class="sample-feature-content">
+        <%= f.fields_for :sample_features do |s_f| %>
+            <%= render 'sample_feature_fields', f: s_f %>
+        <% end %>
+      </div>
     </div>
-    <br>
-  <% end %>
+
+    <div class="form-group row">
+      <%= link_to_add_association "", f, :sample_features%>
+    </div>
 </div>

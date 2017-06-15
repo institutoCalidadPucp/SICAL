@@ -1,6 +1,12 @@
 <div class="tab">
   <button class="tablinks active" onclick="openSection(event, 'informacion-general')">Informacion General</button>
   <button class="tablinks" onclick="openSection(event, 'costeo')">Costeo</button>
+  <% if current_user.client? %>
+	  <button class="tablinks" onclick="openSection(event, 'terminos-condiciones')">Terminos y condiciones</button>
+	<% end %>
+  <% if current_user.employee? and @service.accepted? %>
+    <button class="tablinks" onclick="openSection(event, 'employee-handler')">Asignacion de Empleados</button>
+  <% end %>
 </div>
 <%= nested_form_for @service, url: quotation_path, method: :put do |f| %>
 
