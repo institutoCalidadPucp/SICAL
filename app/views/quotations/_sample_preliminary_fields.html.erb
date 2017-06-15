@@ -1,0 +1,17 @@
+<div class="nested-fields">
+  <%= f.fields_for :sample_preliminaries do |spre_form| %>
+
+    <%= spre_form.label :Nombre %>
+    <%= spre_form.text_field :name,readonly: true %>
+
+    <%= spre_form.label :Cantidad %>
+    <%= spre_form.text_field :quantity, readonly: true %>
+
+    <%= spre_form.label :Descripcion %>
+    <%= spre_form.text_field :description, readonly: true %>
+
+    <%= link_to_remove_association f do %>
+      <i class="fa fa-times" aria-hidden="true"></i>
+    <% end %>
+  <% end %>
+</div>
