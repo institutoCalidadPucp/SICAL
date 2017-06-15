@@ -1,34 +1,35 @@
-<div class="title"><%= title %></div>
-<hr>
-<div class='mailbox-messages flex-1'>
-  <div class="scroll">
-    <table>
-      <% if quotations.empty?%>
-        <div class="mailbox-unread-messages">
-          You have no unread messages.
-        </div>
-      <% else %>
-        <% quotations.each do |quotation| %>
-          <tr class='message-row' >
-            <td class="time">
-              <%= quotation.created_at.strftime('%I:%M %p')[0...-1] %><br>
-              <%= quotation.created_at.strftime('%^b %d') %>
-            </td>
-            <td>
+
+
+<h3 class=" p-b-10 p-l-10 "><%= title %></h3>
+<div class='mailbox-messages flex-1 content'>
+   <div class="scroll">
+    <% if quotations.empty?%>
+      <div class="form-group row">
+        No tiene mensajes sin leer.
+      </div>
+    <% else %>
+      <% quotations.each do |current_service| %>
+        <div class="row">
+          <div class="col-md-2 text-center subject date">
+            <div>
+              <%= quotation.created_at.strftime('%I:%M %p') %>
+            </div>
+            <div>
+               <%= quotation.created_at.strftime('%^b %d') %>
+            </div>
+          </div>
+          <div class="col-md-10 subject">
+            <h5>
               <%= link_to edit_quotation_path(quotation) do %>
                 <%= quotation.subject %><br>
               <% end %>
-            </td>
-          </tr>
-        <% end %>
+            </h5>
+          </div>
+        </div>
       <% end %>
-    </table>
+    <% end %>
     <%#= link_to , id: 'more-messages', class: 'flex-container' do %>
-      <span class='mailbox'></span><span class='text flex-1'>View All Messages</span><span class='next'></span>
+      <span class='mailbox'></span><span class='text flex-1'>Ver todos los mensajes</span><span class='next'></span>
     <%# end %>
   </div>
 </div>
-
-<script type="text/javascript">
-//$(document).ready(scroll('y'));
-</script>
