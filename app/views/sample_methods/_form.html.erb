@@ -27,37 +27,19 @@
     <div class="col-md-3 col-fom-label">
       <%= f.label :acreditacion %>
     </div>
-    <div class="col-md-9">
-      <label class="radio form-check-label sical-radio-button">
-        <span class="icons">
-          <span class="first-icon fa fa-circle-o"></span>
-          <span class="second-icon fa fa-dot-circle-o"></span>
-        </span>
-        <input
-          type="radio"
-          class="form-check-input"
-          data-toggle="radio"
-          name="sample_method[accreditation]"
-          value="Acreditado"
-          <%#= sample_method.accreditation == "accredited" ? "checked" : "" %>
-        >
-        Acreditado
-      </label>
-      <label class="radio form-check-label sical-radio-button">
-        <span class="icons">
-          <span class="first-icon fa fa-circle-o"></span>
-          <span class="second-icon fa fa-dot-circle-o"></span>
-        </span>
-        <input
-          type="radio"
-          class="form-check-input"
-          data-toggle="radio"
-          name="sample_method[accreditation]"
-          value="No_acreditado"
-          <%#= sample_method.accreditation == "non_accredited" ? "checked" : "" %>
-        >
-        No acreditado
-      </label>
+    <div class="col-md-9 input-wrapper">
+      <div class="sample-accreditation-options">
+        <% SampleMethod.accreditations.keys.each do |accreditation|  %>
+          <%= f.label accreditation.capitalize, class: "radio form-check-label sical-radio-button" do %>
+            <%= f.radio_button :accreditation, accreditation, class: "form-check-input sical-input-radio-button", required: "required" %>
+            <span class="icons">
+              <span class="first-icon fa fa-circle-o"></span>
+              <span class="second-icon fa fa-dot-circle-o"></span>
+            </span>
+            <%= t("activerecord.attributes.samplemethod.accreditation.#{accreditation}") %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
   
