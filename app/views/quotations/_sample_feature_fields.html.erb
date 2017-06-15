@@ -1,12 +1,11 @@
 <div class="nested-fields">
-  <%= f.fields_for :sample_features do |feature_form| %>
-    <%= feature_form.label :Descripcion %>
-    <%= feature_form.text_field :description, readonly: true %>
+    <%= f.label :Descripcion %>
+    <%= f.text_field :description, readonly: true %>
     
-    <%= feature_form.label :Valor %>
-    <%= feature_form.text_field :value, readonly: true %>
+    <%= f.label :Valor %>
+    <%= f.text_field :value, readonly: true %>
+
     <%= link_to_remove_association f do %>
       <i class="fa fa-times" aria-hidden="true"></i>
     <% end %>
-  <% end %>
 </div>

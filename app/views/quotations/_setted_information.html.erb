@@ -9,6 +9,9 @@
   <%= f.label :Fecha_aproximada_de_recojo %>
   <%= f.text_field :pick_up_date, readonly: true %>
   
+  <%= f.fields_for :sample_preliminaries do |s_p| %>
+    <%= render 'sample_preliminary_fields', f: s_p %>
+  <% end %>
   <div class="form-group row">
     <%= link_to_add_association "Agregar muestra", f,:sample_preliminaries%>
   </div>
