@@ -17,6 +17,17 @@
     </div>
   </div>
 
+  <% if current_user.admin? %>
+    <div class="form-group row">
+      <div class="col-md-3 col-fom-label">
+        <%= f.label :laboratorio %>
+      </div>
+      <div class="col-md-9 input-wrapper">
+        <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, class: "form-control", required: "required" %>
+      </div>
+    </div>    
+  <% end %>
+  
   <%= f.fields_for :menu_permits do |r| %>
     <%= render "menu_permit_fields", f: r %>
   <% end %>
@@ -27,6 +38,7 @@
       <p><%= link_to_add_association "Agregar permiso", f, :menu_permits, class: "btn btn-primary sical-btn-add-menu " %></p>
     </div>
   </div>
+
 
   <div class="form-group">
     <div class="text-center">
