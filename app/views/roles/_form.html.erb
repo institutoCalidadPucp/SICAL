@@ -17,6 +17,10 @@
     </div>
   </div>
 
+  <%= f.fields_for :menu_permits do |r| %>
+    <%= render "menu_permit_fields", f: r %>
+  <% end %>
+
   <div class="form-group row">
     <%= f.label :Permisos, class: "col-md-3 col-fom-label" %>
     <div class="col-md-9 text-right" >

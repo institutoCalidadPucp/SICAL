@@ -16,7 +16,7 @@ class RolesController < ApplicationController
 
   def create
     @role = Role.new role_params
-    if @role.set_laboratory(current_user) and (@role.set_tab_reference).save
+    if (@role.set_tab_reference).save
       redirect_to roles_path
     else 
       render :new
@@ -27,10 +27,11 @@ class RolesController < ApplicationController
   end
 
   def update
+=begin    
     begin
       @role.destroy
       @role = Role.new role_params
-      if @role.set_laboratory(current_user) and (@role.set_tab_reference).save
+      if @role.set_laboratory(current_user) #and (@role.set_tab_reference).save
         redirect_to roles_path, notice: 'Rol fue editado exitosamente'
       else 
         render :edit
@@ -38,6 +39,7 @@ class RolesController < ApplicationController
     rescue
       false
     end
+=end    
   end
 
   def destroy
@@ -54,7 +56,11 @@ class RolesController < ApplicationController
 
   private 
     def role_params
-      params.require(:role).permit(:name, :description, menu_permits_attributes: [:name, :create_permit, :view_permit, :edit_permit, :delete_permit, :_destroy])
+      params.require(:role).permit(:name, :description, menu_permits_attributes: menu_permit_params).permit!
+    end
+
+    def menu_permit_params
+      [:name, :create_permit, :view_permit, :edit_permit, :delete_permit, :_destroy]
     end
 
     def set_role

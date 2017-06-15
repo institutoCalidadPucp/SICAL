@@ -3,11 +3,11 @@ class Role < ApplicationRecord
   
   validates :name, presence: true
 
-  has_many  :menu_permits, inverse_of: :role, dependent: :destroy
+  has_many  :menu_permits, dependent: :destroy
   has_many  :users, dependent: :destroy
   belongs_to :laboratory, required: false
 
-  accepts_nested_attributes_for :menu_permits, allow_destroy: true
+  accepts_nested_attributes_for :menu_permits, reject_if: :all_blank, allow_destroy: true
 
   scope :own_per_user, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
@@ -29,5 +29,6 @@ class Role < ApplicationRecord
       []      
     end
   end
+
 
 end
