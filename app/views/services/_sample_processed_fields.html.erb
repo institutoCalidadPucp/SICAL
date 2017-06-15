@@ -1,0 +1,7 @@
+<div class="nested-fields">
+  <div id="sample-information" class="samples-information">
+    <% if current_user.employee? %>
+      <%= render 'form_worker', service: @service, f: f %>
+    <% end %>
+  </div>
+</div>

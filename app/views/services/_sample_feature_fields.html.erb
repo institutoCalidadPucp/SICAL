@@ -1,0 +1,27 @@
+<div class="nested-fields">
+  <div class="col-md-9 offset-md-3">
+      <table class="table table-no-bordered table-hover">
+        <thead>
+          <th>Descripcion</th>
+          <th>Valor</th>
+        </thead>
+        <tbody id="worker-table">
+          <%= f.fields_for :sample_features, :wrapper => false do |feature_form| %>
+            <tr class="fields">
+              <td>
+                <%= feature_form.text_field :description, class: "form-control", maxLength:"40", required:"required"%>
+              </td>
+              <td>
+                <%= feature_form.text_field :value, class: "form-control only-numbers", maxLength:"5", required:"required" %>
+              </td>
+              <td>
+                <%= link_to_remove_association f do %>
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>  
+    </div>
+</div>
