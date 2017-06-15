@@ -1,3 +1,4 @@
+
 <div class="card">
   <div class="tab">
     <button class="tablinks active" onclick="openSection(event, 'service')">Servicios</button>
@@ -5,7 +6,6 @@
   </div>
 
   <%= nested_form_for @service, url: service_path, :wrapper => false,  method: :put do |f| %>
-
 
     <div id="service" class="tabcontent" style="display: block;">
       <h3>Servicios</h3>
