@@ -4,6 +4,7 @@ class CreateSampleMethods < ActiveRecord::Migration[5.1]
     	t.string :description
     	t.float :unit_cost
     	t.integer :accreditation
+    	t.integer :status, default: 0
     	t.belongs_to :laboratory
       t.timestamps
     end

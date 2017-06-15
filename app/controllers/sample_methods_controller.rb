@@ -1,14 +1,14 @@
 class SampleMethodsController < ApplicationController
+
   before_action :set_sample_method, only: [:show, :edit, :update, :destroy]
-  before_action :set_laboratories, only: [:show, :edit, :new]
+  before_action :laboratories, only: [:show, :edit, :create, :new, :update]
 
   def index
-    @sample_methods = SampleMethod.all
+    @sample_methods = SampleMethod.own_per_user(current_user)
   end
 
   def new
     @sample_method = SampleMethod.new
-    #@laboratories = Laboratory.all
   end
 
   def show
@@ -17,6 +17,7 @@ class SampleMethodsController < ApplicationController
   def create
     @sample_method = SampleMethod.new sample_method_params
     if @sample_method.save
+      @sample_method.set_laboratory(current_user) unless current_user.admin?
       redirect_to sample_methods_path
     else
       render :new
@@ -52,7 +53,7 @@ class SampleMethodsController < ApplicationController
       @sample_method = SampleMethod.find params[:id]
     end
 
-    def set_laboratories
+    def laboratories
       @laboratories = Laboratory.all
     end
 

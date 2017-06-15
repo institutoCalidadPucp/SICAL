@@ -1,0 +1,11 @@
+<div id="costeo" class="tabcontent">
+  <h3>Costeo</h3>
+
+	<%= f.fields_for :sample_processeds do |s_proc| %>
+		<%= render 'sample_processed_fields', f: s_proc %>
+	<% end %>
+  <div class="form-group row">
+    <%= link_to_add_association "", f, :sample_processeds%>
+  </div>
+
+</div>

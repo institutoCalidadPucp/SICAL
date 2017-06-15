@@ -1,0 +1,28 @@
+// Place all the styles related to the Quotations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.inline-block{
+	display: inline-block;
+}
+
+.sample-feature-container {
+    width:100%;
+    border:1px solid #d3d3d3;
+}
+.sample-feature-container div {
+    width:100%;
+}
+.sample-feature-container .header {
+    background-color:#d3d3d3;
+    padding: 2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.sample-feature-container .sample-feature-content {
+    display: none;
+    padding : 5px;
+}
+.hide{
+    display: none;
+}

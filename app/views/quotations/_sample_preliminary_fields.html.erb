@@ -1,0 +1,15 @@
+<div class="nested-fields">
+
+    <%= f.label :Nombre %>
+    <%= f.text_field :name,readonly: true %>
+
+    <%= f.label :Cantidad %>
+    <%= f.text_field :quantity, readonly: true %>
+
+    <%= f.label :Descripcion %>
+    <%= f.text_field :description, readonly: true %>
+
+    <%= link_to_remove_association f do %>
+      <i class="fa fa-times" aria-hidden="true"></i>
+    <% end %>
+</div>

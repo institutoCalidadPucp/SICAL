@@ -1,11 +1,8 @@
-$(function () {
-  var $clientLock = $('.client-lock');
+(function() {
+  $(function() {
+    var $currentLock = $('#client-lock-<%= @client.id %>');
+    var status = "<%= @client.status %>";
 
-  <% if @client.status == "active" %>
-    $clientLock.removeClass('fa-unlock');
-    $clientLock.addClass('fa-lock');
-  <% else %>
-    $clientLock.removeClass('fa-lock');
-    $clientLock.addClass('fa-unlock');
-  <% end %>
-});
+    toggleLockStatus($currentLock, status);
+  });
+})();

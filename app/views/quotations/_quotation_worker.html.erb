@@ -1,0 +1,6 @@
+<div id="employee-handler" class="tabcontent">
+  <% if service.accepted? and current_user.employee? %>
+    <%= f.label :trabajador %>
+    <%= f.collection_select :employee_id, @users, :id, :name, {} %>
+  <% end %>
+</div>

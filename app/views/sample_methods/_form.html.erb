@@ -60,14 +60,17 @@
       </label>
     </div>
   </div>
-  <div class="form-group row">
-    <div class="col-md-3 col-fom-label">
-      <%= f.label :laboratorio %>
-    </div>
-  <div class="col-md-9">
-    <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, class: "form-control", required: "required" %>
-  </div>
-  </div>
+  
+  <% if current_user.admin? %>
+    <div class="form-group row">
+      <div class="col-md-3 col-fom-label">
+        <%= f.label :laboratorio %>
+      </div>
+      <div class="col-md-9 input-wrapper">
+        <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, class: "form-control", required: "required" %>
+      </div>
+    </div>    
+  <% end %>
   <div class="sical-form-buttons">
     <div class="text-center">
       <%= link_to "Cancelar", sample_methods_path, class: "btn btn-primary sical-btn-cancel"  %>
