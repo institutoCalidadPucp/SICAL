@@ -6,8 +6,14 @@ class SampleMethod < ApplicationRecord
   has_many :sample_processeds
   belongs_to :laboratory  
 
-  scope :own_per_user, -> (current_user) {where(laboratory_id: current_user.laboratory)}
-
   enum status: [:active, :inactive]
   enum accreditation: [:accredited, :non_accredited]  
+
+  def self.own_per_user current_user
+  	if current_user.admin?
+  		all
+  	else
+  		where(laboratory_id: current_user.laboratory)
+  	end
+  end
 end

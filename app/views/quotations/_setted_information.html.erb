@@ -1,27 +1,15 @@
 <div id="informacion-general" class="tabcontent" style="display: block;">
-  <h3>Informacion General</h3>
-	<%= f.label :Laboratorio %>
-	<%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, readonly: true %>
+  <h3>Información General</h3>
+  <%= f.label :Laboratorio %>
+  <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, readonly: true %>
 
-	<%= f.label :Asunto %>
-	<%= f.text_field :subject,readonly: true %>
+  <%= f.label :Asunto %>
+  <%= f.text_field :subject,readonly: true %>
 
-	<%= f.label :Fecha_aproximada_de_recojo %>
-	<%= f.text_field :pick_up_date, readonly: true %>
-
-	<%#= f.link_to_add "Agregar muestra" , :sample_preliminaries%>
-
-	<%= f.fields_for :sample_preliminaries do |spre_form| %>
-
-	  <%= spre_form.label :Nombre %>
-	  <%= spre_form.text_field :name,readonly: true %>
-
-	  <%= spre_form.label :Cantidad %>
-	  <%= spre_form.text_field :quantity, readonly: true %>
-
-	  <%= spre_form.label :Descripcion %>
-	  <%= spre_form.text_field :description, readonly: true %>
-
-	  <%#= spre_form.link_to_remove "Borrar" %>
-	<% end %>
+  <%= f.label :Fecha_aproximada_de_recojo %>
+  <%= f.text_field :pick_up_date, readonly: true %>
+  
+  <div class="form-group row">
+    <%= link_to_add_association "Agregar muestra", f,:sample_preliminaries%>
+  </div>
 </div>

@@ -1,0 +1,25 @@
+<div class="nested-fields">
+  <%= link_to_remove_association f do %>
+    <i class="fa fa-times" aria-hidden="true"></i>
+  <% end %>
+  <div class="col-md-9 offset-md-3">
+      <table class="table table-no-bordered table-hover">
+        <thead>
+          <th>Descripcion</th>
+          <th>Valor</th>
+        </thead>
+        <tbody id="worker-table">
+            <tr class="fields">
+              <td>
+                <%= f.text_field :description, class: "form-control", maxLength:"40", required:"required"%>
+              </td>
+              <td>
+                <%= f.text_field :value, class: "form-control only-numbers", maxLength:"5", required:"required" %>
+              </td>
+              <td>
+              </td>
+            </tr>
+        </tbody>
+      </table>  
+    </div>
+</div>

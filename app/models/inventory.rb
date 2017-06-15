@@ -6,8 +6,13 @@ class Inventory < ApplicationRecord
 
   belongs_to :laboratory, required: false
   
-  scope :own_per_user, -> (current_user) {where(laboratory_id: current_user.laboratory)}
-  
   enum status: [:active, :inactive]
   
+  def self.own_per_user current_user
+  	if current_user.admin?
+  		all
+  	else
+  		where(laboratory_id: current_user.laboratory)
+  	end
+  end
 end

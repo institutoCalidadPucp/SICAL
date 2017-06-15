@@ -10,17 +10,17 @@
     </div>
 
     <div id="samples" class="tabcontent">
+      <%= f.fields_for :sample_processeds do |sample| %>
+        <%= render 'sample_processed_fields', f: sample %>
+      <% end %>
+    
       <div class="samples-title-wrapper ">
         <div class= "samples-title">Muestras</div>
         <div>
-          <%= f.link_to_add "Agregar evaluacion de la muestra" , :sample_processeds, :data => { target: '#sample-information' }, class: "btn btn-default sical-btn-add-menu"%>
+          <%= link_to_add_association "Agregar evaluacion de la muestra", f, :sample_processeds, class: "btn btn-default sical-btn-add-menu"%>
         </div>
       </div>
-      <div id="sample-information" class="samples-information">
-        <% if current_user.employee? %>
-          <%= render 'form_worker', service: @service, f: f %>
-        <% end %>
-      </div>
+      
     </div>
 
     <div class="form-group">
