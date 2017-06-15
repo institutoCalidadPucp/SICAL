@@ -1,12 +1,9 @@
-
 <div class="card">
   <div class="tab">
     <button class="tablinks active" onclick="openSection(event, 'service')">Servicios</button>
     <button class="tablinks" onclick="openSection(event, 'samples')">Muestras</button>
   </div>
-
   <%= nested_form_for @service, url: service_path, :wrapper => false,  method: :put do |f| %>
-
     <div id="service" class="tabcontent" style="display: block;">
       <h3>Servicios</h3>
       <%= render 'form_client', service: @service, f: f %>
@@ -32,6 +29,5 @@
         <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
       </div>
     </div>
-
   <% end %>
 </div>
