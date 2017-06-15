@@ -1,33 +1,37 @@
 <h3 class=" p-b-10 p-l-10 "><%= title %></h3>
 <div class='mailbox-messages flex-1 content'>
-  <div class="scroll">
+  <div class="scroll content">
       <% if services.empty?%>
         <div class="form-group row">
           No tiene mensajes sin leer.
         </div>
       <% else %>
         <% services.each do |current_service| %>
-          <div class="row ">
-            <div class="col-md-2 text-center subject-date" > 
-              <div>
-                <%= current_service.created_at.strftime('%I:%M %p') %>
-              </div>
-              <div>
-                <%= current_service.created_at.strftime('%^b %d') %>
-              </div>
-            </div>
-            <div class="col-md-10 subject">
+          <div class="row content">
+            <div class="col-md-2 text-center subject-date subject-border col-form-label"  > 
               <h5>
-                <%= link_to edit_service_path(current_service) do %>
-                  <%= current_service.subject %>
-                <% end %>
+                <%= current_service.created_at.strftime('%I:%M %p') %>
               </h5>
+              <h5>
+                <%= current_service.created_at.strftime('%^b %d') %>
+              </h5>
+            </div>
+            <div class="col-md-8 col-form-label subject-border" >
+              <h5>
+                <label class= "col-md-3 "><strong>Asunto:</strong> </label>
+                <div class="col-md-9">
+                  <%= current_service.subject%>
+                </div>
+              </h5>
+            </div>
+            <div class="col-md-2 text-center subject-date subject-border" > 
+              <h4><%= link_to "Ver Servicio", edit_service_path(current_service),  data: { "toggle" => "tooltip" }, title: "Ver" %></h4> 
             </div>
           </div>
         <% end %>
       <% end %>
     <%#= link_to , id: 'more-messages', class: 'flex-container' do %>
-      <span class='mailbox'></span><span class='text flex-1'>Ver todos los mensajes</span><span class='next'></span>
+      <span class='mailbox '></span><span class='text flex-1'>Ver todos los mensajes</span><span class='next'></span>
     <%# end %>
   </div>
 </div>
