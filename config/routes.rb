@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   resources :inventories do
     put 'toggle_status', on: :member
   end
+  resources :sample_methods do
+    put 'toggle_status', on: :member
+  end
   resources :contracts do
   end
   resources :sample_methods do

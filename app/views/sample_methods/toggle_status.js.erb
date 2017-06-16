@@ -1,0 +1,8 @@
+(function() {
+  $(function() {
+    var $currentLock = $('#sample-method-lock-<%= @sample_method.id %>');
+    var status = "<%= @sample_method.status %>";
+
+    toggleLockStatus($currentLock, status);
+  });
+})();

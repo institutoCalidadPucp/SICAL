@@ -1,6 +1,6 @@
 class SampleMethodsController < ApplicationController
 
-  before_action :set_sample_method, only: [:show, :edit, :update, :destroy]
+  before_action :set_sample_method, only: [:show, :edit, :update, :destroy, :toggle_status]
   before_action :laboratories, only: [:show, :edit, :create, :new, :update]
 
   def index
@@ -33,6 +33,13 @@ class SampleMethodsController < ApplicationController
       redirect_to sample_methods_path
     else
       render :edit
+    end
+  end
+
+  def toggle_status
+    @sample_method.change_status
+    respond_to do |format|
+      format.js
     end
   end
 
