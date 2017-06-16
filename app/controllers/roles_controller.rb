@@ -5,22 +5,40 @@ class RolesController < ApplicationController
   before_action :laboratories, only: [:new, :edit, :show, :create, :update]
 
   def index
-    @roles = Role.own_per_user(current_user)
+    begin
+      @roles = Role.own_per_user(current_user)
+    rescue Exception => e
+      true
+    end
   end
 
   def new
-    @role = Role.new
+    begin
+      @role = Role.new
+    rescue Exception => e
+      render :index
+    end
   end
 
   def show
+    begin
+      
+    rescue Exception => e
+      render :index
+    end
   end
 
   def create
-    @role = Role.new role_params
-    if (@role.set_tab_reference).save
-      @role.set_laboratory(current_user) unless current_user.admin?
-      redirect_to roles_path
-    else 
+    begin
+      @role = Role.new role_params
+      if (@role.set_tab_reference).save
+        @role.set_laboratory(current_user) unless current_user.admin?
+        redirect_to roles_path
+      else 
+        render :new
+      end
+      
+    rescue Exception => e
       render :new
     end
   end

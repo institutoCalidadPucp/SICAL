@@ -4,41 +4,71 @@ class InventoriesController < ApplicationController
   before_action :laboratories, only: [:new, :create, :edit, :update, :show]
 
   def index
-    @inventories = Inventory.own_per_user(current_user)
+    begin
+      @inventories = Inventory.own_per_user(current_user)
+    rescue Exception => e
+      true
+    end
   end
 
   def new
-    @inventory = Inventory.new
+    begin
+      @inventory = Inventory.new
+    rescue Exception => e
+      render :index
+    end
   end
 
   def show
+    begin
+      
+    rescue Exception => e
+      
+    end
   end
 
   def create
-    @inventory = Inventory.new inventory_params
-    if @inventory.save
-      @inventory.set_laboratory(current_user)  unless current_user.admin?
-      redirect_to inventories_path
-    else 
+    begin
+      @inventory = Inventory.new inventory_params
+      if @inventory.save
+        @inventory.set_laboratory(current_user)  unless current_user.admin?
+        redirect_to inventories_path
+      else 
+        render :new
+      end  
+    rescue Exception => e
       render :new
-    end  
+    end
   end
 
   def edit
+    begin
+      
+    rescue Exception => e
+      
+    end
   end
 
   def update
-    @inventory.assign_attributes inventory_params
-    if @inventory.save
-      redirect_to inventories_path
-    else 
+    begin
+      @inventory.assign_attributes inventory_params
+      if @inventory.save
+        redirect_to inventories_path
+      else 
+        render :edit
+      end
+    rescue Exception => e
       render :edit
     end
   end
 
   def destroy
-    @inventory.destroy
-    redirect_to inventories_path
+    begin
+      @inventory.destroy
+      redirect_to inventories_path
+    rescue Exception => e
+      render :index
+    end
   end
 
   def toggle_status

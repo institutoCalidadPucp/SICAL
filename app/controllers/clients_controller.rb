@@ -4,44 +4,75 @@ class ClientsController < ApplicationController
   before_action :roles, only: [:new, :create, :update, :edit]
 
   def index
-    @clients = User.all.client
+    begin
+      @clients = User.all.client
+    rescue Exception => e
+      true
+    end  
   end
 
   def new
-    @client = User.new
+    begin
+      @client = User.new     
+    rescue Exception => e
+      render :index
+    end
   end
 
   def show
+    begin
+      
+    rescue Exception => e
+      render :index
+    end
   end
 
   def create
-    @client = User.new client_params
-    if (@client.set_password).save
-      @client.client!
-      redirect_to clients_path
-    else 
+    begin
+      @client = User.new client_params
+      if (@client.set_password).save
+        @client.client!
+        redirect_to clients_path
+      else 
+        render :new
+      end
+    rescue Exception => e
       render :new
     end
   end
 
   def edit
+    begin
+      
+    rescue Exception => e
+      render :index
+    end
   end
 
   def update
-    @client.assign_attributes client_params.except(:password)
-    if @client.save
-      redirect_to clients_path, notice: 'Rol fue editado exitosamente'
-    else 
+    begin
+      @client.assign_attributes client_params.except(:password)
+      if @client.save
+        redirect_to clients_path, notice: 'Rol fue editado exitosamente'
+      else 
+        render :edit
+      end
+    rescue Exception => e
       render :edit
     end
   end
 
   def destroy
-    @client.inactive!
-    redirect_to clients_path 
+    begin
+      @client.inactive!
+      redirect_to clients_path 
+    rescue Exception => e
+      render :index
+    end
   end
 
   def toggle_status
+         
     @client.change_status
     respond_to do |format|
       format.js

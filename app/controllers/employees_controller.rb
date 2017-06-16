@@ -5,34 +5,71 @@ class EmployeesController < ApplicationController
   before_action :laboratories, only: [:new, :create, :update, :edit]
 
   def index
-    @employees = User.own_per_user(current_user).employee
-  end
-
-  def show
-  end
-
-  def new
-    @employee = User.new
-  end  
-
-  def edit
-  end
-
-  def create
-    @employee = User.new employee_params
-    if (@employee.set_password).save
-      @employee.employee!
-      redirect_to employees_path        
-    else
-      render :new        
+    begin
+      
+      @employees = User.own_per_user(current_user).employees
+    rescue Exception => e
+      true
     end
   end
 
-  def update    
-    if @employee.update employee_params.except(:password)
-      redirect_to employees_path    
-    else
-      render :edit         
+  def show
+    begin
+      
+    rescue Exception => e
+      render :index
+    end
+  end
+
+  def new
+    begin
+      
+      @employee = User.new
+    rescue Exception => e
+      render :index
+    end
+  end  
+
+  def edit
+    begin
+      
+    rescue Exception => e
+      render :index
+    end
+  end
+
+  def create
+    begin
+      @employee = User.new employee_params
+      if (@employee.set_password).save
+        @employee.employee!
+        redirect_to employees_path        
+      else
+        render :new        
+      end
+    rescue Exception => e
+      render : new
+    end
+  end
+
+  def update  
+    begin
+      if @employee.update employee_params.except(:password)
+        redirect_to employees_path    
+      else
+        render :edit         
+      end
+    rescue Exception => e
+      render :edit
+    end  
+  end
+
+  def destroy
+    begin  
+      @employee.inactive!
+      redirect_to employees_path 
+    rescue Exception => e
+      render :index
     end
   end
 
@@ -41,11 +78,6 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       format.js
     end
-  end
-
-  def destroy
-    @employee.inactive!
-    redirect_to employees_path 
   end
 
   private

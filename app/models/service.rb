@@ -12,9 +12,6 @@ class Service < ApplicationRecord
   accepts_nested_attributes_for :sample_preliminaries, allow_destroy: true
   accepts_nested_attributes_for :sample_processeds, allow_destroy: true
 
-  scope :work_order_per_user, -> (current_user) {where(employee_id: current_user).accepted}
-
-
   enum work_flow: [:initialized, :prepared, :funded, :accepted]
   enum status: [:active, :inactive]
 
@@ -35,6 +32,10 @@ class Service < ApplicationRecord
     else
       Service.where(laboratory_id: current_user.laboratory)
     end
+  end
+
+  def self.work_order_per_user current_user
+    Service.joins(:sample_processeds).where("sample_processeds.user_id = ?", current_user)
   end
 end
 

@@ -4,33 +4,59 @@ class RequestsController < ApplicationController
    before_action :set_laboratories, only: [:new, :create, :update, :edit]
 
   def index
-     @requests = Request.all
+    begin
+      @requests = Request.all
+    rescue Exception => e
+      true
+    end
   end
 
   def new
-    @request = Request.new
+    begin
+      @request = Request.new
+    rescue Exception => e
+      render :index
+    end
   end
 
   def create
-     @requests = Request.new request_params
-    if @request.save
-      redirect_to requests_path
-    else 
+    begin
+      @requests = Request.new request_params
+      if @request.save
+        redirect_to requests_path
+      else 
+        render :new
+      end
+    rescue Exception => e
       render :new
     end
   end
 
   def show
+    begin
+      
+    rescue Exception => e
+      render :index
+    end
   end
 
   def edit
+    begin
+      
+    rescue Exception => e
+      render :index
+    end
   end
 
   def update
-    @request.assign_attributes laboratory_params
-    if @request.save
-      redirect_to request_path, notice: 'Solicitud de servicio fue editada exitosamente'
-    else 
+    begin
+      @request.assign_attributes laboratory_params
+      if @request.save
+        redirect_to request_path, notice: 'Solicitud de servicio fue editada exitosamente'
+      else 
+        render :edit
+      end
+    rescue Exception => e
       render :edit
     end
   end

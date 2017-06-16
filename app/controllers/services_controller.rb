@@ -4,44 +4,74 @@ class ServicesController < ApplicationController
   before_action :laboratories, only: [:edit, :new]
 
   def index
-    @services = Service.all
-    @attended = Service.own_per_user(current_user).prepared
-    @unattended = Service.own_per_user(current_user).initialized
+    begin
+      @services = Service.all
+      @attended = Service.own_per_user(current_user).prepared
+      @unattended = Service.own_per_user(current_user).initialized
+    rescue Exception => e
+      true
+    end
   end
 
   def create
-    @service = Service.new service_params
-    if @service.valid?
-      @service.set_work_flow(current_user)
-      redirect_to services_path
-    else
+    begin
+      @service = Service.new service_params
+      if @service.valid?
+        @service.set_work_flow(current_user)
+        redirect_to services_path
+      else
+        render :new
+      end
+    rescue Exception => e
       render :new
     end
   end
 
-  def new 
-    @service = Service.new
+  def new
+    begin
+      @service = Service.new
+    rescue Exception => e
+      render :index
+    end 
   end
 
   def show
+    begin
+      
+    rescue Exception => e
+      render :index
+    end
   end
 
   def edit
+    begin
+      
+    rescue Exception => e
+      render :index
+    end
   end
 
   def update
-    @service.assign_attributes service_params
-    if @service.valid?
-      @service.set_work_flow(current_user)
-      redirect_to services_path
-    else
+    begin
+      @service.assign_attributes service_params
+      if @service.valid?
+        @service.set_work_flow(current_user)
+        redirect_to services_path
+      else
+        render :edit
+      end
+    rescue Exception => e
       render :edit
     end
   end
 
   def destroy
-    @laboratory.inactive!
-    redirect_to laboratries_path
+    begin
+      @laboratory.inactive!
+      redirect_to laboratries_path
+    rescue Exception => e
+      render :index
+    end
   end
 
   def toggle_status

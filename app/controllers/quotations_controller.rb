@@ -6,32 +6,60 @@ class QuotationsController < ApplicationController
   before_action :set_users_belongs_to_laboratory, only: [:edit, :new]
 
   def index
-    @quotations = Service.prepared
-    @funded = Service.own_per_user(current_user).funded
-    @unfunded = Service.own_per_user(current_user).prepared
-    @accepted = Service.own_per_user(current_user).accepted
+    begin
+      @quotations = Service.prepared
+      @funded = Service.own_per_user(current_user).funded
+      @unfunded = Service.own_per_user(current_user).prepared
+      @accepted = Service.own_per_user(current_user).accepted
+    rescue Exception => e
+      true
+    end
   end
 
   def new
+    begin
+      
+    rescue Exception => e
+      render :index
+    end
   end
 
   def show
+    begin
+      
+    rescue Exception => e
+      render :index
+    end
   end
 
   def create
+    begin
+      
+    rescue Exception => e
+      render :new
+    end
   end
 
   def edit
+    begin
+      
+    rescue Exception => e
+      render :index
+    end
   end
 
   def update
-    @service.assign_attributes quotation_params
-    if @service.save
-      @service.set_work_flow(current_user)
-      redirect_to  quotations_path
-    else
+    begin
+      @service.assign_attributes quotation_params
+      if @service.save
+        @service.set_work_flow(current_user)
+        redirect_to  quotations_path
+      else
+        render :edit
+      end    
+    rescue Exception => e
       render :edit
-    end    
+    end
   end
 
   def toggle_status
@@ -42,7 +70,6 @@ class QuotationsController < ApplicationController
   end  
 
   private 
-
     def quotation_params
       params.require(:service).permit(:laboratory_id, :subject, :pick_up_date, :engagement, :engagement_observation, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
