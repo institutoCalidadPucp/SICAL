@@ -105,3 +105,13 @@
   border-color: #bbbbbb ;
   padding: 10px;
 }
+
+// Sical Nested Table Elements
+
+.sical-nested-row {
+  display: table-row;
+}
+
+.sical-nested-cell {
+  display: table-cell;
+}

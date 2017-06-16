@@ -35,7 +35,7 @@
   <div class="form-group row">
     <%= f.label :Permisos, class: "col-md-3 col-fom-label" %>
     <div class="col-md-9 text-right" >
-      <p><%= link_to_add_association "Agregar permiso", f, :menu_permits, class: "btn btn-primary sical-btn-add-menu " %></p>
+      <p><%= link_to_add_association "Agregar permiso", f, :menu_permits, class: "btn btn-primary sical-btn-add-menu", data: { "association-insertion-node": "tbody.permits-table", "association-insertion-method": "append",  } %></p>
     </div>
   </div>
   <div class="col-md-9 offset-md-3">
@@ -48,8 +48,10 @@
         <th>Eliminar</th>
         <th></th>
       </thead>
-      <tbody id="permits-table">
-        <%= render 'menu_permit_fields', f: f %>
+      <tbody class="permits-table line_items">
+        <%= f.fields_for :menu_permits do |f| %>
+          <%= render 'menu_permits_fields' %>
+        <% end %>
       </tbody>
     </table>  
   </div>
