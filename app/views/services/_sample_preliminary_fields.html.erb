@@ -1,10 +1,18 @@
-<tr class="nested-fields">
-  <td><%= f.text_field :name, class: "form-control", maxLength:"40", required:"required"%></td>
-  <td><%= f.text_field :quantity, class: "form-control only-numbers", maxLength:"5", required:"required" %></td>
-  <td><%= f.text_field :description , class: "form-control", maxLength:"50",required:"required"%></td>
-  <td>
+<div class="nested-fields form-group row">
+  <div class="col-md-4">
+    <%= f.text_field :name, class: "form-control", maxLength:"40", required:"required"%>
+  </div>
+  <div class="col-md-1">
+    <%= f.text_field :quantity, class: "form-control only-numbers", maxLength:"5", required:"required" %>
+  </div>
+  <div class="col-md-6">
+    <%= f.text_area :description , class: "form-control service-sample-description", rows:"2",required:"required"%>
+  </div>
+  <div class="col-md-1">
     <%= link_to_remove_association f do %>
       <i class="fa fa-times" aria-hidden="true"></i>
     <% end %>
-  </td>
-</tr>
+  </div>
+</div>
+
+
