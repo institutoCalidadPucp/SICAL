@@ -35,13 +35,6 @@
   </div>
 
   <div class="form-group inline-block">
-    <%= f.label :trabajador %>
-     <div class="col-md-2">
-      <%= f.collection_select :user_id, @users, :id, :name, {} %>
-    </div>
-  </div>
-
-  <div class="form-group inline-block">
     <%= f.label :unit_cost %>
      <div class="col-md-2">
       <%= f.text_field :unit_cost,readonly: true %>
