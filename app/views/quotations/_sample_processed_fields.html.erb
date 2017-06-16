@@ -1,5 +1,3 @@
-
-
 <div id="informacion-general"  class="nested-fields">
   <div class="form-group row">
     <label class= "col-md-3 col-form-label">Código del Cliente</label>
@@ -7,36 +5,30 @@
         <%= f.text_field :client_code,class: "form-control", readonly: true %>
     </div>
   </div>
-
   <div class="form-group row">
     <label class= "col-md-3 col-form-label">Código PUCP</label>
      <div class="col-md-9">
         <%= f.text_field :pucp_code,class: "form-control", readonly: true%>
     </div>
   </div>
-
   <div class="form-group row">
     <label class= "col-md-3 col-form-label">Categoría</label>
      <div class="col-md-9">
         <%= f.text_field :category,class: "form-control", readonly: true%>
     </div>
   </div>
-
   <div class="form-group row">
     <label class= "col-md-3 col-form-label">Descripción</label>
      <div class="col-md-9">
         <%= f.text_field :description,class: "form-control", readonly: true%>
     </div>
   </div>
-
   <div class="form-group row">
     <label class= "col-md-3 col-form-label">Métodos de Muestra</label>
      <div class="col-md-9">
         <%= f.collection_select :sample_method_id, @sample_methods, :id, :name, {}, class: "form-control" %>
     </div>
   </div>
-
-
   <div class="form-group row">
     <label class= "col-md-3 col-form-label">Costos </label>
     <div class="col-md-9 offset-md-3">
@@ -70,10 +62,6 @@
       </div>
     </div>
   </div>
-
-
-
-
     <%= link_to_remove_association f do %>
       <i class="fa fa-times" aria-hidden="true"></i>
     <% end %>
