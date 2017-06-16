@@ -44,11 +44,11 @@ class QuotationsController < ApplicationController
   private 
 
     def quotation_params
-      params.require(:service).permit(:laboratory_id, :employee_id, :subject, :pick_up_date, :engagement, :engagement_observation, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+      params.require(:service).permit(:laboratory_id, :subject, :pick_up_date, :engagement, :engagement_observation, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
 
     def sample_processeds
-      [:id, :category, :description, :pucp_code, :client_code, :amount, :unit_cost, :subtotal_cost, :discount,  sample_features_attributes: sample_features]
+      [:id, :category, :description, :pucp_code, :client_code, :amount, :unit_cost, :subtotal_cost, :discount,  :sample_method_id, :user_id, sample_features_attributes: sample_features]
     end
 
     def sample_features

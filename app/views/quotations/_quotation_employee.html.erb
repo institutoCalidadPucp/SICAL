@@ -41,36 +41,7 @@
     </div>
   </div>
 
-  <div class="form-group inline-block">
-    <%= f.label :unit_cost %>
-     <div class="col-md-2">
-      <%= f.text_field :unit_cost,readonly: true %>
-    </div>
-  </div>
-
-  <div class="form-group inline-block">
-    <%= f.label :amount %>
-    <div class="col-md-2">
-      <%= f.text_field :amount,readonly: true %>
-    </div>
-  </div>
-
-  <div class="form-group inline-block">
-    <%= f.label :discount %>
-    <div class="col-md-2">
-      <%= f.text_field :discount %>
-    </div>
-  </div>
-
-  <div class="form-group inline-block">
-    <%= f.label :subtotal_cost %>
-    <div class="col-md-2">
-      <%= f.text_field :subtotal_cost, readonly: true %>
-    </div>
-  </div>
-
     <%= link_to_remove_association f do %>
-      <i class="fa fa-times" aria-hidden="true"></i>
     <% end %>
 
     <div class="sample-feature-container">

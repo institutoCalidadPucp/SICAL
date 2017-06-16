@@ -11,7 +11,7 @@ class CreateSampleProcesseds < ActiveRecord::Migration[5.1]
       t.float :subtotal_cost
       t.float :discount
       t.belongs_to :sample_method
-
+      t.belongs_to :user
       t.timestamps
     end
   end

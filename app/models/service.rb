@@ -3,7 +3,7 @@ class Service < ApplicationRecord
   #validates :pick_up_date, presence: true
 
   belongs_to :client, required: false, class_name: "User"
-  belongs_to :employee, required: false, class_name: "User"
+  #belongs_to :employee, required: false, class_name: "User"
   belongs_to :laboratory, required: false
 
   has_many :sample_preliminaries
