@@ -168,3 +168,30 @@ div.tab button.active {
 .save-worker {
   padding-top: 20px;
 }
+
+.link-service-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.link-service {
+  font-size: 20px;
+}
+
+.show-date {
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title-subject {
+  font-size: 20px;
+}
+
+.custom-service-subject {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
