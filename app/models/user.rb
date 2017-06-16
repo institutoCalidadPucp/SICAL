@@ -10,7 +10,6 @@ class User < ApplicationRecord
   #has_many :employee_services, class_name: "Service", foreign_key: 'employee_id'
   has_many :sample_processeds
 
-  scope :own_per_user, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
   enum category: [:admin, :employee, :client]
   enum gender: [:male, :female]
@@ -58,4 +57,13 @@ class User < ApplicationRecord
       current_user.active? ? current_user : false
     end
   end
+
+  def self.own_per_user current_user
+    if current_user.admin?
+      all
+    else
+      where(laboratory_id: current_user.laboratory)
+    end
+  end
+  
 end
