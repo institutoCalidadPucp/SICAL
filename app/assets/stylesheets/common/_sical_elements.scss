@@ -79,20 +79,39 @@
 }
 
 // Sical Input Radio Button
+
 .sical-input-radio-button.error + span.icons {
   color: #EB5E28;
 }
 
-.subject-date{
+// Sical Table Checkbox
+
+.sical-table-checkbox {
+  height: 20px;
+  margin: 0 !important;
+}
+
+.subject-date {
   background-color: #F3F2EE;;
 }
-.subject{
+
+.subject {
   border-style:solid ;
   border-color: #C0C0C0; ;
 }
 
-.subject-border{
+.subject-border {
   border: 2px solid;
   border-color: #bbbbbb ;
   padding: 10px;
+}
+
+// Sical Nested Table Elements
+
+.sical-nested-row {
+  display: table-row;
+}
+
+.sical-nested-cell {
+  display: table-cell;
 }

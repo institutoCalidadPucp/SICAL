@@ -27,6 +27,12 @@
     return this.optional(element) || moment(moment(), 'DD/MM/YYYY').diff(moment(value, 'DD/MM/YYYY') , 'years') > 18;
   }, 'Por favor ingrese una fecha válida, solo se aceptan mayores de edad.');
 
+  $.validator.addMethod('onlyOneOptionSelected', function(value, element) {
+    console.log(value);
+    console.log(element);
+
+  }, 'Por favor solo seleccione una opcion por menu.');
+
   $.validator.methods.date = function(value, element, param) {
     return this.optional(element) || moment(value, 'DD/MM/YYYY').isValid();
   };
