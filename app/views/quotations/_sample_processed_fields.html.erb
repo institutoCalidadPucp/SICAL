@@ -1,42 +1,68 @@
+
+
 <div class="nested-fields">
   <div class="form-group row">
-    <%= f.label :Codigo_cliente, class: "col-md-3 col-fom-label" %>
+    <label class= "col-md-3 col-form-label">Código del Cliente</label>
      <div class="col-md-9">
-        <%= f.text_field :client_code,class: "form-control", maxLength:"8", required: "required" %>
+        <%= f.text_field :client_code,class: "form-control", readonly: true %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :Codigo_pucp, class: "col-md-3 col-fom-label" %>
+    <label class= "col-md-3 col-form-label">Código PUCP</label>
      <div class="col-md-9">
-        <%= f.text_field :pucp_code,class: "form-control", maxLength:"8", required: "required" %>
+        <%= f.text_field :pucp_code,class: "form-control", readonly: true%>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :Categoria, class: "col-md-3 col-fom-label" %>
+    <label class= "col-md-3 col-form-label">Categoría</label>
      <div class="col-md-9">
-        <%= f.text_field :category,class: "form-control", maxLength:"30", required: "required" %>
+        <%= f.text_field :category,class: "form-control", readonly: true%>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :Descripcion, class: "col-md-3 col-fom-label" %>
+    <label class= "col-md-3 col-form-label">Descripción</label>
      <div class="col-md-9">
-        <%= f.text_field :description,class: "form-control", maxLength:"80", required: "required" %>
+        <%= f.text_field :description,class: "form-control", readonly: true%>
     </div>
   </div>
 
-  <div class="form-group inline-block">
-    <%= f.label :sample_methods %>
-     <div class="col-md-2">
-        <%= f.collection_select :sample_method_id, @sample_methods, :id, :name, {}, readonly: true, class: "sample-methods" %>
+  <div class="form-group row">
+    <label class= "col-md-3 col-form-label">Métodos de Muestra</label>
+     <div class="col-md-9">
+        <%= f.collection_select :sample_method_id, @sample_methods, :id, :name, {}, readonly: true, class: "form-control" %>
     </div>
   </div>
+
+
+<div class="form-group row">
+  <label class= "col-md-3 col-form-label">Costos </label>
+  <div class="col-md-9 offset-md-3">
+    <div class="form-group row">
+      <h5 class="col-md-3">
+        Costo Unitario
+      </h5>
+      <h5 class="col-md-3">
+        Monto
+      </h5>
+      <h5 class="col-md-3">
+        Descuento
+      </h5>
+      <h5 class="col-md-3">
+        Subtotal
+      </h5>
+    </div>
+  </div>
+</div>
+
+
+  
 
   <div class="form-group inline-block">
     <%= f.label :unit_cost %>
-     <div class="col-md-2">
+     <div class="col-md-2 ">
       <%= f.text_field :unit_cost,readonly: true %>
     </div>
   </div>
@@ -67,7 +93,7 @@
     <% end %>
 
     <div class="sample-feature-container">
-      <div class="header">
+      <div class="sample-header">
         <span>Mas Detalles</span>
       </div>
       <div class="sample-feature-content">
