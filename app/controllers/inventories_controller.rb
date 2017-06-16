@@ -1,6 +1,7 @@
 class InventoriesController < ApplicationController
 
   before_action :set_inventory, only: [:show, :edit, :update, :destroy, :toggle_status]
+  before_action :laboratories, only: [:new, :create, :edit, :update, :show]
 
   def index
     @inventories = Inventory.own_per_user(current_user)
@@ -15,7 +16,8 @@ class InventoriesController < ApplicationController
 
   def create
     @inventory = Inventory.new inventory_params
-    if @inventory.set_laboratory(current_user) and @inventory.save
+    if @inventory.save
+      @inventory.set_laboratory(current_user)  unless current_user.admin?
       redirect_to inventories_path
     else 
       render :new
@@ -48,10 +50,14 @@ class InventoriesController < ApplicationController
 
   private
     def inventory_params
-      params.require(:inventory).permit(:code, :name, :brand, :product_model, :amount, :amount_unit, :description, :date_of_entry)
+      params.require(:inventory).permit(:laboratory_id, :code, :name, :brand, :product_model, :amount, :amount_unit, :description, :date_of_entry)
     end
 
     def set_inventory
       @inventory = Inventory.find(params[:id])
+    end
+
+    def laboratories
+      @laboratories = Laboratory.all
     end
 end

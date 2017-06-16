@@ -1,59 +1,26 @@
-<%= nested_form_for @service, url: services_path, method: :post do |f| %>
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Solicitud de Servicio <small>Nuevo</small></h1>
+    </div>
 
-  <%= f.label :Laboratorio %>
-  <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {} %>
-  
-  <%= f.label :Asunto %>
-  <%= f.text_field :subject %>
+    <%= nested_form_for @service, url: services_path, method: :post, :html => { class: "form-horizontal validate sical-form sical-form-validated" } do |f| %>
 
-  <%= f.label :Fecha_aproximada_de_recojo %>
-  <%= f.text_field :pick_up_date %>
+      <%= render 'form_client', service: @service, f: f %>
 
-  <%= f.link_to_add "Agregar muestra" , :sample_preliminaries%>
-  <%= f.fields_for :sample_preliminaries do |spre_form| %>
-
-    <%= spre_form.label :Nombre %>
-    <%= spre_form.text_field :name %>
-
-    <%= spre_form.label :Cantidad %>
-    <%= spre_form.text_field :quantity %>
-
-    <%= spre_form.label :Descripcion %>
-    <%= spre_form.text_field :description %>
-
-    <%= spre_form.link_to_remove "Borrar" %>
-  <% end %>
-
-  <% if current_user.employee? %>
-    <%= f.link_to_add "Agregar evaluacion de la muestra" , :sample_processeds%>
-    <%= f.fields_for :sample_processeds do |spro_form| %>
-
-      <%= spro_form.label :Categoria %>
-      <%= spro_form.text_field :category %>
-
-      <%= spro_form.label :Descripcion %>
-      <%= spro_form.text_field :description %>
-
-      <%= spro_form.label :Codigo_pucp %>
-      <%= spro_form.text_field :pucp_code %>
-
-      <%= spro_form.label :client_code %>
-      <%= spro_form.text_field :client_code %>
-
-      <%= spro_form.link_to_remove "Borrar" %>
-
-      <%= spro_form.link_to_add "Agregar caracteristida" , :sample_features%>
-
-      <%= spro_form.fields_for :sample_features do |feature_form| %>
-        <%= feature_form.label :Descripcion %>
-        <%= feature_form.text_field :description %>
-        
-        <%= feature_form.label :Valor %>
-        <%= feature_form.text_field :value %>
+      <% if current_user.employee? %>
+        <%= render 'form_worker', service: @service, f: f %>
       <% end %>
+
+      <div class="form-group">
+        <div class="text-center">
+          <%= link_to "Cancelar", services_path, class: "btn btn-primary sical-btn-cancel" %>
+          <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+        </div>
+      </div>
     <% end %>
-  <% end %>
 
-  <%= f.submit "Guardar" %>
+  </div>
+</div>
 
-<% end %>
+

@@ -1,0 +1,40 @@
+<div class="sample-fields">
+  <div class="form-group row">
+    <%= f.label :Codigo_cliente, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= f.text_field :client_code,class: "form-control", maxLength:"8", required: "required" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :Codigo_pucp, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= f.text_field :pucp_code,class: "form-control", maxLength:"8", required: "required" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :Categoria, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= f.text_field :category,class: "form-control", maxLength:"30", required: "required" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :Descripcion, class: "col-md-3 col-fom-label" %>
+     <div class="col-md-9">
+        <%= f.text_field :description,class: "form-control", maxLength:"80", required: "required" %>
+    </div>
+  </div>
+
+  <%= f.fields_for :sample_features do |feature| %>
+    <%= render 'sample_feature_fields', f: feature %>
+  <% end %>
+
+  <div class="form-group row">
+    <%= f.label :Valores, class: "col-md-3 col-fom-label" %>
+      <div class="col-md-9 text-right" >
+        <p><%= link_to_add_association "Agregar valores", f, :sample_features, class: "btn btn-primary sical-btn-add-menu " %></p>
+      </div>
+  </div>
+</div>

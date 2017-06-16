@@ -1,12 +1,30 @@
-<% if current_user.employee? %>
-  <div class="row content">
-    <div id="unread-card" class="card">
-      <%= render 'quotations', quotations: @unfunded, title: "Servicios sin costeados" %>
+<div class="row content">
+  <% if current_user.employee?%>
+    <div class="col-md-4">
+        <div id="unread-card" class=" card">
+          <%= render 'quotations', quotations: @unfunded, title: "Servicios sin costeados" %>
+        </div>
     </div>
-    <div id="read-card" class="card">
-      <%= render 'quotations', quotations: @funded, title: "Servicios costedos" %>
+    <div class="col-md-4">
+      <div id="read-card" class="card">
+        <%= render 'quotations', quotations: @funded, title: "Servicios costedos" %>
+      </div>
     </div>
-<% else %>
-  <%= link_to 'Nuevo Servicio', new_quotation_path, class: "btn btn-primary align-right"  %>
-  <%= render 'quotations_table', quotations: @quotations %>
-<% end %>
+    <div class="col-md-4">
+      <div id="read-card" class="card">
+        <%= render 'quotations', quotations: @accepted, title: "Servicios aceptados" %>
+      </div>    
+    </div>
+  <% else %>
+    <div class="col-md-6">
+      <div id="read-card" class="card">
+        <%= render 'quotations', quotations: @funded, title: "Servicios costedos" %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div id="read-card" class="card">
+        <%= render 'quotations', quotations: @accepted, title: "Servicios aceptados" %>
+      </div>
+    </div>
+  <% end %>
+</div>

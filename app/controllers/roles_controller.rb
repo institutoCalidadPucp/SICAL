@@ -2,6 +2,7 @@ class RolesController < ApplicationController
 
   before_action :set_role, only: [:edit, :update, :destroy, :toggle_status, :show]
   before_action :menus, only: [:new, :edit, :create]
+  before_action :laboratories, only: [:new, :edit, :show, :create, :update]
 
   def index
     @roles = Role.own_per_user(current_user)
@@ -16,7 +17,8 @@ class RolesController < ApplicationController
 
   def create
     @role = Role.new role_params
-    if @role.set_laboratory(current_user) and (@role.set_tab_reference).save
+    if (@role.set_tab_reference).save
+      @role.set_laboratory(current_user) unless current_user.admin?
       redirect_to roles_path
     else 
       render :new
@@ -27,17 +29,12 @@ class RolesController < ApplicationController
   end
 
   def update
-    begin
-      @role.destroy
-      @role = Role.new role_params
-      if @role.set_laboratory(current_user) and (@role.set_tab_reference).save
-        redirect_to roles_path, notice: 'Rol fue editado exitosamente'
-      else 
-        render :edit
-      end
-    rescue
-      false
-    end
+    @role.assign_attributes role_params
+    if @role.save
+      redirect_to roles_path
+    else
+      render :edit
+    end 
   end
 
   def destroy
@@ -54,7 +51,11 @@ class RolesController < ApplicationController
 
   private 
     def role_params
-      params.require(:role).permit(:name, :description, menu_permits_attributes: [:name, :create_permit, :view_permit, :edit_permit, :delete_permit])
+      params.require(:role).permit(:name, :laboratory_id, :description, menu_permits_attributes: menu_permit_params).permit!
+    end
+
+    def menu_permit_params
+      [:id, :name, :create_permit, :view_permit, :edit_permit, :delete_permit, :_destroy]
     end
 
     def set_role
@@ -63,5 +64,9 @@ class RolesController < ApplicationController
 
     def menus
       @menus = MenuPermit.names
+    end
+
+    def laboratories
+      @laboratories = Laboratory.all
     end
 end

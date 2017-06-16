@@ -16,67 +16,40 @@
       <%= f.text_area :description, class: "form-control",maxLength:"100", required:"required" %>
     </div>
   </div>
+
+  <% if current_user.admin? %>
+    <div class="form-group row">
+      <div class="col-md-3 col-fom-label">
+        <%= f.label :laboratorio %>
+      </div>
+      <div class="col-md-9 input-wrapper">
+        <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, class: "form-control", required: "required" %>
+      </div>
+    </div>    
+  <% end %>
+  
+  <%= f.fields_for :menu_permits do |r| %>
+    <%= render "menu_permit_fields", f: r %>
+  <% end %>
+
   <div class="form-group row">
     <%= f.label :Permisos, class: "col-md-3 col-fom-label" %>
     <div class="col-md-9 text-right" >
-      <p><%= f.link_to_add "Agregar permiso", :menu_permits, :data => { :target => "#permits-table" }, class: "btn btn-primary sical-btn-add-menu " %></p>
+      <p><%= link_to_add_association "Agregar permiso", f, :menu_permits, class: "btn btn-primary sical-btn-add-menu " %></p>
     </div>
   </div>
   <div class="col-md-9 offset-md-3">
     <table class="table table-no-bordered table-hover">
       <thead>
-        <th style="width: 35%">Menú</th>
+        <th>Menú</th>
         <th>Crear</th>
         <th>Ver</th>
         <th>Editar</th>
         <th>Eliminar</th>
-        <th>Acciones</th>
+        <th></th>
       </thead>
       <tbody id="permits-table">
-        <%= f.fields_for :menu_permits, :wrapper => false do |mp_form| %>
-          <tr class="fields sical-nested-fields">
-            <td><%= mp_form.select :name, @menus, {}, class: "form-control", onlyOneOptionSelected: true %></td>
-            <td>
-              <div class="checkbox form-check-label sical-table-checkbox">
-                 <span class="icons">
-                    <span class="first-icon fa fa-square"></span>
-                    <span class="second-icon fa fa-check-square "></span>
-                  </span>
-                  <%= mp_form.check_box :create_permit, class: "form-check-input" %>
-              </div>
-            </td>
-            <td>
-              <div class="checkbox form-check-label sical-table-checkbox">
-                 <span class="icons">
-                    <span class="first-icon fa fa-square"></span>
-                    <span class="second-icon fa fa-check-square "></span>
-                  </span>
-                  <%= mp_form.check_box :view_permit, class: "form-check-input" %>
-              </div>
-            </td>
-            <td>
-              <div class="checkbox form-check-label sical-table-checkbox">
-                 <span class="icons">
-                    <span class="first-icon fa fa-square"></span>
-                    <span class="second-icon fa fa-check-square "></span>
-                  </span>
-                  <%= mp_form.check_box :edit_permit, class: "form-check-input" %>
-              </div>
-            </td>
-            <td>
-              <div class="checkbox form-check-label sical-table-checkbox">
-                 <span class="icons">
-                    <span class="first-icon fa fa-square"></span>
-                    <span class="second-icon fa fa-check-square "></span>
-                  </span>
-                  <%= mp_form.check_box :delete_permit, class: "form-check-input" %>
-              </div>
-            </td>
-            <td>
-              <%= mp_form.link_to_remove "Borrar", class: "btn btn-primary" %>
-            </td>
-          </tr>
-        <% end %>
+        <%= render 'menu_permit_fields', f: f %>
       </tbody>
     </table>  
   </div>
