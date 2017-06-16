@@ -1,10 +1,16 @@
 <%= form_for sample_method, url: path, method: method, :html => { class: "form-horizontal validate sical-form sical-form-validated" } do |f| %>
-  <% if @sample_method.errors.any?%>
+  <% if @sample_method.errors.any? %>
     <% @sample_method.errors.full_messages.each do |m| %>
-      <p><%= m %></p>
+      <div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+        </button>
+        <span>
+          <b> Error - </b> <%= m %>
+        </span>
+      </div>
     <% end %>
-  <br>
   <% end %>
+  <br>
   <div class="form-group row">
     <%= f.label :nombre, class: "col-md-3 col-form-label" %>
     <div class="col-md-9">
@@ -20,7 +26,7 @@
   <div class="form-group row">
     <%= f.label :costo_unitario	, class: "col-md-3 col-form-label" %>
     <div class="col-md-9">
-      <%= f.text_field :unit_cost, class: "form-control only-numbers", unit_cost: true ,required:"required"%>
+      <%= f.text_field :unit_cost, class: "form-control only-numbers" ,required:"required"%>
     </div>
   </div>
   <div class="form-group row">
