@@ -15,5 +15,7 @@ module ApplicationHelper
   	end
   end
 
-
+  def tooltip_status
+    self.active? ? "Desactivar" : "Activar"
+  end
 end
