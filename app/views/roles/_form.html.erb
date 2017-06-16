@@ -13,7 +13,7 @@
   <div class="form-group row">
     <%= f.label :Descripción, class: "col-md-3 col-fom-label" %>
     <div class="col-md-9 input-wrapper">
-      <%= f.text_area :description, class: "form-control",maxLength:"100", required:"required" %>
+      <%= f.text_area :description, class: "form-control role-description", rows:"5", required:"required" %>
     </div>
   </div>
 
@@ -27,34 +27,43 @@
       </div>
     </div>    
   <% end %>
-  
-  <%= f.fields_for :menu_permits do |r| %>
-    <%= render "menu_permit_fields", f: r %>
-  <% end %>
 
   <div class="form-group row">
     <%= f.label :Permisos, class: "col-md-3 col-fom-label" %>
     <div class="col-md-9 text-right" >
-      <p><%= link_to_add_association "Agregar permiso", f, :menu_permits, class: "btn btn-primary sical-btn-add-menu", data: { "association-insertion-node": "tbody.permits-table", "association-insertion-method": "append",  } %></p>
+      <p><%= link_to_add_association "Agregar permiso", f, :menu_permits, data: {'association-insertion-method': 'append', 'association-insertion-node': '.menu-permits'}, class: "btn btn-primary sical-btn-add-menu" %></p>
     </div>
   </div>
+
   <div class="col-md-9 offset-md-3">
-    <table class="table table-no-bordered table-hover">
-      <thead>
-        <th>Menú</th>
-        <th>Crear</th>
-        <th>Ver</th>
-        <th>Editar</th>
-        <th>Eliminar</th>
-        <th></th>
-      </thead>
-      <tbody class="permits-table line_items">
-        <%= f.fields_for :menu_permits do |f| %>
-          <%= render 'menu_permits_fields' %>
-        <% end %>
-      </tbody>
-    </table>  
+    <div class="form-group row">
+      <div class="col-md-3">
+        Menú
+      </div>
+      <div class="col-md-2">
+        Crear
+      </div>
+      <div class="col-md-2">
+        Ver
+      </div>
+      <div class="col-md-2">
+        Editar
+      </div>
+      <div class="col-md-2">
+        Eliminar
+      </div>
+      <div class="col-md-1">
+      </div>
+    </div>
+    <div class="menu-permits">
+      <%= f.fields_for :menu_permits do |menu_permit_fields| %>
+        <%= render 'menu_permit_fields',f: menu_permit_fields %>
+      <% end %>
+    </div>
   </div>
+
+
+
   <div class="form-group">
     <div class="text-center">
       <%= link_to "Cancelar", roles_path, class: "btn btn-primary sical-btn-cancel" %>
