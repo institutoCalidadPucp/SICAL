@@ -26,12 +26,14 @@
   </div>
 </div>
 
-<div class="form-group row">
-  <%= f.label :Muestras, class: "col-md-3 col-fom-label" %>
-    <div class="col-md-9 text-right" >
-      <%= link_to_add_association "Agregar muestra", f, :sample_preliminaries, data: { association_insertion_node: '.samples-elements', association_insertion_method: 'append' } , class: "btn btn-primary sical-btn-add-menu"%>
-    </div>
-</div>
+<% if current_user.client? %>
+  <div class="form-group row">
+    <%= f.label :Muestras, class: "col-md-3 col-fom-label" %>
+      <div class="col-md-9 text-right" >
+        <%= link_to_add_association "Agregar muestra", f, :sample_preliminaries, class: "btn btn-primary sical-btn-add-menu", data: { association_insertion_node: '.samples-elements', association_insertion_method: 'append' } %>
+      </div>
+  </div>
+<% end %>
 
 <div class="col-md-9 offset-md-3">
   <div class="form-group row">
