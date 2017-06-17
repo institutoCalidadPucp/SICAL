@@ -143,6 +143,8 @@ div.tab button.active {
   font-size: 25.55px;
   line-height: 1.4;
   margin: 0px 0 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .samples-title-wrapper {
@@ -199,4 +201,8 @@ div.tab button.active {
 .service-sample-description{
   width:100%;
   height:auto;
+}
+
+.samples-worker {
+  padding-top: 15px;
 }
