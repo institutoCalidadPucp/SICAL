@@ -38,13 +38,12 @@
 <div class="col-md-9 offset-md-3">
   <div class="form-group row">
     <div class="col-md-4">Nombre</div>
-    <div class="col-md-1">Cantidad</div>
+    <div class="col-md-2">Cantidad</div>
     <div class="col-md-6">Descripcion</div>
-    <div class="col-md-1"></div>
   </div>
   <div class="samples-elements">
     <%= f.fields_for :sample_preliminaries do |spre_form| %>
-      <%= render 'sample_preliminary_fields', f: spre_form %>
+      <%= render 'sample_preliminary_fields', f:spre_form %>
     <% end %>
   </div>
 </div>
