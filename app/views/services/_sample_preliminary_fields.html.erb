@@ -2,11 +2,11 @@
   <div class="col-md-4">
     <%= f.text_field :name, class: "form-control", maxLength:"40", required:"required"%>
   </div>
-  <div class="col-md-1">
+  <div class="col-md-2">
     <%= f.text_field :quantity, class: "form-control only-numbers", maxLength:"5", required:"required" %>
   </div>
-  <div class="col-md-6">
-    <%= f.text_area :description , class: "form-control service-sample-description", rows:"2",required:"required"%>
+  <div class="col-md-5">
+    <%= f.text_area :description , class: "form-control service-sample-description", rows:"3",required:"required"%>
   </div>
    <% if current_user.client? %>
       <%= link_to_remove_association f do %>
