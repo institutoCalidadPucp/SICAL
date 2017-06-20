@@ -15,8 +15,7 @@ class SuppliesController < ApplicationController
 
   def create
     @supply = Supply.new supply_params
-    @supply.set_laboratory(current_user)  unless current_user.admin?
-    @supply.laboratory_id = current_user.laboratory.id
+    @supply.set_laboratory(current_user)  unless current_user.admin?    
     if @supply.save     
       redirect_to inventories_path
     else 
