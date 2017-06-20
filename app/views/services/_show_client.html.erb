@@ -25,21 +25,14 @@
 </div>
 
 <div class="col-md-9 offset-md-3">
-  <table class="table table-no-bordered table-hover">
-    <thead>
-      <th>Nombre</th>
-      <th>Cantidad</th>
-      <th>Descripcion</th>
-    </thead>
-    <!--<tbody id="sample-table">
-      <%= service.sample_preliminaries do |spre_form| %>
-        <tr>
-          <td><%= spre_form.name %></td>
-          <td><%= spre_form.quantity %></td>
-          <td><%= spre_form.description %></td>
-        </tr>
-      <% end %>
-    </tbody>-->
-  </table>  
+  <div class="form-group row">
+    <div class="col-md-4">Nombre</div>
+    <div class="col-md-2">Cantidad</div>
+    <div class="col-md-6">Descripcion</div>
+  </div>
+  <div class="samples-elements">
+    <%= f.fields_for :sample_preliminaries do |spre_form| %>
+      <%= render 'sample_preliminary_fields', f: spre_form %>
+    <% end %>
+  </div>
 </div>
-
