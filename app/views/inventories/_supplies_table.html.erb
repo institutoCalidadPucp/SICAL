@@ -1,0 +1,28 @@
+<div class="material-datatables">
+  <table class="table table-hover sical-data-table sical-data-table" data-placeholder="Buscar Item">
+    <thead>
+      <tr>
+        <th>Código</th> 
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Unidad de Medida</th>
+        <th>Acciones</th>        
+      </tr>
+    </thead>
+    <tbody>
+        <% supplies.each do |item| %>
+            <tr>
+              <td><%= item.code %></td>
+              <td><%= item.name %></td>
+              <td><%= item.quantity %></td>
+              <td><%= item.measureUnit %></td>              
+              <td>
+                <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, supply_path(item), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>
+                <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_supply_path(item), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
+                <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, supply_path(item),class: "btn btn-warning btn-sm", data: { "toggle" => "tooltip" }, title: "Eliminar", method: :delete %>
+              </td>
+            </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
