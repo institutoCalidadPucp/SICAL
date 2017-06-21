@@ -1,7 +1,8 @@
 class ServicesController < ApplicationController
   
   before_action :set_service, only: [:edit, :update, :destroy, :show]
-  before_action :laboratories, only: [:edit, :new]
+  before_action :laboratories, only: [:edit, :new, :show]
+  before_action :sample_categories, only: [:new, :create, :edit, :update, :show]
 
   def index
     @services = Service.all
@@ -61,7 +62,7 @@ class ServicesController < ApplicationController
     end
 
     def sample_processeds
-      [:id, :category, :description, :pucp_code, :client_code, sample_features_attributes: sample_features]
+      [:id, :sample_category_id, :description, :pucp_code, :client_code, sample_features_attributes: sample_features]
     end
 
     def sample_features
@@ -74,6 +75,10 @@ class ServicesController < ApplicationController
 
     def laboratories
       @laboratories = Laboratory.all
+    end
+
+    def sample_categories
+      @sample_categories = SampleCategory.own_per_user current_user
     end
 
 end
