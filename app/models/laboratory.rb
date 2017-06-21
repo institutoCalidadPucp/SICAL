@@ -13,6 +13,7 @@ class Laboratory < ApplicationRecord
   has_many :supplies, dependent: :destroy
   has_many :users, dependent: :destroy
   has_many :roles, dependent: :destroy
+  has_many :sample_categories, dependent: :destroy
 
   enum status: [:active, :inactive]
 end

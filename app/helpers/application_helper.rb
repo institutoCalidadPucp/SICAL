@@ -15,6 +15,17 @@ module ApplicationHelper
   	end
   end
 
+  def set_laboratory_for_sample_category current_user
+    begin
+      if current_user.laboratory.present?
+        current_user.laboratory.send('sample_categories') << self
+      end
+      true
+    rescue Exception => e
+      false
+    end
+  end
+
   def tooltip_status
     self.active? ? "Desactivar" : "Activar"
   end
