@@ -1,9 +1,10 @@
 class CreateRoles < ActiveRecord::Migration[5.1]
   def change
     create_table :roles do |t|
-      t.string :name
       t.text :description
-      t.integer :status
+      t.string :name
+      t.integer :status, default: 1
+      t.belongs_to :laboratory
       t.timestamps
     end
   end

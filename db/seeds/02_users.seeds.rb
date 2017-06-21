@@ -1,1 +1,0 @@
-User.create(email: 'sical@pucp.pe', password: "pucppass2017")

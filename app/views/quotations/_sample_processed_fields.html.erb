@@ -1,0 +1,83 @@
+<div id="informacion-general"  class="nested-fields">
+  <div class="form-group row">
+    <label class= "col-md-3 col-form-label">Código del Cliente</label>
+     <div class="col-md-9">
+        <%= f.text_field :client_code,class: "form-control", readonly: true %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class= "col-md-3 col-form-label">Código PUCP</label>
+     <div class="col-md-9">
+        <%= f.text_field :pucp_code,class: "form-control", readonly: true%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class= "col-md-3 col-form-label">Categoría</label>
+     <div class="col-md-9">
+        <%= f.text_field :category,class: "form-control", readonly: true%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class= "col-md-3 col-form-label">Descripción</label>
+     <div class="col-md-9">
+        <%= f.text_field :description,class: "form-control", readonly: true%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class= "col-md-3 col-form-label">Métodos de Muestra</label>
+     <div class="col-md-9">
+        <%= f.collection_select :sample_method_id, @sample_methods, :id, :name, {}, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class= "col-md-3 col-form-label">Costos </label>
+    <div class="col-md-9 offset-md-3">
+      <div class="form-group row">
+        <h5 class="col-md-3">
+          Costo Unitario
+        </h5>
+        <h5 class="col-md-3">
+          Monto
+        </h5>
+        <h5 class="col-md-3">
+          Descuento
+        </h5>
+        <h5 class="col-md-3">
+          Subtotal
+        </h5>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-3">
+          <%= f.text_field :unit_cost,readonly: true ,class: "form-control"%>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :amount, readonly: true , class: "form-control"%>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :discount, readonly: true , class: "form-control"%>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :subtotal_cost, readonly: true , class: "form-control"%>
+        </div>
+      </div>
+    </div>
+  </div>
+    <%= link_to_remove_association f do %>
+      <i class="fa fa-times" aria-hidden="true"></i>
+    <% end %>
+
+    <div class="sample-feature-container">
+      <div class="sample-header">
+        <span>Mas Detalles</span>
+      </div>
+      <div class="sample-feature-content">
+        <%= f.fields_for :sample_features do |s_f| %>
+            <%= render 'sample_feature_fields', f: s_f %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= link_to_add_association "", f, :sample_features%>
+    </div>
+</div>

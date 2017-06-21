@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">
+        Métodos de Ensayo 
+        <small>Ver</small>
+      </h1>
+    </div>
+    <div class="form-horizontal validate sical-form sical-form-validated">
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3 col-fom-label">Nombre :</label>
+        <div class="col-md-9">
+          <%= @sample_method.name %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3">Descripción :</label>
+        <div class="col-md-9">
+          <%= @sample_method.description %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3">Costo Unitario :</label>
+        <div class="col-md-9">
+          <%= @sample_method.unit_cost %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3">Acreditación :</label>
+        <div class="col-md-9">
+          <%= @sample_method.accreditation %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3">Laboratorio :</label>
+        <div class="col-md-9">
+          <%= @sample_method.laboratory.name %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="text-center">
+          <%= link_to "Cancelar", sample_methods_path, class: "btn btn-primary sical-btn-cancel" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

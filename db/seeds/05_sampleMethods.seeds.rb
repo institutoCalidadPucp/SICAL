@@ -1,0 +1,2 @@
+SampleMethod.create(name: "metodo muestra 1", description: "Test 1", unit_cost: 123, status: 0, accreditation: 0, laboratory_id: 1)
+SampleMethod.create(name: "metodo muestra 2", description: "Test 2", unit_cost: 123, status: 0, accreditation: 0, laboratory_id: 1)

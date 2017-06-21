@@ -1,0 +1,40 @@
+
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h2 class="page-header sical-card-title">Proforma</h2>
+    </div>
+
+    <div class="tab">
+      <button class="tablinks active" onclick="openSection(event, 'informacion-general')">Informacion General</button>
+      <button class="tablinks" onclick="openSection(event, 'costeo')">Costeo</button>
+      <% if current_user.client? %>
+        <button class="tablinks" onclick="openSection(event, 'terminos-condiciones')">Terminos y condiciones</button>
+      <% end %>
+      <% if current_user.employee? and @service.accepted? %>
+        <button class="tablinks" onclick="openSection(event, 'employee-handler')">Asignacion de Empleados</button>
+      <% end %>
+    </div>
+    <%= nested_form_for @service, url: quotation_path, method: :put do |f| %>
+
+      <%= render 'setted_information', service: @service, f: f %>
+
+      <%= render 'funded_samples', service: @service, f: f %>
+
+      <%= render 'quotation_accepted', service: @service, f: f %>
+
+      <%= render 'quotation_worker', service: @service,   f: f %>
+      
+      <div class="sical-form-buttons">
+        <div class="text-center">
+          <%= link_to "Cancelar", quotations_path, class: "btn btn-primary sical-btn-cancel" %>
+          <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+        </div>
+      </div>  
+
+    <% end %>
+
+  </div>
+</div>
+
+

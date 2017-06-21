@@ -1,0 +1,8 @@
+(function() {
+  $(function() {
+    var $currentLock = $('#role-lock-<%= @role.id %>');
+    var status = "<%= @role.status %>";
+
+    toggleLockStatus($currentLock, status);
+  });
+})();

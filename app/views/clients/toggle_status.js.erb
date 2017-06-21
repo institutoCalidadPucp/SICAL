@@ -1,0 +1,8 @@
+(function() {
+  $(function() {
+    var $currentLock = $('#client-lock-<%= @client.id %>');
+    var status = "<%= @client.status %>";
+
+    toggleLockStatus($currentLock, status);
+  });
+})();
