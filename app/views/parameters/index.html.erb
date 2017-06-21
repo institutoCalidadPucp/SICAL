@@ -1,0 +1,10 @@
+<%@parameters.each do |l| %>
+
+  <%=l.max_attempts %>
+
+  <%=l.max_priority %>
+
+  <%=link_to 'Editar', edit_parameter_path(l)%>
+
+<%end%>
+

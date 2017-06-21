@@ -54,4 +54,6 @@ Rails.application.routes.draw do
   end
   resources :services do
   end
+  resources :parameters do
+  end
 end
