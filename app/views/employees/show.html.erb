@@ -1,4 +1,54 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">
+        Empleado 
+        <small>Ver</small>
+      </h1>
+    </div>
+    <div class="form-horizontal validate sical-form sical-form-validated">
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3 col-form-label">Nombre</label>
+        <div class="col-md-9">
+          <%= @employee.name %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3 col-form-label">Apellido</label>
+        <div class="col-md-9">
+          <%= @employee.last_name %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3">Correo Electrónico</label>
+        <div class="col-md-9">
+          <%= @employee.email %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3">Dirección</label>
+        <div class="col-md-9">
+          <%= @employee.address %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3">Teléfono </label>
+        <div class="col-md-9">
+          <%= @employee.phone %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3">Fecha de Nacimiento </label>
+        <div class="col-md-9">
+          <%= @employee.date_of_birth %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="text-center">
+          <%= link_to "Regresar", employees_path, class: "btn btn-primary sical-btn-cancel" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
