@@ -15,7 +15,8 @@ class Service < ApplicationRecord
   scope :work_order_per_user, -> (current_user) {where(employee_id: current_user).accepted}
 
 
-  enum work_flow: [:initialized, :prepared, :funded, :accepted]
+  enum work_flow: [:initialized,:funded, :accepted, :in_progress, :completed, :cancelled, :prepared]
+  enum intern_flow: [:pending_work, :pending_revision, :pending_modification]
   enum status: [:active, :inactive]
 
   def set_work_flow current_user

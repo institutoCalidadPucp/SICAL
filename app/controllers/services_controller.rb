@@ -10,7 +10,7 @@ class ServicesController < ApplicationController
     @unattended = Service.own_per_user(current_user).initialized
   end
 
-  def create
+  def create    
     @service = Service.new service_params
     if @service.valid?
       @service.set_work_flow(current_user)
