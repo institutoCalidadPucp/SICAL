@@ -26,6 +26,9 @@ gem 'jbuilder', '~> 2.5'
 #Pg is the Ruby interface to the {PostgreSQL RDBMS}
 gem 'pg', '~> 0.20.0'
 
+#This gem allows you to quickly and easily add Google authentication,
+gem "omniauth-google-oauth2", "~> 0.2.1"
+
 #This is a Rails gem for conveniently manage multiple nested models in a single form. It does so in an unobtrusive way through jQuery or Prototype.
 gem "nested_form"
 gem "cocoon"
