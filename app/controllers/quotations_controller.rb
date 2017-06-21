@@ -68,7 +68,7 @@ class QuotationsController < ApplicationController
     end
 
     def set_laboratories
-      @laboratories = Laboratory.all
+      @laboratories = Laboratory.active
     end
 
     def set_users_belongs_to_laboratory

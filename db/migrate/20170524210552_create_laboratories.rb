@@ -6,7 +6,7 @@ class CreateLaboratories < ActiveRecord::Migration[5.1]
       t.string :email
       t.string :address
       t.text :description
-      t.integer :status
+      t.integer :status, default: 0
       t.timestamps
     end
   end
