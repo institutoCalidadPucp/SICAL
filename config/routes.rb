@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   resources :service_quotations do
   end
   resources :services do
+    get 'search', on: :collection
   end
   resources :sample_categories do
   end
