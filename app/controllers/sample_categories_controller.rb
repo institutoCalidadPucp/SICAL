@@ -17,7 +17,7 @@ class SampleCategoriesController < ApplicationController
   def create
     @sample_category = SampleCategory.new sample_category_params
     if @sample_category.save
-      @sample_category.set_laboratory_for_sample_category(current_user)  unless current_user.admin?
+      @sample_category.set_laboratory(current_user)  unless current_user.admin?
       redirect_to sample_categories_path
     else 
       render :new
@@ -34,11 +34,6 @@ class SampleCategoriesController < ApplicationController
     else 
       render :edit
     end
-  end
-
-  def destroy
-    @sample_category.destroy
-    redirect_to sample_categories_path
   end
 
   def toggle_status
