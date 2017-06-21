@@ -10,6 +10,7 @@ class Laboratory < ApplicationRecord
   has_many :requests
   has_many :services, dependent: :destroy
   has_many :inventories, dependent: :destroy
+  has_many :supplies, dependent: :destroy
   has_many :users, dependent: :destroy
   has_many :roles, dependent: :destroy
   has_many :sample_categories, dependent: :destroy

@@ -5,6 +5,7 @@ class InventoriesController < ApplicationController
 
   def index
     @inventories = Inventory.own_per_user(current_user)
+    @supplies = Supply.own_per_user(current_user)
   end
 
   def new
@@ -16,8 +17,8 @@ class InventoriesController < ApplicationController
 
   def create
     @inventory = Inventory.new inventory_params
-    if @inventory.save
-      @inventory.set_laboratory(current_user)  unless current_user.admin?
+    @inventory.set_laboratory(current_user)  unless current_user.admin?
+    if @inventory.save     
       redirect_to inventories_path
     else 
       render :new
