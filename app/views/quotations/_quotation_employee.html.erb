@@ -16,7 +16,7 @@
   <div class="form-group row">
     <%= f.label :Categoria, class: "col-md-3 col-fom-label" %>
      <div class="col-md-9">
-        <%= f.text_field :category,class: "form-control", maxLength:"30", required: "required" %>
+        <%= f.collection_select :sample_category_id, @sample_categories, :id, :name, {}, class: "form-control", required: "required" %>
     </div>
   </div>
 

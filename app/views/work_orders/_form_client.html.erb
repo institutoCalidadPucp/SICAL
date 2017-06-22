@@ -1,0 +1,6 @@
+<%= @service.pick_up_date %>
+<%= @service.subject %>
+<% @service.sample_preliminaries.each do |sp| %>
+	<%= sp.name %>
+	<%= sp.description %>
+<% end %>
