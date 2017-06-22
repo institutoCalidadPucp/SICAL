@@ -1,6 +1,7 @@
 class SampleMethod < ApplicationRecord
+  include ApplicationHelper
 
-	validates :description, presence: true
+  validates :description, presence: true
   validates :unit_cost, numericality: { :greater_than_or_equal_to => 0 }
 
   has_many :sample_processeds

@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Inventario <small>Ver</small></h1>
+    </div>
+    <div class="form-horizontal validate sical-form sical-form-validated">
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Código:</label>
+        <div class="col-md-9">
+          <%= @supply.code %>
+        </div>
+      </div>          
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Nombre:</label>
+        <div class="col-md-9">
+          <%= @supply.name %>
+        </div>
+      </div>      
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Cantidad:</label>
+        <div class="col-md-9">
+          <%= @supply.quantity %>
+        </div>
+      </div>
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Unidad:</label>
+        <div class="col-md-9">
+          <%= @supply.measureUnit %>
+        </div>
+      </div>
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Descripción:</label>
+        <div class="col-md-9">
+          <%= @supply.description %>
+        </div>
+      </div>      
+      <div class="form-group">
+        <div class="text-center">
+          <%= link_to "Regresar", inventories_path, class: "btn btn-primary sical-btn-cancel" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

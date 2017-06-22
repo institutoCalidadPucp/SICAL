@@ -1,4 +1,4 @@
-$(".header").click(function () {
+$(".sample-header").click(function () {
 
     $header = $(this);
     $content = $header.next();

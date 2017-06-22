@@ -1,4 +1,22 @@
-<div class="nested-fields">
-  <%= link_to_remove_association "Remove children", f, class: "pull-right" %>
-  <%= render 'permits_fields', f: f %>
+<div class="nested-fields form-group row text-left">
+  <div class="col-md-3 sical-nested-cell text-center">
+    <%= f.select :name, @menus, {}%>
+  </div>
+  <div class="col-md-2 sical-nested-cell text-center">
+    <%= f.check_box :create_permit %>
+  </div>
+  <div class="col-md-2 sical-nested-cell text-center">
+    <%= f.check_box :view_permit %>
+  </div>
+  <div class="col-md-2 sical-nested-cell text-center">
+    <%= f.check_box :edit_permit %>
+  </div>
+  <div class="col-md-2 sical-nested-cell text-center">
+    <%= f.check_box :delete_permit %>
+  </div>
+  <div class="col-md-1 sical-nested-cell">
+    <%= link_to_remove_association f do %>
+      <i class="fa fa-times" aria-hidden="true"></i>
+    <% end %>
+  </div>
 </div>

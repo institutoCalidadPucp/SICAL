@@ -29,6 +29,13 @@ Rails.application.routes.draw do
   resources :inventories do
     put 'toggle_status', on: :member
   end
+  resources :supplies do
+    put 'toggle_status', on: :member
+  end
+
+  resources :sample_methods do
+    put 'toggle_status', on: :member
+  end
   resources :contracts do
   end
   resources :sample_methods do
@@ -46,5 +53,9 @@ Rails.application.routes.draw do
   resources :service_quotations do
   end
   resources :services do
+  end
+  resources :sample_categories do
+  end
+  resources :check_services do
   end
 end

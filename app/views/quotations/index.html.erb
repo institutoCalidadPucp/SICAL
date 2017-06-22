@@ -1,30 +1,30 @@
-<div class="row content">
-  <% if current_user.employee?%>
-    <div class="col-md-4">
-        <div id="unread-card" class=" card">
-          <%= render 'quotations', quotations: @unfunded, title: "Servicios sin costeados" %>
+<section class="requests-index">
+    <div class="card">
+      <div class="content">
+        <div class="header card-header-text sical-card-header">
+          <h1 class="sical-card-title">
+            Proformas
+          </h1>
         </div>
-    </div>
-    <div class="col-md-4">
-      <div id="read-card" class="card">
-        <%= render 'quotations', quotations: @funded, title: "Servicios costedos" %>
+        <div class="sical-content">
+          <div class="row">
+            <% if current_user.employee?%>
+              <div id="unread-card" class="col-md-4 card">
+                <%= render 'quotations', quotations: @unfunded, title: "Servicios sin Costear" %>
+              </div>
+              <div id="read-card" class="col-md-4 card">
+                <%= render 'quotations', quotations: @accepted, title: "Servicios Aceptados" %>
+              </div>    
+            <% else %>
+              <div id="read-card" class="col-md-6 card">
+                <%= render 'quotations', quotations: @funded, title: "Servicios Costeados" %>
+              </div>
+              <div id="read-card" class="col-md-6 card">
+                <%= render 'quotations', quotations: @accepted, title: "Servicios Aceptados" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div id="read-card" class="card">
-        <%= render 'quotations', quotations: @accepted, title: "Servicios aceptados" %>
-      </div>    
-    </div>
-  <% else %>
-    <div class="col-md-6">
-      <div id="read-card" class="card">
-        <%= render 'quotations', quotations: @funded, title: "Servicios costedos" %>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div id="read-card" class="card">
-        <%= render 'quotations', quotations: @accepted, title: "Servicios aceptados" %>
-      </div>
-    </div>
-  <% end %>
-</div>
+  </section>

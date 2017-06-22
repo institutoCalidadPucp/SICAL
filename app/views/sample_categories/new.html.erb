@@ -1,0 +1,20 @@
+<%= form_for @sample_category, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  <div>
+    <%= f.label :Nombre %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :Descripcion %>
+    <%= f.text_area :description, size: "30x5" %>
+  </div>
+  <% if current_user.admin? %>
+  <div class="col-md-3 col-fom-label">
+      <%= f.label :laboratorio %>
+    </div>
+  <div class="col-md-9 input-wrapper">
+      <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, class: "form-control", required: "required" %>
+    </div>
+  <% end %>
+  
+  <%= f.submit "Create" %>
+<% end %>

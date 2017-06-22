@@ -1,10 +1,16 @@
 <%= form_for sample_method, url: path, method: method, :html => { class: "form-horizontal validate sical-form sical-form-validated" } do |f| %>
-  <% if @sample_method.errors.any?%>
+  <% if @sample_method.errors.any? %>
     <% @sample_method.errors.full_messages.each do |m| %>
-      <p><%= m %></p>
+      <div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+        </button>
+        <span>
+          <b> Error - </b> <%= m %>
+        </span>
+      </div>
     <% end %>
-  <br>
   <% end %>
+  <br>
   <div class="form-group row">
     <%= f.label :nombre, class: "col-md-3 col-form-label" %>
     <div class="col-md-9">
@@ -12,7 +18,7 @@
     </div>
   </div>
   <div class="form-group row">
-    <%= f.label :descripcion, class: "col-md-3 col-form-label" %>
+    <%= f.label :descripción, class: "col-md-3 col-form-label" %>
     <div class="col-md-9">
       <%= f.text_area :description, class: "form-control description",maxlength:"200",height:"100px" %>
   </div>
@@ -20,18 +26,18 @@
   <div class="form-group row">
     <%= f.label :costo_unitario	, class: "col-md-3 col-form-label" %>
     <div class="col-md-9">
-      <%= f.text_field :unit_cost, class: "form-control only-money-value", unit_cost: true ,required:"required"%>
+      <%= f.text_field :unit_cost, class: "form-control only-numbers", unit_cost: true , required:"required" %>
     </div>
   </div>
   <div class="form-group row">
     <div class="col-md-3 col-fom-label">
-      <%= f.label :acreditacion %>
+      <%= f.label :acreditación %>
     </div>
     <div class="col-md-9 input-wrapper">
       <div class="sample-accreditation-options">
         <% SampleMethod.accreditations.keys.each do |accreditation|  %>
           <%= f.label accreditation.capitalize, class: "radio form-check-label sical-radio-button" do %>
-            <%= f.radio_button :accreditation, accreditation, class: "form-check-input sical-input-radio-button", required: "required" %>
+            <%= f.radio_button :accreditation, accreditation, class: "form-check-input sical-input-radio-button", checked: "#{sample_method.accreditation == accreditation ? "checked" : ""}", required: "required" %>
             <span class="icons">
               <span class="first-icon fa fa-circle-o"></span>
               <span class="second-icon fa fa-dot-circle-o"></span>

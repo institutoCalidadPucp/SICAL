@@ -14,10 +14,16 @@
         <%= render 'sample_processed_fields', f: sample %>
       <% end %>
     
-      <div class="samples-title-wrapper ">
-        <div class= "samples-title">Muestras</div>
-        <div>
-          <%= link_to_add_association "Agregar evaluacion de la muestra", f, :sample_processeds, class: "btn btn-default sical-btn-add-menu"%>
+      <div class="">
+        <div class= "samples-title samples-worker">
+          <div>
+            Muestras
+          </div>
+          <div>
+            <%= link_to_add_association "Agregar evaluacion de la muestra", f, :sample_processeds, class: "btn btn-default sical-btn-add-menu btn-add-evalution-sample", data: { association_insertion_node: '.samples', association_insertion_method: 'append', evaluation_samples: 0 }%>
+          </div>
+        </div>
+        <div class="samples sample-evalutions">
         </div>
       </div>
       
