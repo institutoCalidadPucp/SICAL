@@ -6,13 +6,12 @@
       <%= render 'show_client', service: @service%>
       <% if current_user.employee? %>
         <%= render 'show_worker', service: @service%>
-      <% end %>
-
-      <div class="form-group">
+      <% end %>        
+  </div>
+  <div class="form-group">        
         <div class="text-center">
           <%= link_to "Regresar", services_path, class: "btn btn-primary sical-btn-cancel" %>
         </div>
-      </div>
   </div>
 </div>
 
