@@ -1,7 +1,8 @@
-// Place all the styles related to the sample_methods controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.justify-header{
+.justify-header {
   display:flex;
   justify-content: space-between;
+}
+
+.sample-description {
+  height: 100px;
 }
