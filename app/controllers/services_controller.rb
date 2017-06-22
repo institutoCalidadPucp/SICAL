@@ -11,9 +11,7 @@ class ServicesController < ApplicationController
   end
 
   def search
-    @services = Service.where "created_at >= :start_date AND created_at <= :end_date",
-     {start_date: params[:start_date], end_date: params[:end_date]}
-    
+    @services = Service.where "created_at >= :start_date AND created_at <= :end_date", {start_date: params[:start_date], end_date: params[:end_date]}   
   end
 
   def create
