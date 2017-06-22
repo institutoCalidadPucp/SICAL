@@ -20,27 +20,51 @@
         </div>
       </div>
       <div class="form-group row" style="margin:0px;">
-        <label class="col-md-3">Correo Electrónico</label>
+        <label class="col-md-3 col-form-label">Correo Electrónico</label>
         <div class="col-md-9">
           <%= @employee.email %>
         </div>
       </div>
       <div class="form-group row" style="margin:0px;">
-        <label class="col-md-3">Dirección</label>
+        <label class="col-md-3 col-form-label">Dirección</label>
         <div class="col-md-9">
           <%= @employee.address %>
         </div>
       </div>
       <div class="form-group row" style="margin:0px;">
-        <label class="col-md-3">Teléfono </label>
+        <label class="col-md-3 col-form-label">Teléfono </label>
         <div class="col-md-9">
           <%= @employee.phone %>
         </div>
       </div>
       <div class="form-group row" style="margin:0px;">
-        <label class="col-md-3">Fecha de Nacimiento </label>
+        <label class="col-md-3 col-form-label">Fecha de Nacimiento </label>
         <div class="col-md-9">
-          <%= @employee.date_of_birth %>
+          <% if @employee.date_of_birth %>
+            <%= @employee.date_of_birth.strftime("%d/%m/%Y") %>
+          <% end %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3 col-form-label">Sexo </label>
+        <div class="col-md-9">
+          <% if @employee.gender == 'male' %>
+            Masculino
+          <% else %>
+            Femenino
+          <% end %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3 col-form-label">Rol </label>
+        <div class="col-md-9">
+          <%= @employee.role.name %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3 col-form-label">Laboratorio </label>
+        <div class="col-md-9">
+          <%= @employee.laboratory.name %>
         </div>
       </div>
       
@@ -52,3 +76,4 @@
     </div>
   </div>
 </div>
+
