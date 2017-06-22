@@ -13,9 +13,6 @@
                 <%= render 'quotations', quotations: @unfunded, title: "Servicios sin Costear" %>
               </div>
               <div id="read-card" class="col-md-4 card">
-                <%= render 'quotations', quotations: @funded, title: "Servicios Costeados" %>
-              </div>
-              <div id="read-card" class="col-md-4 card">
                 <%= render 'quotations', quotations: @accepted, title: "Servicios Aceptados" %>
               </div>    
             <% else %>
