@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     devise_scope :user do
     get "signup", to: "devise/registrations#new"
     get "login", to: "devise/sessions#new"
-    get "logout", to: "devise/sessions#destroy"
+    get "logout", to: "sessions#destroy"
     authenticated :user do
       root 'dashboard#index'
     end
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/:provider/callback', to: 'dashboard#index'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
 

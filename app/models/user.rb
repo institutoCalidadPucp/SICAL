@@ -41,6 +41,8 @@ class User < ApplicationRecord
   end
 
   def permit_tabs
+    p '*************************'
+    ap self
     unless self.admin?
       self.client? ? MenuPermit.client_tabs : ( self.role.present? ? self.role.menus : [] )
     else
@@ -66,18 +68,34 @@ class User < ApplicationRecord
     end
   end
 
+  def omniauth_values auth
+    email = auth.info.email
+    password = SecureRandom.urlsafe_base64
+    provider = auth.provider
+    uid = auth.uid
+    name = auth.info.name
+    oauth_token = auth.credentials.token
+    oauth_expires_at = Time.at(auth.credentials.expires_at)
+  end
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
-      user.email = auth.info.email
-      user.password = auth.info.password
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.name = auth.info.name
-      user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+  def self.find_or_initialize user, auth_params
+    signed_user = User.find_by_email auth_params.info.email
+    unless signed_user
+      user.omniauth_values auth_params
       user.save!
+    else
+      signed_user
     end
+  end
+
+
+  def self.from_omniauth auth
+    p '*****************************'
+    signed_user = nil
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+      signed_user = find_or_initialize user, auth
+    end
+    signed_user
   end
 
 end
