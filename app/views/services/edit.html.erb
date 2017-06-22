@@ -1,7 +1,11 @@
 <div class="card">
   <div class="tab">
     <button class="tablinks active" onclick="openSection(event, 'service')">Servicios</button>
+    <button class="tablinks active" onclick="openSection(event, 'costeo')">Costeo</button>
+    <button class="tablinks active" onclick="openSection(event, 'personal')">Asignacion de Personal</button>
+    <!--
     <button class="tablinks" onclick="openSection(event, 'sample')">Muestra</button>
+    !-->
     </div>
   <%= nested_form_for @service, url: service_path, :wrapper => false,  method: :put do |f| %>
     <div id="service" class="tabcontent" style="display: block;">
@@ -9,15 +13,16 @@
       <%= render 'form_client', service: @service, f: f %>
     </div>
     
-    <% if @service.classified? %>
+    <!--
+    <%# if @service.classified? %>
       <div id="sample" class="tabcontent">
       <h3>Validacion de clasificacion</h3>
-        <%= f.label :validacion %>
-        <%= f.check_box :valid_classified %>
+        <%#= f.label :validacion %>
+        <%#= f.check_box :valid_classified %>
         <h3>Muestras</h3>
-        <%= f.fields_for :sample_processeds do |sample| %>
-          <%= render 'sample_processed_fields', f: sample %>
-        <% end %>
+        <%#= f.fields_for :sample_processeds do |sample| %>
+          <%#= render 'sample_processed_fields', f: sample %>
+        <%# end %>
       
         <div class="">
           <div class= "samples-title samples-worker">
@@ -25,16 +30,17 @@
               Muestras
             </div>
             <div>
-              <%= link_to_add_association "", f, :sample_processeds, data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples'},  class: "btn btn-default sical-btn-add-menu "%>
+              <%#= link_to_add_association "", f, :sample_processeds, data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples'},  class: "btn btn-default sical-btn-add-menu "%>
             </div>
           </div>
           <div class="samples">
           </div>
         </div>
       </div>
-    <% end %>
+    <%# end %>
+    !-->
 
-    <% if @service.initialized? %>
+    <% if @service.initial_accepted? %>
       <div id="personal" class="tabcontent">
         <h3>Asignacion de Personal</h3>
           <%= f.label :empleado %>

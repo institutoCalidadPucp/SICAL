@@ -1,0 +1,20 @@
+<section class="requests-index">
+    <div class="card">
+      <div class="content">
+        <div class="header card-header-text sical-card-header">
+          <h1 class="sical-card-title">
+            Clasificaciones
+          </h1>
+        </div>
+        <div class="sical-content">
+          <div class="row">
+            <div id="unread-card" class="col-md-4 card">
+              <%= render 'classified_services', services_unclassified: @services_unclassified, title: "Servicios sin Clasificar" %>
+            </div>
+            <div id="read-card" class="col-md-4 card">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

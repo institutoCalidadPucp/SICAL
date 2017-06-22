@@ -10,17 +10,17 @@
           <div class="row">
             <% if current_user.employee?%>
               <div id="unread-card" class="col-md-4 card">
-                <%= render 'quotations', quotations: @unfunded, title: "Servicios sin Costear" %>
+                <%= render 'quotations', quotations: @initial_unfunded, title: "Servicios sin Costear" %>
               </div>
               <div id="read-card" class="col-md-4 card">
-                <%= render 'quotations', quotations: @accepted, title: "Servicios Aceptados" %>
+                <%#= render 'quotations', quotations: @accepted, title: "Servicios Aceptados" %>
               </div>    
             <% else %>
               <div id="read-card" class="col-md-6 card">
-                <%= render 'quotations', quotations: @funded, title: "Servicios Costeados" %>
+                <%= render 'quotations', quotations: @initial_funded, title: "Servicios Costeados" %>
               </div>
               <div id="read-card" class="col-md-6 card">
-                <%= render 'quotations', quotations: @accepted, title: "Servicios Aceptados" %>
+                <%#= render 'quotations', quotations: @accepted, title: "Servicios Aceptados" %>
               </div>
             <% end %>
           </div>

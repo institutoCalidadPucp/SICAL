@@ -6,9 +6,9 @@ class ServicesController < ApplicationController
   before_action :sample_categories, only: [:new, :create, :edit, :update, :show]
 
   def index
-    @services = Service.all
-    @classified_services = Service.own_per_laboratory(current_user).classified
-    @unattended = Service.own_per_user(current_user).initialized
+    @services = Service.services_per_client current_user
+    @unattended_services = Service.inital_funded_accepted current_user
+    @unclassified_services = Service.unclassified_to_check current_user
   end
 
   def create    

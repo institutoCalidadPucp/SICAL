@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="tab">
+    <button class="tablinks active" onclick="openSection(event, 'service')">Servicios</button>
+    <button class="tablinks" onclick="openSection(event, 'sample')">Muestra</button>
+   </div>
+
+  <%= nested_form_for @service, url: classified_service_path, :wrapper => false,  method: :put do |f| %>
+    <div id="service" class="tabcontent" style="display: block;">
+      <h3>Servicios</h3>
+      <%= render 'form_client', service: @service, f: f %>
+    </div>
+		
+		<div id="sample" class="tabcontent">
+			<%= render 'classified_service', service: @service, f: f %>
+		</div>    
+
+    <div class="form-group">
+      <div class="text-center save-worker">
+        <%= link_to "Cancelar", classified_services_path, class: "btn btn-primary sical-btn-cancel" %>
+        <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+      </div>
+    </div>
+  <% end %>
+</div>
