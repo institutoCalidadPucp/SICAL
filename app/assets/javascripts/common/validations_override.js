@@ -33,6 +33,11 @@
 
   }, 'Por favor solo seleccione una opcion por menu.');
 
+  $.validator.addMethod('onlyTwoDecimals', function(value, element) {
+    console.log()
+    return this.optional(element) || value.split('.')[1].length <= 2;
+  }, 'Por favor solo ingrese 2 decimales');
+
   $.validator.methods.date = function(value, element, param) {
     return this.optional(element) || moment(value, 'DD/MM/YYYY').isValid();
   };
