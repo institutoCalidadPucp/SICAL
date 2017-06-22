@@ -10,6 +10,12 @@ class ServicesController < ApplicationController
     @unattended = Service.own_per_user(current_user).initialized
   end
 
+  def search
+    @services = Service.where "created_at >= :start_date AND created_at <= :end_date",
+     {start_date: params[:start_date], end_date: params[:end_date]}
+    
+  end
+
   def create
     @service = Service.new service_params
     if @service.valid?
