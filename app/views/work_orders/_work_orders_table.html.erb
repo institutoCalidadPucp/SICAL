@@ -19,7 +19,6 @@
               <td>
                 <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, work_order_path(work_order), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>
                 <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_work_order_path(work_order), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
-                <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, work_order_path(work_order),class: "btn btn-warning btn-sm", data: { "toggle" => "tooltip" }, title: "Eliminar", method: :delete %>
               </td>
             </tr>
         <% end %>
