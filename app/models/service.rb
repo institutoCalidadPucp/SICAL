@@ -16,7 +16,7 @@ class Service < ApplicationRecord
   scope :services_per_worker, -> (current_user) {where(employee_id: current_user)}
   scope :own_per_laboratory, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
-  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified]
+  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :accepted_classified, :accepted_adjust, :engagement]
   enum intern_flow: [:internal_accepted, :internal_rejected]
   enum status: [:active, :inactive]
 
@@ -46,10 +46,22 @@ class Service < ApplicationRecord
   end
 
   def self.unclassified_to_check current_user
+    #
     own_per_laboratory(current_user).classified
   end
 
+  def self.passed_classification current_user
+    #
+    own_per_laboratory(current_user).accepted_classified
+  end
+
+  def self.adjusted_by_lab_leader current_user
+    services_per_client(current_user).accepted_adjust
+  end
+
   def handling_client_process current_user
+    #
+    self.engagement! if self.accepted_adjust?
     #client accept the initial funded to his services
     self.initial_accepted! if self.initial_funded? and self.valid_initial_funded
     #client create a service
@@ -57,6 +69,10 @@ class Service < ApplicationRecord
   end
   
   def handling_internal_process
+    #
+    self.accepted_adjust! if self.accepted_classified?
+    #lab leader check if the classified work from a employee is correct
+    self.accepted_classified! if self.classified? and self.valid_classified
     #worker fill the classified fields from a sample
     self.classified! if self.assign_sorter?
     #choosing one employee from the current lab to set the classification to the sample
@@ -66,11 +82,7 @@ class Service < ApplicationRecord
   end
 
   def set_work_flow current_user
-    if current_user.client?
-      self.handling_client_process current_user
-    else
-      self.handling_internal_process
-    end
+    current_user.client? ? self.handling_client_process(current_user) : self.handling_internal_process
   end
 
 end

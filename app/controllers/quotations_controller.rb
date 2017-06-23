@@ -9,7 +9,8 @@ class QuotationsController < ApplicationController
   def index
     @initial_unfunded = Service.quotations_without_funded current_user
     @initial_funded = Service.quotations_with_initial_funded current_user
-    #@accepted = Service.own_per_user(current_user).accepted
+    @services_to_adjusts = Service.passed_classification current_user
+    @adjusted_services = Service.adjusted_by_lab_leader current_user
   end
 
   def new
