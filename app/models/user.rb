@@ -11,12 +11,17 @@ class User < ApplicationRecord
   has_many :sample_processeds
 
 
-  enum category: [:admin, :employee, :client]
+  enum category: [:admin, :employee, :client, :super_admin]
   enum gender: [:male, :female]
   enum status: [:active, :inactive]
 
   def can_action tab_reference
     permit_tabs.where(tab_reference: tab_reference).first.create_permit
+  end
+
+  def laboratory_name
+    @laboratory = Laboratory.find(:laboratory_id)
+    @laboratory.name
   end
 
   def can_view tab_reference
