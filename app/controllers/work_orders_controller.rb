@@ -3,7 +3,8 @@ class WorkOrdersController < ApplicationController
   before_action :sample_categories, only: [:new, :create, :edit, :update, :show]
 	
 	def index
-    @work_orders = Service.work_order_per_user(current_user)
+    @work_orders_to_work = Service.work_orders_to_work current_user
+    #@work_orders_to_check
   end
 
   def new

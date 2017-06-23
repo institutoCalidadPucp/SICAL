@@ -2,6 +2,7 @@
   <div class="tab">
     <button class="tablinks active" onclick="openSection(event, 'service')">Servicios</button>
     <button class="tablinks" onclick="openSection(event, 'personal')">Clasificacion</button>
+    <button class="tablinks" onclick="openSection(event, 'personal')">Resultados</button>
   </div>
   <%= nested_form_for @service, url: service_path, :wrapper => false,  method: :put do |f| %>
     <div id="service" class="tabcontent" style="display: block;">
@@ -9,25 +10,6 @@
       <%= render 'form_client', service: @service, f: f %>
     </div>
 
-    <div id="personal" class="tabcontent">
-      <h3>Clasificacion</h3>
-        <%= f.fields_for :sample_processeds do |sample| %>
-          <%= render 'sample_processed_fields', f: sample %>
-        <% end %>
-      
-        <div class="">
-          <div class= "samples-title samples-worker">
-            <div>
-              Muestras
-            </div>
-            <div>
-              <%= link_to_add_association "Agregar evaluacion de la muestra", f, :sample_processeds, data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples'},  class: "btn btn-default sical-btn-add-menu "%>
-            </div>
-          </div>
-          <div class="samples">
-          </div>
-        </div>
-    </div>   
     <div class="form-group">
       <div class="text-center save-worker">
         <%= link_to "Cancelar", services_path, class: "btn btn-primary sical-btn-cancel" %>

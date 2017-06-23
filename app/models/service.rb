@@ -16,7 +16,7 @@ class Service < ApplicationRecord
   scope :services_per_worker, -> (current_user) {where(employee_id: current_user)}
   scope :own_per_laboratory, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
-  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :accepted_classified, :accepted_adjust, :engagement]
+  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :accepted_classified, :accepted_adjust, :engagement, :initialize_work_order]
   enum intern_flow: [:internal_accepted, :internal_rejected]
   enum status: [:active, :inactive]
 
@@ -63,6 +63,14 @@ class Service < ApplicationRecord
     own_per_laboratory(current_user).engagement
   end
 
+  def self.work_orders_to_work current_user
+    services_per_worker(current_user).initialize_work_order
+  end
+
+  def self.work_orders_to_check current_user
+    
+  end
+
   def handling_client_process current_user
     #
     self.engagement! if self.accepted_adjust?
@@ -76,6 +84,8 @@ class Service < ApplicationRecord
   end
   
   def handling_internal_process
+    #
+    self.initialize_work_order if self.engagement?
     #
     self.accepted_adjust! if self.accepted_classified?
     #lab leader check if the classified work from a employee is correct
