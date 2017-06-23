@@ -6,7 +6,7 @@
     <%= f.text_field :quantity, class: "form-control only-numbers", maxLength:"5", required:"required" %>
   </div>
   <div class="col-md-5">
-    <%= f.text_area :description , class: "form-control service-sample-description", rows:"3",required:"required"%>
+    <%= f.text_field :description , class: "form-control service-sample-description", required:"required"%>
   </div>
    <% if current_user.client? and current_page?(action: 'new') %>
       <%= link_to_remove_association f do %>
