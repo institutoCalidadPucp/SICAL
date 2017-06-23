@@ -1,6 +1,7 @@
 class SuppliesController < ApplicationController
     before_action :set_supply, only: [:show, :edit, :update, :destroy, :toggle_status]
     before_action :laboratories, only: [:new, :create, :edit, :update, :show]
+    before_action :set_controller
 
   def index
     @supplies = Supply.own_per_user(current_user)  
@@ -58,5 +59,9 @@ class SuppliesController < ApplicationController
 
      def laboratories
       @laboratories = Laboratory.all
+    end
+
+    def set_controller
+      @controller = "inventories"
     end
 end

@@ -115,3 +115,11 @@
 .sical-nested-cell {
   display: table-cell;
 }
+
+// Sical Nav Tabs
+
+.nav-tabs-navigation {
+  &.sical-horizontal-nav-tabs {
+    margin-bottom: 0;
+  }
+}
