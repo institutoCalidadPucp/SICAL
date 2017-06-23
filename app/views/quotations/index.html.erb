@@ -14,7 +14,10 @@
               </div>
               <div id="read-card" class="col-md-4 card">
                 <%= render 'quotations', quotations: @services_to_adjusts, title: "Servicios por Ajustar" %>
-              </div>    
+              </div>
+              <div id="read-card" class="col-md-4 card">
+                <%= render 'quotations', quotations: @services_with_engagements, title: "Proformas aceptadas" %>
+              </div>              
             <% else %>
               <div id="read-card" class="col-md-6 card">
                 <%= render 'quotations', quotations: @initial_funded, title: "Servicios Costeados" %>

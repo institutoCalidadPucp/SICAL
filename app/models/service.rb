@@ -59,13 +59,20 @@ class Service < ApplicationRecord
     services_per_client(current_user).accepted_adjust
   end
 
+  def self.services_with_engagements current_user
+    own_per_laboratory(current_user).engagement
+  end
+
   def handling_client_process current_user
     #
     self.engagement! if self.accepted_adjust?
     #client accept the initial funded to his services
     self.initial_accepted! if self.initial_funded? and self.valid_initial_funded
     #client create a service
-    (self.client = current_user) if self.initialized?
+    if self.initialized?
+      (self.client = current_user) 
+      self.save
+    end
   end
   
   def handling_internal_process

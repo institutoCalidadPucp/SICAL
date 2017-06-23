@@ -11,6 +11,7 @@ class QuotationsController < ApplicationController
     @initial_funded = Service.quotations_with_initial_funded current_user
     @services_to_adjusts = Service.passed_classification current_user
     @adjusted_services = Service.adjusted_by_lab_leader current_user
+    @services_with_engagements = Service.services_with_engagements current_user
   end
 
   def new
