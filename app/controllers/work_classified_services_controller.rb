@@ -1,20 +1,26 @@
-class ClassifiedServicesController < ApplicationController
-
+class WorkClassifiedServicesController < ApplicationController 
   before_action :set_service, only: [:edit, :update, :destroy, :show]
   before_action :laboratories, only: [:edit, :new, :show]
   before_action :sample_categories, only: [:new, :create, :edit, :update, :show]	
 
 	def index
-		@services_unclassified = Service.inital_funded_accepted current_user	
-    @services_classified_to_check = Service.classified_to_check current_user  
+    @services_unclassified_to_work = Service.unclassified_to_work current_user  
+    @services_classified_to_rework = Service.service_classified_to_rework current_user  
 	end
 
-	def edit
-     @employees = User.own_per_user(current_user).employee		
+  def new    
+  end
+
+  def show
+  end
+
+  def create    
+  end
+
+	def edit    
 	end
 
-	def update
-    p service_params[:employee_id]
+	def update  
     @service.assign_attributes service_params
     if @service.valid?
       @service.set_work_flow(current_user)
@@ -54,5 +60,4 @@ class ClassifiedServicesController < ApplicationController
     def laboratories
       @laboratories = Laboratory.all
     end
-
 end

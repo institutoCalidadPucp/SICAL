@@ -3,15 +3,16 @@
       <div class="content">
         <div class="header card-header-text sical-card-header">
           <h1 class="sical-card-title">
-            Clasificaciones
+            Cadena de Custodia
           </h1>
         </div>
         <div class="sical-content">
           <div class="row">
-            <div id="unread-card" class="col-md-4 card">
-              <%= render 'classified_services', services_unclassified: @services_unclassified, title: "Servicios sin Clasificar" %>
+            <div id="unread-card" class="col-md-6 card">
+              <%= render 'classified_services', services_unclassified: @services_unclassified, title: "Servicios sin Custodia" %>
             </div>
-            <div id="read-card" class="col-md-4 card">
+            <div id="read-card" class="col-md-6 card">
+              <%= render 'classified_services_to_check', services_classified_to_check: @services_classified_to_check, title: "Custodia por Revisar" %>
             </div>
           </div>
         </div>
