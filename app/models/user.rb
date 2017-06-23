@@ -19,11 +19,6 @@ class User < ApplicationRecord
     permit_tabs.where(tab_reference: tab_reference).first.create_permit
   end
 
-  def laboratory_name
-    @laboratory = Laboratory.find(:laboratory_id)
-    @laboratory.name
-  end
-
   def can_view tab_reference
     can_action(tab_reference)
   end
