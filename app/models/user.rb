@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :sample_processeds
 
 
-  enum category: [:admin, :employee, :client, :super_admin]
+  enum category: [:admin, :employee, :client]
   enum gender: [:male, :female]
   enum status: [:active, :inactive]
 
