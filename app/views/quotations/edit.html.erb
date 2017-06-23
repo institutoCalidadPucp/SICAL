@@ -8,11 +8,16 @@
     <div class="tab">
       <button class="tablinks active" onclick="openSection(event, 'informacion-general')">Informacion General</button>
       <button class="tablinks" onclick="openSection(event, 'costeo')">Costeo</button>
-      <% if current_user.client? %>
+      <% if @service.accepted_classified? or @service.accepted_adjust? or @service.engagement? %>
+        <button class="tablinks" onclick="openSection(event, 'adjust_cost')">Ajuste de costeo</button>
+      <% end %>
+      
+      <% if current_user.client?  and @service.accepted_adjust? %>
         <button class="tablinks" onclick="openSection(event, 'terminos-condiciones')">Terminos y condiciones</button>
       <% end %>
-      <% if current_user.employee? and @service.accepted? %>
-        <button class="tablinks" onclick="openSection(event, 'employee-handler')">Asignacion de Empleados</button>
+      <% if current_user.employee? and @service.engagement? %>
+        <button class="tablinks" onclick="openSection(event, 'contract')">Contrato</button>
+        <button class="tablinks" onclick="openSection(event, 'employee-assign')">Orden de trabajo</button>
       <% end %>
     </div>
     <%= nested_form_for @service, url: quotation_path, method: :put do |f| %>
@@ -23,7 +28,7 @@
 
       <%= render 'quotation_accepted', service: @service, f: f %>
 
-      <%= render 'quotation_worker', service: @service,   f: f %>
+      <%#= render 'quotation_worker', service: @service,   f: f %>
       
       <div class="sical-form-buttons">
         <div class="text-center">

@@ -28,7 +28,13 @@
       </div>
       
     </div>
-
+    <% if @service.initial_accepted? %>
+      <div id="personal" class="tabcontent">
+        <h3>Asignacion de Personal</h3>
+          <%= f.label :empleado %>
+          <%= f.collection_select :employee_id, @employees, :id, :name, {}, class: "form-control", required: "required" %>
+      </div>  
+    <% end %> 
     <div class="form-group">
       <div class="text-center save-worker">
         <%= link_to "Cancelar", services_path, class: "btn btn-primary sical-btn-cancel" %>

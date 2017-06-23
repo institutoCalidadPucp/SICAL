@@ -6,6 +6,7 @@ MenuPermit.create(name: 'Metodos de Ensayo', tab_reference: 'sample_methods', ta
 MenuPermit.create(name: 'Solicitudes de servicio', tab_reference: 'check_services', tab_icon: 'ti-clipboard', available_for_client: false, order: 6, default: true)
 MenuPermit.create(name: 'Revision de servicios', tab_reference: 'services', tab_icon: 'ti-hummer', available_for_client: false, order: 7, default: true)
 MenuPermit.create(name: 'Solicitudes de servicio', tab_reference: 'services', tab_icon: 'ti-hummer', available_for_client: true, order: 7, default: true)
+MenuPermit.create(name: 'Clasificacion de servicio', tab_reference: 'classified_services', tab_icon: 'ti-hummer', available_for_client: true, order: 7, default: false)
 MenuPermit.create(name: 'Proformas', tab_reference: 'quotations', tab_icon: 'ti-clipboard', available_for_client: true, order: 7, default: true)
 MenuPermit.create(name: 'Orden de Trabajo', tab_reference: 'work_orders', tab_icon: 'ti-hummer', available_for_client: false, order: 8, default: true)
 MenuPermit.create(name: 'Resultados', tab_reference: 'results', tab_icon: 'ti-view-list-alt', available_for_client: true, order: 9, default: true)

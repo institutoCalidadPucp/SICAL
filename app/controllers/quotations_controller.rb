@@ -7,9 +7,11 @@ class QuotationsController < ApplicationController
   before_action :set_users_belongs_to_laboratory, only: [:edit, :new]
 
   def index
-    @funded = Service.funded
-    @unfunded = Service.own_per_user(current_user).classified.internal_accepted
-    @accepted = Service.own_per_user(current_user).accepted
+    @initial_unfunded = Service.quotations_without_funded current_user
+    @initial_funded = Service.quotations_with_initial_funded current_user
+    @services_to_adjusts = Service.passed_classification current_user
+    @adjusted_services = Service.adjusted_by_lab_leader current_user
+    @services_with_engagements = Service.services_with_engagements current_user
   end
 
   def new
@@ -26,11 +28,8 @@ class QuotationsController < ApplicationController
 
   def update
     @service.assign_attributes quotation_params
-    p '******************************* 1'
     if @service.save
-      p '******************************* 1'
       @service.set_work_flow(current_user)
-      p '******************************* 1'
       redirect_to  quotations_path
     else
       render :edit
@@ -47,7 +46,7 @@ class QuotationsController < ApplicationController
   private 
 
     def quotation_params
-      params.require(:service).permit(:laboratory_id, :valid_classified, :subject, :pick_up_date, :engagement, :engagement_observation, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+      params.require(:service).permit(:laboratory_id, :valid_initial_funded, :valid_classified, :subject, :pick_up_date, :engagement, :engagement_observation, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
 
     def sample_processeds

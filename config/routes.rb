@@ -36,26 +36,16 @@ Rails.application.routes.draw do
   resources :sample_methods do
     put 'toggle_status', on: :member
   end
-  resources :contracts do
-  end
-  resources :sample_methods do
-  end
-  resources :quotations do
-  end
-  resources :requests do
-  end
-  resources :results do
-  end
-  resources :work_orders do
-  end
-  resources :logs do
-  end
-  resources :service_quotations do
-  end
-  resources :services do
-  end
-  resources :sample_categories do
-  end
-  resources :check_services do
-  end
+  resources :contracts
+  resources :sample_methods
+  resources :quotations
+  resources :requests
+  resources :results
+  resources :work_orders
+  resources :logs
+  resources :service_quotations
+  resources :services
+  resources :sample_categories
+  resources :check_services
+  resources :classified_services
 end

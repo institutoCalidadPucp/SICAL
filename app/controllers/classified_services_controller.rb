@@ -1,35 +1,29 @@
-class WorkOrdersController < ApplicationController
+class ClassifiedServicesController < ApplicationController
+
   before_action :set_service, only: [:edit, :update, :destroy, :show]
-  before_action :sample_categories, only: [:new, :create, :edit, :update, :show]
-	
+  before_action :laboratories, only: [:edit, :new, :show]
+  before_action :sample_categories, only: [:new, :create, :edit, :update, :show]	
+
 	def index
-    @work_orders_to_work = Service.work_orders_to_work current_user
-    #@work_orders_to_check
-  end
+		@services_unclassified = Service.unclassified_to_work current_user	
+	end
 
-  def new
-  end
+	def edit
+		
+	end
 
-  def create
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
+	def update
     @service.assign_attributes service_params
     if @service.valid?
       @service.set_work_flow(current_user)
-      redirect_to services_path
+      redirect_to classified_services_path
     else
       render :edit
-    end    
-  end
+    end		
+	end
 
-  private
+	private
+
     def service_params
       params.require(:service).permit(:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
@@ -44,7 +38,7 @@ class WorkOrdersController < ApplicationController
 
     def sample_features
       [:id, :value, :description]
-    end  
+    end
 
     def set_service
       @service = Service.find params[:id]
@@ -52,5 +46,10 @@ class WorkOrdersController < ApplicationController
 
     def sample_categories
       @sample_categories = SampleCategory.own_per_user current_user
-    end    
+    end
+
+    def laboratories
+      @laboratories = Laboratory.all
+    end
+
 end
