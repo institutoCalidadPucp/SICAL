@@ -1,20 +1,8 @@
-<%= form_for @sample_category, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-  <div>
-    <%= f.label :Nombre %>
-    <%= f.text_field :name %>
-  </div>
-  <div>
-    <%= f.label :Descripcion %>
-    <%= f.text_area :description, size: "30x5" %>
-  </div>
-  <% if current_user.admin? %>
-  <div class="col-md-3 col-fom-label">
-      <%= f.label :laboratorio %>
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Categoria de Muestra <small>Nuevo</small></h1>
     </div>
-  <div class="col-md-9 input-wrapper">
-      <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, class: "form-control", required: "required" %>
-    </div>
-  <% end %>
-  
-  <%= f.submit "Create" %>
-<% end %>
+    <%= render 'form', sample_category: @sample_category, method: :post, path: sample_categories_path %>
+  </div>
+</div>

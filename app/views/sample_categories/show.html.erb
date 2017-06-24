@@ -1,1 +1,45 @@
-show.html.erb
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Categorias de Muestra <small>Ver</small></h1>
+    </div>
+    <div class="form-horizontal validate sical-form sical-form-validated">
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3 col-fom-label">Nombre :</label>
+        <div class="col-md-9">
+          <%= @sample_category.name %>
+        </div>
+      </div>
+      <div class="form-group row" style="margin:0px;">
+        <label class="col-md-3">Descripción :</label>
+        <div class="col-md-9">
+          <%= @sample_category.description %>
+        </div>
+      </div>
+      <div class="form-group ">
+        <label class="col-md-3 col-fom-label">Metodos de Ensayo :</label>
+      </div>
+      <div class="col-md-9 offset-md-3">
+        <table class="table table-no-bordered table-hover">
+          
+          <tbody>
+           <div>
+      <%= hidden_field_tag 'sample_category[sample_method_ids][]', nil %>
+      <% SampleMethod.all.each do |sample_method| %>
+        <div>
+      <%= check_box_tag 'sample_category[sample_method_ids][]', sample_method.id, @sample_category.sample_method_ids.include?(sample_method.id), id: dom_id(sample_method), disabled: true %>
+      <%= label_tag dom_id(sample_method), sample_method.name -%>
+    </div>
+      <% end %>
+    </div>
+          </tbody>
+        </table>  
+      </div>
+      <div class="form-group">
+        <div class="text-center">
+          <%= link_to "Cancelar", sample_categories_path, class: "btn btn-primary sical-btn-cancel" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,19 @@
-index sample_categories
+<section class="sample-index">
+  <div class="card">
+    <div class="content">
+      <div class="header card-header-text sical-card-header">
+        <h1 class="sical-card-title">
+          Categorias de Muestra
+        </h1>
+        <div>
+          <%= link_to 'Nueva Categoria de Muestra', new_sample_category_path, class: "btn btn-primary align-right" %>
+        </div>
+      </div>
+      <div class="sample-categories-content">
+        <div>
+          <%= render 'sample_categories_table', samples: @sample_categories %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
