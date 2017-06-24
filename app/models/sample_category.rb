@@ -3,8 +3,11 @@ class SampleCategory < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
+  
   belongs_to :laboratory, required: false
-  #belongs_to :sample_processed
+
+  has_many :sample_processeds
+  
   enum status: [:active, :inactive]
 
   def self.own_per_user current_user

@@ -20,10 +20,10 @@
             Muestras
           </div>
           <div>
-            <%= link_to_add_association "Agregar evaluacion de la muestra", f, :sample_processeds, data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples'},  class: "btn btn-default sical-btn-add-menu "%>
+            <%= link_to_add_association "Agregar evaluacion de la muestra", f, :sample_processeds, class: "btn btn-default sical-btn-add-menu btn-add-evalution-sample", data: { association_insertion_node: '.samples', association_insertion_method: 'append', evaluation_samples: 0 }%>
           </div>
         </div>
-        <div class="samples">
+        <div class="samples sample-evalutions">
         </div>
       </div>
       
