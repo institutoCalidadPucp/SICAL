@@ -96,16 +96,29 @@ class Service < ApplicationRecord
     self.initialize_work_order if self.engagement?
     #
     self.accepted_adjust! if self.accepted_classified?
-    #lab leader check if the classified work from a employee is correct
-    self.accepted_classified! if self.classified? and self.valid_classified
-    self.classified_to_rework! if self.classified? and !self.valid_classified
+    #lab leader check if the classified work from a employee is correct    
+
+    self.accepted_classified! if self.classified? and self.valid_classified      
+
+    currentRevision = self.nr_revision
+    incredRevision = false
+    if self.classified_to_rework?
+      self.nr_revision = currentRevision + 1
+      incredRevision = true
+    end
+
+    self.classified! if self.classified_to_rework?
+
+    self.classified_to_rework! if (self.classified? and !incredRevision) and !self.valid_classified    
+
     #worker fill the classified fields from a sample
-    self.classified! if self.assign_sorter?    
+    self.classified! if self.assign_sorter?
     #choosing one employee from the current lab to set the classification to the sample
     self.assign_sorter! if self.initial_accepted?
     #Mejorar esto. Cuando se asigna trabajo, el current user se vuelve el supervisador
     if self.initial_accepted?
-      self.supervisor_id = current_user.id
+      #self.supervisor_id = current_user.id
+      #Crear esta columna
     end
     #an initial service is funded
     self.initial_funded! if self.initialized?
