@@ -3,8 +3,6 @@
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>RUC</th>
-        <th>Dirección</th>
         <th>Email</th>
         <th>Teléfono</th>
         <th>Acciones</th>
@@ -14,8 +12,6 @@
       <% clients.each do |client| %>
         <tr>
           <td><%= client.name %></td>
-          <td><%= client.ruc %></td>
-          <td><%= client.address%></td>
           <td><%= client.email %></td>
           <td><%= client.phone %></td>
           <td>
