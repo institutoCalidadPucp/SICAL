@@ -1,0 +1,1 @@
+Laboratory.create("name"=>"lab1", "phone"=>"123456789", "email"=>"lab1@pucp.pe", "address"=>"jsjjsjs", "description"=>"hahahahaha", "status"=>"active")

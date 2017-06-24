@@ -2,6 +2,7 @@ class SampleCategoriesController < ApplicationController
   
   before_action :set_sample_category, only: [:show, :edit, :update, :destroy, :toggle_status]
   before_action :laboratories, only: [:new, :create, :edit, :update, :show]
+  before_action :sample_methods, only: [:new, :create, :edit, :update, :show]
 
   def index
     @sample_categories = SampleCategory.own_per_user(current_user)
@@ -45,8 +46,9 @@ class SampleCategoriesController < ApplicationController
 
   private
     def sample_category_params
-      params.require(:sample_category).permit(:laboratory_id, :name, :description)
+      params.require(:sample_category).permit(:laboratory_id, :name, :description, sample_method_ids: [])
     end
+    
 
     def set_sample_category
       @sample_category = SampleCategory.find(params[:id])
@@ -55,4 +57,9 @@ class SampleCategoriesController < ApplicationController
     def laboratories
       @laboratories = Laboratory.all
     end
+
+    def sample_methods
+      @sample_methods = SampleMethod.all
+    end
+
 end
