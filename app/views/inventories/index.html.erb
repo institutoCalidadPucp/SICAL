@@ -1,50 +1,48 @@
 <div class="card">
-  <div class="nav-tabs-navigation sical-horizontal-nav-tabs">
-    <div class="nav-tabs-wrapper">
-      <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-        <li class="nav-item">
-          <a href="#pill1" class="nav-link active" data-toggle="tab">Equipos</a>
-        </li>
-        <li class="nav-item">
-          <a href="#pill2" class="nav-link" data-toggle="tab">Insumos</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="tab-content">
-    <div class="tab-pane active" id="pill1">
-      <div class="content">
-        <div class="header card-header-text sical-card-header">
+  <div class="tab">
+    <button class="tablinks active" onclick="openSection(event, 'inventories')">Equipos</button>
+    <button class="tablinks" onclick="openSection(event, 'supplies')">Insumos</button>
+  </div>  
+  <div id="inventories" class="tabcontent default" style="display: block;">
+    <section class="inventories-index">
+      <div class="card">
+        <div class="content">
+          <div class="header card-header-text sical-card-header">
           <h1 class="sical-card-title">
             Equipos
-          </h1>
-          <div>
-            <%= link_to 'Nuevo Equipo', new_inventory_path, class: "btn btn-primary align-right" %>
+          </h1>      
+            <div>
+              <%= link_to 'Nuevo Item', new_inventory_path, class: "btn btn-primary align-right" %>
+            </div>
           </div>
-        </div>
-        <div class="inventories-content">
-          <div id="inventories-table">
-            <%= render 'inventories_table', inventories: @inventories %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="tab-pane" id="pill2">
-      <div class="content">
-        <div class="header card-header-text sical-card-header">
-        <h1 class="sical-card-title">
-          Insumos
-        </h1>
-          <div>
-            <%= link_to 'Nuevo Insumo', new_supply_path, class: "btn btn-primary align-right" %>
-          </div>
-        </div>
-        <div class="supply-content">
-          <div id="supply-table">
-            <%= render 'supplies_table', supplies: @supplies %>
+          <div class="inventories-content">
+            <div id="inventories-table">
+              <%= render 'inventories_table', inventories: @inventories %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
+  <div id="supplies" class="tabcontent">
+    <section class="supplies-index">
+      <div class="card">
+        <div class="content">
+          <div class="header card-header-text sical-card-header">
+          <h1 class="sical-card-title">
+            Insumos
+          </h1>
+            <div>
+              <%= link_to 'Nuevo Item', new_supply_path, class: "btn btn-primary align-right" %>
+            </div>
+          </div>
+          <div class="supply-content">
+            <div id="supply-table">
+              <%= render 'supplies_table', supplies: @supplies %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>  
 </div>

@@ -10,10 +10,10 @@
         <div class="sical-content">
           <div class="row">
             <div id="unread-card" class="col-md-6 card">
-              <%= render 'services', services: @unattended_services, title: "Servicios sin atender" %>
-            </div>
+              <%= render 'services', services: @unattended_services, title: "Revision de Trabajo" %>
+            </div>            
             <div id="read-card" class="col-md-6 card">
-              <%= render 'services', services: @unclassified_services, title: "Servicios sin clasificados" %>
+              <%= render 'services', services: @completed_services, title: "Servicios terminado" %>
             </div>
           </div>
         </div>
