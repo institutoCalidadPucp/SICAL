@@ -177,10 +177,7 @@ ActiveRecord::Schema.define(version: 20170621223024) do
 
   create_table "services", force: :cascade do |t|
     t.bigint "laboratory_id"
-<<<<<<< HEAD
-=======
     t.bigint "employee_id"
->>>>>>> 6bd1e58f241813a49e71b5181926a7a2ea794e9f
     t.bigint "client_id"
     t.string "subject"
     t.date "pick_up_date"
@@ -190,14 +187,10 @@ ActiveRecord::Schema.define(version: 20170621223024) do
     t.text "engagement_observation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
-    t.index ["client_id"], name: "index_services_on_client_id"
-=======
     t.integer "intern_flow", default: 0
     t.boolean "valid_classified", default: false
     t.index ["client_id"], name: "index_services_on_client_id"
     t.index ["employee_id"], name: "index_services_on_employee_id"
->>>>>>> 6bd1e58f241813a49e71b5181926a7a2ea794e9f
     t.index ["laboratory_id"], name: "index_services_on_laboratory_id"
   end
 
@@ -238,10 +231,7 @@ ActiveRecord::Schema.define(version: 20170621223024) do
     t.integer "status", default: 0
     t.string "job_position"
     t.bigint "laboratory_id"
-<<<<<<< HEAD
     t.string "person_contact"
-=======
->>>>>>> 6bd1e58f241813a49e71b5181926a7a2ea794e9f
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["laboratory_id"], name: "index_users_on_laboratory_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
