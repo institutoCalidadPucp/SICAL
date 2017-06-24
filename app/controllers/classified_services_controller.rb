@@ -13,9 +13,12 @@ class ClassifiedServicesController < ApplicationController
      @employees = User.own_per_user(current_user).employee		
 	end
 
-	def update
-    p service_params[:employee_id]
+	def update   
     @service.assign_attributes service_params
+    # Mejorar esto
+    if params[:valid_classified] == 1
+      @service.valid_classified = true
+    end
     if @service.valid?
       @service.set_work_flow(current_user)
       redirect_to classified_services_path
@@ -28,7 +31,7 @@ class ClassifiedServicesController < ApplicationController
 	private
 
     def service_params
-      params.require(:service).permit(:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+      params.require(:service).permit(:valid_classified,:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
 
     def sample_preliminaries
