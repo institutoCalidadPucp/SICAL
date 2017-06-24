@@ -16,7 +16,7 @@ class Service < ApplicationRecord
   scope :services_per_worker, -> (current_user) {where(employee_id: current_user)}
   scope :own_per_laboratory, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
-  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :accepted_classified, :accepted_adjust, :engagement, :initialize_work_order]
+  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :classified_to_rework, :accepted_classified, :accepted_adjust, :engagement, :initialize_work_order, :completed]
   enum intern_flow: [:internal_accepted, :internal_rejected]
   enum status: [:active, :inactive]
 
@@ -45,9 +45,13 @@ class Service < ApplicationRecord
     services_per_worker(current_user).assign_sorter
   end
 
-  def self.unclassified_to_check current_user
+  def self.classified_to_check current_user
     #
     own_per_laboratory(current_user).classified
+  end
+
+  def self.service_classified_to_rework current_user
+    own_per_laboratory(current_user).classified_to_rework
   end
 
   def self.passed_classification current_user
@@ -61,6 +65,10 @@ class Service < ApplicationRecord
 
   def self.services_with_engagements current_user
     own_per_laboratory(current_user).engagement
+  end
+
+  def self.services_completed current_user
+    own_per_laboratory(current_user).completed
   end
 
   def self.work_orders_to_work current_user
@@ -83,23 +91,28 @@ class Service < ApplicationRecord
     end
   end
   
-  def handling_internal_process
+  def handling_internal_process current_user
     #
     self.initialize_work_order if self.engagement?
     #
     self.accepted_adjust! if self.accepted_classified?
     #lab leader check if the classified work from a employee is correct
     self.accepted_classified! if self.classified? and self.valid_classified
+    self.classified_to_rework! if self.classified? and !self.valid_classified
     #worker fill the classified fields from a sample
-    self.classified! if self.assign_sorter?
+    self.classified! if self.assign_sorter?    
     #choosing one employee from the current lab to set the classification to the sample
     self.assign_sorter! if self.initial_accepted?
+    #Mejorar esto. Cuando se asigna trabajo, el current user se vuelve el supervisador
+    if self.initial_accepted?
+      self.supervisor_id = current_user.id
+    end
     #an initial service is funded
     self.initial_funded! if self.initialized?
   end
 
   def set_work_flow current_user
-    current_user.client? ? self.handling_client_process(current_user) : self.handling_internal_process
+    current_user.client? ? self.handling_client_process(current_user) : self.handling_internal_process(current_user)
   end
 
 end

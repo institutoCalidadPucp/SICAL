@@ -7,8 +7,9 @@ class ServicesController < ApplicationController
 
   def index
     @services = Service.services_per_client current_user
-    @unattended_services = Service.inital_funded_accepted current_user
-    @unclassified_services = Service.unclassified_to_check current_user
+    @unattended_services = Service.passed_classification current_user
+    @unclassified_services = Service.inital_funded_accepted current_user
+    @completed_services = Service.services_completed current_user
   end
 
   def create    

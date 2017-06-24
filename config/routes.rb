@@ -50,4 +50,5 @@ Rails.application.routes.draw do
   end
   resources :check_services
   resources :classified_services
+  resources :work_classified_services
 end
