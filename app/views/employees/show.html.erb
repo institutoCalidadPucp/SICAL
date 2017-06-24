@@ -1,4 +1,52 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Empleados <small>Ver</small></h1>
+    </div>
+    <div class="form-horizontal validate sical-form sical-form-validated">
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Nombre:</label>
+        <div class="col-md-9">
+          <%= @employee.name %>
+        </div>
+      </div>          
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Apellido:</label>
+        <div class="col-md-9">
+          <%= @employee.last_name %>
+        </div>
+      </div>      
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Email:</label>
+        <div class="col-md-9">
+          <%= @employee.email %>
+        </div>
+      </div>
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Dirección:</label>
+        <div class="col-md-9">
+          <%= @employee.address %>
+        </div>
+      </div>
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Teléfono:</label>
+        <div class="col-md-9">
+          <%= @employee.phone %>
+        </div>
+      </div>     
+      <div class="form-group row">
+          <label class="col-md-3 col-fom-label">Rol:</label>
+        <div class="col-md-9">
+          <%= @employee.job_position %>
+        </div>
+      </div>       
+      <div class="form-group">
+        <div class="text-center">
+          
+            <%= link_to "Regresar", :back, class: "btn btn-primary sical-btn-cancel" %>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
