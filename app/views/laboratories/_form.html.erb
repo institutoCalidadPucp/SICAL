@@ -34,6 +34,12 @@
       <%= f.text_area :description, class: "form-control item-description", rows: "5", required:"required" %>
     </div>
   </div>
+  <div class="form-group row">
+    <%= f.label :Logo, class: "col-md-3 col-form-label" %>
+    <div class="col-md-9 input-wrapper">
+      <%= f.file_field :header_image %>
+    </div>
+  </div>
   <div class="sical-form-buttons">
     <div class="text-center">
       <%= link_to "Cancelar", laboratories_path, class: "btn btn-primary sical-btn-cancel" %>

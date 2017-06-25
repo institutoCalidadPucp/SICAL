@@ -71,3 +71,13 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#Generating documents
+gem 'prawn'
+gem 'prawn-table'
+#gem 'prawn/table'
+gem 'barby'
+#gem 'barby/barcode/code_39'
+#gem 'barby/outputter/prawn_outputter'
+#gem 'rmagick', '~> 2.16.0'
+gem 'carrierwave'
