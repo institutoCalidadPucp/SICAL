@@ -4,6 +4,7 @@ class QuotationsController < ApplicationController
   before_action :set_sample_methods, only: [:edit, :update]
   before_action :set_laboratories, only: [:edit, :new]
   before_action :sample_categories, only: [:new, :create, :edit, :update, :show]
+  before_action :employees , only: [:edit]
   before_action :set_users_belongs_to_laboratory, only: [:edit, :new]
 
   def index
@@ -23,17 +24,20 @@ class QuotationsController < ApplicationController
   def create
   end
 
-  def edit
+  def edit    
   end
 
   def update
-    @service.assign_attributes quotation_params
-    if @service.save
-      @service.set_work_flow(current_user)
-      redirect_to  quotations_path
+    if @service.accepted_adjust?
     else
-      render :edit
-    end    
+      @service.assign_attributes quotation_params
+      if @service.save
+        @service.set_work_flow(current_user)
+        redirect_to  quotations_path
+      else
+        render :edit
+      end 
+    end       
   end
 
   def toggle_status
@@ -46,7 +50,7 @@ class QuotationsController < ApplicationController
   private 
 
     def quotation_params
-      params.require(:service).permit(:laboratory_id, :valid_initial_funded, :valid_classified, :subject, :pick_up_date, :engagement, :engagement_observation, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+      params.require(:service).permit(:laboratory_id, :valid_initial_funded, :valid_classified, :subject, :pick_up_date, :engagement, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
 
     def sample_processeds
@@ -58,7 +62,7 @@ class QuotationsController < ApplicationController
     end
 
     def sample_preliminaries
-      [:id, :name, :quantity, :description]
+      [:id, :name, :quantity, :description, :sample_method_id, :sample_category_id, :unit_cost]
     end
 
     def set_service
@@ -76,6 +80,10 @@ class QuotationsController < ApplicationController
     def sample_categories
       @sample_categories = SampleCategory.own_per_user current_user
     end    
+
+    def employees
+      @employees = User.own_per_user(current_user).employee.names
+    end
 
     def set_users_belongs_to_laboratory
       @users = User.own_per_user(current_user)

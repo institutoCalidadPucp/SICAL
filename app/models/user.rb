@@ -65,5 +65,9 @@ class User < ApplicationRecord
       where(laboratory_id: current_user.laboratory)
     end
   end
+
+  def self.names
+  	User.pluck(:name)	
+  end
   
 end

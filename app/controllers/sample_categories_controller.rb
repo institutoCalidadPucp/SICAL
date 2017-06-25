@@ -15,8 +15,7 @@ class SampleCategoriesController < ApplicationController
   def show
   end
 
-  def create
-    #@sample_category = SampleCategory.new sample_category_params
+  def create    
     @sample_category = SampleCategory.new sample_category_params.merge(:laboratory_id => current_user.laboratory.id) unless current_user.admin?
     @sample_category = SampleCategory.new sample_category_params unless current_user.employee?
     if @sample_category.save
