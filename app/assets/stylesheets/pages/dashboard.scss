@@ -2,21 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.wrappr{
-	justify-content: center;
+//To make all the cards align to the center
+.dashboard-wrapper{
+  justify-content:center;
 }
 
-.square{
+//along with the 'card' class to make a squared card
+.card-square{
 	width: 15em;
 	height: 15em;
 }
 
-.rectangle{
+//along with the 'card' class to make a rectangled card
+.card-rectangle{
 	height:5em;
 	vertical-align: middle;
 }
 
-.rectangle p{
+//this is the text for the name of the card
+.card-name{
   font-weight:bold;
   vertical-align: middle;
   display: table-cell; 
@@ -24,7 +28,8 @@
   margin-top:auto;
 }
 
-.number{
+//This is the class for the number of row each table has.
+.number-data{
   font-weight:bold;
   margin:auto;
   margin-left:75%;
