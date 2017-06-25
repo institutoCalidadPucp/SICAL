@@ -17,13 +17,13 @@
           <td><%= employee.email %></td>
           <td><%= employee.role.name %></td>
           <td>
-          <%= link_to employee_path(employee), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver"  do %>
+          <%= link_to employee_path(employee), class: "btn btn-info btn-sm #{current_user.can_view(@controller) ? '' : 'disabled'}", data: { "toggle" => "tooltip" }, title: "Ver"  do %>
             <i class="fa fa-eye" aria-hidden="true"></i>
           <% end %>
-          <%= link_to edit_employee_path(employee), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" do %>
+          <%= link_to edit_employee_path(employee), class: "btn btn-success btn-sm #{current_user.can_edit(@controller) ? '' : 'disabled'}", data: { "toggle" => "tooltip" }, title: "Editar" do %>
             <i class="fa fa-pencil" aria-hidden="true"></i>
           <% end %>
-          <%= link_to toggle_status_employee_path(employee), id: "employee-lock-#{employee.id}", class: "btn btn-danger btn-sm", data: { toggle: "tooltip" }, title: "#{employee.tooltip_status}", method: :put, remote: true do %>
+          <%= link_to toggle_status_employee_path(employee), id: "employee-lock-#{employee.id}", class: "btn btn-danger btn-sm #{current_user.can_delete(@controller) ? '' : 'disabled'}", data: { toggle: "tooltip" }, title: "#{employee.tooltip_status}", method: :put, remote: true do %>
             <% if employee.status == "active" %>
               <i class="fa fa-unlock" aria-hidden="true"></i>
             <% else %>

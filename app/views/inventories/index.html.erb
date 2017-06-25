@@ -12,7 +12,7 @@
             Equipos
           </h1>      
             <div>
-              <%= link_to 'Nuevo Item', new_inventory_path, class: "btn btn-primary align-right" %>
+              <%= link_to 'Nuevo Item', new_inventory_path, class: "btn btn-primary align-right #{current_user.can_create(@controller) ? '' : 'disabled'}" %>
             </div>
           </div>
           <div class="inventories-content">
@@ -33,7 +33,7 @@
             Insumos
           </h1>
             <div>
-              <%= link_to 'Nuevo Item', new_supply_path, class: "btn btn-primary align-right" %>
+              <%= link_to 'Nuevo Item', new_supply_path, class: "btn btn-primary align-right #{current_user.can_create(@controller) ? '' : 'disabled'}" %>
             </div>
           </div>
           <div class="supply-content">
