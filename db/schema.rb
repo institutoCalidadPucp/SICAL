@@ -231,6 +231,7 @@ ActiveRecord::Schema.define(version: 20170622002207) do
     t.integer "status", default: 0
     t.string "job_position"
     t.bigint "laboratory_id"
+    t.string "person_contact"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["laboratory_id"], name: "index_users_on_laboratory_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

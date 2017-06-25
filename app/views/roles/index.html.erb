@@ -6,7 +6,7 @@
           Roles
         </h1>
         <div>
-          <%= link_to 'Nuevo Rol', new_role_path, class: "btn btn-primary align-right" %>
+          <%= link_to 'Nuevo Rol', new_role_path, class: "btn btn-primary align-right #{current_user.can_create(@controller) ? '' : 'disabled'}" %>
         </div>
       </div>
       <div class="roles-content">
