@@ -45,7 +45,9 @@ Rails.application.routes.draw do
   resources :logs
   resources :service_quotations
   resources :services
-  resources :sample_categories
+  resources :sample_categories do
+    put 'toggle_status', on: :member
+  end
   resources :check_services
   resources :classified_services
   resources :work_classified_services

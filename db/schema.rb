@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622002207) do
+ActiveRecord::Schema.define(version: 20170623155856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,13 @@ ActiveRecord::Schema.define(version: 20170622002207) do
     t.index ["laboratory_id"], name: "index_sample_categories_on_laboratory_id"
   end
 
+  create_table "sample_categoryx_sample_methods", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sample_category_id"
+    t.integer "sample_method_id"
+  end
+
   create_table "sample_features", force: :cascade do |t|
     t.bigint "sample_processed_id"
     t.string "description"
@@ -189,6 +196,8 @@ ActiveRecord::Schema.define(version: 20170622002207) do
     t.datetime "updated_at", null: false
     t.integer "intern_flow", default: 0
     t.boolean "valid_classified", default: false
+    t.boolean "valid_initial_funded", default: false
+    t.text "initial_funded_observation"
     t.index ["client_id"], name: "index_services_on_client_id"
     t.index ["employee_id"], name: "index_services_on_employee_id"
     t.index ["laboratory_id"], name: "index_services_on_laboratory_id"

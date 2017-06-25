@@ -1,1 +1,8 @@
-toggle_status.js.erb
+(function() {
+  $(function() {
+    var $currentLock = $('#sample-category-lock-<%= @sample_category.id %>');
+    var status = "<%= @sample_category.status %>";
+
+    toggleLockStatus($currentLock, status);
+  });
+})();

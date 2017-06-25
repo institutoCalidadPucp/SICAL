@@ -1,36 +1,17 @@
-<h3 class=" p-b-10 p-l-10 "><%= title %></h3>
-<div class='mailbox-messages flex-1 content'>
-   <div class="scroll ">
-    <% if services_classified_to_check.empty?%>
-      <div class="form-group row">
-        No tiene mensajes sin leer.
-      </div>
-    <% else %>
-      <% services_classified_to_check.each do |service| %>
-        <div class="row ">
-          <div class="col-md-2 text-center subject-date subject-border col-form-label">
-            <h6>
-              <%= service.created_at.strftime('%I:%M %p') %>
-            </h6>
-            <h6>
-              <%= service.created_at.strftime('%^b %d') %>
-            </h6>
-          </div>
-          <div class="col-md-8 col-form-label subject-border" >
-            <h5>
-              <strong>Asunto:</strong>
-            </h5>
-            <h6><%= service.subject %></h6>
-          </div>
-          <div class="col-md-2 text-center subject-date subject-border" >
-            <br> 
-            <h5 style="text-decoration: none;" ><%= link_to "Ver", edit_classified_service_path(service), data: { "toggle" => "tooltip" } %></h5> 
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-    <%#= link_to , id: 'more-messages', class: 'flex-container' do %>
-      <span class=''></span><span class='text flex-1'>Ver todos los mensajes</span><span class='next'></span>
-    <%# end %>
+<%= form_for @service, url: classified_service_path, :wrapper => false,  method: :put do |f| %>
+    <div id="service" class="tabcontent" style="display: block;">
+      <h3>Información</h3>
+        <%= render 'show_basic_information', service: @service, f: f %>
+    </div>
+		
+	<div id="sample" class="tabcontent">
+      <h3>Resultados</h3>		
+      <%= f.check_box :valid_classified, :checked => false %>
+		</div>        
+<div class="form-group">
+    <div class="text-center save-worker">
+      <%= link_to "Cancelar", classified_services_path, class: "btn btn-primary sical-btn-cancel" %>
+      <%= f.submit "Asignar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+    </div>
   </div>
-</div>
+<% end %>

@@ -1,25 +1,15 @@
 <div class="card">
-  <div class="tab">
-    <button class="tablinks active" onclick="openSection(event, 'service')">Informacion</button>
-    <button class="tablinks" onclick="openSection(event, 'sample')">Custodia de Muestras</button>
-   </div>
-
-  <%= nested_form_for @service, url: work_classified_services_path, :wrapper => false,  method: :post do |f| %>
-    <div id="service" class="tabcontent" style="display: block;">
-      <h3>Informacion</h3>
-        <%= render 'show_basic_information', service: @service, f: f %>
+  <% if @service.assign_sorter? %>
+    <div class="tab">
+      <button class="tablinks active" onclick="openSection(event, 'service')">Informacion</button>
+      <button class="tablinks" onclick="openSection(event, 'sample')">Custodia de Muestras</button>     
     </div>
-		
-	<div id="sample" class="tabcontent">
-      <h3>Custodia de Muestras</h3>	
-      <%= render 'form_worker', service: @service, h: f %>
-	</div>    
-
-    <div class="form-group">
-      <div class="text-center save-worker">
-        <%= link_to "Cancelar", work_classified_services_path, class: "btn btn-primary sical-btn-cancel" %>
-        <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
-      </div>
+    <%= render 'unclassified_services_to_work'%>
+  <% else %>    
+    <div class="tab">
+      <button class="tablinks active" onclick="openSection(event, 'service')">Informacion</button>
+      <button class="tablinks" onclick="openSection(event, 'sample')">Custodia de Muestras</button>      
     </div>
-  <% end %>
+    <%#= render 'classified_services_to_work_rework'%>
+  <% end %>      
 </div>

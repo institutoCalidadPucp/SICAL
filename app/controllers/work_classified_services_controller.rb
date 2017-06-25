@@ -14,7 +14,14 @@ class WorkClassifiedServicesController < ApplicationController
   def show
   end
 
-  def create    
+  def create
+    @service.assign_attributes service_params
+    if @service.valid?
+      @service.set_work_flow(current_user)
+      redirect_to work_classified_services_path
+    else
+      render :edit
+    end
   end
 
 	def edit    
@@ -24,7 +31,7 @@ class WorkClassifiedServicesController < ApplicationController
     @service.assign_attributes service_params
     if @service.valid?
       @service.set_work_flow(current_user)
-      redirect_to classified_services_path
+      redirect_to work_classified_services_path
     else
       render :edit
     end		
@@ -34,7 +41,7 @@ class WorkClassifiedServicesController < ApplicationController
 	private
 
     def service_params
-      params.require(:service).permit(:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+      params.permit(:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
 
     def sample_preliminaries
