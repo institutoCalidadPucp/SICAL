@@ -14,6 +14,7 @@ class Service < ApplicationRecord
 
   scope :services_per_client, -> (current_user) {where(client_id: current_user)}
   scope :services_per_worker, -> (current_user) {where(employee_id: current_user)}
+  scope :service_per_supervisor, -> (current_user) {where(supervisor_id: current_user.id)}
   scope :own_per_laboratory, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
   enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :classified_to_rework, :accepted_classified, :accepted_adjust, :engagement, :initialize_work_order, :completed]
@@ -46,8 +47,8 @@ class Service < ApplicationRecord
   end
 
   def self.classified_to_check current_user
-    #
-    own_per_laboratory(current_user).classified
+    # Get the services that this supervisor assigned
+    service_per_supervisor(current_user).classified
   end
 
   def self.service_classified_to_rework current_user
@@ -99,22 +100,24 @@ class Service < ApplicationRecord
     #lab leader check if the classified work from a employee is correct    
 
     self.accepted_classified! if self.classified? and self.valid_classified      
-
-    currentRevision = self.nr_revision
+    
     incredRevision = false
     if self.classified_to_rework?
-      self.nr_revision = currentRevision + 1
       incredRevision = true
     end
-
     self.classified! if self.classified_to_rework?
 
     self.classified_to_rework! if (self.classified? and !incredRevision) and !self.valid_classified    
 
     #worker fill the classified fields from a sample
-    self.classified! if self.assign_sorter?
+    self.classified! if self.assign_sorter?    
+    if self.initial_accepted?
+      self.supervisor_id = current_user.id
+    end
+
     #choosing one employee from the current lab to set the classification to the sample
     self.assign_sorter! if self.initial_accepted?
+
     #Mejorar esto. Cuando se asigna trabajo, el current user se vuelve el supervisador
     if self.initial_accepted?
       #self.supervisor_id = current_user.id

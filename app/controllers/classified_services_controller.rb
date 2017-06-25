@@ -18,6 +18,8 @@ class ClassifiedServicesController < ApplicationController
     # Mejorar esto
     if params[:valid_classified] == 1
       @service.valid_classified = true
+    else
+      @service.nr_revision = @service.nr_revision + 1
     end
     if @service.valid?
       @service.set_work_flow(current_user)
@@ -26,7 +28,6 @@ class ClassifiedServicesController < ApplicationController
       render :edit
     end		
 	end
-
 
 	private
 
