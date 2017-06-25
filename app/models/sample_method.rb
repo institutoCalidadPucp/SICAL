@@ -7,6 +7,11 @@ class SampleMethod < ApplicationRecord
   has_many :sample_processeds
   belongs_to :laboratory  
 
+  has_many :sample_categoryx_sample_methods
+  has_many :sample_categories, through: :sample_categoryx_sample_methods
+  accepts_nested_attributes_for :sample_categoryx_sample_methods, :allow_destroy => true, :reject_if => :all_blank
+
+
   enum status: [:active, :inactive]
   enum accreditation: [:accredited, :non_accredited]  
 
@@ -16,5 +21,9 @@ class SampleMethod < ApplicationRecord
     else
       where(laboratory_id: current_user.laboratory)
     end
+  end
+  
+  def self.names
+    SampleMethod.pluck(:name) 
   end
 end

@@ -1,34 +1,46 @@
 <div class="card">
   <div class="tab">
     <button class="tablinks active" onclick="openSection(event, 'service')">Servicios</button>
-    <button class="tablinks" onclick="openSection(event, 'samples')">Muestras</button>
-  </div>
+    <button class="tablinks" onclick="openSection(event, 'sample')">Muestra</button>
+    </div>
   <%= nested_form_for @service, url: service_path, :wrapper => false,  method: :put do |f| %>
     <div id="service" class="tabcontent" style="display: block;">
       <h3>Servicios</h3>
       <%= render 'form_client', service: @service, f: f %>
     </div>
-
-    <div id="samples" class="tabcontent">
-      <%= f.fields_for :sample_processeds do |sample| %>
-        <%= render 'sample_processed_fields', f: sample %>
-      <% end %>
     
-      <div class="">
-        <div class= "samples-title samples-worker">
-          <div>
-            Muestras
+    <% if @service.classified? %>
+      <div id="sample" class="tabcontent">
+      <h3>Validacion de clasificacion</h3>
+        <%= f.label :validacion %>
+        <%= f.check_box :valid_classified %>
+        <h3>Muestras</h3>
+        <%= f.fields_for :sample_processeds do |sample| %>
+          <%= render 'sample_processed_fields', f: sample %>
+        <% end %>
+      
+        <div class="">
+          <div class= "samples-title samples-worker">
+            <div>
+              Muestras
+            </div>
+            <div>
+              <%= link_to_add_association "", f, :sample_processeds, data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples'},  class: "btn btn-default sical-btn-add-menu "%>
+            </div>
           </div>
-          <div>
-            <%= link_to_add_association "Agregar evaluacion de la muestra", f, :sample_processeds, data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples'},  class: "btn btn-default sical-btn-add-menu "%>
+          <div class="samples">
           </div>
-        </div>
-        <div class="samples">
         </div>
       </div>
-      
-    </div>
+    <% end %>
 
+    <% if @service.initial_accepted? %>
+      <div id="personal" class="tabcontent">
+        <h3>Asignacion de Personal</h3>
+          <%= f.label :empleado %>
+          <%= f.collection_select :employee_id, @employees, :id, :name, {}, class: "form-control", required: "required" %>
+      </div>  
+    <% end %> 
     <div class="form-group">
       <div class="text-center save-worker">
         <%= link_to "Cancelar", services_path, class: "btn btn-primary sical-btn-cancel" %>
