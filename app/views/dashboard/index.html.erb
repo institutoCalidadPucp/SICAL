@@ -1,11 +1,16 @@
 <div class="row dashboard-wrapper">
   <% @user_menus.each do |menu| %>
     <div class="col-xl-3 col-lg-6 col-md-6">
-      <div class="card card-square">
-        <p class="number-data" id="number">3</p>
-        <a class="card card-rectangle" href= "<%= '/' + menu.tab_reference %>" >
-          <p class="card-name"><%=menu.name%></p>
-          <i class="ti ti-arrow-right" aria-hidden="true"></i>
+      <div class="card is-card-square">
+        <div class="same-row-items">
+          <%= image_tag "#{menu.name + '.svg'}", class: "menu-icon" %>
+          <p class="number-data" id="number">3</p>
+        </div>
+        <a class="card is-card-rectangle" href= "<%= '/' + menu.tab_reference %>" >
+          <div class="same-row-items">
+            <p class="card-name"><%=menu.name%></p>
+            <i class="ti ti-arrow-right" aria-hidden="true"></i>
+          </div>
         </a>
       </div>
     </div>

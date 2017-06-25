@@ -8,13 +8,13 @@
 }
 
 //along with the 'card' class to make a squared card
-.card-square{
+.is-card-square{
 	width: 15em;
 	height: 15em;
 }
 
 //along with the 'card' class to make a rectangled card
-.card-rectangle{
+.is-card-rectangle{
 	height:5em;
 	vertical-align: middle;
 }
@@ -32,7 +32,21 @@
 .number-data{
   font-weight:bold;
   margin:auto;
-  margin-left:75%;
+  margin-left:10%;
   text-align:left;
   font-size:64px;
+}
+
+//This is the icon of the menu in the dashboard
+.menu-icon{
+  width:100px;
+  margin-left:15px;
+  margin-top:5px;
+}
+
+//This will make two items be in the same row
+.same-row-items{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
