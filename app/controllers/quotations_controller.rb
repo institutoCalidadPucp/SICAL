@@ -12,6 +12,7 @@ class QuotationsController < ApplicationController
     @initial_funded = Service.quotations_with_initial_funded current_user
     @services_to_adjusts = Service.passed_classification current_user
     @adjusted_services = Service.adjusted_by_lab_leader current_user
+    @contract_bound_services = Service.contract_bound current_user
     @services_with_engagements = Service.services_with_engagements current_user
   end
 
@@ -24,11 +25,21 @@ class QuotationsController < ApplicationController
   def create
   end
 
-  def edit    
+  def edit   
   end
 
   def update
-    if @service.accepted_adjust?
+    if @service.engagement?
+      count = 1
+      @service.sample_processeds.each do |sample_processed|
+        workOrder = WorkOrder.new :service_id => @service.id, :employee_id => params["selected_employee_" + count.to_s], :sample_processed_id => sample_processed.id, :supervisor_id => current_user.id        
+        if !workOrder.save
+          #Error handling
+        end
+        count = count + 1
+      end
+      @service.set_work_flow(current_user)
+      redirect_to  quotations_path
     else
       @service.assign_attributes quotation_params
       if @service.save
@@ -82,7 +93,7 @@ class QuotationsController < ApplicationController
     end    
 
     def employees
-      @employees = User.own_per_user(current_user).employee.names
+      @employees = User.own_per_user(current_user).employee
     end
 
     def set_users_belongs_to_laboratory

@@ -28,17 +28,15 @@
 
       <%= render 'quotation_accepted', service: @service, f: f %>
 
-      <%= render 'quotation_worker', service: @service,   f: f %>
+      <%= render 'quotation_worker', service: @service, f: f%>
       
       <div class="sical-form-buttons">
         <div class="text-center">
           <%= link_to "Cancelar", quotations_path, class: "btn btn-primary sical-btn-cancel" %>
           <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
         </div>
-      </div>  
-
-    <% end %>
-
+      </div>     
+      <% end %>
   </div>
 </div>
 

@@ -9,10 +9,10 @@
         <div class="sical-content">
           <div class="row">
             <div id="unread-card" class="col-md-6 card">
-              <%= render 'work_orders', work_orders: @work_orders_to_work, title: "Ordenes por Realizar" %>
+              <%= render 'work_orders_to_work_card', work_orders_to_work: @work_orders_to_work, title: "Ordenes por Realizar" %>
             </div>
             <div id="read-card" class="col-md-6 card">
-              <%#= render 'work_orders', work_orders: @work_orders_to_check, title: "Ordenes por Revisar" %>
+              <%= render 'work_orders_to_rework_card', work_orders_to_rework: @work_orders_to_rework, title: "Ordenes por Revisar" %>
             </div>
           </div>
         </div>
