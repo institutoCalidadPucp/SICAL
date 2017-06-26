@@ -7,12 +7,12 @@
           </h1>
         </div>
         <div class="sical-content">
-          <div class="row">
-            <div id="unread-card" class="col-md-6 card">
-              <%= render 'work_orders', work_orders: @work_orders_to_work, title: "Ordenes por Realizar" %>
+          <div class="sub-section-cards">
+            <div class="col-md-6 sub-section-card is-unread-card">
+              <%= render 'sub_section_card', elements: @work_orders_to_work, title: "Ordenes por Realizar", controller: "work_order" %>
             </div>
-            <div id="read-card" class="col-md-6 card">
-              <%#= render 'work_orders', work_orders: @work_orders_to_check, title: "Ordenes por Revisar" %>
+            <div class="col-md-6 sub-section-card is-read-card">
+              <%#= render 'sub_section_card', elements: @work_orders_to_check, title: "Ordenes por Revisar", controller: "work_order" %>
             </div>
           </div>
         </div>

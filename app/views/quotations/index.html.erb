@@ -1,33 +1,33 @@
 <section class="requests-index">
-    <div class="card">
-      <div class="content">
-        <div class="header card-header-text sical-card-header">
-          <h1 class="sical-card-title">
-            Proformas
-          </h1>
-        </div>
-        <div class="sical-content">
-          <div class="row">
-            <% if current_user.employee?%>
-              <div id="unread-card" class="col-md-4 card">
-                <%= render 'quotations', quotations: @initial_unfunded, title: "Servicios sin Costear" %>
-              </div>
-              <div id="read-card" class="col-md-4 card">
-                <%= render 'quotations', quotations: @services_to_adjusts, title: "Servicios por Ajustar" %>
-              </div>
-              <div id="read-card" class="col-md-4 card">
-                <%= render 'quotations', quotations: @services_with_engagements, title: "Proformas aceptadas" %>
-              </div>              
-            <% else %>
-              <div id="read-card" class="col-md-6 card">
-                <%= render 'quotations', quotations: @initial_funded, title: "Servicios Costeados" %>
-              </div>
-              <div id="read-card" class="col-md-6 card">
-                <%= render 'quotations', quotations: @adjusted_services, title: "Servicios Ajustados" %>
-              </div>
-            <% end %>
-          </div>
+  <div class="card">
+    <div class="content">
+      <div class="header card-header-text sical-card-header">
+        <h1 class="sical-card-title">
+          Proformas
+        </h1>
+      </div>
+      <div class="sical-content">
+        <div class="sub-section-cards">
+          <% if current_user.employee?%>
+            <div class="col-lg-4 sub-section-card is-unread-card">
+              <%= render 'sub_section_card', elements: @initial_unfunded, title: "Servicios sin Costear", controller: "quotation" %>
+            </div>
+            <div class="col-lg-4 sub-section-card is-read-card">
+              <%= render 'sub_section_card', elements: @services_to_adjusts, title: "Servicios por Ajustar", controller: "quotation" %>
+            </div>
+            <div class="col-lg-4 sub-section-card is-read-card">
+              <%= render 'sub_section_card', elements: @services_with_engagements, title: "Proformas aceptadas", controller: "quotation" %>
+            </div>
+          <% else %>
+            <div class="col-md-6 sub-section-card is-read-card">
+              <%= render 'sub_section_card', elements: @initial_funded, title: "Servicios Costeados", controller: "quotation" %>
+            </div>
+            <div class="col-md-6 sub-section-card is-read-card">
+              <%= render 'sub_section_card', elements: @adjusted_services, title: "Servicios Ajustados", controller: "quotation" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

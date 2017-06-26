@@ -13,12 +13,12 @@
       </div>
       <div class="sical-content">
         <% if current_user.employee? %>
-          <div class="row">
-            <div id="unread-card" class="col-md-6 card">
-              <%= render 'services', services: @unattended_services, title: "Revision de Trabajo" %>
+          <div class="sub-section-cards">
+            <div class="col-md-6 sub-section-card is-unread-card">
+              <%= render 'sub_section_card', elements: @unattended_services, title: "Revision de Trabajo", controller: "service" %>
             </div>
-            <div id="read-card" class="col-md-6 card">
-              <%= render 'services', services: @completed_services, title: "Servicios terminado" %>
+            <div class="col-md-6 sub-section-card is-read-card">
+              <%= render 'sub_section_card', elements: @completed_services, title: "Servicios terminado", controller: "service" %>
             </div>
           </div>
         <% else %>
