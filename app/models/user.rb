@@ -67,7 +67,7 @@ class User < ApplicationRecord
   end
 
   def self.names
-  	User.pluck(:name)	
+  	User.pluck(:name,:id)	
   end
   
 end

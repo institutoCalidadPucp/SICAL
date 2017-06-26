@@ -31,11 +31,19 @@ Rails.application.routes.draw do
   end
   resources :supplies do
     put 'toggle_status', on: :member
-  end
-
+  end  
   resources :sample_methods do
     put 'toggle_status', on: :member
   end
+  resources :services do
+    get 'work_check', on: :member
+    put 'work_check_update', on: :member
+  end
+  resources :services do
+    get 'service_end', on: :member
+    put 'service_end_update', on: :member
+  end
+  
   resources :contracts
   resources :sample_methods
   resources :quotations
@@ -50,5 +58,5 @@ Rails.application.routes.draw do
   end
   resources :check_services
   resources :classified_services
-  resources :work_classified_services
+  resources :work_classified_services  
 end

@@ -17,7 +17,8 @@ class Service < ApplicationRecord
   scope :service_per_supervisor, -> (current_user) {where(supervisor_id: current_user.id)}
   scope :own_per_laboratory, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
-  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :classified_to_rework, :accepted_classified, :accepted_adjust, :engagement, :initialize_work_order, :completed]
+
+  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :classified_to_rework, :accepted_classified, :accepted_adjust, :accepted_contract, :engaged, :completed]
   enum intern_flow: [:internal_accepted, :internal_rejected]
   enum status: [:active, :inactive]
 
@@ -64,25 +65,25 @@ class Service < ApplicationRecord
     services_per_client(current_user).accepted_adjust
   end
 
+  def self.contract_bound current_user
+    service_per_supervisor(current_user).accepted_contract
+  end
+
   def self.services_with_engagements current_user
-    own_per_laboratory(current_user).engagement
+    service_per_supervisor(current_user).engaged
   end
 
   def self.services_completed current_user
     own_per_laboratory(current_user).completed
   end
 
-  def self.work_orders_to_work current_user
-    services_per_worker(current_user).initialize_work_order
-  end
 
-  def self.work_orders_to_check current_user
-    
-  end
+
+
 
   def handling_client_process current_user
     #
-    self.engagement! if self.accepted_adjust?
+    self.accepted_contract! if self.accepted_adjust?
     #client accept the initial funded to his services
     self.initial_accepted! if self.initial_funded? and self.valid_initial_funded
     #client create a service
@@ -94,7 +95,10 @@ class Service < ApplicationRecord
   
   def handling_internal_process current_user
     #
-    self.initialize_work_order if self.engagement?
+    self.completed! if self.engaged?
+
+    self.engaged! if self.accepted_contract?
+    
     #
     self.accepted_adjust! if self.accepted_classified?
     #lab leader check if the classified work from a employee is correct    
@@ -130,6 +134,5 @@ class Service < ApplicationRecord
   def set_work_flow current_user
     current_user.client? ? self.handling_client_process(current_user) : self.handling_internal_process(current_user)
   end
-
 end
 

@@ -9,4 +9,7 @@ class SampleProcessed < ApplicationRecord
 
   accepts_nested_attributes_for :sample_features, allow_destroy: true
 
+  def a
+  end
+
 end
