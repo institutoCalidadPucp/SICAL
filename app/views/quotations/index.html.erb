@@ -1,33 +1,33 @@
 <section class="requests-index">
-    <div class="card">
-      <div class="content">
-        <div class="header card-header-text sical-card-header">
-          <h1 class="sical-card-title">
-            Proformas
-          </h1>
-        </div>
-        <div class="sical-content">
-          <div class="row">
-            <% if current_user.employee?%>
-              <div id="unread-card" class="col-md-4 card">
-                <%= render 'quotations', quotations: @initial_unfunded, title: "Servicios sin Costear" %>
-              </div>
-              <div id="read-card" class="col-md-4 card">
-                <%= render 'quotations', quotations: @services_to_adjusts, title: "Servicios por Ajustar" %>
-              </div>
-              <div id="read-card" class="col-md-4 card">
-                <%= render 'quotations', quotations: @services_with_engagements, title: "Proformas aceptadas" %>
-              </div>              
-            <% else %>
-              <div id="read-card" class="col-md-6 card">
-                <%= render 'quotations', quotations: @initial_funded, title: "Servicios Costeados" %>
-              </div>
-              <div id="read-card" class="col-md-6 card">
-                <%= render 'quotations', quotations: @adjusted_services, title: "Servicios Ajustados" %>
-              </div>
-            <% end %>
-          </div>
+  <div class="card">
+    <div class="content">
+      <div class="header card-header-text sical-card-header">
+        <h1 class="sical-card-title">
+          Proformas
+        </h1>
+      </div>
+      <div class="sical-content">
+        <div class="row">
+          <% if current_user.employee?%>
+            <div id="unread-card" class="col-md-4 card">
+              <%= render 'quotations', quotations: @initial_unfunded, title: "Servicios sin Costear" %>
+            </div>
+            <div id="read-card" class="col-md-4 card">
+              <%= render 'quotations', quotations: @services_to_adjusts, title: "Servicios por Ajustar" %>
+            </div>
+            <div id="read-card" class="col-md-4 card">
+              <%= render 'quotations', quotations: @services_with_engagements, title: "Proformas aceptadas" %>
+            </div>              
+          <% else %>
+            <div id="read-card" class="col-md-6 card">
+              <%= render 'quotations', quotations: @initial_funded, title: "Servicios Costeados" %>
+            </div>
+            <div id="read-card" class="col-md-6 card">
+              <%= render 'quotations', quotations: @adjusted_services, title: "Servicios Ajustados" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
