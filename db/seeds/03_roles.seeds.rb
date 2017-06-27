@@ -3,7 +3,7 @@ MenuPermit.create(name: 'Empleados', tab_reference: 'employees', tab_icon: 'ti-u
 MenuPermit.create(name: 'Cliente', tab_reference: 'clients', tab_icon: 'ti-user', available_for_client: false, order: 2, default: false, role_id: 1)	
 MenuPermit.create(name: 'Inventario', tab_reference: 'inventories', tab_icon: 'ti-package', available_for_client: false, order: 3, default: false, role_id: 1)
 MenuPermit.create(name: 'Metodos de Ensayo', tab_reference: 'sample_methods', tab_icon: 'ti-panel', available_for_client: false, order: 4, default: false, role_id: 1)
-MenuPermit.create(name: 'Categoria de Muestra', tab_reference: 'sample_categories', tab_icon: 'ti-ruler', available_for_client: false, order: 5, default: false, role_id: 1)
+MenuPermit.create(name: 'Categoría de Muestra', tab_reference: 'sample_categories', tab_icon: 'ti-ruler', available_for_client: false, order: 5, default: false, role_id: 1)
 MenuPermit.create(name: 'Solicitudes de servicio', tab_reference: 'check_services', tab_icon: 'ti-clipboard', available_for_client: false, order: 6, default: false, role_id: 1)
 MenuPermit.create(name: 'Proformas', tab_reference: 'quotations', tab_icon: 'ti-money', available_for_client: false, order: 7, default: false, role_id: 1)
 MenuPermit.create(name: 'Cadena de Custodia', tab_reference: 'classified_services', tab_icon: 'ti-hummer', available_for_client: false, order: 8, default: false, role_id: 1)

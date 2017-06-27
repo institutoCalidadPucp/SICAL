@@ -6,6 +6,9 @@ class Laboratory < ApplicationRecord
   validates :phone, numericality: true
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   mount_uploader :header_image, ImageUploader
+  mount_uploader :internal_report, DocumentUploader
+  mount_uploader :accredited_report, DocumentUploader
+  mount_uploader :normal_report, DocumentUploader
   #before_save :update_header_image_attributes
 
   has_many :sample_methods
