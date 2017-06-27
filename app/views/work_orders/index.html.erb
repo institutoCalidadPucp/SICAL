@@ -12,7 +12,7 @@
               <%= render 'sub_section_card', elements: @work_orders_to_work, title: "Ordenes por Realizar", controller: "work_order" %>
             </div>
             <div class="col-md-6 sub-section-card is-read-card">
-              <%#= render 'sub_section_card', elements: @work_orders_to_check, title: "Ordenes por Revisar", controller: "work_order" %>
+              <%= render 'sub_section_card', elements: @work_orders_to_rework, title: "Ordenes por Revisar", controller: "work_order" %>
             </div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-
 <div class="content">
   <div class="material-datatables">
     <table class="table table-hover sical-data-table sical-data-table" data-placeholder="Buscar Solicitudes">
@@ -14,12 +13,11 @@
         <% services.each do |service| %>
           <tr>
             <td><%= service.subject %></td>
-            <td><%= service.pick_up_date %></td>
+            <td><%= service.pick_up_date.strftime("%d-%m-%Y") %></td>
             <td><%= service.work_flow %></td>
             <td>
               <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, service_path(service), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>
-              <%#= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_service_path(service), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
-              
+              <%#= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_service_path(service), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>              
             </td>
           </tr>
         <% end %>
