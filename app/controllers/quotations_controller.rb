@@ -29,7 +29,7 @@ class QuotationsController < ApplicationController
   end
 
   def update
-    if @service.engagement?
+    if @service.accepted_contract?
       count = 1
       @service.sample_processeds.each do |sample_processed|
         workOrder = WorkOrder.new :service_id => @service.id, :employee_id => params["selected_employee_" + count.to_s], :sample_processed_id => sample_processed.id, :supervisor_id => current_user.id        
