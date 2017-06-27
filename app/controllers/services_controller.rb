@@ -1,7 +1,7 @@
 class ServicesController < ApplicationController
   
   before_action :set_service, only: [:service_end,:service_end_update, :update, :destroy, :show]
-  before_action :set_work_order, only: [:work_check,:work_check_update, :update, :destroy, :show]
+  before_action :set_work_order, only: [:work_check,:work_check_update, :destroy]
   before_action :laboratories, only: [:edit, :new, :show]
   before_action :employees, only: [:edit, :new, :show]
   before_action :sample_categories, only: [:new, :create, :edit, :update, :show]
