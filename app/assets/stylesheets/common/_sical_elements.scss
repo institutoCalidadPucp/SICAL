@@ -70,6 +70,10 @@
   margin-right: 20px;
 }
 
+.sical-btn-add-menu {
+  margin-right: 0;
+}
+
 // Sical Input Group
 
 .form-group {
@@ -91,21 +95,6 @@
   margin: 0 !important;
 }
 
-.subject-date {
-  background-color: #F3F2EE;;
-}
-
-.subject {
-  border-style:solid ;
-  border-color: #C0C0C0; ;
-}
-
-.subject-border {
-  border: 2px solid;
-  border-color: #bbbbbb ;
-  padding: 10px;
-}
-
 // Sical Nested Table Elements
 
 .sical-nested-row {
@@ -114,4 +103,12 @@
 
 .sical-nested-cell {
   display: table-cell;
+}
+
+// Sical Nav Tabs
+
+.nav-tabs-navigation {
+  &.sical-horizontal-nav-tabs {
+    margin-bottom: 0;
+  }
 }

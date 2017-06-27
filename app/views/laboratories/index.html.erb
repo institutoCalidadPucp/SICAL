@@ -6,7 +6,7 @@
           Laboratorios
         </h1>
         <div>
-          <%= link_to 'Nuevo Laboratorio', new_laboratory_path, class: "btn btn-primary align-right"  %>
+          <%= link_to 'Nuevo Laboratorio', new_laboratory_path, class: "btn btn-primary align-right #{current_user.can_create(@controller) ? '' : 'disabled'}"  %>
         </div>
       </div>
       <div class="laboratories-content">

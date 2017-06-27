@@ -16,12 +16,12 @@
           <td><%= sample.name %></td>
           <td><%= sample.description %></td>
           <td><%= sample.unit_cost %></td>
-          <td><%= sample.accreditation %></td>
+          <td><%= t("activerecord.attributes.samplemethod.accreditation.#{sample.accreditation}") %></td>
           <td><%= sample.laboratory.name %></td>
           <td>
-            <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, sample_method_path(sample), class: "btn btn-info btn-sm",title: "Ver", method: :get%>
-            <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_sample_method_path(sample), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
-            <%= link_to toggle_status_sample_method_path(sample), id: "sample-method-lock-#{sample.id}", class: "btn btn-danger btn-sm", data: { toggle: "tooltip" }, title: "Activar/Desactivar", method: :put, remote: true do %>
+            <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, sample_method_path(sample), class: "btn btn-info btn-sm #{current_user.can_view(@controller) ? '' : 'disabled'}",title: "Ver", method: :get%>
+            <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_sample_method_path(sample), class: "btn btn-success btn-sm #{current_user.can_edit(@controller) ? '' : 'disabled'}", data: { "toggle" => "tooltip" }, title: "Editar" %>
+            <%= link_to toggle_status_sample_method_path(sample), id: "sample-method-lock-#{sample.id}", class: "btn btn-danger btn-sm #{current_user.can_delete(@controller) ? '' : 'disabled'}", data: { toggle: "tooltip" }, title: "Activar/Desactivar", method: :put, remote: true do %>
                   <% if sample.status == "active" %>
                     <i class="fa fa-unlock" aria-hidden="true"></i>
                   <% else %>

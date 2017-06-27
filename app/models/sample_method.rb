@@ -5,7 +5,7 @@ class SampleMethod < ApplicationRecord
   validates :unit_cost, numericality: { :greater_than_or_equal_to => 0 }
 
   has_many :sample_processeds
-  belongs_to :laboratory  
+  belongs_to :laboratory
 
   has_many :sample_categoryx_sample_methods
   has_many :sample_categories, through: :sample_categoryx_sample_methods
@@ -13,7 +13,7 @@ class SampleMethod < ApplicationRecord
 
 
   enum status: [:active, :inactive]
-  enum accreditation: [:accredited, :non_accredited]  
+  enum accreditation: [:accredited, :non_accredited]
 
   def self.own_per_user current_user
     if current_user.admin?
