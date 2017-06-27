@@ -1,0 +1,8 @@
+es:
+  activerecord:
+    attributes:
+      samplemethod:
+        description: "Descripcion"
+        accreditation:
+          accredited: "Acreditado"
+          non_accredited: "No Acreditado"

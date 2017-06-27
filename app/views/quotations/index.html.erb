@@ -7,6 +7,25 @@
         </h1>
       </div>
       <div class="sical-content">
+<<<<<<< HEAD
+        <div class="sub-section-cards">
+          <% if current_user.employee?%>
+            <div class="col-lg-4 sub-section-card is-unread-card">
+              <%= render 'sub_section_card', elements: @initial_unfunded, title: "Servicios sin Costear", controller: "quotation" %>
+            </div>
+            <div class="col-lg-4 sub-section-card is-read-card">
+              <%= render 'sub_section_card', elements: @services_to_adjusts, title: "Servicios por Ajustar", controller: "quotation" %>
+            </div>
+            <div class="col-lg-4 sub-section-card is-read-card">
+              <%= render 'sub_section_card', elements: @services_with_engagements, title: "Proformas aceptadas", controller: "quotation" %>
+            </div>
+          <% else %>
+            <div class="col-md-6 sub-section-card is-read-card">
+              <%= render 'sub_section_card', elements: @initial_funded, title: "Servicios Costeados", controller: "quotation" %>
+            </div>
+            <div class="col-md-6 sub-section-card is-read-card">
+              <%= render 'sub_section_card', elements: @adjusted_services, title: "Servicios Ajustados", controller: "quotation" %>
+=======
         <div class="row">
           <% if current_user.employee?%>
             <div id="unread-card" class="col-md-4 card">
@@ -24,10 +43,15 @@
             </div>
             <div id="read-card" class="col-md-6 card">
               <%= render 'quotations', quotations: @adjusted_services, title: "Servicios Ajustados" %>
+>>>>>>> 9c0da5cbc0af99777cc23f8e97eb789226aebf0c
             </div>
           <% end %>
         </div>
       </div>
     </div>
   </div>
+<<<<<<< HEAD
 </section>
+=======
+</section>
+>>>>>>> 9c0da5cbc0af99777cc23f8e97eb789226aebf0c

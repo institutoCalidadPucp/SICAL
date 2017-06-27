@@ -20,6 +20,7 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = User.new employee_params
+    @employee.set_laboratory(current_user)  unless current_user.admin?
     if (@employee.set_password).save
       @employee.employee!
       redirect_to employees_path        

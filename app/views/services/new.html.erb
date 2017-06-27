@@ -3,15 +3,11 @@
     <div class="header card-header-text sical-card-header">
       <h1 class="page-header title sical-card-title">Solicitud de Servicio <small>Nuevo</small></h1>
     </div>
-
     <%= nested_form_for @service, url: services_path, method: :post, :html => { class: "form-horizontal validate sical-form sical-form-validated" } do |f| %>
-
       <%= render 'form_client', service: @service, f: f %>
-
       <% if current_user.employee? %>
         <%= render 'form_worker', service: @service, f: f %>
       <% end %>
-
       <div class="form-group">
         <div class="text-center">
           <%= link_to "Cancelar", services_path, class: "btn btn-primary sical-btn-cancel" %>
@@ -19,8 +15,5 @@
         </div>
       </div>
     <% end %>
-
   </div>
 </div>
-
-
