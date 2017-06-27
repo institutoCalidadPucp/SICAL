@@ -57,4 +57,6 @@ Rails.application.routes.draw do
   end
   resources :sample_categories do
   end
+  resources :check_services do
+  end
 end
