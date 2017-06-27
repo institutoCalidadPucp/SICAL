@@ -1,0 +1,29 @@
+<div class="material-datatables">
+  <table id="employee-datatable" class="table table-hover sical-data-table" data-placeholder="Buscar Empleados">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% employees.each do |employee| %>
+        <tr>
+          <td><%= employee.name %></td>
+          <td><%= employee.last_name %></td>
+          <td><%= employee.email %></td>
+          <td><%= employee.role.name %></td>
+          <td>
+          <%= link_to employee_path(employee), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver"  do %>
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          <% end %>
+          <%= f.radio_button :employee_id, employee.id , required: true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

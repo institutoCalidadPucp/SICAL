@@ -1,9 +1,9 @@
 <div id="costeo" class="tabcontent">
-  <%= f.fields_for :sample_processeds do |s_proc| %>
-    <%= render 'sample_processed_fields', f: s_proc %>
+  <% unless @service.initialized? %>
+  	<%= f.label :confirmacion_de_cotizacion %>
+    <%= f.check_box :valid_initial_funded %>
   <% end %>
-  <div class="form-group row">
-    <%= link_to_add_association "", f, :sample_processeds %>
-  </div>
-
+  <%= f.fields_for :sample_preliminaries do |s_p| %>
+    <%= render 'sample_preliminary_fields', f: s_p %>
+  <% end %>
 </div>

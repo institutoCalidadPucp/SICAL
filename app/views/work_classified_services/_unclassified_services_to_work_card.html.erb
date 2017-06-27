@@ -1,0 +1,36 @@
+<h3 class=" p-b-10 p-l-10 "><%= title %></h3>
+<div class='mailbox-messages flex-1 content'>
+   <div class="scroll content">
+    <% if services_unclassified_to_work.empty?%>
+      <div class="form-group row">
+        No tiene mensajes sin leer.
+      </div>
+    <% else %>
+      <% services_unclassified_to_work.each do |service| %>
+        <div class="row ">
+          <div class="col-md-2 text-center subject-date subject-border col-form-label">
+            <h6>
+              <%= service.created_at.strftime('%I:%M %p') %>
+            </h6>
+            <h6>
+              <%= service.created_at.strftime('%^b %d') %>
+            </h6>
+          </div>
+          <div class="col-md-8 col-form-label subject-border" >
+            <h5>
+              <strong>Asunto:</strong>
+            </h5>
+            <h6><%= service.subject %></h6>
+          </div>
+          <div class="col-md-2 text-center subject-date subject-border" >
+            <br> 
+            <h5 style="text-decoration: none;" ><%= link_to "Ver", edit_work_classified_service_path(service), data: { "toggle" => "tooltip" } %></h5> 
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <%#= link_to , id: 'more-messages', class: 'flex-container' do %>
+      <span class=''></span><span class='text flex-1'>Ver todos los mensajes</span><span class='next'></span>
+    <%# end %>
+  </div>
+</div>

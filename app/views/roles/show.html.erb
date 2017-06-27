@@ -4,13 +4,13 @@
       <h1 class="page-header title sical-card-title">Roles <small>Ver</small></h1>
     </div>
     <div class="form-horizontal validate sical-form sical-form-validated">
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3 col-fom-label">Nombre :</label>
         <div class="col-md-9">
           <%= @role.name %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3">Descripción :</label>
         <div class="col-md-9">
           <%= @role.description %>
@@ -51,7 +51,7 @@
       </div>
       <div class="form-group">
         <div class="text-center">
-          <%= link_to "Cancelar", roles_path, class: "btn btn-primary sical-btn-cancel" %>
+          <%= link_to "Regresar", roles_path, class: "btn btn-primary sical-btn-cancel" %>
         </div>
       </div>
     </div>
