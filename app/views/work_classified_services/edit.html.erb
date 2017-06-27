@@ -1,15 +1,11 @@
 <div class="card">
+    <div class="tab">
+      <button class="tablinks active" onclick="openSection(event, 'service')">Informacion</button>
+      <button class="tablinks" onclick="openSection(event, 'sample')">Custodia de Muestras</button>
+    </div>
   <% if @service.assign_sorter? %>
-    <div class="tab">
-      <button class="tablinks active" onclick="openSection(event, 'service')">Informacion</button>
-      <button class="tablinks" onclick="openSection(event, 'sample')">Custodia de Muestras</button>     
-    </div>
     <%= render 'unclassified_services_to_work'%>
-  <% else %>    
-    <div class="tab">
-      <button class="tablinks active" onclick="openSection(event, 'service')">Informacion</button>
-      <button class="tablinks" onclick="openSection(event, 'sample')">Custodia de Muestras</button>      
-    </div>
+  <% else %>
     <%= render 'classified_services_to_rework'%>
   <% end %>      
 </div>

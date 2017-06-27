@@ -1,0 +1,19 @@
+<% if @service.can_see_quotation_adjust %>
+    <div id="adjust_cost" class="tabcontent">
+      <%= f.fields_for :sample_processeds do |sample| %>
+        <%= render 'sample_processed_fields', f: sample %>
+      <% end %>
+      <div class="">
+        <div class= "samples-title samples-worker">
+          <div>
+            Muestras
+          </div>
+          <div>
+            <%= link_to_add_association "", f, :sample_processeds %>
+          </div>
+        </div>
+        <div class="samples sample-evaluations">
+        </div>
+      </div>
+    </div>
+<% end %>

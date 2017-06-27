@@ -1,11 +1,13 @@
-  <%= f.fields_for :sample_processeds do |sample| %>
-    <%= render 'sample_processed_fields', f: sample %>
-  <% end %>
-
-<div class="">
-  <div class= "samples-title samples-worker">    
-    <div>
-      <%= link_to_add_association "agregar clasificacion", f, :sample_processeds, data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples'},  class: "btn btn-default sical-btn-add-menu "%>
-    </div>
+  <div>
+  	<%= f.label :clasificacion_valida %>
+	  <%= f.check_box :valid_classified, :checked => false %>
   </div>
-</div>
+  
+  <%= @service.sample_processeds.each do |sample_processed| %>
+  	codigo pucp <%= sample_processed.pucp_code %>
+  	codigo cliente <%= sample_processed.client_code %>
+  	cantidad <%= sample_processed.amount %>
+  	costo unitario <%= sample_processed.unit_cost %>
+		subtotal <%= sample_processed.subtotal_cost %>
+		<br>
+  <% end %>

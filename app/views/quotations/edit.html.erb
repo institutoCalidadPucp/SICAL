@@ -8,7 +8,7 @@
     <div class="tab">
       <button class="tablinks active" onclick="openSection(event, 'informacion-general')">Informacion General</button>
       <button class="tablinks" onclick="openSection(event, 'costeo')">Costeo</button>
-      <% if @service.accepted_classified? or @service.accepted_adjust? or @service.accepted_contract? %>
+      <% if @service.can_see_quotation_adjust %>
         <button class="tablinks" onclick="openSection(event, 'adjust_cost')">Ajuste de costeo</button>
       <% end %>
       
@@ -27,6 +27,8 @@
       <%= render 'funded_samples', service: @service, f: f %>
 
       <%= render 'quotation_accepted', service: @service, f: f %>
+
+      <%= render 'quotation_adjusted', service: @service, f: f %>
 
       <%= render 'quotation_worker', service: @service, f: f%>
       

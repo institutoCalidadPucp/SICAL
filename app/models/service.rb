@@ -77,8 +77,9 @@ class Service < ApplicationRecord
     own_per_laboratory(current_user).completed
   end
 
-
-
+  def can_see_quotation_adjust
+    self.accepted_classified? or self.accepted_adjust? or self.accepted_contract?
+  end
 
 
   def handling_client_process current_user

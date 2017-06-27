@@ -4,10 +4,21 @@
         <%= render 'show_basic_information', service: @service, f: f %>
     </div>
           
-    <div id="sample" class="tabcontent">
-       <h3>Custodia de Muestras</h3>	
-        <%#= render 'form_worker', service: @service, h: f %>
-    </div>        
+     <div id="sample" class="tabcontent">
+      <%= f.fields_for :sample_processeds do |sample| %>
+        <%= render 'sample_processed_fields', f: sample %>
+      <% end %>
+      <div class="">
+        <div class= "samples-title samples-worker">
+          <div>
+            Muestras
+          </div>
+          <div>
+            <%= link_to_add_association "Agregar evaluacion de la muestra", f, :sample_processeds, class: "btn btn-default sical-btn-add-menu btn-add-evalution-sample"%>
+          </div>
+        </div>
+      </div>
+    </div>      
 
     <div class="form-group">
       <div class="text-center save-worker">
