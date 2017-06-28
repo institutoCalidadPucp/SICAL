@@ -32,8 +32,8 @@ class WorkOrder < ApplicationRecord
         increseRevision = true
       end            
       self.to_check! if self.to_rework?
-      self.completed! if self.to_check? and self.valid_supervised 
-      self.to_rework! if ((self.to_check? and !increseRevision) and !self.valid_supervised)                
+      self.completed! if self.to_check? and self.valid_supervised      
+      self.to_rework! if ((self.to_check? and !increseRevision) and !self.valid_supervised)                        
       self.to_check! if self.to_work?  
    end  
 

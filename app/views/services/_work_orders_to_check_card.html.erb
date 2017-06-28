@@ -1,36 +1,40 @@
-<h3 class=" p-b-10 p-l-10 "><%= title %></h3>
-<div class='mailbox-messages flex-1 content'>
-   <div class="scroll content">
-    <% if work_orders_to_check.empty?%>
-      <div class="form-group row">
-        No tiene mensajes sin leer.
+<div class="card-group-title">
+  <%= title %>
+</div>
+<div class="card-group-content">
+  <div>
+    <% if elements.empty?%>
+      <div class="form-group">
+        <div class="col-md-12 col-form-label card-group-empty-message">
+          No tiene mensajes sin leer.
+        </div>
       </div>
     <% else %>
-      <% work_orders_to_check.each do |work_order| %>
-        <div class="row ">
-          <div class="col-md-2 text-center subject-date subject-border col-form-label">
-            <h6>
-              <%= work_order.created_at.strftime('%I:%M %p') %>
-            </h6>
-            <h6>
-              <%= work_order.created_at.strftime('%^b %d') %>
-            </h6>
-          </div>
-          <div class="col-md-8 col-form-label subject-border" >
-            <h5>
-              <strong>Asunto:</strong>
-            </h5>
-            <h6><%= work_order.sample_processed.pucp_code %></h6>
-          </div>
-          <div class="col-md-2 text-center subject-date subject-border" >
-            <br> 
-            <h5 style="text-decoration: none;" ><%= link_to "Ver", work_check_service_path(work_order), data: { "toggle" => "tooltip" } %></h5> 
-          </div>
-        </div>
-      <% end %>
+      <div class="card-group-elements">
+        <% elements.each do |element| %>
+          <%= link_to send("work_check_service_path", element), class: "card-group-element-wrapper" do %>
+            <div class="card-group-element">
+              <div class="col-md-3 text-center subject-date col-form-label">
+                <span class="card-group-text is-small is-block">
+                  <%= element.created_at.strftime('%I:%M %p') %>
+                </span>
+                <span class="card-group-text is-small is-block">
+                  <%= element.created_at.strftime('%^b %d') %>
+                </span>
+              </div>
+              <div class="col-md-9 col-form-label">
+                <span class="card-group-text is-bold is-block">
+                  Asunto:
+                </span>
+                <span class="card-group-text is-small is-block">
+                  <%= element.subject %>
+                </span>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
-    <%#= link_to , id: 'more-messages', class: 'flex-container' do %>
-      <span class=''></span><span class='text flex-1'>Ver todos los mensajes</span><span class='next'></span>
-    <%# end %>
   </div>
 </div>
+
