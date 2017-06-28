@@ -30,7 +30,7 @@ class WorkOrdersController < ApplicationController
 
   private
     def order_params
-      params.permit(:id,:sample_processed_id,:supervisor_id,:employee_id,:nr_revision,:report_id)
+      params.permit(:id,:sample_processed_id,:supervisor_id,:employee_id,:nr_revision,:report_id,:internal_report)
     end    
 
     def sample_processeds

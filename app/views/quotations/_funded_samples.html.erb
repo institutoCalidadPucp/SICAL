@@ -3,7 +3,18 @@
   	<%= f.label :confirmacion_de_cotizacion %>
     <%= f.check_box :valid_initial_funded %>
   <% end %>
-  <%= f.fields_for :sample_preliminaries do |s_p| %>
-    <%= render 'sample_preliminary_fields', f: s_p %>
-  <% end %>
+  <table class="table table-no-bordered table-hover">
+  <thead>
+    <th>Nombre</th>
+    <th>Categoría</th>
+    <th>Método</th>
+    <th>Acreditado</th>
+    <th>Precio</th>
+  </thead>
+   <tbody>    
+      <%= f.fields_for :sample_preliminaries do |s_p| %>
+        <%= render 'sample_preliminary_fields', f: s_p %>
+      <% end %>
+    </tbody>
+  </table> 
 </div>

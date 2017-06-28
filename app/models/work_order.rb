@@ -2,7 +2,7 @@ class WorkOrder < ApplicationRecord
   belongs_to :sample_processed
   belongs_to :employee, required: false, class_name: "User"
   belongs_to :service
-  # has_one :report
+  mount_uploader :internal_report, DocumentUploader
 
   scope :work_orders_per_employee, -> (current_user) {where(employee_id: current_user.id)}
   scope :work_orders_per_supervisor, -> (current_user) {where(supervisor_id: current_user.id)}
