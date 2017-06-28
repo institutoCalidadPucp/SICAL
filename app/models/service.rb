@@ -136,15 +136,12 @@ class Service < ApplicationRecord
     current_user.client? ? self.handling_client_process(current_user) : self.handling_internal_process(current_user)
   end
 
-  def asssign_workers service_params
-      count = 1
-      self.sample_processeds.each do |sample_processed|
-        workOrder = WorkOrder.new :subject => (self.subject + sample_processed.pucp_code), :service_id => self.id, :employee_id => params["selected_employee_" + count.to_s], :sample_processed_id => sample_processed.id, :supervisor_id => current_user.id        
-        if !workOrder.save
-          #Error handling
-        end
-        count = count + 1
-      end
+  def asssign_workers service_params, current_user
+    self.sample_processeds.each.with_index(1) do |sample_processed, index|
+      work_order = WorkOrder.new
+      work_order.assign_attr service_params, current_user, sample_processed, index, self
+      work_order.save if work_order.valid?
+    end
   end
 end
 
