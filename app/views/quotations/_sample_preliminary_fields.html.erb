@@ -2,7 +2,7 @@
   <td><%= f.text_field :name, readonly: true , class: "form-control"%></td>                                                   
   <td><%= f.collection_select :sample_category_id, @sample_categories, :id, :name, {}, class: "form-control" %></td>                          
   <td><%= f.collection_select :sample_method_id, @sample_methods, :id, :name, {}, class: "form-control" %></td>  
-  <td><%= f.text_field :unit_cost, readonly: true, class: "form-control" %></td>                      
+  <td><%= f.text_field :quantity, readonly: true, class: "form-control" %></td>                      
   <td><%= f.text_field :unit_cost, readonly: true, class: "form-control" %></td>
-  <td><%= f.text_field :subtotal, readonly: true, class: "form-control" %></td>                        
+  <td><%= f.text_field :unit_cost, readonly: true, class: "form-control" %></td>                        
 </tr>     
