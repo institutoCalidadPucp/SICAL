@@ -3,7 +3,7 @@
 	  <%= f.check_box :valid_classified, :checked => false %>
   </div>
   
-  <%= @service.sample_processeds.each do |sample_processed| %>
+  <% @service.sample_processeds.each do |sample_processed| %>
   	codigo pucp <%= sample_processed.pucp_code %>
   	codigo cliente <%= sample_processed.client_code %>
   	cantidad <%= sample_processed.amount %>

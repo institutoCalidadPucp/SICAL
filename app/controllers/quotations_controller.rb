@@ -29,16 +29,10 @@ class QuotationsController < ApplicationController
   end
 
   def update
+    begin
     if @service.accepted_contract?
-      count = 1
-      @service.sample_processeds.each do |sample_processed|
-        workOrder = WorkOrder.new :service_id => @service.id, :employee_id => params["selected_employee_" + count.to_s], :sample_processed_id => sample_processed.id, :supervisor_id => current_user.id        
-        if !workOrder.save
-          #Error handling
-        end
-        count = count + 1
-      end
-      @service.set_work_flow(current_user)
+      @service.asssign_workers params
+      @service.set_work_flow current_user
       redirect_to  quotations_path
     else
       @service.assign_attributes quotation_params
@@ -49,6 +43,10 @@ class QuotationsController < ApplicationController
         render :edit
       end 
     end       
+    rescue Exception => e
+      redirect_to quotations_path      
+    end
+
   end
 
   def toggle_status

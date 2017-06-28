@@ -38,17 +38,21 @@ class ServicesController < ApplicationController
   end
 
   def work_check_update 
-    @work_order.valid_supervised = params[:work_order][:valid_supervised]
-    if @work_order.valid?
-      @work_order.handling_internal_process(current_user)
-      left_orders = WorkOrder.work_orders_per_service(@service).where.not(work_flow: :completed)
-      if !left_orders.any?
-        @service.handling_internal_process(current_user)  
-      end
+    begin
+      @work_order.valid_supervised = params[:work_order][:valid_supervised]
+      if @work_order.valid?
+        @work_order.handling_internal_process(current_user)
+        left_orders = WorkOrder.work_orders_per_service(@service).where.not(work_flow: :completed)
+        if !left_orders.any?
+          @service.handling_internal_process(current_user)  
+        end
+        redirect_to services_path
+      else
+        render :work_check
+      end    
+    rescue Exception => e
       redirect_to services_path
-    else
-      render :work_check
-    end    
+    end
   end
 
   def service_end

@@ -27,21 +27,25 @@ class WorkClassifiedServicesController < ApplicationController
 	def edit    
 	end
 
-	def update  
-    @service.assign_attributes service_params
-    if @service.valid?
-      @service.set_work_flow(current_user)
-      redirect_to work_classified_services_path
-    else
-      render :edit
-    end		
+	def update
+    begin
+      @service.assign_attributes service_params
+      if @service.valid?
+        @service.set_work_flow(current_user)
+        redirect_to work_classified_services_path
+      else
+        render :edit
+      end		
+    rescue Exception => e
+      redirect_to work_classified_services_path      
+    end
 	end
 
 
 	private
 
     def service_params
-      params.permit(:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+      params.require(:service).permit(:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
 
     def sample_preliminaries

@@ -7,9 +7,9 @@ class SampleProcessed < ApplicationRecord
   has_many :sample_features
 
 
-  accepts_nested_attributes_for :sample_features, allow_destroy: true
+  delegate :name, to: :sample_method, prefix: true, allow_nil: true
+  delegate :accredited?, to: :sample_method, prefix: true, allow_nil: true
 
-  def a
-  end
+  accepts_nested_attributes_for :sample_features, allow_destroy: true
 
 end
