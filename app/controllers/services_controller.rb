@@ -132,4 +132,11 @@ class ServicesController < ApplicationController
     def sample_categories
       @sample_categories = SampleCategory.own_per_user current_user
     end
+
+    def download_contract
+      begin
+      send_file(File.join(Rails.root, "app/pdfs", "#{@service.id}.pdf"), filename: "Contrato-Servicio-#{@service.id}.pdf",type: "application/pdf")
+      rescue
+      end    
+    end
 end
