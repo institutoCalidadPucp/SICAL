@@ -29,9 +29,9 @@ class QuotationsController < ApplicationController
   end
 
   def get_sample_methods
-    @sample_methods = SampleCategory.find(params[:id]).sample_methods
     respond_to do |format|
-      format.json
+      @sample_methods = SampleCategory.find(params[:id]).sample_methods
+      format.js
     end
   end
 
