@@ -1,7 +1,6 @@
 <div class="card">
   <div class="content">
-    <%= form_for @user, url: edit_user_path, method: :put do |f| %>
-
+    <%= form_for @user, url: user_path, method: :put do |f| %>
       <% if @user.client? %>
           <div class="header card-header-text user-title">
             <h1 class="page-header title client-card-title user-content">Cliente <small>Perfil</small></h1>
@@ -13,7 +12,6 @@
         </div>
         <%= render 'employee', f: f, user: @user %>
       <% end %>
-
 
       <div class="form-group">
         <div class="text-center save-worker">
