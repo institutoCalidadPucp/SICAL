@@ -135,5 +135,13 @@ class Service < ApplicationRecord
   def set_work_flow current_user
     current_user.client? ? self.handling_client_process(current_user) : self.handling_internal_process(current_user)
   end
+
+  def asssign_workers service_params, current_user
+    self.sample_processeds.each.with_index(1) do |sample_processed, index|
+      work_order = WorkOrder.new
+      work_order.assign_attr service_params, current_user, sample_processed, index, self
+      work_order.save if work_order.valid?
+    end
+  end
 end
 

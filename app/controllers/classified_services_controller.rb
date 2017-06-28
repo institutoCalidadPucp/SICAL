@@ -14,19 +14,23 @@ class ClassifiedServicesController < ApplicationController
 	end
 
 	def update   
-    @service.assign_attributes service_params
-    # Mejorar esto
-    if params[:valid_classified] == 1
-      @service.valid_classified = true
-    else
-      @service.nr_revision = @service.nr_revision + 1
+    begin
+      @service.assign_attributes service_params
+      # Mejorar esto
+      if params[:valid_classified] == 1
+        @service.valid_classified = true
+      else
+        @service.nr_revision = @service.nr_revision + 1
+      end
+      if @service.valid?
+        @service.set_work_flow(current_user)
+        redirect_to classified_services_path
+      else
+        render :edit
+      end		
+    rescue Exception => e
+      redirect_to classified_services_path      
     end
-    if @service.valid?
-      @service.set_work_flow(current_user)
-      redirect_to classified_services_path
-    else
-      render :edit
-    end		
 	end
 
 	private
