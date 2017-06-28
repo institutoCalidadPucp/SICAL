@@ -39,15 +39,18 @@ class ServicesController < ApplicationController
 
   def work_check_update 
     begin
-      @work_order.valid_supervised = params[:work_order][:valid_supervised]
+      @work_order.assign_attributes work_order_params      
       if @work_order.valid?
         @work_order.handling_internal_process(current_user)
         left_orders = WorkOrder.work_orders_per_service(@service).where.not(work_flow: :completed)
         if !left_orders.any?
           @service.handling_internal_process(current_user)  
         end
+        if @work_order.to_rework?
+          @work_order.increment!(:nr_revision)
+        end
         redirect_to services_path
-      else
+      else      
         render :work_check
       end    
     rescue Exception => e
@@ -81,8 +84,8 @@ class ServicesController < ApplicationController
       params.require(:service).permit(:laboratory_id, :valid_classified, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
 
-    def order_params
-      params.permit(:id,:sample_processed_id,:supervisor_id,:employee_id,:nr_revision,:report_id)
+    def work_order_params
+      params.require(:work_order).permit(:id,:sample_processed_id,:supervisor_id,:employee_id,:nr_revision,:report_id,:supervisor_observation,:valid_supervised)
     end    
 
     def sample_preliminaries

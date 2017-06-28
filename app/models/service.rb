@@ -140,6 +140,7 @@ class Service < ApplicationRecord
     self.sample_processeds.each.with_index(1) do |sample_processed, index|
       work_order = WorkOrder.new
       work_order.assign_attr service_params, current_user, sample_processed, index, self
+      work_order.subject = self.subject + sample_processed.pucp_code
       work_order.save if work_order.valid?
     end
   end
