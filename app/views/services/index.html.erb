@@ -8,12 +8,12 @@
             </h1>
           </div>
           <div class="sical-content">
-            <div class="row">
-              <div id="unread-card" class="col-md-6 card">
-                <%= render 'work_orders_to_check_card', work_orders_to_check: @work_orders_to_check, title: "Ordenes por Revisar" %>
+            <div class="sub-section-cards">
+              <div class="col-md-6 sub-section-card is-unread-card">
+                <%= render 'work_orders_to_check_card', elements: @work_orders_to_check, title: "Ordenes por Revisar" %>
               </div>
-              <div id="read-card" class="col-md-6 card">
-                <%= render 'services_completed_card', completed_services: @completed_services, title: "Servicios Terminados" %>
+              <div class="col-md-6 sub-section-card is-read-card">
+                <%= render 'services_completed_card', elements: @completed_services, title: "Servicios Terminados" %>
               </div>
             </div>
           </div>
@@ -27,30 +27,16 @@
         <div class="header card-header-text sical-card-header">
           <h1 class="sical-card-title">
             Solicitudes de Servicio
-          </h1>
-          <% if !current_user.employee? %>
-            <div>
-              <%= link_to 'Nueva Solicitud', new_service_path, class: "btn btn-primary align-right"  %>
-            </div>
-          <% end %>
+          </h1>                     
+          <%= link_to 'Nueva Solicitud', new_service_path, class: "btn btn-primary align-right"  %>           
         </div>
-        <div class="sical-content">
-          <% if current_user.employee? %>
-            <div class="sub-section-cards">
-              <div class="col-md-6 sub-section-card is-unread-card">
-                <%= render 'sub_section_card', elements: @unattended_services, title: "Revision de Trabajo", controller: "service" %>
-              </div>
-              <div class="col-md-6 sub-section-card is-read-card">
-                <%= render 'sub_section_card', elements: @completed_services, title: "Servicios terminado", controller: "service" %>
-              </div>
-            </div>
-          <% else %>
-            <div id="service-table">
-              <%= render 'services_table', services: @services %>
-            </div>
-          <% end %>
+        <div class="sical-content">       
+          <div id="service-table">
+            <%= render 'services_table', services: @services %>
+          </div>       
         </div>
       </div>
     </div>
   </section>
 <% end %>
+

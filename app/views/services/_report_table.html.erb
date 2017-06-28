@@ -1,0 +1,20 @@
+<table class="table table-no-bordered table-hover">
+    <thead>
+      <th>Código Muestra</th>
+      <th>Método</th>      
+      <th>Acreditado</th>
+      <th>Nombre Reporte</th>
+      <th>Reporte</th>
+    </thead>
+    <tbody>
+    <% work_orders.each do |work_order| %>
+    <tr>
+        <td><%= work_order.sample_processed.pucp_code %></td>                          
+        <td><%= work_order.sample_processed.sample_method.name %></td>                                  
+        <td><%= work_order.sample_processed.sample_method.accredited? %></td>                          
+        <td><%= work_order.report_name %></td>
+        <td><%= link_to "Descarga", work_order.internal_report_url, class: "btn btn-info btn-sm" %></td></td>                        
+    </tr>   
+    <% end %>      
+    </tbody>
+</table> 

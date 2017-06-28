@@ -30,7 +30,8 @@
           <p class="hidden-lg-up">Profile</p>
         </a>
         <div class="dropdown-menu only-dropdown" aria-labelledby="notificationList">
-          <%= link_to "Logout", destroy_user_session_path, :method=>'delete', class: "dropdown-item" %>
+          <%= link_to "Profile", edit_user_path(current_user), method: :get, class: "dropdown-item" %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
       </li>
       <li class="separator hidden-lg-up"></li>
