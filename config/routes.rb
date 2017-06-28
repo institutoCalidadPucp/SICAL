@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     put 'service_end_update', on: :member
   end
   
+  resources :users
   resources :contracts
   resources :sample_methods
   resources :quotations
