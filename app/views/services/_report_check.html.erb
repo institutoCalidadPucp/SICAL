@@ -1,24 +1,24 @@
 <table class="table table-no-bordered table-hover">
     <thead>
       <th>Código Muestra</th>
-      <th>Método</th>      
+      <th>Método</th>
       <th>Acreditado</th>
       <th>Nombre Reporte</th>
       <th>Reporte</th>
     </thead>
-    <tbody>    
+    <tbody>
     <tr>
-        <td><%= sample.pucp_code %></td>                          
-        <td><%= sample.sample_method.name %></td>                                  
-        <td><%= sample.sample_method.accredited? %></td>                          
+        <td><%= sample.pucp_code %></td>
+        <td><%= sample.sample_method.name %></td>
+        <td><%= sample.sample_method.accredited? %></td>
         <td><%= work_order.report_name %></td>
-        <td><%= link_to "Descarga", work_order.internal_report_url, class: "btn btn-info btn-sm" %></td></td>                        
-    </tr>         
+        <td><%= link_to "Descarga", work_order.internal_report_url, class: "btn btn-info btn-sm" %></td></td>
+    </tr>
     </tbody>
-</table>  
+</table>
  <div class="text-center">
     <br></br>
-    <h4>Observaciones</h4>	     
+    <h4>Observaciones</h4>
     <%= f.text_area :supervisor_observation, :cols => "40", :rows => "5" %>
 </div>
 

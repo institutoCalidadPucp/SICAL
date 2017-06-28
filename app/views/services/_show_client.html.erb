@@ -1,24 +1,28 @@
 <div class="tab">
   <button class="tablinks active" onclick="openSection(event, 'basic_information')">Información</button>
-  <button class="tablinks" onclick="openSection(event, 'status_information')">Estado de servicio</button>
-  <button class="tablinks" onclick="openSection(event, 'contracts')">Contrato</button>
-  <button class="tablinks" onclick="openSection(event, 'results')">Resultados</button>
-</div>  
-
+  <% if service.accepted_adjust? %>
+    <button class="tablinks " onclick="openSection(event, 'process_information')">Estado de servicio</button>
+  <% end %>
+  <% if service.accepted_adjust? %>
+    <button class="tablinks" onclick="openSection(event, 'contracts')">Contrato</button>
+  <% end %>
+  <% if service.final_completed? %>
+    <button class="tablinks" onclick="openSection(event, 'results')">Resultados</button>
+  <% end %>
+</div>
 
 <div id="basic_information" class="tabcontent " style="display: block;">
-      <%= render "show_basic_information", service: @service%>    
+  <%= render "show_basic_information", service: @service%>
 </div>
 
 <div id="process_information" class="tabcontent">
-      <%= render "show_status_information", service: @service%>    
+  <%= render "show_status_information", service: @service%>
 </div>
 
-
 <div id="contracts" class="tabcontent">
-      <%= render "show_contracts_information", service: @service%>    
+  <%= render "show_contracts_information", service: @service%>
 </div>
 
 <div id="results" class="tabcontent">
-      <%= render "show_results_information", service: @service%>    
+  <%= render "show_results_information", service: @service%>
 </div>
