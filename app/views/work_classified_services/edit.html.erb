@@ -1,11 +1,11 @@
 <div class="card">
     <div class="tab">
-      <button class="tablinks active" onclick="openSection(event, 'service')">Informacion</button>
+      <button class="tablinks active" onclick="openSection(event, 'service')">Información</button>
       <button class="tablinks" onclick="openSection(event, 'sample')">Custodia de Muestras</button>
     </div>
   <% if @service.assign_sorter? %>
     <%= render 'unclassified_services_to_work'%>
   <% else %>
     <%= render 'classified_services_to_rework'%>
-  <% end %>      
+  <% end %>
 </div>
