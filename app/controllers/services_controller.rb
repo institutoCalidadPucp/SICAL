@@ -62,6 +62,17 @@ class ServicesController < ApplicationController
   end
 
   def service_end_update
+      begin
+        @service.assign_attributes service_params
+      if @service.save
+        @service.set_work_flow(current_user)
+        redirect_to  services_path
+      else
+        render :service_end
+      end 
+    rescue Exception => e    
+      redirect_to services_path
+    end
   end
 
   def update        
@@ -81,7 +92,7 @@ class ServicesController < ApplicationController
 
   private
     def service_params
-      params.require(:service).permit(:laboratory_id, :valid_classified, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+      params.require(:service).permit(:laboratory_id, :valid_classified, :user_id, :employee_id, :subject, :pick_up_date,:supervisor_observation,:final_report, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
 
     def work_order_params
@@ -102,6 +113,7 @@ class ServicesController < ApplicationController
 
     def set_service
       @service = Service.find params[:id]
+      @work_orders = WorkOrder.where(service_id: params[:id])
     end
 
     def set_work_order      
