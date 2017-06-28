@@ -11,7 +11,8 @@ class ServicesController < ApplicationController
     @unattended_services = Service.passed_classification current_user
     @unclassified_services = Service.inital_funded_accepted current_user
     @work_orders_to_check = WorkOrder.work_orders_to_check current_user
-    @completed_services = Service.services_completed current_user
+    @internal_completed_services = Service.services_completed current_user
+    @final_completed_services = Service.services_completed current_user
   end
 
   def create

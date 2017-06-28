@@ -16,7 +16,7 @@
   <div class="form-group row">
     <label class= "col-md-3 col-form-label">Fecha Próxima de Recojo</label>
      <div class="col-md-9">
-        <%= @service.pick_up_date.strftime("%d-%m-%Y")%>
+        <%= @service.pick_up_date.strftime("%d/%m/%Y")%>
     </div>
   </div>
 
@@ -29,36 +29,23 @@
 
   <div class="form-group row">
     <label class= "col-md-3 col-form-label">Muestra(s)</label>
-    <div class="col-md-9 offset-md-3">
-      <div class="form-group row">
-        <h4 class="col-md-4">
-          Nombre
-        </h4>
-        <h4 class="col-md-4">
-          Cantidad
-        </h4>
-        <h4 class="col-md-4">
-          Descripción
-        </h4>
-      </div>
-    </div>
-
-    <div class="col-md-9 offset-md-3">
-      <div class="form-group row">
-        <% @service.sample_preliminaries.each do |preliminary| %>       
-            <div class="col-md-4 form-control">
-              <%= preliminary.name %>
-            </div>
-            <div class="col-md-4 form-control">
-              <%= preliminary.quantity %>
-            </div>
-            <div class="col-md-4 form-control">
-              <%= preliminary.description %>
-            </div>        
-        <% end %>
-      </div>
-    </div>
+    <div class="col-md-9">
+      <table class="table table-hover">
+       <thead>
+         <tr>
+           <th>Nombre</th>
+           <th>Cantidad</th>
+           <th>Descripción</th>
+         </tr>
+       </thead>
+       <tbody>
+         <% @service.sample_preliminaries.each do |sp|%>
+           <tr>
+             <td><%= sp.name %></td>
+             <td><%= sp.quantity %></td>
+             <td><%= sp.description %></td>
+           </tr>
+         <% end %>
+     </table>
   </div>
 </div>
-
-  
