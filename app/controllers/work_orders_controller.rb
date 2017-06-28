@@ -19,13 +19,17 @@ class WorkOrdersController < ApplicationController
   end
 
   def update
-    @work_order.assign_attributes order_params
-    if @work_order.valid?
-      @work_order.handling_internal_process(current_user)
-      redirect_to work_orders_path
-    else
-      render :edit
-    end    
+    begin
+      @work_order.assign_attributes order_params
+      if @work_order.valid?
+        @work_order.handling_internal_process(current_user)
+        redirect_to work_orders_path
+      else
+        render :edit
+      end    
+    rescue Exception => e
+      redirect_to work_orders_path      
+    end
   end
 
   private
