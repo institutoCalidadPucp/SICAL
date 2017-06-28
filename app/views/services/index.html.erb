@@ -9,10 +9,9 @@
           </div>
           <div class="sical-content">
             <div class="sub-section-cards">
-              <div id="unread-card" class="col-md-6 sub-section-card is-unread-card">
+              <div class="col-md-6 sub-section-card is-unread-card">
                 <%= render 'work_orders_to_check_card', work_orders_to_check: @work_orders_to_check, title: "Ordenes por Revisar" %>
-              </div>
-              <div id="read-card" class="col-md-6 sub-section-card is-unread-card">
+              </div class="col-md-6 sub-section-card is-read-card">
                 <%= render 'services_completed_card', completed_services: @completed_services, title: "Servicios Terminados" %>
               </div>
             </div>
