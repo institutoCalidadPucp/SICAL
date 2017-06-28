@@ -10,11 +10,29 @@ $(".sample-header").click(function () {
 
 });
 
-$("#rejected").change(function(){
-  if (this.checked){
+$("#rejected").on('change', function() {
+  if (this.checked) {
     $(".engagement-observation").show(); 
-  }
-  else{
+  } else {
     $(".engagement-observation").hide();
   }
-})
+});
+
+(function() {
+  $('.sample-preliminaries-category-select').on('change', function(e) {
+    $.ajax({
+      url: '/quotations/get_sample_methods',
+      method: 'POST',
+      data: {
+        id: e.target.value,
+        authenticity_token: window._token,
+      },
+      done: function(response) {
+        console.log(response);
+      },
+      fail: function(error) {
+        console.log(error);
+      },
+    })
+  });
+})();

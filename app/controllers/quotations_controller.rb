@@ -28,6 +28,13 @@ class QuotationsController < ApplicationController
   def edit   
   end
 
+  def get_sample_methods
+    @sample_methods = SampleCategory.find(params[:id]).sample_methods
+    respond_to do |format|
+      format.json
+    end
+  end
+
   def update
     begin
     if @service.accepted_contract?

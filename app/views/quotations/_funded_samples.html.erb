@@ -1,6 +1,6 @@
 <div id="costeo" class="tabcontent">
   <% unless @service.initialized? %>
-  	<%= f.label :confirmacion_de_cotizacion %>
+    <%= f.label :confirmacion_de_cotizacion %>
     <%= f.check_box :valid_initial_funded %>
   <% end %>
   <table class="table table-no-bordered table-hover">
@@ -11,7 +11,7 @@
     <th>Acreditado</th>
     <th>Precio</th>
   </thead>
-   <tbody>    
+   <tbody>
       <%= f.fields_for :sample_preliminaries do |s_p| %>
         <%= render 'sample_preliminary_fields', f: s_p %>
       <% end %>

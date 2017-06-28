@@ -46,7 +46,9 @@ Rails.application.routes.draw do
   
   resources :contracts
   resources :sample_methods
-  resources :quotations
+  resources :quotations do
+    post 'get_sample_methods', on: :collection
+  end
   resources :requests
   resources :results
   resources :work_orders
