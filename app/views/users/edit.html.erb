@@ -1,16 +1,24 @@
-<%= form_for @user, url: user_path, method: :put do |f| %>
+<div class="card">
+  <div class="content">
+    <%= form_for @user, url: user_path, method: :put do |f| %>
+      <% if @user.client? %>
+          <div class="header card-header-text user-title">
+            <h1 class="page-header title client-card-title user-content">Cliente <small>Perfil</small></h1>
+          </div>
+        <%= render 'client', f: f, user: @user %>
+      <% else %>
+        <div class="header card-header-text employees-header user-title">
+          <h1 class="page-header title employee-card-title user-content">Empleado <small>Perfil</small></h1>
+        </div>
+        <%= render 'employee', f: f, user: @user %>
+      <% end %>
 
-  <% if @user.client? %>
-    <%= render 'client', f: f %>
-  <% else %>
-    <%= render 'employee', f: f %>
-  <% end %>
-
-
-  <div class="form-group">
-    <div class="text-center save-worker">
-      <%= link_to "Cancelar", root_path, class: "btn btn-primary sical-btn-cancel" %>
-      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
-    </div>
-  </div>
-<% end %>
+      <div class="form-group">
+        <div class="text-center save-worker">
+          <%= link_to "Cancelar", root_path, class: "btn btn-primary sical-btn-cancel" %>
+          <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+        </div>
+      </div>
+    <% end %>
+  </div>  
+</div>  
