@@ -1,0 +1,26 @@
+<%= nested_form_for @work_order, url: work_check_update_service_path, :wrapper => false,  method: :put do |f| %>
+    <div id="information" class="tabcontent" style="display: block;">
+      <h3>Informacion</h3>
+        <%= render 'show_basic_information', service: @work_order.sample_processed.service, f: f %>
+    </div>
+
+    <div id="custody" class="tabcontent">
+       <h3>Custodia de Muestras</h3>	
+        <%#= render 'form_worker', service: @service, f: f %>
+    </div>
+
+     <div id="report" class="tabcontent">
+       <h3>Resultados</h3>	
+        <%= render 'report_check', work_order: @work_order, sample: @work_order.sample_processed, f: f%>
+    </div>
+
+    <div class="form-group">
+      <div class="text-center save-worker">
+        <%= link_to "Cancelar", services_path, class: "btn btn-primary sical-btn-cancel" %>
+        <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+      </div>
+    </div>
+<% end %>
+
+
+

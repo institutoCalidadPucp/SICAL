@@ -1,0 +1,10 @@
+<div class="nested-fields">
+  <div class="text-right">
+    <%= link_to_remove_association f do %>
+      <i class="fa fa-times" aria-hidden="true"></i>
+    <% end %>
+  </div>  
+  <% if current_user.employee? %>
+    <%= render 'form_worker', service: @service, f: f %>
+  <% end %>
+</div>

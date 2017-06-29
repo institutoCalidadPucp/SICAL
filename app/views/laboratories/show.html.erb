@@ -34,6 +34,30 @@
           <%= @laboratory.description %>
         </div>
       </div>
+      <div class="form-group row">
+        <label class= "col-md-3 col-form-label">Logo</label>
+        <div class="col-md-9">
+          <%= link_to "Descarga", @laboratory.header_image_url, class: "btn btn-info btn-sm" %></td>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class= "col-md-3 col-form-label">Reporte Interno</label>
+        <div class="col-md-9">
+          <%= link_to "Descarga", @laboratory.internal_report_url, class: "btn btn-info btn-sm" %></td>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class= "col-md-3 col-form-label">Reporte</label>
+        <div class="col-md-9">
+          <%= link_to "Descarga", @laboratory.normal_report_url, class: "btn btn-info btn-sm"%></td>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class= "col-md-3 col-form-label">Reporte Acreditado</label>
+        <div class="col-md-9">
+          <%= link_to "Descarga", @laboratory.accredited_report_url, class: "btn btn-info btn-sm" %></td>
+        </div>
+      </div>
       <div class="sical-form-buttons">
         <div class="text-center">
           <%= link_to "Regresar", laboratories_path, class: "btn btn-primary sical-btn-cancel" %>

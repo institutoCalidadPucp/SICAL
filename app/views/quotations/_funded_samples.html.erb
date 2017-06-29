@@ -1,9 +1,78 @@
 <div id="costeo" class="tabcontent">
-  <%= f.fields_for :sample_processeds do |s_proc| %>
-    <%= render 'sample_processed_fields', f: s_proc %>
-  <% end %>
-  <div class="form-group row">
-    <%= link_to_add_association "", f, :sample_processeds %>
+  <table class="table table-no-bordered table-hover">
+  <thead>
+    <th>Nombre</th>
+    <th>Categoría</th>
+    <th>Método</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+    <th>Subtotal</th>
+  </thead>
+   <tbody>    
+      <%= f.fields_for :sample_preliminaries do |s_p| %>
+        <%= render 'sample_preliminary_fields', f: s_p %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="col-md-5 offset-md-7 ">
+    <div class="form-group row">
+      <div class="col-md-7 text-center">
+        <strong>Total</strong>
+      </div>
+      <div class="col-md-5 text-center">
+        <%= f.text_field :total, readonly: true, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
+  <% if current_user.client? %>
+    <div class="form-group row">
+      <div class="col-md-3 col-fom-label">
+        <%= f.label :Confirmación %>
+      </div>
+      <div class="col-md-4">
+        <label class="radio form-check-label sical-radio-button">
+          <span class="icons">
+            <span class="first-icon fa fa-circle-o"></span>
+            <span class="second-icon fa fa-dot-circle-o"></span>
+          </span>
+          <input
+            id="accepted"
+            type="radio"
+            class="form-check-input"
+            data-toggle="radio"
+            name="service[engagement]"
+            value="true"
+          >
+          Aceptado
+        </label>
+        <label class="radio form-check-label sical-radio-button">
+          <span class="icons">
+            <span class="first-icon fa fa-circle-o"></span>
+            <span class="second-icon fa fa-dot-circle-o"></span>
+          </span>
+          <input
+            id="rejected"
+            type="radio"
+            class="form-check-input"
+            data-toggle="radio"
+            name="service[engagement]"
+            value="false"
+          >
+          No Aceptado
+        </label>
+      </div>
+    </div>
+    <div class=" engagement-observation hide ">
+      <div class="form-group row">
+        <div class="col-md-3">
+          <%= f.label :observaciones %> 
+        </div>
+        <div class="col-md-9">
+          <%= f.text_field :client_quotation_observation, class: "form-control", maxlength:"50" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

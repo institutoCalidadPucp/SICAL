@@ -1,6 +1,12 @@
 
 <div id="informacion-general" class="tabcontent" style="display: block;">
   <div class="form-group row">
+    <label class= "col-md-3 col-form-label">Cliente</label>
+     <div class="col-md-9">
+        <%= @service.client.name %>
+    </div>
+  </div>
+  <div class="form-group row">
     <label class= "col-md-3 col-form-label">Laboratorio</label>
      <div class="col-md-9">
         <%= @service.laboratory.name %>
@@ -10,7 +16,7 @@
   <div class="form-group row">
     <label class= "col-md-3 col-form-label">Fecha Próxima de Recojo</label>
      <div class="col-md-9">
-        <%= @service.pick_up_date %>
+        <%= @service.pick_up_date.strftime("%d/%m/%Y")%>
     </div>
   </div>
 
@@ -23,27 +29,23 @@
 
   <div class="form-group row">
     <label class= "col-md-3 col-form-label">Muestra(s)</label>
-    <div class="col-md-9 offset-md-3">
-      <div class="form-group row">
-        <h4 class="col-md-4">
-          Nombre
-        </h4>
-        <h4 class="col-md-4">
-          Cantidad
-        </h4>
-        <h4 class="col-md-4">
-          Descripción
-        </h4>
-      </div>
-
-      <%= f.fields_for :sample_preliminaries do |s_p| %>
-        <%= render 'sample_preliminary_fields', f: s_p %>
-      <% end %>
-    </div>
+    <div class="col-md-9">
+      <table class="table table-hover">
+       <thead>
+         <tr>
+           <th>Nombre</th>
+           <th>Cantidad</th>
+           <th>Descripción</th>
+         </tr>
+       </thead>
+       <tbody>
+         <% @service.sample_preliminaries.each do |sp|%>
+           <tr>
+             <td><%= sp.name %></td>
+             <td><%= sp.quantity %></td>
+             <td><%= sp.description %></td>
+           </tr>
+         <% end %>
+     </table>
   </div>
 </div>
-
-  <div class="form-group row">
-    <%= link_to_add_association "", f,:sample_preliminaries%>
-  </div>
-  

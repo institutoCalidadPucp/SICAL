@@ -1,5 +1,4 @@
 class SampleMethodsController < ApplicationController
-
   before_action :set_sample_method, only: [:show, :edit, :update, :destroy, :toggle_status]
   before_action :laboratories, only: [:show, :edit, :create, :new, :update]
 
@@ -15,9 +14,9 @@ class SampleMethodsController < ApplicationController
   end
 
   def create
-    @sample_method = SampleMethod.new sample_method_params
-    if @sample_method.save
-      @sample_method.set_laboratory(current_user) unless current_user.admin?
+    @sample_method = SampleMethod.new sample_method_params.merge(:laboratory_id => current_user.laboratory.id) unless current_user.admin?
+    @sample_method = SampleMethod.new sample_method_params unless current_user.employee?   
+    if @sample_method.save      
       redirect_to sample_methods_path
     else
       render :new

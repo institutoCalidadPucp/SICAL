@@ -65,5 +65,13 @@ class User < ApplicationRecord
       where(laboratory_id: current_user.laboratory)
     end
   end
+
+  def self.names
+  	User.pluck(:name,:id)	
+  end
   
+  def assign_attr user_params, params
+    self.password = params[:password] if params[:password].present?
+    self.assign_attributes user_params
+  end
 end

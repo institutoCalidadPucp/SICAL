@@ -13,7 +13,7 @@
         <% quotations.each do |quotation| %>
           <tr>
             <td><%= quotation.subject %></td>
-            <td><%= quotation.pick_up_date %></td>
+            <td><%= quotation.pick_up_date.strftime("%d/%m/%Y")%></td>
             <td><%= quotation.status %></td>
             <td>
               <%#= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, edit_quotation_path(quotation), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>

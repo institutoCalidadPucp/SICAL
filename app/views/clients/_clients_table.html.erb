@@ -3,7 +3,6 @@
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>RUC</th>
         <th>Persona de Contacto</th>
         <th>Correo electrónico</th>
         <th>Teléfono</th>
@@ -14,7 +13,6 @@
       <% clients.each do |client| %>
         <tr>
           <td><%= client.name %></td>
-          <td><%= client.ruc %></td>
           <td><%= client.person_contact%></td>
           <td><%= client.email %></td>
           <td><%= client.phone %></td>

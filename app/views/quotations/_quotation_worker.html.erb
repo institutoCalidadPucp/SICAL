@@ -1,7 +1,22 @@
-<div id="employee-handler" class="tabcontent">
-  <% if service.accepted? and current_user.employee? %>
-    <%= f.fields_for :sample_processeds do |s_proc| %>
-      <%= render 'quotation_employee', f: s_proc %>
-    <% end %>
-  <% end %>
+<div id="employee-assign" class="tabcontent">
+  <table class="table table-no-bordered table-hover">
+    <thead>
+      <th>Nombre</th>
+      <th>Categoría</th>
+      <th>Método</th>
+      <th>Acreditado</th>
+      <th>Asinación</th>
+    </thead>
+    <tbody>    
+    <% @service.sample_processeds.each do |sample_processed| %>             
+        <tr>
+          <td><%= sample_processed.description %></td>                          
+          <td><%= sample_processed.sample_category.name %></td>                          
+          <td><%= sample_processed.sample_method_name %></td>                          
+          <td><%= sample_processed.sample_method_accredited? %></td>                          
+          <td><%= f.collection_select :id, @employees,:id, :name,{}, {name: "selected_employee_#{sample_processed.id}"} %></td>                        
+        </tr>     
+    <% end %>   
+    </tbody>
+  </table>  
 </div>

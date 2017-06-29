@@ -7,31 +7,31 @@
       </h1>
     </div>
     <div class="form-horizontal validate sical-form sical-form-validated">
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3 col-fom-label">Nombre :</label>
         <div class="col-md-9">
           <%= @sample_method.name %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3">Descripción :</label>
         <div class="col-md-9">
           <%= @sample_method.description %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3">Costo Unitario :</label>
         <div class="col-md-9">
           <%= @sample_method.unit_cost %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3">Acreditación :</label>
         <div class="col-md-9">
           <%= @sample_method.accreditation %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3">Laboratorio :</label>
         <div class="col-md-9">
           <%= @sample_method.laboratory.name %>
@@ -39,7 +39,7 @@
       </div>
       <div class="form-group">
         <div class="text-center">
-          <%= link_to "Cancelar", sample_methods_path, class: "btn btn-primary sical-btn-cancel" %>
+          <%= link_to "Regresar", sample_methods_path, class: "btn btn-primary sical-btn-cancel" %>
         </div>
       </div>
     </div>
