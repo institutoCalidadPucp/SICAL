@@ -2,8 +2,9 @@ class User < ApplicationRecord
   include ApplicationHelper
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
+       
   belongs_to :role, required: false
   belongs_to :laboratory, required: false
   has_many :client_services, class_name: "Service", foreign_key: 'client_id'
@@ -65,5 +66,26 @@ class User < ApplicationRecord
       where(laboratory_id: current_user.laboratory)
     end
   end
-  
+
+  def omniauth_values auth
+    self.email = auth.info.email
+    self.password = Devise.friendly_token[0,20]
+    self.provider = auth.provider
+    self.uid = auth.uid
+    self.name = auth.info.name
+    self.oauth_token = auth.credentials.token
+    self.oauth_expires_at = Time.at(auth.credentials.expires_at)
+  end
+
+  def self.from_omniauth(auth)
+    user = User.find_by_email auth.info.email
+    if user
+      if !user.oauth_token
+        user.omniauth_values auth
+        user.save
+      end
+      return user
+    end
+    return nil
+  end
 end

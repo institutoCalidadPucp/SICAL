@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611174551) do
+ActiveRecord::Schema.define(version: 20170621020712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "features", force: :cascade do |t|
     t.float "value"
-    t.string "name"
+    t.string "description"
     t.bigint "sample_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,17 +25,19 @@ ActiveRecord::Schema.define(version: 20170611174551) do
   end
 
   create_table "inventories", force: :cascade do |t|
+    t.text "description"
+    t.date "date_of_entry"
+    t.float "amount"
     t.string "code"
     t.string "name"
     t.string "brand"
     t.string "product_model"
-    t.integer "status"
-    t.float "amount"
     t.string "amount_unit"
-    t.text "description"
-    t.date "date_of_entry"
+    t.integer "status", default: 0
+    t.bigint "laboratory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["laboratory_id"], name: "index_inventories_on_laboratory_id"
   end
 
   create_table "laboratories", force: :cascade do |t|
@@ -96,11 +98,23 @@ ActiveRecord::Schema.define(version: 20170611174551) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name"
     t.text "description"
+    t.string "name"
     t.integer "status", default: 1
+    t.bigint "laboratory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["laboratory_id"], name: "index_roles_on_laboratory_id"
+  end
+
+  create_table "sample_categories", force: :cascade do |t|
+    t.bigint "laboratory_id"
+    t.string "name"
+    t.string "description"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["laboratory_id"], name: "index_sample_categories_on_laboratory_id"
   end
 
   create_table "sample_features", force: :cascade do |t|
@@ -116,6 +130,7 @@ ActiveRecord::Schema.define(version: 20170611174551) do
     t.string "description"
     t.float "unit_cost"
     t.integer "accreditation"
+    t.integer "status", default: 0
     t.bigint "laboratory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -126,10 +141,10 @@ ActiveRecord::Schema.define(version: 20170611174551) do
   create_table "sample_preliminaries", force: :cascade do |t|
     t.bigint "service_id"
     t.string "name"
-    t.integer "quantity"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1
     t.index ["service_id"], name: "index_sample_preliminaries_on_service_id"
   end
 
@@ -139,9 +154,17 @@ ActiveRecord::Schema.define(version: 20170611174551) do
     t.string "description"
     t.string "pucp_code"
     t.string "client_code"
+    t.integer "amount"
+    t.float "unit_cost"
+    t.float "subtotal_cost"
+    t.float "discount"
+    t.bigint "sample_method_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["sample_method_id"], name: "index_sample_processeds_on_sample_method_id"
     t.index ["service_id"], name: "index_sample_processeds_on_service_id"
+    t.index ["user_id"], name: "index_sample_processeds_on_user_id"
   end
 
   create_table "samples", force: :cascade do |t|
@@ -153,13 +176,28 @@ ActiveRecord::Schema.define(version: 20170611174551) do
 
   create_table "services", force: :cascade do |t|
     t.bigint "laboratory_id"
-    t.bigint "user_id"
+    t.bigint "client_id"
     t.string "subject"
     t.date "pick_up_date"
+    t.integer "status", default: 0
+    t.integer "work_flow", default: 0
+    t.boolean "engagement"
+    t.text "engagement_observation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_services_on_client_id"
     t.index ["laboratory_id"], name: "index_services_on_laboratory_id"
-    t.index ["user_id"], name: "index_services_on_user_id"
+  end
+
+  create_table "supplies", force: :cascade do |t|
+    t.integer "laboratory_id"
+    t.string "name"
+    t.string "description"
+    t.float "quantity"
+    t.string "measureUnit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "code"
   end
 
   create_table "users", force: :cascade do |t|
@@ -173,6 +211,10 @@ ActiveRecord::Schema.define(version: 20170611174551) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "provider"
+    t.string "uid"
+    t.string "oauth_token"
+    t.datetime "oauth_expires_at"
     t.bigint "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -185,9 +227,11 @@ ActiveRecord::Schema.define(version: 20170611174551) do
     t.string "last_name"
     t.date "date_of_birth"
     t.integer "gender"
-    t.integer "status"
+    t.integer "status", default: 0
     t.string "job_position"
+    t.bigint "laboratory_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["laboratory_id"], name: "index_users_on_laboratory_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
   end

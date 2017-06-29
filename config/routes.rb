@@ -1,18 +1,25 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  devise_for :users
-    devise_scope :user do
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+
+  devise_scope :user do
     get "signup", to: "devise/registrations#new"
     get "login", to: "devise/sessions#new"
     get "logout", to: "devise/sessions#destroy"
     authenticated :user do
       root 'dashboard#index'
     end
-
     unauthenticated do
       root 'devise/sessions#new'
     end
   end
+
+  get "/dashboard/index" , :as =>"lala"
+
   #WEB ROUTES
   resources :roles do
     put 'toggle_status', on: :member

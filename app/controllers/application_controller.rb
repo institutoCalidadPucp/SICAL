@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :set_variables
 
+  before_action :set_variables
+  helper_method :current_user
+  
    def after_sign_in_path_for(resources)
     root_path 
   end
