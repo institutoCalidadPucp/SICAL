@@ -7,16 +7,16 @@
       <th>Acreditado</th>
       <th>Asinación</th>
     </thead>
-    <tbody>    
-    <% @service.sample_processeds.each do |sample_processed| %>             
+    <tbody>
+    <% @service.sample_processeds.each do |sample_processed| %>
         <tr>
-          <td><%= sample_processed.description %></td>                          
-          <td><%= sample_processed.sample_category.name %></td>                          
-          <td><%= sample_processed.sample_method_name %></td>                          
-          <td><%= sample_processed.sample_method_accredited? %></td>                          
-          <td><%= f.collection_select :id, @employees,:id, :name,{}, {name: "selected_employee_#{sample_processed.id}"} %></td>                        
-        </tr>     
-    <% end %>   
+          <td><%= sample_processed.description %></td>
+          <td><%= sample_processed.sample_category.name %></td>
+          <td><%= sample_processed.sample_method_name %></td>
+          <td><%= sample_processed.sample_method_accredited? %></td>
+          <td><%= f.collection_select :id, @employees,:id, :name,{}, {name: "selected_employee_#{sample_processed.id}"} %></td>
+        </tr>
+    <% end %>
     </tbody>
-  </table>  
+  </table>
 </div>

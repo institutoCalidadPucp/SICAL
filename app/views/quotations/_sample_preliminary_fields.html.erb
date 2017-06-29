@@ -8,7 +8,12 @@
   <td class="sample-preliminaries-method">
     <%= f.collection_select :sample_method_id, [], :id, :name, { prompt: "" }, { class: "form-control", id: "sample-preliminaries-method-#{f.object.id}" } %>
   </td>
-  <td class="sample-preliminaries-accredited"></td>
+  <td class="sample-preliminaries-quantity">
+    <%= f.text_field :quantity, readonly: true, class: "form-control" %>
+  </td>
+  <td class="sample-preliminaries-unit-cost">
+    <%= f.text_field :unit_cost, readonly: true, class: "form-control" %>
+  </td>
   <td class="sample-preliminaries-unit-cost">
     <%= f.text_field :unit_cost, readonly: true, class: "form-control" %>
   </td>
