@@ -26,4 +26,8 @@ class SampleMethod < ApplicationRecord
   def self.names
     SampleMethod.pluck(:name) 
   end
+
+  def sample_method
+    self.id
+  end
 end
