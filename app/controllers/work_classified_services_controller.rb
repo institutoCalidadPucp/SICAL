@@ -1,12 +1,12 @@
 class WorkClassifiedServicesController < ApplicationController 
   before_action :set_service, only: [:edit, :update, :destroy, :show]
   before_action :laboratories, only: [:edit, :new, :show]
-  before_action :sample_categories, only: [:new, :create, :edit, :update, :show]	
+  before_action :sample_categories, only: [:new, :create, :edit, :update, :show]  
 
-	def index
+  def index
     @services_unclassified_to_work = Service.unclassified_to_work current_user  
     @services_classified_to_rework = Service.service_classified_to_rework current_user  
-	end
+  end
 
   def new    
   end
@@ -24,10 +24,10 @@ class WorkClassifiedServicesController < ApplicationController
     end
   end
 
-	def edit    
-	end
+  def edit    
+  end
 
-	def update
+  def update
     begin
       @service.assign_attributes service_params
       if @service.valid?
@@ -35,14 +35,14 @@ class WorkClassifiedServicesController < ApplicationController
         redirect_to work_classified_services_path
       else
         render :edit
-      end		
+      end   
     rescue Exception => e
       redirect_to work_classified_services_path      
     end
-	end
+  end
 
 
-	private
+  private
 
     def service_params
       params.require(:service).permit(:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
