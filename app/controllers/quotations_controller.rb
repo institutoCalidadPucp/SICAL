@@ -28,17 +28,19 @@ class QuotationsController < ApplicationController
   def edit   
   end
 
+  def get_sample_methods
+    respond_to do |format|
+      format.json {
+        render json: {sample_methods: SampleCategory.find(params[:id]).sample_methods}
+      }
+    end
+  end
+
   def update
+    begin
     if @service.accepted_contract?
-      count = 1
-      @service.sample_processeds.each do |sample_processed|
-        workOrder = WorkOrder.new :service_id => @service.id, :employee_id => params["selected_employee_" + count.to_s], :sample_processed_id => sample_processed.id, :supervisor_id => current_user.id        
-        if !workOrder.save
-          #Error handling
-        end
-        count = count + 1
-      end
-      @service.set_work_flow(current_user)
+      @service.asssign_workers params, current_user
+      @service.set_work_flow current_user
       redirect_to  quotations_path
     else
       @service.assign_attributes quotation_params
@@ -49,6 +51,10 @@ class QuotationsController < ApplicationController
         render :edit
       end 
     end       
+    rescue Exception => e
+      redirect_to quotations_path      
+    end
+
   end
 
   def toggle_status
@@ -61,7 +67,7 @@ class QuotationsController < ApplicationController
   private 
 
     def quotation_params
-      params.require(:service).permit(:laboratory_id, :valid_initial_funded, :valid_classified, :subject, :pick_up_date, :engagement, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+      params.require(:service).permit(:laboratory_id, :valid_initial_funded, :valid_classified, :subject, :pick_up_date, :engagement, :total, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
 
     def sample_processeds

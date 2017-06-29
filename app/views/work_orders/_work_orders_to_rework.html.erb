@@ -10,8 +10,21 @@
     </div>  
 
      <div id="report" class="tabcontent">
-       <h3>Reporte - Revisión </h3>	
-        <%#= render 'form_worker', work_order: work_order, h: f %>
+      <div class="col-md-12">
+        <div class="form-group row">
+          <div class="col-md-9"><h3>Reporte</h3></div>
+          <div class="col-md-2"><h3>Nro Revision</h3></div>
+          <div class="col-md-1"><h3><%= @work_order.nr_revision %></h3></div> 
+        </div> 
+      </div>
+    
+          <%= render 'report_employee', work_order: @work_order, f: f, sample: @work_order.sample_processed %>
+      <div class="text-center">
+        <br></br>
+        <h4>Observaciones</h4>	     
+        <%= f.text_area :supervisor_observation, :cols => "40", :rows => "5" %>
+      </div>
+    
     </div>            
 
     <div class="form-group">
@@ -21,6 +34,8 @@
       </div>
     </div>  
 <% end %>
+
+
 
 
 

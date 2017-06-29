@@ -1,45 +1,58 @@
 <div class="card">
   <div class="content">
     <div class="header card-header-text sical-card-header">
-      <h1 class="page-header title sical-card-title">Categorias de Muestra <small>Ver</small></h1>
+      <h1 class="page-header title sical-card-title">Categoria de Muestra <small>Ver</small></h1>
     </div>
-    <div class="form-horizontal validate sical-form sical-form-validated">
-      <div class="form-group row" style="margin:0px;">
-        <label class="col-md-3 col-fom-label">Nombre :</label>
-        <div class="col-md-9">
-          <%= @sample_category.name %>
-        </div>
-      </div>
-      <div class="form-group row" style="margin:0px;">
-        <label class="col-md-3">Descripción :</label>
-        <div class="col-md-9">
-          <%= @sample_category.description %>
-        </div>
-      </div>
-      <div class="form-group ">
-        <label class="col-md-3 col-fom-label">Metodos de Ensayo :</label>
-      </div>
-      <div class="col-md-9 offset-md-3">
-        <table class="table table-no-bordered table-hover">
-          
-          <tbody>
-           <div>
-      <%= hidden_field_tag 'sample_category[sample_method_ids][]', nil %>
-      <% SampleMethod.all.each do |sample_method| %>
-        <div>
-      <%= check_box_tag 'sample_category[sample_method_ids][]', sample_method.id, @sample_category.sample_method_ids.include?(sample_method.id), id: dom_id(sample_method), disabled: true %>
-      <%= label_tag dom_id(sample_method), sample_method.name -%>
-    </div>
+      <%= nested_form_for @sample_category, url: sample_category_path, method: :get, :html => { class: "form-horizontal validate sical-form sical-form-validated" } do |f| %>
+      <% if @sample_category.errors.any?%>
+        <% @sample_category.errors.full_messages.each do |error| %>
+          <p><%= error %></p>
+        <% end %>
       <% end %>
-    </div>
-          </tbody>
-        </table>  
+      <div class="form-group row">
+        <%= f.label :Nombre, class: "col-md-3 col-fom-label" %>
+        <div class="col-md-9 input-wrapper">
+          <%= f.text_field :name, readonly: true, class: "form-control",maxLength:"30", required:"required" %>
+        </div>
       </div>
+      <div class="form-group row">
+        <%= f.label :Descripción, class: "col-md-3 col-fom-label" %>
+        <div class="col-md-9 input-wrapper">
+          <%= f.text_area :description, readonly: true, class: "form-control role-description", rows:"5", required:"required" %>
+        </div>
+      </div>
+      <% if current_user.admin? %>
+        <div class="form-group row">
+          <div class="col-md-3 col-fom-label">
+            <%= f.label :laboratorio %>
+          </div>
+          <div class="col-md-9 input-wrapper">
+            <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, class: "form-control", required: "required" %>
+          </div>
+        </div>    
+      <% end %>
+        <% @sample_category.sample_categoryx_sample_methods.each do |sp|%>
+          <h4><%= sp.sample_method.name %></h4>
+          <table class="table table-no-bordered table-hover">
+          <thead>
+            <th>Concepto</th>
+            <th>Valor Mínimo</th>
+            <th>Valor Máximo</th>            
+          </thead>         
+          <% sp.chain_features.each do |cf|%>
+            <tr>
+              <td><%= cf.concept %></td>
+              <td><%= cf.lower_range %></td>
+              <td><%= cf.upper_range %></td>
+            </tr>
+          <% end %>
+    </table>
+    <% end %>      
       <div class="form-group">
         <div class="text-center">
-          <%= link_to "Cancelar", sample_categories_path, class: "btn btn-primary sical-btn-cancel" %>
+          <%= link_to "Volver", sample_categories_path, class: "btn btn-primary sical-btn-cancel" %>          
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

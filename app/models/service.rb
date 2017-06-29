@@ -18,9 +18,10 @@ class Service < ApplicationRecord
   scope :own_per_laboratory, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
 
-  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :classified_to_rework, :accepted_classified, :accepted_adjust, :accepted_contract, :engaged, :completed]
+  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :classified_to_rework, :accepted_classified, :accepted_adjust, :accepted_contract, :engaged, :completed,:final_completed]
   enum intern_flow: [:internal_accepted, :internal_rejected]
   enum status: [:active, :inactive]
+  mount_uploader :final_report, DocumentUploader
 
   def self.own_per_user current_user
     #client gets his services or lab leader gets his services
@@ -77,13 +78,17 @@ class Service < ApplicationRecord
     own_per_laboratory(current_user).completed
   end
 
+  def self.services_final_completed current_user
+    own_per_client(current_user).final_completed
+  end
+
   def can_see_quotation_adjust
     self.accepted_classified? or self.accepted_adjust? or self.accepted_contract?
   end
 
 
   def handling_client_process current_user
-    #
+    #    
     self.accepted_contract! if self.accepted_adjust?
     #client accept the initial funded to his services
     self.initial_accepted! if self.initial_funded? and self.valid_initial_funded
@@ -96,6 +101,8 @@ class Service < ApplicationRecord
   
   def handling_internal_process current_user
     #
+    self.final_completed! if self.completed?
+    
     self.completed! if self.engaged?
 
     self.engaged! if self.accepted_contract?
@@ -134,6 +141,15 @@ class Service < ApplicationRecord
 
   def set_work_flow current_user
     current_user.client? ? self.handling_client_process(current_user) : self.handling_internal_process(current_user)
+  end
+
+  def asssign_workers service_params, current_user
+    self.sample_processeds.each.with_index(1) do |sample_processed, index|
+      work_order = WorkOrder.new
+      work_order.assign_attr service_params, current_user, sample_processed, index, self
+      work_order.subject = self.subject + sample_processed.pucp_code
+      work_order.save if work_order.valid?
+    end
   end
 end
 
