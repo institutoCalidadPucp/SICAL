@@ -10,11 +10,47 @@ $(".sample-header").click(function () {
 
 });
 
-$("#rejected").change(function(){
-  if (this.checked){
+$("#rejected").on('change', function() {
+  if (this.checked) {
     $(".engagement-observation").show(); 
-  }
-  else{
+  } else {
     $(".engagement-observation").hide();
   }
-})
+});
+
+(function() {
+  $('.sample-preliminaries-category-select').on('change', function(e) {
+    var $targetId = $(this).data('id');
+
+    $.ajax({
+      url: '/quotations/get_sample_methods',
+      method: 'POST',
+      dataType: 'json',
+      data: {
+        id: e.target.value,
+        authenticity_token: window._token,
+      },
+      success: function(response) {
+        var methods = response.sample_methods;
+        var target = '#sample-preliminaries-method-' + $targetId;
+        var $target = $(target);
+
+        $target.find('option').remove();
+        $target.append($('<option>'));
+
+        var options = $.each(methods, function(index, element) {
+          $target.append($('<option>', {
+            value: element.id,
+            text:  element.description,
+          }));
+        });
+      },
+      error: function(error) {
+        var target = '#sample-preliminaries-method-' + $targetId;
+        var $target = $(target);
+
+        $target.find('option').remove();
+      },
+    })
+  });
+})();

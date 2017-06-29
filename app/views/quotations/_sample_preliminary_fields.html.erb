@@ -1,8 +1,20 @@
-<tr>
-  <td><%= f.text_field :name, readonly: true , class: "form-control"%></td>                                                   
-  <td><%= f.collection_select :sample_category_id, @sample_categories, :id, :name, {}, class: "form-control" %></td>                          
-  <td><%= f.collection_select :sample_method_id, @sample_methods, :id, :name, {}, class: "form-control" %></td>  
-  <td><%= f.text_field :quantity, readonly: true, class: "form-control" %></td>                      
-  <td><%= f.text_field :unit_cost, readonly: true, class: "form-control" %></td>
-  <td><%= f.text_field :unit_cost, readonly: true, class: "form-control" %></td>                        
-</tr>     
+<tr class="sample-preliminaries-row">
+  <td class="sample-preliminaries-name">
+    <%= f.text_field :name, readonly: true , class: "form-control"%>
+  </td>
+  <td class="sample-preliminaries-category">
+    <%= f.collection_select :sample_category_id, @sample_categories, :id, :name, { prompt: "" }, { class: "form-control sample-preliminaries-category-select", data: { id: f.object.id } } %>
+  </td>
+  <td class="sample-preliminaries-method">
+    <%= f.collection_select :sample_method_id, [], :id, :name, { prompt: "" }, { class: "form-control", id: "sample-preliminaries-method-#{f.object.id}" } %>
+  </td>
+  <td class="sample-preliminaries-quantity">
+    <%= f.text_field :quantity, readonly: true, class: "form-control" %>
+  </td>
+  <td class="sample-preliminaries-unit-cost">
+    <%= f.text_field :unit_cost, readonly: true, class: "form-control" %>
+  </td>
+  <td class="sample-preliminaries-unit-cost">
+    <%= f.text_field :unit_cost, readonly: true, class: "form-control" %>
+  </td>
+</tr>
