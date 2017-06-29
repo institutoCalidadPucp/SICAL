@@ -30,8 +30,9 @@ class QuotationsController < ApplicationController
 
   def get_sample_methods
     respond_to do |format|
-      @sample_methods = SampleCategory.find(params[:id]).sample_methods
-      format.js
+      format.json {
+        render json: {sample_methods: SampleCategory.find(params[:id]).sample_methods}
+      }
     end
   end
 

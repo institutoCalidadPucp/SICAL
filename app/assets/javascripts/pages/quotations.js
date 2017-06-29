@@ -20,18 +20,36 @@ $("#rejected").on('change', function() {
 
 (function() {
   $('.sample-preliminaries-category-select').on('change', function(e) {
+    var $targetId = $(this).data('id');
+
     $.ajax({
       url: '/quotations/get_sample_methods',
       method: 'POST',
+      dataType: 'json',
       data: {
         id: e.target.value,
         authenticity_token: window._token,
       },
-      done: function(response) {
-        console.log(response);
+      success: function(response) {
+        var methods = response.sample_methods;
+        var target = '#sample-preliminaries-method-' + $targetId;
+        var $target = $(target);
+
+        $target.find('option').remove();
+        $target.append($('<option>'));
+
+        var options = $.each(methods, function(index, element) {
+          $target.append($('<option>', {
+            value: element.id,
+            text:  element.description,
+          }));
+        });
       },
-      fail: function(error) {
-        console.log(error);
+      error: function(error) {
+        var target = '#sample-preliminaries-method-' + $targetId;
+        var $target = $(target);
+
+        $target.find('option').remove();
       },
     })
   });

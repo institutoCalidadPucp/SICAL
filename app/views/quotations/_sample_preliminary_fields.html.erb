@@ -5,8 +5,8 @@
   <td class="sample-preliminaries-category">
     <%= f.collection_select :sample_category_id, @sample_categories, :id, :name, { prompt: "" }, { class: "form-control sample-preliminaries-category-select", data: { id: f.object.id } } %>
   </td>
-  <td id="sample-preliminaries-method-<%= f.object.id %>" class="sample-preliminaries-method">
-    <%= f.collection_select :sample_method_id, [], :id, :name, { prompt: "" }, class: "form-control" %>
+  <td class="sample-preliminaries-method">
+    <%= f.collection_select :sample_method_id, [], :id, :name, { prompt: "" }, { class: "form-control", id: "sample-preliminaries-method-#{f.object.id}" } %>
   </td>
   <td class="sample-preliminaries-accredited"></td>
   <td class="sample-preliminaries-unit-cost">
