@@ -22,16 +22,16 @@ $("#rejected").on('change', function() {
   var sampleMethods;
   var currency = '';
   var $totalInput = $('#quotation-total-input');
-  var totalInputValue = parseFloat($totalInput.attr('value').substr(currency.length), 2);
+  var totalInputValue = $totalInput.length ? parseFloat($totalInput.attr('value').substr(currency.length), 2) : 0;
 
   function substractPreviousSubTotal(targetId) {
     var $unitCostInput = $('#sample-preliminaries-unit-cost-' + targetId);
     var $subTotalInput = $('#sample-preliminaries-sub-total-' + targetId);
 
     totalInputValue = totalInputValue - parseFloat($subTotalInput.attr('value').substr(currency.length), 2) ;
-    $unitCostInput.attr('value', '0');
-    $subTotalInput.attr('value', '0');
-    $totalInput.attr('value', currency + (totalInputValue > 0 ? totalInputValue : '0') );
+    $unitCostInput.attr('value', '0.0');
+    $subTotalInput.attr('value', '0.0');
+    $totalInput.attr('value', currency + (totalInputValue > 0 ? totalInputValue : '0.0') );
   }
 
   $('.sample-preliminaries-category-select').on('change', function(e) {
@@ -82,7 +82,7 @@ $("#rejected").on('change', function() {
       var sampleMethod = sampleMethods[e.target.value];
       var sampleQuantity = ~~($sampleQuantityInput.attr('value'));
       
-      totalInputValue += sampleMethod.unit_cost;
+      totalInputValue += sampleMethod.unit_cost * sampleQuantity;
       $totalInput.attr('value', currency + totalInputValue);
       $unitCostInput.attr('value', currency + sampleMethod.unit_cost);
       $subTotalInput.attr('value', currency + (sampleMethod.unit_cost * sampleQuantity));
