@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  
+
   before_action :set_service, only: [:service_end,:service_end_update, :update, :destroy, :show]
   before_action :set_work_order, only: [:work_check,:work_check_update, :destroy]
   before_action :laboratories, only: [:edit, :new, :show]
@@ -9,13 +9,13 @@ class ServicesController < ApplicationController
   def index
     @services = Service.services_per_client current_user
     @unattended_services = Service.passed_classification current_user
-    @unclassified_services = Service.inital_funded_accepted current_user    
+    @unclassified_services = Service.inital_funded_accepted current_user
     @work_orders_to_check = WorkOrder.work_orders_to_check current_user
     @internal_completed_services = Service.services_completed current_user
     @final_completed_services = Service.services_completed current_user
   end
 
-  def create    
+  def create
     @service = Service.new service_params
     if @service.valid?
       @service.set_work_flow(current_user)
@@ -35,25 +35,25 @@ class ServicesController < ApplicationController
   def edit
   end
 
-  def work_check     
+  def work_check
   end
 
-  def work_check_update 
+  def work_check_update
     begin
-      @work_order.assign_attributes work_order_params      
+      @work_order.assign_attributes work_order_params
       if @work_order.valid?
         @work_order.handling_internal_process(current_user)
         left_orders = WorkOrder.work_orders_per_service(@service).where.not(work_flow: :completed)
         if !left_orders.any?
-          @service.handling_internal_process(current_user)  
+          @service.handling_internal_process(current_user)
         end
         if @work_order.to_rework?
           @work_order.increment!(:nr_revision)
         end
         redirect_to services_path
-      else      
+      else
         render :work_check
-      end    
+      end
     rescue Exception => e
       redirect_to services_path
     end
@@ -70,13 +70,13 @@ class ServicesController < ApplicationController
         redirect_to  services_path
       else
         render :service_end
-      end 
-    rescue Exception => e    
+      end
+    rescue Exception => e
       redirect_to services_path
     end
   end
 
-  def update        
+  def update
   end
 
   def destroy
@@ -98,7 +98,7 @@ class ServicesController < ApplicationController
 
     def work_order_params
       params.require(:work_order).permit(:id,:sample_processed_id,:supervisor_id,:employee_id,:nr_revision,:report_id,:supervisor_observation,:valid_supervised)
-    end    
+    end
 
     def sample_preliminaries
       [:id, :name, :quantity, :description]
@@ -117,7 +117,7 @@ class ServicesController < ApplicationController
       @work_orders = WorkOrder.where(service_id: params[:id])
     end
 
-    def set_work_order      
+    def set_work_order
       @work_order = WorkOrder.find params[:id]
       @service = @work_order.sample_processed.service
     end
