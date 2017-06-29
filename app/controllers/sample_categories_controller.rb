@@ -62,7 +62,7 @@ class SampleCategoriesController < ApplicationController
     end
 
     def laboratories
-      @laboratories = Laboratory.all
+      @laboratories = Laboratory.active
     end
 
     def sample_methods

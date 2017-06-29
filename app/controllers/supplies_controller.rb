@@ -58,7 +58,7 @@ class SuppliesController < ApplicationController
     end
 
      def laboratories
-      @laboratories = Laboratory.all
+      @laboratories = Laboratory.active
     end
 
     def set_controller

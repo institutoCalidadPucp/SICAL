@@ -59,6 +59,6 @@ class InventoriesController < ApplicationController
     end
 
     def laboratories
-      @laboratories = Laboratory.all
+      @laboratories = Laboratory.active
     end
 end

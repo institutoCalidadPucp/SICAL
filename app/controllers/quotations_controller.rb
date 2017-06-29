@@ -91,7 +91,7 @@ class QuotationsController < ApplicationController
     end
 
     def set_laboratories
-      @laboratories = Laboratory.all
+      @laboratories = Laboratory.active
     end
 
     def sample_categories
