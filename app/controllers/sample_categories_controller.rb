@@ -47,9 +47,15 @@ class SampleCategoriesController < ApplicationController
 
   private
     def sample_category_params
-      params.require(:sample_category).permit(:laboratory_id, :name, :description, sample_method_ids: [])
+      params.require(:sample_category).permit(:laboratory_id, :name, :description, sample_categoryx_sample_methods_attributes: sample_categoryx_sample_methods)
+    end    
+    def sample_categoryx_sample_methods
+      [:id, :sample_category_id, :sample_method_id, chain_features_attributes: chain_features]
     end
-    
+
+    def chain_features
+      [:id, :concept, :lower_range,:upper_range]
+    end    
 
     def set_sample_category
       @sample_category = SampleCategory.find(params[:id])
@@ -60,7 +66,7 @@ class SampleCategoriesController < ApplicationController
     end
 
     def sample_methods
-      @sample_methods = SampleMethod.all
+      @sample_methods = SampleMethod.where(laboratory: current_user.laboratory_id)
     end
 
 end
