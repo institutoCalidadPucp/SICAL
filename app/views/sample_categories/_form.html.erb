@@ -26,7 +26,7 @@
       </div>
     </div>    
   <% end %>
-  <%= f.fields_for :sample_methods do |smethod| %>
+  <%= f.fields_for :sample_categoryx_sample_methods do |smethod| %>
         <%= render 'sample_method_fields', f: smethod %>
       <% end %>
       <div>
@@ -35,17 +35,15 @@
             Métodos Asociados
           </div>
           <div>
-            <%= link_to_add_association "Agregar métodos", f, :sample_methods,data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples-information'}, class: "btn btn-default sical-btn-add-menu btn-add-evalution-sample"%>
+            <%= link_to_add_association "Agregar métodos", f, :sample_categoryx_sample_methods,data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples-information'}, class: "btn btn-default sical-btn-add-menu btn-add-evalution-sample"%>
           </div>
         </div>
-      </div>
-   <div class="card">
+      </div>   
       <div class="samples-information"> 
-        <%= f.fields_for :sample_methods do |sample_methods_fields| %>
+        <%= f.fields_for :sample_categoryx_sample_methods do |sample_methods_fields| %>
           <%= render 'sample_method_fields',f: sample_methods_fields %>
         <% end %>
-      </div>
-     </div>
+      </div>    
   
   <div class="form-group">
     <div class="text-center">

@@ -1,0 +1,16 @@
+<div class="nested-fields form-group row">
+  <div class="col-md-7">
+    <%= f.text_field :concept, class: "form-control", maxLength:"40", required:"required"%>
+  </div>
+  <div class="col-md-2">
+    <%= f.text_field :lower_range, class: "form-control only-numbers", maxLength:"5", required:"required" %>
+  </div>
+  <div class="col-md-2">
+    <%= f.text_field :upper_range, class: "form-control only-numbers", maxLength:"5", required:"required" %>
+  </div>
+  <div class="col-md-1">
+    <%= link_to_remove_association f do %>
+      <i class="fa fa-times" aria-hidden="true"></i>
+    <% end %>
+  </div>
+</div> 

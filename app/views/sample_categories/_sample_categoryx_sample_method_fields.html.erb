@@ -1,0 +1,31 @@
+<div class="nested-fields">
+    <div class="text-right">
+      <%= link_to_remove_association f do %>
+        <i class="fa fa-times" aria-hidden="true"></i>
+      <% end %>
+    </div>
+    <div class="col-md-3 sical-nested-cell">
+      <%= f.collection_select :id, @sample_methods, :id, :name, {}, class: "form-control"%>
+    </div>
+  <br></br> 
+  <div class="form-group row"> 
+    <div class="col-md-12 text-left" >
+      <p><%= link_to_add_association "Agregar valores", f, :chain_features, data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples-values'}, class: "btn btn-primary sical-btn-add-menu btn-add-sample-value" %></p>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-9 offset-md-3">
+      <div class="form-group row">
+        <div class="col-md-7">Concepto</div>
+        <div class="col-md-2">Valor Mínimo</div>
+        <div class="col-md-2">Valor Máximo</div>
+      </div>
+      <div class="samples-values">
+        <%= f.fields_for :chain_features do |chain_feature_fields| %>
+          <%= render 'chain_feature_fields', f: chain_feature_fields %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
