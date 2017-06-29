@@ -41,7 +41,7 @@ $("#rejected").on('change', function() {
         var options = $.each(methods, function(index, element) {
           $target.append($('<option>', {
             value: element.id,
-            text:  element.description,
+            text:  element.name,
           }));
         });
       },
