@@ -27,7 +27,7 @@
     </div>    
   <% end %>
   <%= f.fields_for :sample_categoryx_sample_methods do |smethod| %>
-        <%= render 'sample_method_fields', f: smethod %>
+        <%= render 'sample_categoryx_sample_method_fields', f: smethod %>
       <% end %>
       <div>
         <div class= "samples-title samples-worker">
@@ -41,7 +41,7 @@
       </div>   
       <div class="samples-information"> 
         <%= f.fields_for :sample_categoryx_sample_methods do |sample_methods_fields| %>
-          <%= render 'sample_method_fields',f: sample_methods_fields %>
+          <%= render 'sample_categoryx_sample_method_fields',f: sample_methods_fields %>
         <% end %>
       </div>    
   
