@@ -67,7 +67,7 @@ class QuotationsController < ApplicationController
   private 
 
     def quotation_params
-      params.require(:service).permit(:laboratory_id, :valid_initial_funded, :valid_classified, :subject, :pick_up_date, :engagement, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+      params.require(:service).permit(:laboratory_id, :valid_initial_funded, :valid_classified, :subject, :pick_up_date, :engagement, :total, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
 
     def sample_processeds

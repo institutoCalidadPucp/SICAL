@@ -5,12 +5,12 @@
   <% end %>
   <table class="table table-no-bordered table-hover">
   <thead>
-    <th>Nombre</th>
-    <th>Categoría</th>
-    <th>Método</th>
-    <th>Cantidad</th>
-    <th>Precio</th>
-    <th>Subtotal</th>
+    <th class="funded-sample-table-header is-larger">Nombre</th>
+    <th class="funded-sample-table-header is-medium">Categoría</th>
+    <th class="funded-sample-table-header is-large">Método</th>
+    <th class="funded-sample-table-header is-small">Cantidad</th>
+    <th class="funded-sample-table-header is-medium">Precio</th>
+    <th class="funded-sample-table-header is-medium">Subtotal</th>
   </thead>
    <tbody>
       <%= f.fields_for :sample_preliminaries do |s_p| %>
@@ -21,11 +21,11 @@
 
   <div class="col-md-5 offset-md-7 ">
     <div class="form-group row">
-      <div class="col-md-7 text-center">
+      <div class="col-md-8 text-center">
         <strong>Total</strong>
       </div>
-      <div class="col-md-5 text-center">
-        <%= f.text_field :total, readonly: true, class: "form-control" %>
+      <div class="text-center" style="width: 32%">
+        <%= f.text_field :total, readonly: true, class: "form-control", id: "quotation-total-input", value: f.object.total ? f.object.total : 0 %>
       </div>
     </div>
   </div>
