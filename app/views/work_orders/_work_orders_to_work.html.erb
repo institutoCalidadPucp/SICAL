@@ -1,4 +1,4 @@
-<%= nested_form_for @work_order, url: work_order_path, :wrapper => false,  method: :put do |f| %>
+<%= form_for @work_order, url: work_order_path, :wrapper => false,  method: :put do |f| %>
     <div id="information" class="tabcontent" style="display: block;">
       <h3>Informacion Cliente</h3>
         <%= render 'show_basic_information', service: @work_order.sample_processed.service, f: f %>

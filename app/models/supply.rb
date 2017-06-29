@@ -14,4 +14,5 @@ class Supply < ApplicationRecord
       where(laboratory_id: current_user.laboratory)
   	end
   end
+
 end

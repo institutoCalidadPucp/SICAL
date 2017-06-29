@@ -11,7 +11,8 @@ class ServicesController < ApplicationController
     @unattended_services = Service.passed_classification current_user
     @unclassified_services = Service.inital_funded_accepted current_user    
     @work_orders_to_check = WorkOrder.work_orders_to_check current_user
-    @completed_services = Service.services_completed current_user
+    @internal_completed_services = Service.services_completed current_user
+    @final_completed_services = Service.services_completed current_user
   end
 
   def create    
@@ -39,15 +40,18 @@ class ServicesController < ApplicationController
 
   def work_check_update 
     begin
-      @work_order.valid_supervised = params[:work_order][:valid_supervised]
+      @work_order.assign_attributes work_order_params      
       if @work_order.valid?
         @work_order.handling_internal_process(current_user)
         left_orders = WorkOrder.work_orders_per_service(@service).where.not(work_flow: :completed)
         if !left_orders.any?
           @service.handling_internal_process(current_user)  
         end
+        if @work_order.to_rework?
+          @work_order.increment!(:nr_revision)
+        end
         redirect_to services_path
-      else
+      else      
         render :work_check
       end    
     rescue Exception => e
@@ -59,6 +63,17 @@ class ServicesController < ApplicationController
   end
 
   def service_end_update
+      begin
+        @service.assign_attributes service_params
+      if @service.save
+        @service.set_work_flow(current_user)
+        redirect_to  services_path
+      else
+        render :service_end
+      end 
+    rescue Exception => e    
+      redirect_to services_path
+    end
   end
 
   def update        
@@ -78,11 +93,11 @@ class ServicesController < ApplicationController
 
   private
     def service_params
-      params.require(:service).permit(:laboratory_id, :valid_classified, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+      params.require(:service).permit(:laboratory_id, :valid_classified, :user_id, :employee_id, :subject, :pick_up_date,:supervisor_observation,:final_report, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
 
-    def order_params
-      params.permit(:id,:sample_processed_id,:supervisor_id,:employee_id,:nr_revision,:report_id)
+    def work_order_params
+      params.require(:work_order).permit(:id,:sample_processed_id,:supervisor_id,:employee_id,:nr_revision,:report_id,:supervisor_observation,:valid_supervised)
     end    
 
     def sample_preliminaries
@@ -99,6 +114,7 @@ class ServicesController < ApplicationController
 
     def set_service
       @service = Service.find params[:id]
+      @work_orders = WorkOrder.where(service_id: params[:id])
     end
 
     def set_work_order      
