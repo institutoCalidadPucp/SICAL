@@ -1,0 +1,25 @@
+<div class="sample-fields">
+  <div class="form-group row">
+    <%= label_tag "Codigo_cliente" %>
+     <div class="col-md-9">
+        <%= text_field_tag :client_code %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= label_tag "Codigo_pucp" %>
+     <div class="col-md-9">
+        <%= text_field_tag :pucp_code %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= label_tag "Categoria" %>
+     <div class="col-md-9">
+      <%#= collection_select :sample_category_id, @sample_categories, :id, :name, {}, required: "required" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= label_tag "Descripcion" %>
+     <div class="col-md-9">
+        <%= text_field_tag :description %>
+    </div>
+  </div>

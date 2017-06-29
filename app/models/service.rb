@@ -122,7 +122,8 @@ class Service < ApplicationRecord
     self.classified_to_rework! if (self.classified? and !incredRevision) and !self.valid_classified    
 
     #worker fill the classified fields from a sample
-    self.classified! if self.assign_sorter?    
+    self.classified! if self.assign_sorter?
+
     if self.initial_accepted?
       self.supervisor_id = current_user.id
     end
@@ -151,5 +152,29 @@ class Service < ApplicationRecord
       work_order.save if work_order.valid?
     end
   end
+
+  def create_sample_processeds params, cols
+    processed_hash = {}
+    sample_processed_values = params["sp_value"]
+    sample_processed_values.values.each_slice(cols).to_a.each_with_index do |value, index|
+      processed_hash[index] = value
+    end
+    sample_processed = SampleProcessed.new 
+    sample_processed.init params, processed_hash
+    self.sample_processeds << sample_processed
+  end
+
+  def update_obj current_user, cols, params
+    #self.assign_attributes service_params unless self.assign_sorter?
+    if self.valid?
+      self.create_sample_processeds params, cols
+      if self.errors.empty?
+        self.set_work_flow current_user
+      else
+        self.errors.add(:sample_processed, message: "Clasificacion de la muestra invalida")
+      end
+    end        
+  end
+
 end
 

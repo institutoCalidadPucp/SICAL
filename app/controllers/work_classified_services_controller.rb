@@ -2,6 +2,7 @@ class WorkClassifiedServicesController < ApplicationController
   before_action :set_service, only: [:edit, :update, :destroy, :show]
   before_action :laboratories, only: [:edit, :new, :show]
   before_action :sample_categories, only: [:new, :create, :edit, :update, :show]  
+  before_action :set_sample_preliminary, only: [:values, :update]
 
   def index
     @services_unclassified_to_work = Service.unclassified_to_work current_user  
@@ -14,6 +15,14 @@ class WorkClassifiedServicesController < ApplicationController
   def show
   end
 
+  def values
+    @rows = @sample_preliminary.quantity
+    @cols = ["ph","diametro"]
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create
     @service.assign_attributes service_params
     if @service.valid?
@@ -24,14 +33,17 @@ class WorkClassifiedServicesController < ApplicationController
     end
   end
 
-  def edit    
+  def edit
+    @rows = 0
+    @cols = []    
   end
 
   def update
+    #cols = ["ph,"volumen"]
+    #2 = @cols.length
     begin
-      @service.assign_attributes service_params
-      if @service.valid?
-        @service.set_work_flow(current_user)
+      @service.update_obj(current_user, 2, params)
+      if @service.errors.empty?
         redirect_to work_classified_services_path
       else
         render :edit
@@ -40,6 +52,7 @@ class WorkClassifiedServicesController < ApplicationController
       redirect_to work_classified_services_path      
     end
   end
+
 
 
   private
@@ -51,6 +64,7 @@ class WorkClassifiedServicesController < ApplicationController
     def sample_preliminaries
       [:id, :name, :quantity, :description]
     end
+
 
     def sample_processeds
       [:id, :sample_category_id, :description, :pucp_code, :client_code, sample_features_attributes: sample_features]
@@ -70,5 +84,9 @@ class WorkClassifiedServicesController < ApplicationController
 
     def laboratories
       @laboratories = Laboratory.all
+    end
+
+    def set_sample_preliminary
+      @sample_preliminary = SamplePreliminary.find params[:id]
     end
 end
