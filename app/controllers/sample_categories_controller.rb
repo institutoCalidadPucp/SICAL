@@ -60,7 +60,7 @@ class SampleCategoriesController < ApplicationController
     end
 
     def sample_methods
-      @sample_methods = SampleMethod.all
+      @sample_methods = SampleMethod.where(laboratory: current_user.laboratory_id)
     end
 
 end
