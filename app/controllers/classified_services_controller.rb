@@ -19,10 +19,9 @@ class ClassifiedServicesController < ApplicationController
 	def update   
    begin         
       @service.asssign_workers_custody params, current_user
-      @service.set_work_flow current_user
+      #@service.set_work_flow current_user
       redirect_to  classified_services_path      
-    rescue Exception => e
-      p e.to_s
+    rescue Exception => e      
       redirect_to classified_services_path      
     end
 	end
@@ -43,8 +42,7 @@ class ClassifiedServicesController < ApplicationController
       else
         render :work_check
       end
-    rescue Exception => e
-      p e.to_s
+    rescue Exception => e      
       redirect_to classified_services_path
     end
   end

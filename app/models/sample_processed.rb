@@ -13,4 +13,14 @@ class SampleProcessed < ApplicationRecord
 
   accepts_nested_attributes_for :sample_features, allow_destroy: true
 
+  def init params, processed_hash
+		self.sample_category_id = params["sample_category_id"]
+		self.description = params["description"]
+		self.pucp_code = params["pucp_code"]
+		self.client_code = params["client_code"]
+		#to extract
+		#YAML.load(yaml)
+		self.classified_values = processed_hash.to_yaml
+		self.save
+  end
 end

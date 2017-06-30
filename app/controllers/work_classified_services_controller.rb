@@ -1,5 +1,9 @@
 class WorkClassifiedServicesController < ApplicationController 
   before_action :set_custody_order, only: [:edit, :update, :destroy, :show]
+  before_action :laboratories, only: [:edit, :new, :show]
+  before_action :sample_categories, only: [:new, :create, :edit, :update, :show]  
+  before_action :set_sample_preliminary, only: [:values, :update]
+
   def index
     @custody_orders_to_work = CustodyOrder.custody_orders_to_work current_user  
     @custody_orders_to_rework = CustodyOrder.custody_orders_to_rework current_user  
@@ -11,33 +15,47 @@ class WorkClassifiedServicesController < ApplicationController
   def show
   end
 
-  def create   
+  def values  
+    @rows = @sample_preliminary.quantity
+    
+    @custody_order = CustodyOrder.where(sample_preliminary_id: @sample_preliminary.id) .first
+    sample_id = @custody_order.sample_preliminary.sample_category_id
+    method_id = @custody_order.sample_preliminary.sample_method_id
+
+    cross_table = SampleCategoryxSampleMethod.where(sample_category_id: sample_id).where(sample_method_id: method_id).first
+    features = ChainFeature.where(sample_categoryx_sample_method_id: cross_table.id)
+    @cols = features.pluck(:concept)
+    @lower_range = features.pluck(:lower_range)
+    @upper_range = features.pluck(:upper_range)
+    respond_to do |format|
+      format.js
+    end
   end
 
-  def edit    
+  def edit
+    @rows = 0
+    @cols = []    
   end
 
   def update
+    #cols = ["ph,"volumen"]
+    #2 = @cols.length
     begin
-      if @custody_order.to_work?
-        sample_preliminary = @custody_order.sample_preliminary
-        sample_processed = SampleProcessed.create(pucp_code: params[:pucp_code],client_code: params[:client_code],custody_order_id: @custody_order.id,amount: sample_preliminary.quantity,service_id: sample_preliminary.service_id,sample_category_id: sample_preliminary.sample_category_id,sample_method_id: sample_preliminary.sample_method_id) 
-        @custody_order.sample_processed_id = sample_processed.id
-      else
-        @custody_order.assign_attributes order_params
-        # Modify the already create SampleProcessed
-        end
-      if @custody_order.valid?
+      @service.update_obj(current_user, 2, params)
+      if @service.errors.empty?
         @custody_order.handling_internal_process(current_user)
-        redirect_to work_classified_services_path
+        @service.update_obj(current_user, 2, params)
+        if @service.errors.empty?
+          redirect_to work_classified_services_path
+        end
       else
         render :edit
       end    
-    rescue Exception => e      
-      p e.to_s
+    rescue Exception => e            
       redirect_to work_classified_services_path            
     end
   end
+
 
 
   private
@@ -50,6 +68,7 @@ class WorkClassifiedServicesController < ApplicationController
       [:id, :name, :quantity, :description]
     end
 
+
     def sample_processeds
       [:id, :sample_category_id, :description, :pucp_code, :client_code, sample_features_attributes: sample_features]
     end
@@ -60,6 +79,7 @@ class WorkClassifiedServicesController < ApplicationController
 
     def set_custody_order
       @custody_order = CustodyOrder.find params[:id]
+      @service = @custody_order.sample_preliminary.service
     end
 
     def sample_categories
@@ -68,5 +88,10 @@ class WorkClassifiedServicesController < ApplicationController
 
     def laboratories
       @laboratories = Laboratory.all
+    end
+
+    def set_sample_preliminary
+      @sample_preliminary = SamplePreliminary.find params[:id]
+     
     end
 end

@@ -41,7 +41,7 @@ class CustodyOrder < ApplicationRecord
    def assign_attr params, current_user, sample_preliminary, index, service
     custody_order_params = {service_id: service.id, supervisor_id: current_user.id}
     custody_order_params[:subject] = service.subject + " " + sample_preliminary.sample_category.name
-    custody_order_params[:employee_id] = params["selected_employee_" + index.to_s]
+    custody_order_params[:employee_id] = params["selected_employee_" + sample_preliminary.id.to_s]
     custody_order_params[:sample_preliminary_id] = sample_preliminary.id
     self.assign_attributes custody_order_params
    end

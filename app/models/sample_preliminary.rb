@@ -9,4 +9,8 @@ class SamplePreliminary < ApplicationRecord
   delegate :accredited?, to: :sample_method, prefix: true, allow_nil: true
 
   
+  def permited_features
+    3
+  end
+  
 end
