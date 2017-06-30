@@ -30,10 +30,17 @@
           <p class="hidden-lg-up">Profile</p>
         </a>
         <div class="dropdown-menu only-dropdown" aria-labelledby="notificationList">
-          <%= link_to "Logout", destroy_user_session_path, :method=>'delete', class: "dropdown-item" %>
+
+          <% if session[:user_id].nil? %>
+            <%= link_to "Logout", destroy_user_session_path, :method=>'delete', class: "dropdown-item" %>
+          <% else %>
+            <%= link_to "Sign out", signout_path, method: :delete %>
+          <% end %>
+
         </div>
       </li>
       <li class="separator hidden-lg-up"></li>
     </ul>
   </div>
+    <%= session[:oath_token] %>
 </nav>
