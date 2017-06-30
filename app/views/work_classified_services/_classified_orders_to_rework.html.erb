@@ -1,0 +1,25 @@
+<%= nested_form_for @custody_order, url: work_classified_service_path, :wrapper => false,  method: :put do |f| %>    
+    <div id="information" class="tabcontent " style="display: block;">
+      <h3>Informacion Cliente</h3>
+        <%= render 'show_basic_information', service: @custody_order.sample_processed.service, f: f %>
+    </div>
+
+    <div id="custody" class="tabcontent">
+      <div class="col-md-12">
+        <div class="form-group row">
+          <div class="col-md-9"><h3>Custodia</h3></div>
+          <div class="col-md-2"><h3>Nro Revision</h3></div>
+          <div class="col-md-1"><h3><%= @custody_order.nr_revision %></h3></div> 
+        </div> 
+      </div>
+      <%= render 'report_employee', sample: @custody_order.sample_preliminary, f: f %>
+              
+    <div class="form-group">
+        <div class="text-center save-worker">
+        <%= link_to "Cancelar", work_classified_services_path, class: "btn btn-primary sical-btn-cancel" %>
+        <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+        </div>
+    </div>  
+<% end %>
+
+

@@ -1,0 +1,27 @@
+<table class="table table-no-bordered table-hover">
+    <thead>
+      <th>Código Muestra</th>
+      <th>Método</th>
+      <th>Acreditado</th>
+      <th>Nombre Reporte</th>
+      <th>Reporte</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td><%= sample.pucp_code %></td>
+        <td><%= sample.sample_method.name %></td>
+        <td><%= sample.sample_method.accredited? %></td>
+        <td><%= @custody_order.subject %></td>
+        <td>LINK A VALORES(O Cambio de Vista)</td></td>
+    </tr>
+    </tbody>
+</table>
+ <div class="text-center">
+    <br></br>
+    <h4>Observaciones</h4>
+    <%= f.text_area :supervisor_observation, :cols => "40", :rows => "5" %>
+</div>
+
+<label class="col-md-3 col-fom-label">Aprobado?</label>
+<%= f.check_box :valid_supervised %>
+</h6>

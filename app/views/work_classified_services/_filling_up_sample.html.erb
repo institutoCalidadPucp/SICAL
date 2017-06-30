@@ -1,39 +1,14 @@
-<div class="form-group row">
-  <label class= "col-md-3 col-form-label">Muestras</label>
-  <div class="col-md-9">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Cantidad</th>
-          <th>Descripción</th>
-          <th>Clasificar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% service.sample_preliminaries.each do |sp|%>
-          <tr>
-            <td><%= sp.name %></td>
-            <td><%= sp.quantity %></td>
-            <td><%= sp.description %></td>
-            <td>
-            <div onclick="filling_up_sample(<%= sp.id %>)">Try it</div>
-            </td>
-          </tr>
-        <% end %>
-    </table>
+  <h3>Informacion de Clasificacion</h3>
+  <div class="col-md-12">
+    <div>
+      <%=  render 'sample_feature_form', sp: @custody_order.sample_preliminary %>
+    </div>
   </div>
 
-  <label class= "col-md-3 col-form-label">Informacion de Clasificacion</label>
-  <div>
-    <%=  render 'sample_feature_form' %>
-  </div>
-
-  <label class= "col-md-3 col-form-label">Clasificacion</label>
+  <h3>Valores de Custodia </h3>
   <div class="" id="sample-feature-table">
     <%= render 'filling_up_sample_features', samples: rows, features: cols %>
   </div>
-</div>
 
 <script type="text/javascript">
   function filling_up_sample(id) {

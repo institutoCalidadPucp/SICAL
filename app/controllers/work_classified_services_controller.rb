@@ -1,12 +1,12 @@
 class WorkClassifiedServicesController < ApplicationController 
-  before_action :set_service, only: [:edit, :update, :destroy, :show]
+  before_action :set_custody_order, only: [:edit, :update, :destroy, :show]
   before_action :laboratories, only: [:edit, :new, :show]
   before_action :sample_categories, only: [:new, :create, :edit, :update, :show]  
   before_action :set_sample_preliminary, only: [:values, :update]
 
   def index
-    @services_unclassified_to_work = Service.unclassified_to_work current_user  
-    @services_classified_to_rework = Service.service_classified_to_rework current_user  
+    @custody_orders_to_work = CustodyOrder.custody_orders_to_work current_user  
+    @custody_orders_to_rework = CustodyOrder.custody_orders_to_rework current_user  
   end
 
   def new    
@@ -15,21 +15,20 @@ class WorkClassifiedServicesController < ApplicationController
   def show
   end
 
-  def values
+  def values  
     @rows = @sample_preliminary.quantity
-    @cols = ["ph","diametro"]
+    
+    @custody_order = CustodyOrder.where(sample_preliminary_id: @sample_preliminary.id) .first
+    sample_id = @custody_order.sample_preliminary.sample_category_id
+    method_id = @custody_order.sample_preliminary.sample_method_id
+
+    cross_table = SampleCategoryxSampleMethod.where(sample_category_id: sample_id).where(sample_method_id: method_id).first
+    features = ChainFeature.where(sample_categoryx_sample_method_id: cross_table.id)
+    @cols = features.pluck(:concept)
+    @lower_range = features.pluck(:lower_range)
+    @upper_range = features.pluck(:upper_range)
     respond_to do |format|
       format.js
-    end
-  end
-
-  def create
-    @service.assign_attributes service_params
-    if @service.valid?
-      @service.set_work_flow(current_user)
-      redirect_to work_classified_services_path
-    else
-      render :edit
     end
   end
 
@@ -44,12 +43,16 @@ class WorkClassifiedServicesController < ApplicationController
     begin
       @service.update_obj(current_user, 2, params)
       if @service.errors.empty?
-        redirect_to work_classified_services_path
+        @custody_order.handling_internal_process(current_user)
+        @service.update_obj(current_user, 2, params)
+        if @service.errors.empty?
+          redirect_to work_classified_services_path
+        end
       else
         render :edit
-      end   
-    rescue Exception => e
-      redirect_to work_classified_services_path      
+      end    
+    rescue Exception => e            
+      redirect_to work_classified_services_path            
     end
   end
 
@@ -57,9 +60,9 @@ class WorkClassifiedServicesController < ApplicationController
 
   private
 
-    def service_params
-      params.require(:service).permit(:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
-    end
+    def order_params
+      params.require(:custody_order).permit(:supervisor_id,:employee_id,:nr_revision,:sample_processed_id,:supervisor_observation,:valid_supervised)
+    end    
 
     def sample_preliminaries
       [:id, :name, :quantity, :description]
@@ -74,8 +77,9 @@ class WorkClassifiedServicesController < ApplicationController
       [:id, :value, :description]
     end
 
-    def set_service
-      @service = Service.find params[:id]
+    def set_custody_order
+      @custody_order = CustodyOrder.find params[:id]
+      @service = @custody_order.sample_preliminary.service
     end
 
     def sample_categories
@@ -88,5 +92,6 @@ class WorkClassifiedServicesController < ApplicationController
 
     def set_sample_preliminary
       @sample_preliminary = SamplePreliminary.find params[:id]
+     
     end
 end
