@@ -23,7 +23,7 @@ class Service < ApplicationRecord
   enum status: [:active, :inactive]
   mount_uploader :final_report, DocumentUploader
 
-  #before_save :generate_contract_doc, if: :accepted_contract?
+  before_save :generate_contract_doc, if: :accepted_contract?
 
   def self.own_per_user current_user
     #client gets his services or lab leader gets his services
