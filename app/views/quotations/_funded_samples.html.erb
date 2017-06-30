@@ -1,8 +1,4 @@
 <div id="costeo" class="tabcontent">
-  <% unless @service.initialized? %>
-    <%= f.label :confirmacion_de_cotizacion %>
-    <%= f.check_box :valid_initial_funded %>
-  <% end %>
   <table class="table table-no-bordered table-hover">
   <thead>
     <th class="funded-sample-table-header is-larger">Nombre</th>
@@ -30,7 +26,7 @@
     </div>
   </div>
 
-  <% if current_user.client? %>
+  <% if current_user.client? or @service.initialized? %>
     <div class="form-group row">
       <div class="col-md-3 col-fom-label">
         <%= f.label :Confirmación %>
@@ -46,7 +42,7 @@
             type="radio"
             class="form-check-input"
             data-toggle="radio"
-            name="service[engagement]"
+            name="service[valid_initial_funded]"
             value="true"
           >
           Aceptado
@@ -61,7 +57,7 @@
             type="radio"
             class="form-check-input"
             data-toggle="radio"
-            name="service[engagement]"
+            name="service[valid_initial_funded]"
             value="false"
           >
           No Aceptado
