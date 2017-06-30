@@ -29,7 +29,7 @@ $("#rejected").on('change', function() {
     var $subTotalInput = $('#sample-preliminaries-sub-total-' + targetId);
 
     totalInputValue = totalInputValue - parseFloat($subTotalInput.attr('value').substr(currency.length), 2) ;
-    $unitCostInput.attr('value', '0.0')
+    $unitCostInput.attr('value', '0.0');
     $subTotalInput.attr('value', '0.0');
     $totalInput.attr('value', currency + (totalInputValue > 0 ? totalInputValue : '0.0') );
   }
