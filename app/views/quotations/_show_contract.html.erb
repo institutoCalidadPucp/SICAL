@@ -1,0 +1,5 @@
+<div id="contract" class="tabcontent">
+	<% if current_user.employee?  and service.accepted_contract? %>
+		<%= link_to "Descargar Contrato", File.join("/contratos", "ContratoServ-#{@service.id}.pdf") %>
+	<% end %>
+</div>
