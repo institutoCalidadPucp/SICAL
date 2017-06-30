@@ -12,8 +12,8 @@ class ContractPdf < Prawn::Document
     repeat :all do
       bounding_box [bounds.left, bounds.top], :width  => bounds.width do
         begin
-          File.join(Rails.root, "public", header_logo_url)
-          image header_logo, :width => bounds.width
+          url=File.join(Rails.root, "public", header_logo_url)
+          image url, :width => bounds.width
         rescue
           puts 'Error in inserting logo image in header'
         end
