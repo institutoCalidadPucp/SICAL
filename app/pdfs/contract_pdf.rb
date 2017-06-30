@@ -1,18 +1,22 @@
 
 class ContractPdf < Prawn::Document
-	def initialize(service)
-		super(top_margin:10, left_margin:30)
-		@service = service
-		header(Dir.pwd+"/public"+@service.laboratory.header_image.url)
-		footer
-		body
-		#barcode
-	end
+  def initialize(service)
+    super(top_margin:10, left_margin:30)
+    @service = service
+    header(@service.laboratory.header_image.url)
+    footer
+    body
+  end
 
-  def header(header_logo)
+  def header(header_logo_url)
     repeat :all do
       bounding_box [bounds.left, bounds.top], :width  => bounds.width do
-        image header_logo, :width => bounds.width
+        begin
+          url=File.join(Rails.root, "public", header_logo_url)
+          image url, :width => bounds.width
+        rescue
+          puts 'Error in inserting logo image in header'
+        end
         stroke_horizontal_rule
       end
     end
@@ -36,15 +40,15 @@ class ContractPdf < Prawn::Document
   def service_info
     text "Referencia: Solicitud de Servicio Nro. #{@service.id}", :size => 11, :align => :right
     move_down 30
-    text "Mediante este documento se hace efectiva la aceptación del servicio de <b>#{@service.subject}</b> solicitada por el cliente <b>#{@service.client.name}</b> con RUC/DNI <b>#{@service.client.ruc}</b> al <b>#{@service.laboratory.name}</b> por el monto de <b>#{total_price(@service.sample_processeds)} Nuevos Soles </b>. El detalle del servicio se muestra a continuación:</b>", :align => :justify, :inline_format => true
+    text "Mediante este documento se hace efectiva la aceptación del servicio de <b>#{@service.subject}</b> solicitada por el cliente <b>#{@service.client.name}</b> con RUC/DNI <b>#{@service.client.ruc}</b> al <b>#{@service.laboratory.name}</b> por el monto de <b>#{@service.total} Nuevos Soles</b> . El detalle del servicio se muestra a continuación:</b>", :align => :justify, :inline_format => true
     move_down 20
 
   end
 
   def service_description
-    data=[["Código de Muestra", "Descripción de Muestra", "Categoría de Muestra", "Método de Ensayo", "Acreditado"]]
-    @service.sample_processeds.each { |x| 
-      data+=[["#{x.client_code}", "#{x.description}", "#{x.sample_category.name}","#{x.sample_method.name}","#{acreditted(x.sample_method.accreditation)}"]] 
+    data=[[ "Descripción de Muestra", "Categoría de Muestra", "Método de Ensayo", "Acreditado"]]
+    @service.sample_preliminaries.each { |x| 
+      data+=[["#{x.description}", "#{SampleCategory.find(x.sample_category_id).name}","#{SampleMethod.find(x.sample_method_id).name}", "#{acreditted(SampleMethod.find(x.sample_method_id).accredited?)}"]] 
     }
     table data, :header => true, :position => :center, :cell_style => {:size => 11, :border_width => 1.5}
     
@@ -83,15 +87,15 @@ class ContractPdf < Prawn::Document
       end
   end
 
-	def page_counter
-		
-		page_count.times do |i|
-			go_to_page(i+1)
-			bounding_box([bounds.right-65, bounds.bottom + 20], :width => 65, :align => :right) {
+  def page_counter
+    
+    page_count.times do |i|
+      go_to_page(i+1)
+      bounding_box([bounds.right-65, bounds.bottom + 20], :width => 65, :align => :right) {
       text "Página #{i+1} de #{page_count}", :size => 10
     }
-	 end
-	end
+   end
+  end
 
   def month_in_spanish
     @months_in_spanish =['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre']
