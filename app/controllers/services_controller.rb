@@ -12,6 +12,7 @@ class ServicesController < ApplicationController
     @unclassified_services = Service.inital_funded_accepted current_user
     @work_orders_to_check = WorkOrder.work_orders_to_check current_user
     @internal_completed_services = Service.services_completed current_user
+    #revisar porque antes era completed_Services
     @final_completed_services = Service.services_completed current_user
   end
 
