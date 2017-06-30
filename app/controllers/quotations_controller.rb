@@ -37,6 +37,7 @@ class QuotationsController < ApplicationController
   end
 
   def update
+    p '***************************'
     begin
     if @service.accepted_contract?
       @service.asssign_workers params, current_user
