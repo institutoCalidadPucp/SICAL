@@ -2,18 +2,19 @@ class ClassifiedServicesController < ApplicationController
 
   before_action :set_service, only: [:edit, :update, :destroy, :show]
   before_action :laboratories, only: [:edit, :new, :show]
-  before_action :sample_categories, only: [:new, :create, :edit, :update, :show]	
+  before_action :sample_categories, only: [:new, :create, :edit, :update, :show]  
+  before_action :set_sample_methods, only: [:edit, :update]
 
-	def index
-		@services_unclassified = Service.inital_funded_accepted current_user	
+  def index
+    @services_unclassified = Service.inital_funded_accepted current_user  
     @services_classified_to_check = Service.classified_to_check current_user  
-	end
+  end
 
-	def edit
-     @employees = User.own_per_user(current_user).employee		
-	end
+  def edit
+     @employees = User.own_per_user(current_user).employee    
+  end
 
-	def update   
+  def update   
     begin
       @service.assign_attributes service_params
       # Mejorar esto
@@ -27,13 +28,13 @@ class ClassifiedServicesController < ApplicationController
         redirect_to classified_services_path
       else
         render :edit
-      end		
+      end   
     rescue Exception => e
       redirect_to classified_services_path      
     end
-	end
+  end
 
-	private
+  private
 
     def service_params
       params.require(:service).permit(:valid_classified,:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
@@ -62,5 +63,10 @@ class ClassifiedServicesController < ApplicationController
     def laboratories
       @laboratories = Laboratory.all
     end
+
+    def set_sample_methods
+      @sample_methods = SampleMethod.all
+    end
+
 
 end
