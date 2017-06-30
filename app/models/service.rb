@@ -156,7 +156,6 @@ class Service < ApplicationRecord
   def generate_contract_doc
     contract = ContractPdf.new(self)
     contract.page_counter
-    send_file(File.join(Rails.root, "app/pdfs", "#{@service.id}.pdf"), filename: "Contrato-Servicio-#{@service.id}.pdf",type: "application/pdf")
     contract.render_file File.join(Rails.root, "app/pdfs", "#{self.id}.pdf")
   end
 end
