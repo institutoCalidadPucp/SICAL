@@ -19,7 +19,7 @@ class SampleCategory < ApplicationRecord
   enum status: [:active, :inactive]
 
   def self.own_per_user current_user
-    if current_user.admin?
+    if current_user.admin? or current_user.client?
       all
     else
       where(laboratory_id: current_user.laboratory)

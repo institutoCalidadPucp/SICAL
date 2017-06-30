@@ -13,7 +13,7 @@
             <tr>
               <td><%= service.subject %></td>
               <td><%= service.client.name %></td>
-              <td><%= service.work_flow %></td>
+              <td><%= t("activerecord.attributes.service.work_flow.#{service.work_flow}") %></td>
               <td>
                 <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, check_service_path(service), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>             
               </td>

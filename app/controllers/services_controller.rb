@@ -12,6 +12,7 @@ class ServicesController < ApplicationController
     @unclassified_services = Service.inital_funded_accepted current_user
     @work_orders_to_check = WorkOrder.work_orders_to_check current_user
     @internal_completed_services = Service.services_completed current_user
+    #revisar porque antes era completed_Services
     @final_completed_services = Service.services_completed current_user
   end
 
@@ -136,5 +137,13 @@ class ServicesController < ApplicationController
 
     def sample_categories
       @sample_categories = SampleCategory.own_per_user current_user
+    end
+
+    def download_contract
+      begin
+      send_file(File.join(Rails.root, "app/pdfs", "#{@service.id}.pdf"), filename: "Contrato-Servicio-#{@service.id}.pdf",type: "application/pdf")
+      rescue
+        puts 'Error in downloading file'
+      end    
     end
 end

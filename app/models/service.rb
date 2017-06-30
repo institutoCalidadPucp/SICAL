@@ -18,10 +18,12 @@ class Service < ApplicationRecord
   scope :own_per_laboratory, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
 
-  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :classified_to_rework, :accepted_classified, :accepted_adjust, :accepted_contract, :engaged, :completed,:final_completed]
+  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :classified_to_rework, :accepted_classified, :accepted_adjust, :accepted_contract, :rejected_contract, :engaged, :completed,:final_completed]
   enum intern_flow: [:internal_accepted, :internal_rejected]
   enum status: [:active, :inactive]
   mount_uploader :final_report, DocumentUploader
+
+  before_save :generate_contract_doc, if: :accepted_contract?
 
   def self.own_per_user current_user
     #client gets his services or lab leader gets his services
@@ -150,6 +152,11 @@ class Service < ApplicationRecord
       work_order.subject = self.subject + sample_processed.pucp_code
       work_order.save if work_order.valid?
     end
+  end
+  def generate_contract_doc
+    contract = ContractPdf.new(self)
+    contract.page_counter
+    contract.render_file File.join(Rails.root, "public/contratos", "ContratoServ-#{self.id}.pdf")
   end
 end
 
