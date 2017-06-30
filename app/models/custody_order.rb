@@ -8,7 +8,7 @@ class CustodyOrder < ApplicationRecord
   scope :custody_orders_per_employee, -> (current_user) {where(employee_id: current_user.id)}
   scope :custody_orders_per_supervisor, -> (current_user) {where(supervisor_id: current_user.id)}
   scope :custody_orders_per_service, -> (service) {where(service_id: service.id)}
-  scope :custody_order_per_related, -> (current_user) {where(employee_id: current_user.id)}
+  scope :custody_orders_per_related, -> (current_user) {where(employee_id: current_user.id).or(CustodyOrder.where(supervisor_id: current_user.id))}
 
   enum work_flow: [:to_work,:to_check,:to_rework,:completed]
   
@@ -28,8 +28,8 @@ class CustodyOrder < ApplicationRecord
     custody_orders_per_supervisor(current_user).completed
    end
 
-   def self.custody_orders_per_related current_user
-    custody_orders_per_related(current_user)
+   def self.custody_orders_related current_user
+    custody_order_per_related(current_user)
    end
 
    def handling_internal_process current_user
