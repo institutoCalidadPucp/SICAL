@@ -66,4 +66,5 @@ Rails.application.routes.draw do
   resources :work_classified_services do 
     get 'values', on: :member
   end
+  resources :historic_custodies
 end

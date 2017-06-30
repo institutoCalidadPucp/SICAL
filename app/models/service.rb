@@ -70,7 +70,7 @@ class Service < ApplicationRecord
   end
 
   def self.services_final_completed current_user
-    own_per_client(current_user).final_completed
+    services_per_client(current_user).final_completed
   end
 
   def can_see_quotation_adjust
@@ -164,6 +164,10 @@ class Service < ApplicationRecord
         self.errors.add(:sample_processed, message: "Clasificacion de la muestra invalida")
       end
     end        
+  end
+
+  def get_card_num current_user,states
+    Services.w
   end
 
 end
