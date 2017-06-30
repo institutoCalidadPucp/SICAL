@@ -31,7 +31,7 @@ class QuotationsController < ApplicationController
   def update
     begin
     if @service.accepted_contract?
-      @service.asssign_workers params, current_user
+      @service.asssign_workers_work params, current_user
       @service.set_work_flow current_user
       redirect_to  quotations_path
     else

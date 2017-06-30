@@ -4,6 +4,7 @@ class SampleProcessed < ApplicationRecord
   belongs_to :service, required: false
   belongs_to :sample_method, required: false
   belongs_to :sample_category, required: false
+  belongs_to :custody_order, required: false
   has_many :sample_features
 
 

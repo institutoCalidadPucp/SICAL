@@ -1,11 +1,8 @@
 class WorkClassifiedServicesController < ApplicationController 
-  before_action :set_service, only: [:edit, :update, :destroy, :show]
-  before_action :laboratories, only: [:edit, :new, :show]
-  before_action :sample_categories, only: [:new, :create, :edit, :update, :show]  
-
+  before_action :set_custody_order, only: [:edit, :update, :destroy, :show]
   def index
-    @services_unclassified_to_work = Service.unclassified_to_work current_user  
-    @services_classified_to_rework = Service.service_classified_to_rework current_user  
+    @custody_orders_to_work = CustodyOrder.custody_orders_to_work current_user  
+    @custody_orders_to_rework = CustodyOrder.custody_orders_to_rework current_user  
   end
 
   def new    
@@ -14,14 +11,7 @@ class WorkClassifiedServicesController < ApplicationController
   def show
   end
 
-  def create
-    @service.assign_attributes service_params
-    if @service.valid?
-      @service.set_work_flow(current_user)
-      redirect_to work_classified_services_path
-    else
-      render :edit
-    end
+  def create   
   end
 
   def edit    
@@ -29,24 +19,32 @@ class WorkClassifiedServicesController < ApplicationController
 
   def update
     begin
-      @service.assign_attributes service_params
-      if @service.valid?
-        @service.set_work_flow(current_user)
+      if @custody_order.to_work?
+        sample_preliminary = @custody_order.sample_preliminary
+        sample_processed = SampleProcessed.create(pucp_code: params[:pucp_code],client_code: params[:client_code],custody_order_id: @custody_order.id,amount: sample_preliminary.quantity,service_id: sample_preliminary.service_id,sample_category_id: sample_preliminary.sample_category_id,sample_method_id: sample_preliminary.sample_method_id) 
+        @custody_order.sample_processed_id = sample_processed.id
+      else
+        @custody_order.assign_attributes order_params
+        # Modify the already create SampleProcessed
+        end
+      if @custody_order.valid?
+        @custody_order.handling_internal_process(current_user)
         redirect_to work_classified_services_path
       else
         render :edit
-      end   
-    rescue Exception => e
-      redirect_to work_classified_services_path      
+      end    
+    rescue Exception => e      
+      p e.to_s
+      redirect_to work_classified_services_path            
     end
   end
 
 
   private
 
-    def service_params
-      params.require(:service).permit(:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
-    end
+    def order_params
+      params.require(:custody_order).permit(:supervisor_id,:employee_id,:nr_revision,:sample_processed_id,:supervisor_observation,:valid_supervised)
+    end    
 
     def sample_preliminaries
       [:id, :name, :quantity, :description]
@@ -60,8 +58,8 @@ class WorkClassifiedServicesController < ApplicationController
       [:id, :value, :description]
     end
 
-    def set_service
-      @service = Service.find params[:id]
+    def set_custody_order
+      @custody_order = CustodyOrder.find params[:id]
     end
 
     def sample_categories

@@ -35,6 +35,10 @@ Rails.application.routes.draw do
   resources :sample_methods do
     put 'toggle_status', on: :member
   end
+  resources :classified_services do
+    get 'work_check', on: :member
+    put 'work_check_update', on: :member
+  end
   resources :services do
     get 'work_check', on: :member
     put 'work_check_update', on: :member
