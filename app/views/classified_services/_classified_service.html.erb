@@ -1,13 +1,40 @@
-  <div>
-  	<%= f.label :clasificacion_valida %>
-	  <%= f.check_box :valid_classified, :checked => false %>
-  </div>
   
-  <% @service.sample_processeds.each do |sample_processed| %>
-  	codigo pucp <%= sample_processed.pucp_code %>
-  	codigo cliente <%= sample_processed.client_code %>
-  	cantidad <%= sample_processed.amount %>
-  	costo unitario <%= sample_processed.unit_cost %>
-		subtotal <%= sample_processed.subtotal_cost %>
-		<br>
-  <% end %>
+<% @service.sample_processeds.each do |sample_processed| %>
+  <div class="sample-fields">
+    <div class="form-group row">
+      <%= f.label :Código_cliente, class: "col-md-5 col-fom-label" %>
+       <div class="col-md-7">
+          <%= sample_processed.client_code %> 
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :Código_pucp, class: "col-md-5 col-fom-label" %>
+       <div class="col-md-7">
+          <%= sample_processed.pucp_code %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :Cantidad, class: "col-md-5 col-fom-label" %>
+       <div class="col-md-7">
+        <%= sample_processed.amount %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :Costo_Unitario, class: "col-md-5 col-fom-label" %>
+       <div class="col-md-7">
+          <%= sample_processed.unit_cost %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :Subtotal, class: "col-md-5 col-fom-label" %>
+      <div class="col-md-7 " >
+        <%= sample_processed.subtotal_cost %>
+      </div>
+    </div>
+  </div>
+ <% end %>
+
+ <h4 class="text-center"">
+  <strong> <%= f.label :Validar_Calificación %></strong>
+  <%= f.check_box :valid_classified, :checked => false %>
+</h4>

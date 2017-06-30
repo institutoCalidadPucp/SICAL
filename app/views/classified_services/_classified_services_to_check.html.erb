@@ -8,10 +8,10 @@
       <h3>Resultados</h3>
       <%= render 'classified_service', service: @service, f: f %>
 		</div>        
-<div class="form-group">
+  <div class="form-group">
     <div class="text-center save-worker">
       <%= link_to "Cancelar", classified_services_path, class: "btn btn-primary sical-btn-cancel" %>
-      <%= f.submit "Asignar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+      <%= f.submit "Validar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
     </div>
   </div>
 <% end %>
