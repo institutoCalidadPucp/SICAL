@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="samples-information"> 
-        <%= f.fields_for :e do |sample_processed_fields| %>
+        <%= f.fields_for :sample_processeds do |sample_processed_fields| %>
           <%= render 'sample_processed_fields',f: sample_processed_fields %>
         <% end %>
       </div>
