@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  concept: 
+  lower_range: 
+  upper_range: 1.5
+
+two:
+  concept: 
+  lower_range: 
+  upper_range: 1.5

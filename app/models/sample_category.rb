@@ -10,7 +10,11 @@ class SampleCategory < ApplicationRecord
 
   has_many :sample_categoryx_sample_methods
   has_many :sample_methods, through: :sample_categoryx_sample_methods
+  has_many :chain_features, through: :sample_categoryx_sample_methods
+  
   accepts_nested_attributes_for :sample_categoryx_sample_methods, :allow_destroy => true, :reject_if => :all_blank
+  accepts_nested_attributes_for :sample_methods, :allow_destroy => true, :reject_if => :all_blank
+  accepts_nested_attributes_for :chain_features, :allow_destroy => true, :reject_if => :all_blank
   
   enum status: [:active, :inactive]
 
