@@ -1,0 +1,54 @@
+<div>
+  <div class="samples-title samples-worker col-md-11">
+    Muestras
+  </div>
+  <div class="col-md-1">
+    <%= link_to_add_association "", f, :sample_processeds %>
+  </div>
+</div>
+<%= f.fields_for :sample_processeds do |sample| %>
+  <%= render 'sample_processed_fields', f: sample %>
+<% end %>
+<div class="form-group">
+  <div class="col-md-3 col-fom-label">
+    <strong> <%= f.label :Validar_Calificación %></strong>
+  </div>
+  <div class="col-md-9">
+    <label class="radio form-check-label sical-radio-button">
+      <span class="icons">
+        <span class="first-icon fa fa-circle-o"></span>
+        <span class="second-icon fa fa-dot-circle-o"></span>
+      </span>
+      <input
+        id="accepted"
+        type="radio"
+        class="form-check-input"
+        data-toggle="radio"
+        name="service[valid_classified]"
+        value="true"
+      >
+      Aceptado
+    </label>
+    <label class="radio form-check-label sical-radio-button">
+      <span class="icons">
+        <span class="first-icon fa fa-circle-o"></span>
+        <span class="second-icon fa fa-dot-circle-o"></span>
+      </span>
+      <input
+        id="rejected"
+        type="radio"
+        class="form-check-input"
+        data-toggle="radio"
+        name="service[valid_classified]"
+        value="false"
+      >
+      No Aceptado
+    </label>
+  </div>
+</div>
+<div class="engagement-observation hide">
+  <%= f.label :observaciones %> 
+  <%= f.text_area :supervisor_observation %> 
+</div>
+
+

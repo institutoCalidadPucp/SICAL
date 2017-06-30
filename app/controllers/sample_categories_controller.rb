@@ -2,6 +2,7 @@ class SampleCategoriesController < ApplicationController
   
   before_action :set_sample_category, only: [:show, :edit, :update, :destroy, :toggle_status]
   before_action :laboratories, only: [:new, :create, :edit, :update, :show]
+  before_action :sample_methods, only: [:new, :create, :edit, :update, :show]
 
   def index
     @sample_categories = SampleCategory.own_per_user(current_user)
@@ -14,10 +15,11 @@ class SampleCategoriesController < ApplicationController
   def show
   end
 
-  def create
-    @sample_category = SampleCategory.new sample_category_params
+  def create    
+    @sample_category = SampleCategory.new sample_category_params.merge(:laboratory_id => current_user.laboratory.id) unless current_user.admin?
+    @sample_category = SampleCategory.new sample_category_params unless current_user.employee?
     if @sample_category.save
-      @sample_category.set_laboratory(current_user)  unless current_user.admin?
+      #@sample_category.set_laboratory(current_user)  unless current_user.admin?
       redirect_to sample_categories_path
     else 
       render :new
@@ -45,8 +47,15 @@ class SampleCategoriesController < ApplicationController
 
   private
     def sample_category_params
-      params.require(:sample_category).permit(:laboratory_id, :name, :description)
+      params.require(:sample_category).permit(:laboratory_id, :name, :description, sample_categoryx_sample_methods_attributes: sample_categoryx_sample_methods)
+    end    
+    def sample_categoryx_sample_methods
+      [:id, :sample_category_id, :sample_method_id, chain_features_attributes: chain_features]
     end
+
+    def chain_features
+      [:id, :concept, :lower_range,:upper_range]
+    end    
 
     def set_sample_category
       @sample_category = SampleCategory.find(params[:id])
@@ -55,4 +64,9 @@ class SampleCategoriesController < ApplicationController
     def laboratories
       @laboratories = Laboratory.all
     end
+
+    def sample_methods
+      @sample_methods = SampleMethod.where(laboratory: current_user.laboratory_id)
+    end
+
 end

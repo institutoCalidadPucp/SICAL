@@ -1,25 +1,25 @@
 <% if current_user.employee? %>
   <section class="requests-index">
-    <div class="card">
-      <div class="content">
-        <div class="header card-header-text sical-card-header">
-          <h1 class="sical-card-title">
-            Solicitudes de Servicio
-          </h1>
-        </div>
-        <div class="sical-content">
-          <div class="row">
-            <div id="unread-card" class="col-md-6 card">
-              <%= render 'services', services: @unattended, title: "Servicios sin atender" %>
-            </div>
-            <div id="read-card" class="col-md-6 card">
-              <%= render 'services', services: @classified_services, title: "Servicios clasificados" %>
+      <div class="card">
+        <div class="content">
+          <div class="header card-header-text sical-card-header">
+            <h1 class="sical-card-title">
+              Orden de Custodia
+            </h1>
+          </div>
+          <div class="sical-content">
+            <div class="sub-section-cards">
+              <div class="col-md-6 sub-section-card is-unread-card">
+                <%= render 'work_orders_to_check_card', elements: @work_orders_to_check, title: "Ordenes por Revisar" %>
+              </div>
+              <div class="col-md-6 sub-section-card is-read-card">
+                <%= render 'services_completed_card', elements: @completed_services, title: "Servicios Terminados" %>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 <% else %>
   <section class="requests-index">
     <div class="card">
@@ -28,9 +28,7 @@
           <h1 class="sical-card-title">
             Solicitudes de Servicio
           </h1>
-          <div>
-            <%= link_to 'Nueva Solicitud', new_service_path, class: "btn btn-primary align-right"  %>
-          </div>
+          <%= link_to 'Nueva Solicitud', new_service_path, class: "btn btn-primary align-right"  %>
         </div>
         <div class="sical-content">
           <div id="service-table">
@@ -41,6 +39,4 @@
     </div>
   </section>
 <% end %>
-
-
 

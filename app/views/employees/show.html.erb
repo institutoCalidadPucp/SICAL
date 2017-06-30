@@ -7,37 +7,37 @@
       </h1>
     </div>
     <div class="form-horizontal validate sical-form sical-form-validated">
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3 col-form-label">Nombre</label>
         <div class="col-md-9">
           <%= @employee.name %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3 col-form-label">Apellido</label>
         <div class="col-md-9">
           <%= @employee.last_name %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3 col-form-label">Correo Electrónico</label>
         <div class="col-md-9">
           <%= @employee.email %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3 col-form-label">Dirección</label>
         <div class="col-md-9">
           <%= @employee.address %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3 col-form-label">Teléfono </label>
         <div class="col-md-9">
           <%= @employee.phone %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3 col-form-label">Fecha de Nacimiento </label>
         <div class="col-md-9">
           <% if @employee.date_of_birth %>
@@ -45,7 +45,7 @@
           <% end %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3 col-form-label">Sexo </label>
         <div class="col-md-9">
           <% if @employee.gender == 'male' %>
@@ -55,19 +55,18 @@
           <% end %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3 col-form-label">Rol </label>
         <div class="col-md-9">
           <%= @employee.role.name %>
         </div>
       </div>
-      <div class="form-group row" style="margin:0px;">
+      <div class="form-group row">
         <label class="col-md-3 col-form-label">Laboratorio </label>
         <div class="col-md-9">
           <%= @employee.laboratory.name %>
         </div>
       </div>
-      
       <div class="form-group">
         <div class="text-center">
           <%= link_to "Regresar", employees_path, class: "btn btn-primary sical-btn-cancel" %>
@@ -76,4 +75,3 @@
     </div>
   </div>
 </div>
-

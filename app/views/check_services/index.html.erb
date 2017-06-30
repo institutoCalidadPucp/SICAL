@@ -1,14 +1,19 @@
-<div id="inventories" class="tabcontent default" style="display: block;">
-  <section class="inventories-index">
-    <div class="card">
-      <div class="content">
-        <div class="header card-header-text sical-card-header">
+<section class="check-services-index">
+  <div class="card">
+    <div class="content">
+      <div class="header card-header-text sical-card-header">
         <h1 class="sical-card-title">
           Servicios
         </h1>
+        <div>
+          <%= link_to 'Nuevo Servicio', new_check_service_path, class: "btn btn-primary align-right #{current_user.can_create(@controller) ? "disabled" : ""}" %>
         </div>
+      </div>
+      <div class="services-content">
+        <div id="services-table">
           <%= render 'services_table', services: @services %>
+        </div>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>

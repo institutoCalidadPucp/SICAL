@@ -1,26 +1,54 @@
-<%= form_for @sample_category, url: path, method: method, :html => { class: "form-horizontal validate sical-form sical-form-validated" } do |f| %>
-  <div>
-    <%= f.label :Nombre %>
-    <%= f.text_field :name %>
+<%= nested_form_for @sample_category, url: path, method: method, :html => { class: "form-horizontal validate sical-form sical-form-validated" } do |f| %>
+  <% if @sample_category.errors.any?%>
+    <% @sample_category.errors.full_messages.each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+  <% end %>
+  <div class="form-group row">
+    <%= f.label :Nombre, class: "col-md-3 col-fom-label" %>
+    <div class="col-md-9 input-wrapper">
+      <%= f.text_field :name, class: "form-control",maxLength:"30", required:"required" %>
+    </div>
   </div>
-  <div>
-    <%= f.label :Descripcion %>
-    <%= f.text_area :description, size: "30x5" %>
+  <div class="form-group row">
+    <%= f.label :Descripción, class: "col-md-3 col-fom-label" %>
+    <div class="col-md-9 input-wrapper">
+      <%= f.text_area :description, class: "form-control role-description", rows:"5", required:"required" %>
+    </div>
   </div>
   <% if current_user.admin? %>
-  <div class="col-md-3 col-fom-label">
-      <%= f.label :laboratorio %>
-    </div>
-  <div class="col-md-9 input-wrapper">
-      <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, class: "form-control", required: "required" %>
-    </div>
-  <div class="form-group ">
+    <div class="form-group row">
+      <div class="col-md-3 col-fom-label">
+        <%= f.label :laboratorio %>
+      </div>
+      <div class="col-md-9 input-wrapper">
+        <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, class: "form-control", required: "required" %>
+      </div>
+    </div>    
+  <% end %>
+  <%= f.fields_for :sample_categoryx_sample_methods do |smethod| %>
+        <%= render 'sample_categoryx_sample_method_fields', f: smethod %>
+      <% end %>
+      <div>
+        <div class= "samples-title samples-worker">
+          <div>
+            Métodos Asociados
+          </div>
+          <div>
+            <%= link_to_add_association "Agregar métodos", f, :sample_categoryx_sample_methods,data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples-information'}, class: "btn btn-default sical-btn-add-menu btn-add-evalution-sample"%>
+          </div>
+        </div>
+      </div>   
+      <div class="samples-information"> 
+        <%= f.fields_for :sample_categoryx_sample_methods do |sample_methods_fields| %>
+          <%= render 'sample_categoryx_sample_method_fields',f: sample_methods_fields %>
+        <% end %>
+      </div>    
+  
+  <div class="form-group">
     <div class="text-center">
       <%= link_to "Cancelar", sample_categories_path, class: "btn btn-primary sical-btn-cancel" %>
       <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
     </div>
   </div>
-  <% end %>
-  
-  <%= f.submit "Edit" %>
 <% end %>

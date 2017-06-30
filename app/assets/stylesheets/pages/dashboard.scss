@@ -3,51 +3,72 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //To make all the cards align to the center
-.dashboard-wrapper{
-  justify-content:center;
+
+.dashboard-wrapper {
+  justify-content: space-around;
+}
+
+// Wrapper to all the cards in the dashboard
+.dashboard-card-wrapper {
+  margin: 10px 20px;
 }
 
 //along with the 'card' class to make a squared card
-.is-card-square{
-	width: 15em;
-	height: 15em;
+
+.is-card-square {
+  width: 15em;
+  height: 15em;
 }
 
 //along with the 'card' class to make a rectangled card
-.is-card-rectangle{
-	height:5em;
-	vertical-align: middle;
+
+.is-card-rectangle {
+  height: 5em;
+  vertical-align: middle;
+}
+
+// Style the Link in the Dashboard Card
+.card-text-link {
+  color: black;
 }
 
 //this is the text for the name of the card
-.card-name{
-  font-weight:bold;
+
+.card-name {
+  font-weight: bold;
   vertical-align: middle;
   text-align:center;
   display: table-cell; 
-  margin-bottom:auto;
-  margin-top:auto;
+  margin-bottom: auto;
+  margin-top: auto;
 }
 
 //This is the class for the number of row each table has.
-.number-data{
-  font-weight:bold;
-  margin:auto;
-  margin-left:10%;
-  text-align:left;
-  font-size:64px;
+
+.number-data {
+  font-weight: bold;
+  margin: auto;
+  margin-left: 10%;
+  text-align: left;
+  font-size: 64px;
 }
 
 //This is the icon of the menu in the dashboard
-.menu-icon{
-  width:100px;
-  margin-left:15px;
-  margin-top:5px;
+
+.menu-icon {
+  width: 100px;
+  margin-left: 15px;
+  margin-top: 5px;
 }
 
 //This will make two items be in the same row
-.same-row-items{
+
+.same-row-items {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.user-name {
+  margin-top: 30px;
 }

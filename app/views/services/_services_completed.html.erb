@@ -1,0 +1,57 @@
+<%= form_for @service, url: service_end_update_service_path, :wrapper => false,  method: :put do |f| %>
+  <div id="information" class="tabcontent" style="display: block;">
+    <h3>Informacion</h3>
+      <%= render 'show_basic_information', service: @service, f: f %>
+  </div>
+
+  <div id="custody" class="tabcontent">
+     <h3>Custodia de Muestras</h3>	
+      <%#= render 'form_worker', service: @service, f: f %>
+  </div>
+
+   <div id="report" class="tabcontent">
+     <h3>Reportes</h3>	
+      <%= render 'report_table', work_orders: @work_orders%>
+  </div>
+
+   <div id="report-final" class="tabcontent">
+     <h3>Reporte Final</h3>
+     <div class="form-group row">
+      <label class= "col-md-3 col-form-label">Plantilla Reporte Acreditado</label>
+        <div class="col-md-9">
+          <td>
+            <%= link_to "Descarga", @service.laboratory.accredited_report_url, class: "btn btn-info btn-sm" %>
+          </td>
+        </div>
+      </div>
+
+      <div class="form-group row">
+       <label class= "col-md-3 col-form-label">Plantilla Reporte no Acreditado</label>
+        <div class="col-md-9">
+           <td><%= link_to "Descarga", @service.laboratory.normal_report_url, class: "btn btn-info btn-sm" %></td>
+        </div>
+    </div>
+
+    <div class="text-center">
+      <br></br>
+      <h3>Reporte Final</h4>
+     <td> <%= f.file_field :final_report %></td></td>
+    </div>
+
+    <div class="text-center">
+      <br></br>
+      <h4>Observacion Final</h4>
+      <%= f.text_area :supervisor_observation, :cols => "40", :rows => "5" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="text-center save-worker">
+      <%= link_to "Cancelar", services_path, class: "btn btn-primary sical-btn-cancel" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+    </div>
+  </div>
+<% end %>
+
+
+

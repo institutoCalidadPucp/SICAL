@@ -1,5 +1,5 @@
 <div id="terminos-condiciones" class="tabcontent">
-  <% if service.funded? and current_user.client? %>
+  <% if current_user.client?  and service.accepted_adjust? %>
     <div class="">
       <%= f.label :compromiso %>
     </div>
@@ -45,8 +45,7 @@
       </div>
     </div>
     <div class="engagement-observation hide">
-      <%= f.label :observaciones %>
-      <%= f.text_area :engagement_observation %>
+      <%= f.label :observaciones %>  
     </div>
   <% end %>
 </div>

@@ -16,23 +16,27 @@ class User < ApplicationRecord
   enum status: [:active, :inactive]
 
   def can_action tab_reference
-    permit_tabs.where(tab_reference: tab_reference).first.create_permit
+   
   end
 
   def can_view tab_reference
-    can_action(tab_reference)
+     permits = permit_tabs.where(tab_reference: tab_reference).first
+     permits.full_permit or permits.view_permit
   end
 
   def can_create tab_reference
-    can_action(tab_reference)
+     permits = permit_tabs.where(tab_reference: tab_reference).first
+     permits.full_permit or permits.create_permit
   end
 
   def can_edit tab_reference
-    can_action(tab_reference)
+     permits = permit_tabs.where(tab_reference: tab_reference).first
+     permits.full_permit or permits.edit_permit
   end
 
   def can_delete tab_reference
-    can_action(tab_reference)
+     permits = permit_tabs.where(tab_reference: tab_reference).first
+     permits.full_permit or permits.delete_permit
   end
 
   def set_password
@@ -65,5 +69,13 @@ class User < ApplicationRecord
       where(laboratory_id: current_user.laboratory)
     end
   end
+
+  def self.names
+  	User.pluck(:name,:id)	
+  end
   
+  def assign_attr user_params, params
+    self.password = params[:password] if params[:password].present?
+    self.assign_attributes user_params
+  end
 end
