@@ -3,16 +3,22 @@ class ContractPdf < Prawn::Document
 	def initialize(service)
 		super(top_margin:10, left_margin:30)
 		@service = service
-		header(Dir.pwd+"/public"+@service.laboratory.header_image.url)
+    #header(File.join(Rails.root, "public", @service.laboratory.header_image.url))
+		header(@service.laboratory.header_image.url)
+    #header(Dir.pwd+"/public"+@service.laboratory.header_image.url)
 		footer
 		body
 		#barcode
 	end
 
-  def header(header_logo)
+  def header(header_logo_url)
     repeat :all do
       bounding_box [bounds.left, bounds.top], :width  => bounds.width do
-        image header_logo, :width => bounds.width
+        begin
+          File.join(Rails.root, "public", header_logo_url)
+          image header_logo, :width => bounds.width
+        rescue
+        end
         stroke_horizontal_rule
       end
     end
