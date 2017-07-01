@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628175537) do
+ActiveRecord::Schema.define(version: 20170701071529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "chain_features", force: :cascade do |t|
+    t.string "concept"
+    t.float "lower_range"
+    t.float "upper_range"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sample_categoryx_sample_method_id"
+  end
+
+  create_table "custody_orders", force: :cascade do |t|
+    t.integer "employee_id"
+    t.integer "supervisor_id"
+    t.integer "sample_preliminary_id"
+    t.string "supervisor_observation"
+    t.integer "service_id"
+    t.string "subject"
+    t.integer "sample_processed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "nr_revision", default: 0
+    t.integer "work_flow", default: 0
+    t.boolean "valid_supervised", default: false
+  end
 
   create_table "features", force: :cascade do |t|
     t.float "value"
@@ -69,6 +94,7 @@ ActiveRecord::Schema.define(version: 20170628175537) do
     t.bigint "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "full_permit", default: false
     t.index ["role_id"], name: "index_menu_permits_on_role_id"
   end
 
@@ -175,6 +201,8 @@ ActiveRecord::Schema.define(version: 20170628175537) do
     t.bigint "sample_method_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "custody_order_id"
+    t.hstore "classified_values", default: {}, null: false
     t.index ["sample_category_id"], name: "index_sample_processeds_on_sample_category_id"
     t.index ["sample_method_id"], name: "index_sample_processeds_on_sample_method_id"
     t.index ["service_id"], name: "index_sample_processeds_on_service_id"
@@ -205,8 +233,10 @@ ActiveRecord::Schema.define(version: 20170628175537) do
     t.integer "supervisor_id", default: 0
     t.string "client_quotation_observation"
     t.string "supervisor_quotation_observation"
+    t.string "supervisor_observation"
+    t.string "final_report"
+    t.boolean "final_client_check", default: false
     t.float "total"
-    t.float "subtotal"
     t.index ["client_id"], name: "index_services_on_client_id"
     t.index ["employee_id"], name: "index_services_on_employee_id"
     t.index ["laboratory_id"], name: "index_services_on_laboratory_id"
@@ -267,7 +297,6 @@ ActiveRecord::Schema.define(version: 20170628175537) do
     t.integer "nr_revision", default: 0
     t.integer "work_flow", default: 0
     t.boolean "valid_supervised", default: false
-    t.integer "report_id"
     t.integer "service_id"
     t.string "subject"
     t.string "internal_report"
