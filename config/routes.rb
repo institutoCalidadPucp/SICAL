@@ -62,4 +62,5 @@ Rails.application.routes.draw do
   resources :check_services
   resources :classified_services
   resources :work_classified_services  
+  resources :system_parameters
 end
