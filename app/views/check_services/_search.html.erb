@@ -1,12 +1,12 @@
-<%= form_tag search_services_path, class: "validate", method: :get, remote: true do %>
+<%= form_tag search_check_services_path, class: "validate", method: :get, remote: true do %>
   <div class="row form-group">
     <div class="form-group row search-field">
       <div class="col-md-3 col-fom-label">
-        <%= label_tag :start_date%>
+        <%= label_tag "Fecha de Inicio"%>
       </div>
       <div class="date col-md-9 input-wrapper">
         <div class="input-group sical-input-group">
-          <%= text_field_tag :start_date, nil, class: "form-control sical-datepicker"%>
+          <%= text_field_tag :start_date, nil, class: "form-control sical-datepicker", birth: true %>
           <div class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </div>
@@ -15,11 +15,11 @@
     </div>
     <div class="form-group row search-field">
       <div class="col-md-3 col-fom-label">
-        <%= label_tag :end_date%>
+        <%= label_tag "Fecha de Fin"%>
       </div>
       <div class="date col-md-9 input-wrapper">
         <div class="input-group sical-input-group">
-          <%= text_field_tag :end_date, nil, class: "form-control sical-datepicker"%>
+          <%= text_field_tag :end_date, nil, class: "form-control sical-datepicker", birth: true %>
           <div class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </div>
@@ -28,7 +28,7 @@
     </div>
     <div class="form-group row search-field">
       <div class="col-sm-12">
-        <%= submit_tag "Search", class:"btn btn-default pull-right" %>
+        <%= submit_tag "Buscar", class:"btn btn-default pull-right" %>
       </div>
     </div>
   </div>
