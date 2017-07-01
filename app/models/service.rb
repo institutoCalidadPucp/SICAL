@@ -156,7 +156,7 @@ class Service < ApplicationRecord
     self.sample_processeds << sample_processed
   end
 
-  def update_obj current_user, params, sample_preliminary, custody_order       
+  def create_obj current_user, params, sample_preliminary, custody_order       
     #self.assign_attributes service_params unless self.assign_sorter?
     if self.valid?
       self.create_sample_processeds params, sample_preliminary, custody_order
@@ -164,7 +164,6 @@ class Service < ApplicationRecord
         self.errors.add(:sample_processed, message: "Clasificacion de la muestra invalida")                          
       end
     end        
-  end
-  
+  end 
 end
 

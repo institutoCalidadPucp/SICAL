@@ -7,17 +7,19 @@
     </thead>
     <tbody>
     <tr>
-        <td><%= @sample_processed.pucp_code %></td>
-        <td><%= @sample_processed.client_code %></td>        
+        <td><%= f.text_field :pucp_code %></td>
+        <td><%= f.text_field :client_code %></td>        
         <td><%= @sample_processed.sample_category.name %></td>
         <td><%= @sample_processed.sample_method.name %></td>        
     </tr>
     </tbody>
 </table>
-<%= render 'filling_up_sample_features_edit' %>
+<%= nested_form_for @custody_order, url: work_classified_service_path, :wrapper => false,  method: :put do |f| %>    
+<%= render 'filling_up_sample_features_edit', f: f %>
  <div class="text-center">
     <br></br>
     <h4>Observaciones</h4>
     <%= f.text_area :supervisor_observation, :cols => "40", :rows => "5" %>
 </div>
+<% end %>
 </h6>

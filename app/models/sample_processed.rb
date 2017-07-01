@@ -24,4 +24,15 @@ class SampleProcessed < ApplicationRecord
 		self.classified_values = params["sp_value"]
 		self.save
   end
+
+  def update params,sample_preliminary, custody_order               
+		self.description = params[:sample_processed][:description]	
+    p params[:sample_processed][:client_code]	
+    p params["sample_processed"]["client_code"]	
+		self.client_code = params[:sample_processed][:client_code]        		
+    self.pucp_code = params[:sample_processed][:pucp_code]
+		self.classified_values = params["sp_value"]
+		self.save
+  end
+
 end

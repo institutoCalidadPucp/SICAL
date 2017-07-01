@@ -29,9 +29,14 @@ class WorkClassifiedServicesController < ApplicationController
 
   # Updating vs Creating
   def update  
-    begin      
-      @service.update_obj(current_user, params,  @sample_preliminary, @custody_order)
-      if @service.errors.empty?
+    begin
+      if @custody_order.to_work?      
+        @service.create_obj(current_user, params,  @sample_preliminary, @custody_order)
+      else       
+        @sample_processed.update params, @sample_preliminary, @custody_order 
+        @custody_order.supervisor_observation = params[:custody_order][:supervisor_observation]
+      end      
+      if @service.errors.empty?    
         @custody_order.handling_internal_process(current_user)     
         if @service.errors.empty?
           redirect_to work_classified_services_path
