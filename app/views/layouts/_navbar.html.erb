@@ -33,7 +33,11 @@
         </a>
         <div class="dropdown-menu only-dropdown" aria-labelledby="notificationList">
           <%= link_to "Profile", edit_user_path(current_user), method: :get, class: "dropdown-item" %>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <% if session[:user_id].nil? %>
+            <%= link_to "Logout", destroy_user_session_path, :method=>'delete', class: "dropdown-item" %>
+          <% else %>
+            <%= link_to "Logout", signout_path, class: "dropdown-item" %>
+          <% end %>
         </div>
       </li>
       <li class="separator hidden-lg-up"></li>
