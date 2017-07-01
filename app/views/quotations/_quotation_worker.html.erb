@@ -5,16 +5,16 @@
       <th>Categoría</th>
       <th>Método</th>
       <th>Acreditado</th>
-      <th>Asinación</th>
+      <th>Asignación</th>
     </thead>
     <tbody>
-    <% @service.sample_processeds.each do |sample_processed| %>
+    <% @service.sample_processeds.each.with_index(1) do |sample_processed, index| %>
         <tr>
           <td><%= sample_processed.description %></td>
           <td><%= sample_processed.sample_category.name %></td>
           <td><%= sample_processed.sample_method_name %></td>
           <td><%= sample_processed.sample_method_accredited? %></td>
-          <td><%= f.collection_select :id, @employees,:id, :name,{}, {name: "selected_employee_#{sample_processed.id}"} %></td>
+          <td><%= f.collection_select :id, @employees,:id, :name,{}, {name: "selected_employee_#{index}"} %></td>
         </tr>
     <% end %>
     </tbody>

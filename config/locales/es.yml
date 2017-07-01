@@ -5,4 +5,22 @@ es:
         description: "Descripcion"
         accreditation:
           accredited: "Acreditado"
-          non_accredited: "No Acreditado"
+           non_accredited: "No Acreditado"
+      service:
+         work_flow:
+           initialized: "Servicio creado"
+           initial_funded: "Servicio costeado"
+           initial_accepted: "Servicio con costeo aceptado"
+           assign_sorter: "Servicio clasificado asignado a un trabajador"
+           classified: "Servicio clasificado"
+           classified_to_rework: "Servicio clasificado en revision"
+           accepted_classified: "Servicio clasificado validado"
+           accepted_adjust: "Servicio con ajuste del costeo"
+           accepted_contract: "Servicio con contrato aceptado"
+           engaged: "Servicio validado por cliente"
+           completed: "Servicio completado"
+           final_completed: "Servicio finalizado"
+      employee:
+       gender:
+         male: "Masculino"
+         female: "Femenino" 

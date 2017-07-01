@@ -47,9 +47,13 @@ class ContractPdf < Prawn::Document
 
   def service_description
     data=[[ "Descripción de Muestra", "Categoría de Muestra", "Método de Ensayo", "Acreditado"]]
-    @service.sample_preliminaries.each { |x| 
-      data+=[["#{x.description}", "#{SampleCategory.find(x.sample_category_id).name}","#{SampleMethod.find(x.sample_method_id).name}", "#{acreditted(SampleMethod.find(x.sample_method_id).accredited?)}"]] 
-    }
+    begin
+      @service.sample_preliminaries.each { |x| 
+        data+=[["#{x.description}", "#{SampleCategory.find(x.sample_category_id).name}","#{SampleMethod.find(x.sample_method_id).name}", "#{acreditted(SampleMethod.find(x.sample_method_id).accredited?)}"]] 
+      }
+    rescue 
+      puts 'Error in setting attributes of sample in table'
+    end 
     table data, :header => true, :position => :center, :cell_style => {:size => 11, :border_width => 1.5}
     
   end
