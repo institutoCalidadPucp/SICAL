@@ -76,4 +76,6 @@ Rails.application.routes.draw do
   resources :classified_services
   resources :work_classified_services  
   resources :system_parameters
+  resources :historic_custodies
+  resources :historic_works
 end
