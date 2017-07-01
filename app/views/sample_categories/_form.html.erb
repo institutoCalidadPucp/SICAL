@@ -26,25 +26,7 @@
       </div>
     </div>    
   <% end %>
-  <%= f.fields_for :sample_categoryx_sample_methods do |smethod| %>
-        <%= render 'sample_categoryx_sample_method_fields', f: smethod %>
-      <% end %>
-      <div>
-        <div class= "samples-title samples-worker">
-          <div>
-            Métodos Asociados
-          </div>
-          <div>
-            <%= link_to_add_association "Agregar métodos", f, :sample_categoryx_sample_methods,data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples-information'}, class: "btn btn-default sical-btn-add-menu btn-add-evalution-sample"%>
-          </div>
-        </div>
-      </div>   
-      <div class="samples-information"> 
-        <%= f.fields_for :sample_categoryx_sample_methods do |sample_methods_fields| %>
-          <%= render 'sample_categoryx_sample_method_fields',f: sample_methods_fields %>
-        <% end %>
-      </div>    
-  
+  <%= render 'add_nested_elements', title: "Métodos Asociados", button_message: "Agregar métodos", f: f, 'association_insert_node': '.samples-information', fields: :sample_categoryx_sample_methods, partial: 'sample_categoryx_sample_method_fields' %>
   <div class="form-group">
     <div class="text-center">
       <%= link_to "Cancelar", sample_categories_path, class: "btn btn-primary sical-btn-cancel" %>

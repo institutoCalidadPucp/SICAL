@@ -37,7 +37,7 @@
       </div>
       <div class="samples-values">
         <%= f.fields_for :sample_features do |sample_feature_fields| %>
-          <%= render 'sample_feature_fields', f: sample_feature_fields %>
+          <%= render 'sample_feature_fields', f: sample_feature_fieldsm, editable: true, disabled: false %>
         <% end %>
       </div>
     </div>

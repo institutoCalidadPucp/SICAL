@@ -5,24 +5,7 @@
     </div>
 
      <div id="sample" class="tabcontent">
-      <%= f.fields_for :sample_processeds do |sample| %>
-        <%= render 'sample_processed_fields', f: sample %>
-      <% end %>
-      <div>
-        <div class= "samples-title samples-worker">
-          <div>
-            Muestras
-          </div>
-          <div>
-            <%= link_to_add_association "Agregar evaluación de la muestra", f, :sample_processeds,data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples-information'}, class: "btn btn-default sical-btn-add-menu btn-add-evalution-sample"%>
-          </div>
-        </div>
-      </div>
-      <div class="samples-information"> 
-        <%= f.fields_for :sample_processeds do |sample_processed_fields| %>
-          <%= render 'sample_processed_fields',f: sample_processed_fields %>
-        <% end %>
-      </div>
+      <%= render 'add_nested_elements', title: "Muestras", button_message: "Agregar evaluación de la muestra", f: f, 'association_insert_node': '.samples-information', fields: :sample_processeds, partial: 'sample_processed_fields' %>
     </div>
 
     <div class="form-group">
