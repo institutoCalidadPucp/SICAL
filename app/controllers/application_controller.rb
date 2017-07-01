@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_variables
-
+helper_method :current_user
    def after_sign_in_path_for(resources)
     root_path 
   end
@@ -17,6 +17,14 @@ class ApplicationController < ActionController::Base
       @action = params[:action]
     rescue
       p '************* LOG OUT ***************'
+    end
+  end
+
+  def current_user
+    if session[:user_id].nil?
+      @current_user ||= warden.authenticate(:scope => :user)
+    else
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
   end
 end

@@ -43,5 +43,4 @@ class DashboardController < ApplicationController
     		custody_order_to_check_count = (CustodyOrder.custody_orders_to_check current_user).count      
 			return services_unclassified_count + custody_order_to_check_count
 		end
-	end
 end

@@ -11,6 +11,7 @@ MenuPermit.create(name: 'Cadena de Custodia', tab_reference: 'classified_service
 MenuPermit.create(name: 'Ejecución de servicios', tab_reference: 'services', tab_icon: 'ti-hummer', available_for_client: false, order: 10, default: false, role_id: 1, full_permit: true)
 MenuPermit.create(name: 'Orden de Trabajo', tab_reference: 'work_orders', tab_icon: 'ti-hummer', available_for_client: false, order: 11, default: false, role_id: 1, full_permit: true)
 MenuPermit.create(name: 'Roles', tab_reference: 'roles', tab_icon: 'ti-id-badge', available_for_client: false, order: 12, default: false, role_id: 1, full_permit: true)
+MenuPermit.create(name: 'Paremetros del sistema ', tab_reference: 'system_parameters', tab_icon: 'ti-write', available_for_client: false, order: 13, default: false, role_id: 1, full_permit: true)
 Role.create(name: "Analista", description: "test", laboratory_id: 1, status: 0)
 MenuPermit.create(name: 'Custodias', tab_reference: 'historic_custodies', tab_icon: 'ti-clipboard', available_for_client: false, order: 1, default: false, role_id: 2, full_permit: true)
 MenuPermit.create(name: 'Orden de Custodia', tab_reference: 'work_classified_services', tab_icon: 'ti-hummer', available_for_client: false, order: 2, default: false, role_id: 2, full_permit: true)
