@@ -7,13 +7,11 @@ class ServicesController < ApplicationController
   before_action :sample_categories, only: [:new, :create, :edit, :update, :show]
 
   def index
-    @services = Service.services_per_client current_user
-    @unattended_services = Service.passed_classification current_user
+    @services = Service.services_per_client current_user  
     @unclassified_services = Service.inital_funded_accepted current_user
     @work_orders_to_check = WorkOrder.work_orders_to_check current_user
-    @internal_completed_services = Service.services_completed current_user
-    #revisar porque antes era completed_Services
-    @final_completed_services = Service.services_completed current_user
+    @completed_services = Service.services_completed current_user
+    @final_completed_services = Service.services_final_completed current_user
   end
 
   def create

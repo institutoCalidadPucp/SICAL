@@ -55,7 +55,7 @@ $("#rejected").on('change', function() {
 
         $.each(sampleMethods, function(index, element) {
           $target.append($('<option>', {
-            value: index,
+            value: element.id,
             text:  element.name,
           }));
         });

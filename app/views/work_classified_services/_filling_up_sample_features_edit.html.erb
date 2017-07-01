@@ -1,0 +1,24 @@
+<table id="sample-feature" class="table table-hove">
+  <thead>
+    <tr>
+      <th>Nr Muestra</th>
+      <% @cols.length.times do |index| %>
+        <th><%= @cols[index] %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sample_processed.amount.times do |index1| %>
+      <tr>
+        <td><%= @sample_processed.pucp_code + (index1 + 1).to_s %></td>
+        <% @cols.length.times do |index2| %>
+          <td>
+            <div class="form-control">
+              <input type="number" step="any" class: "form-control only-numbers" value: @sample_processed.classified_values[index1.to_s+"-"+index2.to_s]>
+            </div>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
