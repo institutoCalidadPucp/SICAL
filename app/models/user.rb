@@ -78,4 +78,27 @@ class User < ApplicationRecord
     self.password = params[:password] if params[:password].present?
     self.assign_attributes user_params
   end
+
+  def omniauth_values auth
+    self.email = auth.info.email
+    self.password = Devise.friendly_token[0,20]
+    self.provider = auth.provider
+    self.uid = auth.uid
+    self.name = auth.info.name
+    self.oauth_token = auth.credentials.token
+    self.oauth_expires_at = Time.at(auth.credentials.expires_at)
+  end
+
+  def self.from_omniauth(auth)
+    user = User.find_by_email auth.info.email
+    if user
+      if !user.oauth_token
+        user.omniauth_values auth
+        user.save
+      end
+      return user
+    end
+    return nil
+  end
+
 end

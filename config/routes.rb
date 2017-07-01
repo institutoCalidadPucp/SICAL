@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'session_google/create'
+
+  get 'session_google/destroy'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
     devise_scope :user do
@@ -13,7 +17,16 @@ Rails.application.routes.draw do
       root 'devise/sessions#new'
     end
   end
+
   #WEB ROUTES
+  get 'auth/:provider/callback', to: 'session_google#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'session_google#destroy', as: 'signout'
+
+  get '/dashboard/index', to: 'dashboard#index', as: 'dash'
+
+  resources :session_google, only: [:create, :destroy]
+  
   resources :roles do
     put 'toggle_status', on: :member
   end
@@ -62,4 +75,5 @@ Rails.application.routes.draw do
   resources :check_services
   resources :classified_services
   resources :work_classified_services  
+  resources :system_parameters
 end
