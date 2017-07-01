@@ -7,25 +7,7 @@
     
   <div class="collapse navbar-collapse" id="navbarItems">
     <ul class="nav navbar-nav ml-auto">
-      <h6 class="user-name">Bienvenido <%=current_user.name%></p></h6>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle nav-link sical-dropdown" id="notificationList" data-toggle="dropdown">
-          <i class="ti-bell nav-icon"></i>
-          <span class="notification">6</span>
-          <p class="hidden-lg-up">
-              Notifications
-              <i class="fa fa-sort-desc submenu-toggle"></i>
-          </p>
-        </a>
-        <div class="dropdown-menu only-dropdown" aria-labelledby="notificationList">
-          <a class="dropdown-item" href="#">You have 5 new messages</a>
-          <a class="dropdown-item" href="#">You're now friend with Mike</a>
-          <a class="dropdown-item" href="#">Wish Mary on her birthday!</a>
-          <a class="dropdown-item" href="#">5 warnings in Server Console</a>
-          <a class="dropdown-item" href="#">Jane completed 'Induction Training'</a>
-          <a class="dropdown-item" href="#">'Prepare Marketing Report' is overdue</a>
-        </div>
-      </li>
+      <h6 class="user-name"><%= SystemParameter.welcome_message.first.description %> <%=current_user.name%></p></h6>
       <li>
         <a href="#" class="dropdown-toggle nav-link sical-dropdown" data-toggle="dropdown">
           <i class="ti-user nav-icon"></i>

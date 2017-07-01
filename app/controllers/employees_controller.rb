@@ -53,7 +53,7 @@ class EmployeesController < ApplicationController
 
     def employee_params
       params.require(:user).permit(:phone, :email, :address, :name, :last_name, :date_of_birth, :gender, :role_id, :job_position, :laboratory_id)
-    end   
+    end
 
     def set_employee
       @employee = User.find(params[:id])

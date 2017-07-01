@@ -1,0 +1,18 @@
+<%= form_for @system_parameter, url: system_parameter_path,  method: :put do |f| %>
+  <% if @system_parameter.can_show_description %>
+    <%= f.label :descripcion %>
+    <%= f.text_field :description %>
+  <% end %>
+  <br>
+  <% if @system_parameter.can_show_values %>
+    <%= f.label :valores %>
+    <%= f.text_field :min %>
+    <%= f.text_field :max %>
+  <% end %>
+  <div class="form-group ">
+    <div class="text-center">
+      <%= link_to "Cancelar", inventories_path, class: "btn btn-primary sical-btn-cancel" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+    </div>
+  </div>  
+<% end %>
