@@ -20,8 +20,6 @@ helper_method :current_user
     end
   end
 
-
-
   def current_user
     if session[:user_id].nil?
       @current_user ||= warden.authenticate(:scope => :user)
