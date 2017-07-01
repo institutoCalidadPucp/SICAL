@@ -23,7 +23,9 @@ helper_method :current_user
 
 
   def current_user
-    if !session[:user_id].nil?
+    if session[:user_id].nil?
+      @current_user ||= warden.authenticate(:scope => :user)
+    else
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
   end
