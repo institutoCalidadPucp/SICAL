@@ -5,6 +5,7 @@ es:
         description: "Descripcion"
         accreditation:
           accredited: "Acreditado"
+<<<<<<< HEAD
           non_accredited: "No Acreditado"
       service:
          work_flow:
@@ -24,3 +25,6 @@ es:
        gender:
          male: "Masculino"
          female: "Femenino" 
+=======
+          non_accredited: "No Acreditado"
+>>>>>>> 5260d12648973880e3a403d34cec37d9664a3547
