@@ -3,7 +3,7 @@
   <% if service.accepted_adjust? %>
     <button class="tablinks " onclick="openSection(event, 'process_information')">Estado de servicio</button>
   <% end %>
-  <% if service.accepted_contract? %>
+  <% if service.accepted_contract? or service.engaged? or service.completed? or service.final_completed? %>
     <button class="tablinks" onclick="openSection(event, 'contracts')">Contrato</button>
   <% end %>
   <% if service.final_completed? %>

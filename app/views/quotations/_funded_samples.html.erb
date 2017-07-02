@@ -9,7 +9,7 @@
       <th class="funded-sample-table-header is-medium">Subtotal</th>
     </thead>
     <tbody>
-      <% if current_user.client?%>
+      <% if current_user.client? %>
         <%= f.fields_for :sample_preliminaries do |s_p| %>
           <%= render 'client_sample_preliminary_fields', f: s_p %>
         <% end %>
