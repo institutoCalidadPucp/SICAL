@@ -1,15 +1,15 @@
 <div id="terminos-condiciones" class="tabcontent">
-  <% if current_user.client?  and service.accepted_adjust? %>
-    <div class="">
-      <%= f.label :compromiso %>
+  <% if current_user.client? and service.accepted_adjust? %>
+    <div >
+      <h5> Compromiso </h5>
     </div>
-    <br>
     <div class="engagement ">
       <%= render 'engagement' %>
     </div>
+    <br>
     <div class="form-group">
       <div class="col-md-3 col-fom-label">
-        <%= f.label :validacion %>
+        <%= f.label :Validación %>
       </div>
       <div class="col-md-9">
         <label class="radio form-check-label sical-radio-button">
@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="engagement-observation hide">
-      <%= f.label :observaciones %>  
+      <%= f.label :observaciones %>
     </div>
   <% end %>
 </div>
