@@ -1,5 +1,5 @@
 <div class="nested-fields form-group row">
-  <% if @service.assign_sorter? %>
+  <% if @service.assign_sorter?  or @service.classified_to_rework? %>
     <div class="col-md-9">
       <%= f.text_field :description, class: "form-control", required: "required" %>
     </div>

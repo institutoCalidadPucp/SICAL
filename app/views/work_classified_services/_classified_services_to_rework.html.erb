@@ -6,10 +6,18 @@
 
   <div id="sample" class="tabcontent">
     <h3>Custodia de Muestras</h3>
-    <p>Observaciones hechas:</p>
-    <% if current_user.employee? %>
-    <%= render 'form_worker', service: @service, f: f %>
-  <% end %>
+    <div class=" engagement-observation  ">
+      <div class="form-group row">
+        <div class="col-md-3">
+          <%= f.label :Observaciones_Hechas %> 
+        </div>
+        <div class="col-md-9">
+          <%= f.text_field :supervisor_observation, class: "form-control", maxlength:"50" , readonly: true %>
+        </div>
+      </div>
+    </div>
+    <%= render 'add_nested_elements', title: "Muestras", button_message: "Agregar evaluación de la muestra", editable: true, f: f, 'association_insert_node': '.classified-services', fields: :sample_processeds, partial: 'form_worker_check' %>
+
   </div>
   <div class="form-group">
     <div class="text-center save-worker">
