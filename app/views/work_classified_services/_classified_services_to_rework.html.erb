@@ -1,7 +1,15 @@
-<%= nested_form_for @service, url: work_classified_service_path, :wrapper => false,  method: :put do |f| %>    
+<%= nested_form_for @service, url: work_classified_service_path, :wrapper => false,  method: :put do |f| %>
+  <div id="service" class="tabcontent" style="display: block;">
+    <h3>Información</h3>
+      <%= render 'show_basic_information', service: @service, f: f %>
+  </div>
+
   <div id="sample" class="tabcontent">
     <h3>Custodia de Muestras</h3>
-    <%#= render 'form_worker', service: @service, h: f %>
+    <p>Observaciones hechas:</p>
+    <% if current_user.employee? %>
+    <%= render 'form_worker', service: @service, f: f %>
+  <% end %>
   </div>
   <div class="form-group">
     <div class="text-center save-worker">
@@ -10,3 +18,5 @@
     </div>
   </div>
 <% end %>
+
+
