@@ -1,4 +1,6 @@
-<%= render 'add_nested_elements', title: "Muestras", button_message: "", f: f, 'association_insert_node': '.classified-services', fields: :sample_processeds, partial: 'sample_processed_fields' %>
+<div>
+  <%= render 'add_nested_elements', title: "Muestras", button_message: "", editable: false, f: f, 'association_insert_node': '.classified-services', fields: :sample_processeds, partial: 'sample_processed_fields' %>
+</div>
 <div class="form-group">
   <div class="col-md-3 col-fom-label">
     <strong> <%= f.label :Validar_Calificación %></strong>

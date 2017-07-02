@@ -5,7 +5,7 @@
     </div>
 
      <div id="sample" class="tabcontent">
-      <%= render 'add_nested_elements', title: "Muestras", button_message: "Agregar evaluación de la muestra", f: f, 'association_insert_node': '.samples-information', fields: :sample_processeds, partial: 'sample_processed_fields' %>
+      <%= render 'add_nested_elements', title: "Muestras", button_message: "Agregar evaluación de la muestra", editable: true, f: f, 'association_insert_node': '.samples-information', fields: :sample_processeds, partial: 'sample_processed_fields' %>
     </div>
 
     <div class="form-group">
