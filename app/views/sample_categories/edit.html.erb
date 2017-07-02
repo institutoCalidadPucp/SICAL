@@ -31,7 +31,7 @@
           </div>
         </div>    
       <% end %>
-      <%= render 'add_nested_elements', title: "Métodos Asociados", button_message: "Agregar métodos", f: f, 'association_insert_node': '.samples-information', fields: :sample_categoryx_sample_methods, partial: 'sample_categoryx_sample_method_fields' %>
+      <%= render 'add_nested_elements', title: "Métodos Asociados", button_message: "Agregar métodos", editable: true, f: f, 'association_insert_node': '.samples-information', fields: :sample_categoryx_sample_methods, partial: 'sample_categoryx_sample_method_fields' %>
       <div class="form-group">
         <div class="text-center">
           <%= link_to "Cancelar", sample_categories_path, class: "btn btn-primary sical-btn-cancel" %>
