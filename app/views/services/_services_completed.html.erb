@@ -14,7 +14,7 @@
       <%= render 'report_table', work_orders: @work_orders%>
   </div>
 
-   <div id="report-final" class="tabcontent">
+  <div id="report-final" class="tabcontent">
      <h3>Reporte Final</h3>
      <div class="form-group row">
       <label class= "col-md-3 col-form-label">Plantilla Reporte Acreditado</label>
@@ -26,24 +26,22 @@
       </div>
 
       <div class="form-group row">
-       <label class= "col-md-3 col-form-label">Plantilla Reporte no Acreditado</label>
+        <label class= "col-md-3 col-form-label">Plantilla Reporte no Acreditado</label>
         <div class="col-md-9">
            <td><%= link_to "Descarga", @service.laboratory.normal_report_url, class: "btn btn-info btn-sm" %></td>
         </div>
-    </div>
+      </div>
 
-    <div class="text-center">
-      <br></br>
-      <h3>Reporte Final</h4>
-     <td> <%= f.file_field :final_report %></td></td>
-    </div>
+      <div class="text-center">
+        <h3>Reporte Final</h4>
+        <%= f.file_field :final_report %>
+      </div>
 
-    <div class="text-center">
-      <br></br>
-      <h4>Observacion Final</h4>
-      <%= f.text_area :supervisor_observation, :cols => "40", :rows => "5" %>
+      <div class="text-center">
+        <h4>Observacion Final</h4>
+        <%= f.text_area :supervisor_observation, :cols => "40", :rows => "5" %>
+      </div>
     </div>
-  </div>
 
   <div class="form-group">
     <div class="text-center save-worker">
