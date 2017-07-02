@@ -9,6 +9,12 @@
           <%= link_to 'Nuevo Servicio', new_check_service_path, class: "btn btn-primary align-right #{current_user.can_create(@controller) ? "disabled" : ""}" %>
         </div>
       </div>
+      <div class="search-button-wrapper">
+        <a class="btn btn-default" data-toggle="collapse" href="#search">Busqueda avanzada</a>
+      </div>
+      <div class="panel-collapse collapse" id="search">
+          <%= render 'search' %>
+      </div>
       <div class="services-content">
         <div id="services-table">
           <%= render 'services_table', services: @services %>

@@ -1,6 +1,6 @@
 <div class="nested-fields">
   <div class="form-group row">
-    <label class= "col-md-3 col-form-label">Código de la muestra del Cliente</label>
+    <label class= "col-md-3 col-form-label">Código del Cliente</label>
      <div class="col-md-9">
         <%= f.text_field :client_code, class: "form-control", readonly: true %>
     </div>
@@ -29,7 +29,6 @@
         <%= f.collection_select :sample_method_id, @sample_methods, :id, :name, {}, {class: "form-control", disabled: true} %>
     </div>
   </div>
-
   <div class="sample-feature-container col-md-9 offset-md-3">
     <div class="sample-header">
       <span>Más Detalles</span>
