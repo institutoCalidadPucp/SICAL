@@ -1,0 +1,12 @@
+<%= form_for @system_parameter, url: system_parameter_path,  method: :put do |f| %>
+  <% if @system_parameter.can_show_description %>
+    <%= f.label :descripcion %>
+    <%= f.text_field :description %>
+  <% end %>
+  <br>
+  <% if @system_parameter.can_show_values %>
+    <%= f.label :valores %>
+    <%= f.text_field :min %>
+    <%= f.text_field :max %>
+  <% end %>
+<% end %>
