@@ -1,38 +1,35 @@
 <%= nested_form_for  @work_order, url: work_order_path, :wrapper => false,  method: :put do |f| %>
-    <div id="information" class="tabcontent" style="display: block;">
-      <h3>Informacion Cliente</h3>
-        <%= render 'show_basic_information', service: @work_order.sample_processed.service, f: f %>
+  <div id="information" class="tabcontent" style="display: block;">
+    <h3>Informacion Cliente</h3>
+      <%= render 'show_basic_information', service: @work_order.sample_processed.service, f: f %>
+  </div>
+  <div id="custody" class="tabcontent">
+     <h3>Cadena de Custodia</h3>	
+      <%#= render 'form_worker', work_order: work_order, h: f %>
+  </div>
+
+  <div id="report" class="tabcontent">
+    <div class="col-md-12">
+      <div class="form-group row">
+        <div class="col-md-9"><h3>Reporte</h3></div>
+        <div class="col-md-2"><h3>Nro Revision</h3></div>
+        <div class="col-md-1"><h3><%= @work_order.nr_revision %></h3></div> 
+      </div> 
     </div>
-          
-    <div id="custody" class="tabcontent">
-       <h3>Cadena de Custodia</h3>	
-        <%#= render 'form_worker', work_order: work_order, h: f %>
-    </div>  
+    <%= render 'report_employee', work_order: @work_order, f: f, sample: @work_order.sample_processed %>
+    <div class="text-center">
+      <br></br>
+      <h4>Observaciones</h4>
+      <%= f.text_area :supervisor_observation, :cols => "40", :rows => "5" %>
+    </div>
+  </div>
 
-     <div id="report" class="tabcontent">
-      <div class="col-md-12">
-        <div class="form-group row">
-          <div class="col-md-9"><h3>Reporte</h3></div>
-          <div class="col-md-2"><h3>Nro Revision</h3></div>
-          <div class="col-md-1"><h3><%= @work_order.nr_revision %></h3></div> 
-        </div> 
-      </div>
-    
-          <%= render 'report_employee', work_order: @work_order, f: f, sample: @work_order.sample_processed %>
-      <div class="text-center">
-        <br></br>
-        <h4>Observaciones</h4>	     
-        <%= f.text_area :supervisor_observation, :cols => "40", :rows => "5" %>
-      </div>
-    
-    </div>            
-
-    <div class="form-group">
-      <div class="text-center save-worker">
-        <%= link_to "Cancelar", work_order_path, class: "btn btn-primary sical-btn-cancel" %>
-        <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
-      </div>
-    </div>  
+  <div class="form-group">
+    <div class="text-center save-worker">
+      <%= link_to "Cancelar", work_order_path, class: "btn btn-primary sical-btn-cancel" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'} %>
+    </div>
+  </div>
 <% end %>
 
 
