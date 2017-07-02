@@ -26,4 +26,3 @@ test:
 production:
   <<: *default
   database: sical_web
-  g
