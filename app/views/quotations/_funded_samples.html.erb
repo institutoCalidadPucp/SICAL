@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <% if current_user.client?%>
+  <% if current_user.client? and @service.initial_funded? %>
     <div class="form-group row">
       <div class="col-md-3 col-fom-label">
         <%= f.label :Confirmación %>
