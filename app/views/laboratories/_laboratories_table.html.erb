@@ -5,7 +5,6 @@
         <th>Nombre</th>
         <th>Teléfono</th>
         <th>Correo</th>
-        <th>Dirección</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -15,7 +14,6 @@
           <td><%= laboratory.name %></td>
           <td><%= laboratory.phone %></td>
           <td><%= laboratory.email %></td>
-          <td><%= laboratory.address %></td>
           <td>
             <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, laboratory_path(laboratory), class: "btn btn-info btn-sm #{current_user.can_view(@controller) ? '' : 'disabled'}", data: { "toggle" => "tooltip" }, title: "Ver" %>
             <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_laboratory_path(laboratory), class: "btn btn-success btn-sm #{current_user.can_edit(@controller) ? '' : 'disabled'}", data: { "toggle" => "tooltip" }, title: "Editar" %>
