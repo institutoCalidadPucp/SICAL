@@ -16,6 +16,10 @@ class ServicesController < ApplicationController
     @final_completed_services = Service.services_completed current_user
   end
 
+  def search
+    @services = Service.where "created_at >= :start_date AND created_at <= :end_date", {start_date: params[:start_date], end_date: params[:end_date]}   
+  end
+
   def create
     @service = Service.new service_params
     if @service.valid?
