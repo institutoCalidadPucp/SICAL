@@ -3,10 +3,10 @@
     <%= f.text_field :name, readonly: true , class: "form-control"%>
   </td>
   <td class="sample-preliminaries-category-wrapper">
-    <%= f.collection_select :sample_category_id, @sample_categories, :id, :name, { prompt: "" }, { class: "form-control sample-preliminaries-category-select", data: { id: f.object.id } } %>
+    <%= f.collection_select :sample_category_id, @sample_categories, :id, :name, { prompt: "" }, { class: "form-control sample-preliminaries-category-select",:disabled => "disabled",data: { id: f.object.id } } %>
   </td>
   <td class="sample-preliminaries-method-wrapper">
-    <%= f.collection_select :sample_method_id, [], :id, :name, {}, { class: "form-control sample-preliminaries-method-select", id: "sample-preliminaries-method-#{f.object.id}", data: { id: f.object.id } } %>
+    <%= f.collection_select :sample_method_id, [], :id, :name, {}, { class: "form-control sample-preliminaries-method-select",:disabled => "disabled", id: "sample-preliminaries-method-#{f.object.id}", data: { id: f.object.id } } %>
   </td>
   <td class="sample-preliminaries-quantity-wrapper">
     <%= f.text_field :quantity , readonly: true, class: "form-control", id: "sample-preliminaries-quantity-#{f.object.id}" %>
