@@ -11,7 +11,7 @@
         <i class="fa fa-times" aria-hidden="true"></i>
       <% end %>
     </div>
-  <% elsif @service.classified? or @service.accepted_classified? %>
+  <% elsif @service.classified? or @service.accepted_classified? or current_user.client? %>
     <div class="col-md-9">
       <%= f.text_field :description, class: "form-control", required: "required", disabled: true %>
     </div>

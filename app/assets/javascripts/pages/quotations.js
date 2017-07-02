@@ -90,23 +90,4 @@ $("#rejected").on('change', function() {
       substractPreviousSubTotal($targetId);
     }
   });
-
-  $('.sample-proceeds-method-select').on('change', function(e) {
-    var $targetId = $(this).data('id');
-
-    if (e.target.value) {
-      var $unitCostInput = $('#sample-preliminaries-unit-cost-' + $targetId);
-      var $subTotalInput = $('#sample-preliminaries-sub-total-' + $targetId);
-      var $sampleQuantityInput = $('#sample-preliminaries-quantity-' +$targetId);
-      var sampleMethod = sampleMethods[e.target.value];
-      var sampleQuantity = ~~($sampleQuantityInput.attr('value'));
-      
-      totalInputValue += sampleMethod.unit_cost * sampleQuantity;
-      $totalInput.attr('value', currency + totalInputValue);
-      $unitCostInput.attr('value', currency + sampleMethod.unit_cost);
-      $subTotalInput.attr('value', currency + (sampleMethod.unit_cost * sampleQuantity));
-    } else {
-      substractPreviousSubTotal($targetId);
-    }
-  });
 })();
