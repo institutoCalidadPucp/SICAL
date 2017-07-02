@@ -3,15 +3,15 @@
     <div class="tab">
       <button class="tablinks active" onclick="openSection(event, 'information')">Informacion Cliente</button>
       <button class="tablinks active" onclick="openSection(event, 'custody')">Cadena de Custodia</button>
-      <button class="tablinks active" onclick="openSection(event, 'report')">Reporte</button>           
+      <button class="tablinks active" onclick="openSection(event, 'report')">Reporte</button>
     </div>
     <%= render 'work_orders_to_work'%>
-  <% else %>    
+  <% else %>
      <div class="tab">
       <button class="tablinks active" onclick="openSection(event, 'information')">Informacion Cliente</button>
-      <button class="tablinks active" onclick="openSection(event, 'custody')">Cadena de Custodia</button>       
-      <button class="tablinks active" onclick="openSection(event, 'report')">Reporte - Revisión </button>           
+      <button class="tablinks active" onclick="openSection(event, 'custody')">Cadena de Custodia</button>
+      <button class="tablinks active" onclick="openSection(event, 'report')">Reporte - Revisión </button>
     </div>
     <%= render 'work_orders_to_rework'%>
-  <% end %>      
+  <% end %>
 </div>
