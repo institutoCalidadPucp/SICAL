@@ -73,6 +73,13 @@
     </div>
 
     <div class="form-group row">
-      <%= link_to_add_association "", f, :sample_features%>
+       <%= link_to_add_association "", f, :sample_features,
+        render_options: { \
+          locals: {
+            disabled: false, \
+            editable: true, \
+          }, \
+        }, \
+      %>
     </div>
 </div>
