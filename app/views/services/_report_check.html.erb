@@ -17,11 +17,44 @@
     </tbody>
 </table>
  <div class="text-center">
-    <br></br>
     <h4>Observaciones</h4>
     <%= f.text_area :supervisor_observation, :cols => "40", :rows => "5" %>
 </div>
-
-<label class="col-md-3 col-fom-label">Aprobado?</label>
-<%= f.check_box :valid_supervised %>
-</h6>
+<br>
+<div class="form-group">
+  <div class="col-md-3 col-fom-label">
+    <%= f.label :Validación %>
+  </div>
+  <div class="col-md-9">
+    <label class="radio form-check-label sical-radio-button">
+      <span class="icons">
+        <span class="first-icon fa fa-circle-o"></span>
+        <span class="second-icon fa fa-dot-circle-o"></span>
+      </span>
+      <input
+        id="accepted"
+        type="radio"
+        class="form-check-input"
+        data-toggle="radio"
+        name="work_order[valid_supervised]"
+        value="true"
+      >
+      Aceptado
+    </label>
+    <label class="radio form-check-label sical-radio-button">
+      <span class="icons">
+        <span class="first-icon fa fa-circle-o"></span>
+        <span class="second-icon fa fa-dot-circle-o"></span>
+      </span>
+      <input
+        id="rejected"
+        type="radio"
+        class="form-check-input"
+        data-toggle="radio"
+        name="work_order[valid_supervised]"
+        value="false"
+      >
+      No Aceptado
+    </label>
+  </div>
+</div>
