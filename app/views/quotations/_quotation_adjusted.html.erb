@@ -1,5 +1,5 @@
 <% if @service.can_see_quotation_adjust %>
   <div id="adjust_cost" class="tabcontent">
-    <%= render 'add_nested_elements', title: "Muestras", button_message: "Agregar muestra", editable: true, f: f, 'association_insert_node': '.service-adjust', fields: :sample_processeds, partial: 'sample_processed_fields' %>
+    <%= render 'add_nested_elements', title: "Muestras", button_message: "Agregar muestra", editable: false, f: f, 'association_insert_node': '.service-adjust', fields: :sample_processeds, partial: 'sample_processed_fields' %>
   </div>
 <% end %>
