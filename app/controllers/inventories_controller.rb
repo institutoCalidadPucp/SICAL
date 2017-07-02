@@ -22,7 +22,7 @@ class InventoriesController < ApplicationController
       redirect_to inventories_path
     else 
       render :new
-    end  
+    end
   end
 
   def edit

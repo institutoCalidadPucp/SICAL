@@ -1,0 +1,5 @@
+SystemParameter.create(feature: 0, min: 0, max: 5 )
+SystemParameter.create(feature: 1, description: "SICAL" )
+SystemParameter.create(feature: 2, description: "Bienvenido" )
+SystemParameter.create(feature: 3, description: "Terminos y condiciones" )
+SystemParameter.create(feature: 4, min: 0, max: 5 )
