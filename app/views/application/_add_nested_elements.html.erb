@@ -4,7 +4,16 @@
       <%= title %>
     </div>
     <div>
-      <%= link_to_add_association "#{button_message}", f, fields, data: {'association-insertion-method': 'append', 'association-insertion-node': "#{association_insert_node}"}, class: "btn btn-default sical-btn-add-menu btn-add-evalution-sample" %>
+      <%= link_to_add_association "#{button_message}", \
+        f, \
+        fields, \
+        data: { \
+          'association-insertion-method': 'append', \
+          'association-insertion-node': "#{association_insert_node}", \
+          'nested-elements': 0,
+        }, \
+        class: "btn btn-default sical-btn-add-menu btn-add-nested-element" \
+      %>
     </div>
   </div>
   <div class="<%= association_insert_node[1..-1] %>"> 
