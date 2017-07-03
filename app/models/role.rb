@@ -22,7 +22,7 @@ class Role < ApplicationRecord
 
   def set_tab_reference
     self.menu_permits.each do |menu|
-      default_menupermit = MenuPermit.get_default_tab(menu.name)
+      default_menupermit = MenuPermit.get_default_tab(menu.name).first
       menu.tab_reference = default_menupermit.tab_reference
       menu.tab_icon = default_menupermit.tab_icon
     end

@@ -18,7 +18,7 @@ class Service < ApplicationRecord
   scope :own_per_laboratory, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
 
-  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :classified_to_rework, :accepted_classified, :accepted_adjust, :accepted_contract, :rejected_contract, :engaged, :completed,:final_completed]
+  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :accepted_adjust, :accepted_contract, :engaged, :completed,:final_completed]
   enum intern_flow: [:internal_accepted, :internal_rejected]
   enum status: [:active, :inactive]
   mount_uploader :final_report, DocumentUploader
@@ -50,18 +50,9 @@ class Service < ApplicationRecord
     services_per_worker(current_user).assign_sorter
   end
 
-  def self.classified_to_check current_user
-    # Get the services that this supervisor assigned
-    service_per_supervisor(current_user).classified
-  end
-
-  def self.service_classified_to_rework current_user
-    own_per_laboratory(current_user).classified_to_rework
-  end
-
   def self.passed_classification current_user
     #
-    own_per_laboratory(current_user).accepted_classified
+    own_per_laboratory(current_user).classified
   end
 
   def self.adjusted_by_lab_leader current_user
@@ -81,11 +72,11 @@ class Service < ApplicationRecord
   end
 
   def self.services_final_completed current_user
-    own_per_client(current_user).final_completed
+    services_per_client(current_user).final_completed
   end
 
   def can_see_quotation_adjust
-    self.accepted_classified? or self.accepted_adjust? or self.accepted_contract?
+    self.classified? or self.accepted_adjust? or self.accepted_contract?
   end
 
 
@@ -110,21 +101,14 @@ class Service < ApplicationRecord
     self.engaged! if self.accepted_contract?
     
     #
-    self.accepted_adjust! if self.accepted_classified?
-    #lab leader check if the classified work from a employee is correct    
-
-    self.accepted_classified! if self.classified? and self.valid_classified      
-    
-    incredRevision = false
-    if self.classified_to_rework?
-      incredRevision = true
-    end
-    self.classified! if self.classified_to_rework?
-
-    self.classified_to_rework! if (self.classified? and !incredRevision) and !self.valid_classified    
+    self.accepted_adjust! if self.classified?
+    #lab leader check if the classified work from a employee is correct        
+        
+    self.classified! if self.assign_sorter?
 
     #worker fill the classified fields from a sample
-    self.classified! if self.assign_sorter?    
+    self.classified! if self.assign_sorter?
+
     if self.initial_accepted?
       self.supervisor_id = current_user.id
     end
@@ -145,11 +129,10 @@ class Service < ApplicationRecord
     current_user.client? ? self.handling_client_process(current_user) : self.handling_internal_process(current_user)
   end
 
-  def asssign_workers service_params, current_user
+  def asssign_workers_work service_params, current_user
     self.sample_processeds.each.with_index(1) do |sample_processed, index|
       work_order = WorkOrder.new
-      work_order.assign_attr service_params, current_user, sample_processed, index, self
-      work_order.subject = self.subject + sample_processed.pucp_code
+      work_order.assign_attr service_params, current_user, sample_processed, index, self    
       work_order.save if work_order.valid?
     end
   end
@@ -158,5 +141,29 @@ class Service < ApplicationRecord
     contract.page_counter
     contract.render_file File.join(Rails.root, "public/contratos", "ContratoServ-#{self.id}.pdf")
   end
+
+  def asssign_workers_custody service_params, current_user
+    self.sample_preliminaries.each.with_index(1) do |sample_preliminary, index|
+      custody_order = CustodyOrder.new
+      custody_order.assign_attr service_params, current_user, sample_preliminary, index, self      
+      custody_order.save if custody_order.valid?
+    end
+  end
+  
+  def create_sample_processeds params, sample_preliminary, custody_order       
+    sample_processed = SampleProcessed.new 
+    sample_processed.init params, sample_preliminary, custody_order     
+    self.sample_processeds << sample_processed
+  end
+
+  def create_obj current_user, params, sample_preliminary, custody_order       
+    #self.assign_attributes service_params unless self.assign_sorter?
+    if self.valid?
+      self.create_sample_processeds params, sample_preliminary, custody_order
+      if !self.errors.empty?
+        self.errors.add(:sample_processed, message: "Clasificacion de la muestra invalida")                          
+      end
+    end        
+  end 
 end
 
