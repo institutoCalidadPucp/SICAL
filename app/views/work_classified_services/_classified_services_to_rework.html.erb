@@ -1,7 +1,23 @@
-<%= nested_form_for @service, url: work_classified_service_path, :wrapper => false,  method: :put do |f| %>    
+<%= nested_form_for @service, url: work_classified_service_path, :wrapper => false,  method: :put do |f| %>
+  <div id="service" class="tabcontent" style="display: block;">
+    <h3>Información</h3>
+      <%= render 'show_basic_information', service: @service, f: f %>
+  </div>
+
   <div id="sample" class="tabcontent">
     <h3>Custodia de Muestras</h3>
-    <%#= render 'form_worker', service: @service, h: f %>
+    <div class=" engagement-observation  ">
+      <div class="form-group row">
+        <div class="col-md-3">
+          <%= f.label :Observaciones_Hechas %> 
+        </div>
+        <div class="col-md-9">
+          <%= f.text_field :supervisor_observation, class: "form-control", maxlength:"50" , readonly: true %>
+        </div>
+      </div>
+    </div>
+    <%= render 'add_nested_elements', title: "Muestras", button_message: "Agregar evaluación de la muestra", editable: true, f: f, 'association_insert_node': '.classified-services', fields: :sample_processeds, partial: 'form_worker_check' %>
+
   </div>
   <div class="form-group">
     <div class="text-center save-worker">
@@ -10,3 +26,5 @@
     </div>
   </div>
 <% end %>
+
+

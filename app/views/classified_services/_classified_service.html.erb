@@ -38,9 +38,15 @@
     </label>
   </div>
 </div>
-<div class="engagement-observation hide">
-  <%= f.label :observaciones %> 
-  <%= f.text_area :supervisor_observation %> 
+<div class=" engagement-observation hide ">
+  <div class="form-group row">
+    <div class="col-md-3">
+      <%= f.label :Observaciones %> 
+    </div>
+    <div class="col-md-9">
+      <%= f.text_field :supervisor_observation, class: "form-control", maxlength:"100" %>
+    </div>
+  </div>
 </div>
 
 
