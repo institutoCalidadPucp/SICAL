@@ -1,21 +1,16 @@
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th>Descripcion</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @system_parameters.each do |parameter| %>
-        <tr>
-          <td><%= parameter.feature %></td>
-          <td>
-            <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, system_parameter_path(parameter), data: { "toggle" => "tooltip" }, title: "Ver" %>
-            <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_system_parameter_path(parameter), data: { "toggle" => "tooltip" }, title: "Editar" %>        
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<section class="parameters-index">
+  <div class="card">
+    <div class="content">
+      <div class="header card-header-text sical-card-header">
+        <h1 class="sical-card-title">
+          Parámetros del sistema
+        </h1>
+      </div>
+      <div class="parameters-content">
+        <div>
+          <%= render 'parameters_table', system_parameters: @system_parameters %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

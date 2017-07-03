@@ -1,0 +1,25 @@
+<div class="material-datatables">
+  <table id="parameters-table" class="table table-hover sical-data-table sical-data-table" data-placeholder="Buscar Parámetro">
+    <thead>
+      <tr>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @system_parameters.each do |parameter| %>
+        <tr>
+          <td><%= t("activerecord.attributes.system-parameter.feature.#{parameter.feature}") %></td>
+          <td>
+            <%= link_to system_parameter_path(parameter), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip"}, title: "Ver" do %>
+              <i class="fa fa-eye" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to edit_system_parameter_path(parameter), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" do%>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<div>

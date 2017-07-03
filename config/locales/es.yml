@@ -25,4 +25,11 @@ es:
       employee:
        gender:
          male: "Masculino"
-         female: "Femenino" 
+         female: "Femenino"
+      system-parameter:
+        feature:
+          service: "Servicio"
+          name_app: "Nombre de la aplicación"
+          welcome_message: "Mensaje de bienvenida"
+          terms_and_condition: "Términos y condiciones"
+          login_attemps: "Intentos de logueo"

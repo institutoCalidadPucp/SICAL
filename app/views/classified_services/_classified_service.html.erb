@@ -1,14 +1,6 @@
 <div>
-  <div class="samples-title samples-worker col-md-11">
-    Muestras
-  </div>
-  <div class="col-md-1">
-    <%= link_to_add_association "", f, :sample_processeds %>
-  </div>
+  <%= render 'add_nested_elements', title: "Muestras", button_message: "", editable: false, f: f, 'association_insert_node': '.classified-services', fields: :sample_processeds, partial: 'sample_processed_fields' %>
 </div>
-<%= f.fields_for :sample_processeds do |sample| %>
-  <%= render 'sample_processed_fields', f: sample %>
-<% end %>
 <div class="form-group">
   <div class="col-md-3 col-fom-label">
     <strong> <%= f.label :Validar_Calificación %></strong>
@@ -46,9 +38,15 @@
     </label>
   </div>
 </div>
-<div class="engagement-observation hide">
-  <%= f.label :observaciones %> 
-  <%= f.text_area :supervisor_observation %> 
+<div class=" engagement-observation hide ">
+  <div class="form-group row">
+    <div class="col-md-3">
+      <%= f.label :Observaciones %> 
+    </div>
+    <div class="col-md-9">
+      <%= f.text_field :supervisor_observation, class: "form-control", maxlength:"100" %>
+    </div>
+  </div>
 </div>
 
 
