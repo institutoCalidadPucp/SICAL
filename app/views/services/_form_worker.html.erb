@@ -37,7 +37,14 @@
       </div>
       <div class="samples-values">
         <%= f.fields_for :sample_features do |spro_form| %>
-          <%= render 'sample_feature_fields', f: spro_form %>
+          <%= render 'sample_feature_fields', f: spro_form,
+            render_options: { \
+              locals: {
+                disabled: false, \
+                editable: true, \
+              }, \
+            } \
+          %>
         <% end %>
       </div>
     </div>
