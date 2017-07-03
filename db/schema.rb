@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170701071529) do
+
+ActiveRecord::Schema.define(version: 20170629185001) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +40,15 @@ ActiveRecord::Schema.define(version: 20170701071529) do
     t.integer "nr_revision", default: 0
     t.integer "work_flow", default: 0
     t.boolean "valid_supervised", default: false
+  end
+
+  create_table "chain_features", force: :cascade do |t|
+    t.string "concept"
+    t.float "lower_range"
+    t.float "upper_range"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sample_categoryx_sample_method_id"
   end
 
   create_table "features", force: :cascade do |t|

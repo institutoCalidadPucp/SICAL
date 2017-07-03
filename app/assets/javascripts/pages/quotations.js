@@ -79,7 +79,7 @@ $("#rejected").on('change', function() {
       var $unitCostInput = $('#sample-preliminaries-unit-cost-' + $targetId);
       var $subTotalInput = $('#sample-preliminaries-sub-total-' + $targetId);
       var $sampleQuantityInput = $('#sample-preliminaries-quantity-' +$targetId);
-      var sampleMethod = sampleMethods[e.target.value];
+      var sampleMethod = sampleMethods[e.target.value - 1];
       var sampleQuantity = ~~($sampleQuantityInput.attr('value'));
       
       totalInputValue += sampleMethod.unit_cost * sampleQuantity;

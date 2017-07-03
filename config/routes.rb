@@ -53,10 +53,9 @@ Rails.application.routes.draw do
     put 'work_check_update', on: :member
   end
   resources :services do
+    get 'search', on: :collection
     get 'work_check', on: :member
     put 'work_check_update', on: :member
-  end
-  resources :services do
     get 'service_end', on: :member
     put 'service_end_update', on: :member
   end
@@ -76,7 +75,9 @@ Rails.application.routes.draw do
   resources :sample_categories do
     put 'toggle_status', on: :member
   end
-  resources :check_services
+  resources :check_services do
+    get 'search', on: :collection
+  end
   resources :classified_services
   resources :work_classified_services do 
     get 'values', on: :member
