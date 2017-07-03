@@ -5,6 +5,8 @@ MenuPermit.create(name: 'Laboratorios', tab_reference: 'laboratories', tab_icon:
 MenuPermit.create(name: 'Metodos de Ensayo', tab_reference: 'sample_methods', tab_icon: 'ti-receipt', available_for_client: false, order: 6, default: true, full_permit: true)
 MenuPermit.create(name: 'Categoría de Muestra', tab_reference: 'sample_categories', tab_icon: 'ti-ruler', available_for_client: false, order: 7, default: true, full_permit: true)
 MenuPermit.create(name: 'Solicitudes de servicio', tab_reference: 'check_services', tab_icon: 'ti-clipboard', available_for_client: false, order: 7, default: true, full_permit: true)
+MenuPermit.create(name: 'Custodias', tab_reference: 'historic_custodies', tab_icon: 'ti-clipboard', available_for_client: false, order: 7, default: true, full_permit: true)
+MenuPermit.create(name: 'Trabajos', tab_reference: 'historic_works', tab_icon: 'ti-clipboard', available_for_client: false, order: 7, default: true, full_permit: true)
 MenuPermit.create(name: 'Cadena de Custodia', tab_reference: 'classified_services', tab_icon: 'ti-hummer', available_for_client: false, order: 8, default: false, full_permit: true)
 MenuPermit.create(name: 'Orden de Custodia', tab_reference: 'work_classified_services', tab_icon: 'ti-hummer', available_for_client: false, order: 8, default: false, full_permit: true)
 MenuPermit.create(name: 'Solicitudes de servicio', tab_reference: 'services', tab_icon: 'ti-hummer', available_for_client: true, order: 9, default: true, full_permit: true)
