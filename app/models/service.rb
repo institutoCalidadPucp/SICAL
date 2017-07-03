@@ -56,7 +56,7 @@ class Service < ApplicationRecord
   end
 
   def self.service_classified_to_rework current_user
-    own_per_laboratory(current_user).classified_to_rework
+    own_per_laboratory(current_user).classified_to_rework.where(:employee_id => current_user.id)
   end
 
   def self.passed_classification current_user
