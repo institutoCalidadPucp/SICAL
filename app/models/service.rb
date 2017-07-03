@@ -6,6 +6,7 @@ class Service < ApplicationRecord
   belongs_to :employee, required: false, class_name: "User"
   belongs_to :laboratory, required: false
 
+
   has_many :sample_preliminaries
   has_many :sample_processeds
 
@@ -77,6 +78,14 @@ class Service < ApplicationRecord
 
   def can_see_quotation_adjust
     self.classified? or self.accepted_adjust? or self.accepted_contract?
+  end
+
+  def contract_see
+    (self.accepted_contract? or self.engaged? or self.completed? or self.final_completed?)
+  end  
+
+  def state_see
+    (self.accepted_adjust? or contract_see)
   end
 
 

@@ -1,0 +1,40 @@
+<table class="table table-no-bordered table-hover">
+    <thead>
+      <th>Código PUCP</th>
+      <th>Código Cliente</th>
+      <th>Categoria de Muestra</th>
+      <th>Método de Ensayo</th>        
+    </thead>
+    <tbody>
+    <tr>
+        <td><%= sample.pucp_code %></td>
+        <td><%= sample.client_code %></td>        
+        <td><%= sample.sample_category.name %></td>
+        <td><%= sample.sample_method.name %></td>        
+    </tr>
+    </tbody>
+</table>
+<table id="sample-feature" class="table table-hove">
+  <thead>
+    <tr>
+      <th>Nr Muestra</th>
+      <% @cols.length.times do |index| %>
+        <th><%= @cols[index] %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% sample.amount.times do |index1| %>
+      <tr>
+        <td><%= sample.pucp_code + (index1 + 1).to_s %></td>
+        <% @cols.length.times do |index2| %>
+          <td>
+            <div class="form-control">
+              <%= sample.classified_values[index1.to_s+"-"+index2.to_s] %>
+            </div>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

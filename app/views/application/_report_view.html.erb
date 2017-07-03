@@ -1,0 +1,10 @@
+<div id="report-final">
+     <h3>Reporte Final</h3>
+     <% if service.completed? or service.final_completed?%>
+        <div class="text-center">
+        <br></br>        
+        <td>  <%= link_to "Descarga", service.final_report_url, class: "btn btn-info btn-md" %></td></td>
+         <br></br>
+        </div>
+    <% end %>
+</div>

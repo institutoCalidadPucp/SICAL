@@ -5,6 +5,7 @@ class ServicesController < ApplicationController
   before_action :laboratories, only: [:edit, :new, :show]
   before_action :employees, only: [:edit, :new, :show]
   before_action :sample_categories, only: [:new, :create, :edit, :update, :show]
+  before_action :set_custody_table, only: [:work_check]
 
   def index
     @services = Service.services_per_client current_user  
@@ -123,6 +124,7 @@ class ServicesController < ApplicationController
     def set_work_order
       @work_order = WorkOrder.find params[:id]
       @service = @work_order.sample_processed.service
+      @sample_processed = @work_order.sample_processed
     end
 
     def laboratories
@@ -144,4 +146,14 @@ class ServicesController < ApplicationController
         puts 'Error in downloading file'
       end    
     end
+
+  def set_custody_table
+    @rows = @sample_processed.amount        
+    sample_id = @sample_processed.sample_category_id
+    method_id = @sample_processed.sample_method_id
+    cross_table = SampleCategoryxSampleMethod.where(sample_category_id: sample_id).where(sample_method_id: method_id).first
+    @features = ChainFeature.where(sample_categoryx_sample_method_id: cross_table.id)
+    @cols = @features.pluck(:concept)
+  end
+
 end
