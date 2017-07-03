@@ -1,0 +1,21 @@
+<div class="col-md-9">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Código Cliente</th>
+          <th>Código PUCP</th>
+          <th>Descripción</th>
+          <th>Clasificar</th>
+        </tr>
+      </thead>
+      <tbody>     
+        <tr>
+          <td><%= text_field_tag :client_code %></td>
+          <td><%= text_field_tag :pucp_code %></td>
+          <td><%= text_field_tag :description %></td>
+          <td>
+          <div onclick="filling_up_sample(<%= sp.id %>)">Comenzar</div>
+          </td>
+        </tr>        
+    </table>
+</div>

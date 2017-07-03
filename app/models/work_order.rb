@@ -12,7 +12,7 @@ class WorkOrder < ApplicationRecord
   enum work_flow: [:to_work,:to_check,:to_rework,:completed]
   
    def self.work_orders_to_work current_user
-    work_orders_per_employee(current_user).to_work
+    work_orders_per_employee(current_user)
    end
 
    def self.work_orders_to_rework current_user

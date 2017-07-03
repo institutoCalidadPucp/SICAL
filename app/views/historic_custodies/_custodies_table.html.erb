@@ -1,0 +1,24 @@
+<div class="material-datatables">
+  <table id="custodies-datatable" class="table table-hover sical-data-table" data-placeholder="Buscar Custodias">
+    <thead>
+      <tr>
+        <th>Asunto</th>
+        <th>Supervisor</th>
+        <th>Trabajador</th>
+        <th>Fecha Emision</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% custody_orders.each do |custody_order| %>
+        <tr>
+          <td><%= custody_order.subject %></td>
+          <td><%= User.find(custody_order.employee_id).first.name %></td>
+          <td><%= User.find(custody_order.supervisor_id).first.name %></td>
+          <td><%= custody_order.created_at.strftime('%I:%M %p') %></td>         
+          <td><%= custody_order.work_flow %></td>         
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

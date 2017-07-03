@@ -1,11 +1,15 @@
-<div class="card">
+<div class="card"> 
+  <% if @custody_order.to_work? %>
     <div class="tab">
-      <button class="tablinks active" onclick="openSection(event, 'service')">Información</button>
-      <button class="tablinks" onclick="openSection(event, 'sample')">Custodia de Muestras</button>
+      <button class="tablinks active" onclick="openSection(event, 'information')">Informacion Cliente</button>
+      <button class="tablinks" onclick="openSection(event, 'custody')">Cadena de Custodia</button>        
     </div>
-  <% if @service.assign_sorter? %>
-    <%= render 'unclassified_services_to_work'%>
-  <% else %>
-    <%= render 'classified_services_to_rework'%>
+    <%= render 'unclassified_orders_to_work'%>
+  <% else %>   
+  <div class="tab">
+    <button class="tablinks active" onclick="openSection(event, 'information')">Informacion Cliente</button>
+      <button class="tablinks" onclick="openSection(event, 'custody')">Revisión de Custodia</button>        
+    </div>
+    <%= render 'classified_orders_to_rework'%>
   <% end %>
 </div>

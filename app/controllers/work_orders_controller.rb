@@ -27,8 +27,7 @@ class WorkOrdersController < ApplicationController
       else
         render :edit
       end    
-    rescue Exception => e
-      p e.to_s
+    rescue Exception => e   
       redirect_to work_orders_path      
     end
   end

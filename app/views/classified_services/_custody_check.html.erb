@@ -1,0 +1,26 @@
+<table class="table table-no-bordered table-hover">
+    <thead>
+      <th>Código PUCP</th>
+      <th>Código Cliente</th>
+      <th>Categoria de Muestra</th>
+      <th>Método de Ensayo</th>        
+    </thead>
+    <tbody>
+    <tr>
+        <td><%= sample.pucp_code %></td>
+        <td><%= sample.client_code %></td>        
+        <td><%= sample.sample_category.name %></td>
+        <td><%= sample.sample_method.name %></td>        
+    </tr>
+    </tbody>
+</table>
+<%= render 'filling_up_sample_features' %>
+ <div class="text-center">
+    <br></br>
+    <h4>Observaciones</h4>
+    <%= f.text_area :supervisor_observation, :cols => "40", :rows => "5" %>
+</div>
+
+<label class="col-md-3 col-fom-label">Aprobado?</label>
+<%= f.check_box :valid_supervised %>
+</h6>

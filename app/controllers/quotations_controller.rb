@@ -8,11 +8,18 @@ class QuotationsController < ApplicationController
   before_action :set_users_belongs_to_laboratory, only: [:edit, :new]
 
   def index
+
+    # EMPLOYEE - Sees all the new requests (Concurrency kek)
     @initial_unfunded = Service.quotations_without_funded current_user
+    # USER - Accepts the fist quotation 
     @initial_funded = Service.quotations_with_initial_funded current_user
+    # EMPLOYEE - Make the adjustments after the custody chain
     @services_to_adjusts = Service.passed_classification current_user
+    # USER - Accept the final adjustment of the Service
     @adjusted_services = Service.adjusted_by_lab_leader current_user
-    @contract_bound_services = Service.contract_bound current_user
+    # EMPLOYEE - Contract Generation. Assign work orders
+    @contract_bound_services = Service.contract_bound current_user    
+    # In WorkOrder cards
     @services_with_engagements = Service.services_with_engagements current_user
   end
 
@@ -39,7 +46,7 @@ class QuotationsController < ApplicationController
   def update
     begin
     if @service.accepted_contract?
-      @service.asssign_workers params, current_user
+      @service.asssign_workers_work params, current_user
       @service.set_work_flow current_user
       redirect_to  quotations_path
     else

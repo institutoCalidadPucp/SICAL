@@ -9,11 +9,11 @@
       <div class="sical-content">
         <div class="sub-section-cards">
           <div class="col-md-6 sub-section-card is-unread-card">
-            <%= render 'sub_section_card', elements: @services_unclassified, title: "Servicios sin Custodia", controller: "classified_service" %>
+            <%= render 'unclassfied_services_card', elements: @services_unclassified, title: "Servicios sin Custodia" %>
           </div>
           <div class="col-md-6 sub-section-card is-read-card">
-            <%= render 'sub_section_card', elements: @services_classified_to_check, title: "Custodia por Revisar", controller: "classified_service" %>
-          </div>
+            <%= render 'custody_order_to_check_card', elements: @custody_order_to_check, title: "Custodia por Revisar" %>
+          </div>          
         </div>
       </div>
     </div>

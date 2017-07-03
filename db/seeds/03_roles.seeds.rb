@@ -19,3 +19,4 @@ MenuPermit.create(name: 'Custodias', tab_reference: 'historic_custodies', tab_ic
 MenuPermit.create(name: 'Trabajos', tab_reference: 'historic_works', tab_icon: 'ti-clipboard', available_for_client: false, order: 2, default: false, role_id: 2, full_permit: true)
 MenuPermit.create(name: 'Orden de Custodia', tab_reference: 'work_classified_services', tab_icon: 'ti-hummer', available_for_client: false, order: 3, default: false, role_id: 2, full_permit: true)
 MenuPermit.create(name: 'Orden de Trabajo', tab_reference: 'work_orders', tab_icon: 'ti-hummer', available_for_client: false, order: 4, default: false, role_id: 2, full_permit: true)
+
