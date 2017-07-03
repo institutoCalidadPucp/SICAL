@@ -59,6 +59,7 @@ class QuotationsController < ApplicationController
       end 
     end       
     rescue Exception => e
+      p e.to_s
       redirect_to quotations_path      
     end
 

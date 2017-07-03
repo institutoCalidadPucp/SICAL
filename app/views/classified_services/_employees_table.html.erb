@@ -12,7 +12,11 @@
         <td><%= sample_preliminary.description %></td>                          
         <td><%= sample_preliminary.sample_category.name %></td>                          
         <td><%= sample_preliminary.sample_method_name %></td>                          
-        <td><%= sample_preliminary.sample_method_accredited? %></td>                          
+        <td><% if sample_preliminary.sample_method.accredited? %>
+            Si
+        <% else %> 
+            No 
+        <% end %></td>                         
         <td><%= f.collection_select :id, @employees,:id, :name,{}, {name: "selected_employee_#{sample_preliminary.id}"} %></td>                        
       </tr>     
   <% end %>   

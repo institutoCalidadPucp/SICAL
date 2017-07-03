@@ -1,6 +1,5 @@
 class WorkOrder < ApplicationRecord
-  
-  validates :internal_report, :presence => true
+    
   belongs_to :sample_processed
   belongs_to :employee, required: false, class_name: "User"
   belongs_to :service

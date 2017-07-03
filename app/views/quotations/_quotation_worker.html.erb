@@ -13,7 +13,11 @@
           <td><%= sample_processed.description %></td>
           <td><%= sample_processed.sample_category.name %></td>
           <td><%= sample_processed.sample_method_name %></td>
-          <td><%= sample_processed.sample_method_accredited? %></td>
+          <td><% if sample_processed.sample_method.accredited? %>
+            Si
+        <% else %> 
+            No 
+        <% end %></td> 
           <td><%= f.collection_select :id, @employees,:id, :name,{}, {name: "selected_employee_#{index}"} %></td>
         </tr>
     <% end %>
