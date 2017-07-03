@@ -20,6 +20,8 @@ es:
            engaged: "Servicio validado por cliente"
            completed: "Servicio completado"
            final_completed: "Servicio finalizado"
+           initial_rejected: "Servicio rechazado por cliente"
+           contract_rejected: "Servicio rechazado por el cliente"
       employee:
        gender:
          male: "Masculino"
