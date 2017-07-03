@@ -1,5 +1,7 @@
 class WorkOrdersController < ApplicationController
   before_action :set_order, only: [:edit, :update, :destroy, :show]  
+  before_action :sample_categories, only: [:new, :create, :edit, :update, :show]  
+  before_action :set_sample_methods, only: [:edit, :update]
 	
 	def index
     @work_orders_to_work = WorkOrder.work_orders_to_work current_user
@@ -44,5 +46,13 @@ class WorkOrdersController < ApplicationController
 
     def set_order
       @work_order = WorkOrder.find params[:id]
+    end
+
+    def sample_categories
+      @sample_categories = SampleCategory.own_per_user current_user
+    end
+
+    def set_sample_methods
+      @sample_methods = SampleMethod.all
     end
 end

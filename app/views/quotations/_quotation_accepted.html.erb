@@ -1,13 +1,13 @@
 <div id="terminos-condiciones" class="tabcontent">
   <% if current_user.client? and service.accepted_adjust? %>
     <div >
-      <h5> Compromiso </h5>
+      <h4> Compromiso </h4>
     </div>
     <div class="engagement ">
       <%= render 'engagement' %>
     </div>
     <br>
-    <div class="form-group">
+    <div class="form-group row">
       <div class="col-md-3 col-fom-label">
         <%= f.label :Validación %>
       </div>
@@ -44,8 +44,15 @@
         </label>
       </div>
     </div>
-    <div class="engagement-observation hide">
-      <%= f.label :observaciones %>
+    <div class=" engagement-observation hide ">
+      <div class="form-group row">
+        <div class="col-md-3">
+          <%= f.label :observaciones %> 
+        </div>
+        <div class="col-md-9">
+          <%= f.text_field :client_quotation_observation, class: "form-control", maxlength:"50" %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
