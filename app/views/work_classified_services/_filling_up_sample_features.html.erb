@@ -14,7 +14,13 @@
         <% features.length.times do |feature| %>
           <td>
             <div>
-              <input type="number" step="any" class="form-control only-numbers" name="sp_value[<%=sample%>-<%=feature%>]">
+              <input 
+                type="number"
+                step="any"
+                class="form-control only-numbers"
+                name="sp_value[<%=sample%>-<%=feature%>]"
+                required="required"
+              >
             </div>
           </td>
         <% end %>
