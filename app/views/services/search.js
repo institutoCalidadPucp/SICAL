@@ -1,0 +1,1 @@
+$('#service-table').html('<%= escape_javascript(render(partial: "services_table", locals: {services: @services})).html_safe %>');

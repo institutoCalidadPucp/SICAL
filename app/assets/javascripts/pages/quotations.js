@@ -55,8 +55,9 @@ $("#rejected").on('change', function() {
 
         $.each(sampleMethods, function(index, element) {
           $target.append($('<option>', {
-            value: index,
+            value: element.id,
             text:  element.name,
+            order: index,
           }));
         });
 
@@ -79,7 +80,7 @@ $("#rejected").on('change', function() {
       var $unitCostInput = $('#sample-preliminaries-unit-cost-' + $targetId);
       var $subTotalInput = $('#sample-preliminaries-sub-total-' + $targetId);
       var $sampleQuantityInput = $('#sample-preliminaries-quantity-' +$targetId);
-      var sampleMethod = sampleMethods[e.target.value];
+      var sampleMethod = sampleMethods[$(e.target).find(":selected").attr('order')];
       var sampleQuantity = ~~($sampleQuantityInput.attr('value'));
       
       totalInputValue += sampleMethod.unit_cost * sampleQuantity;

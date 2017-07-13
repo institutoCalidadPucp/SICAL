@@ -2,6 +2,7 @@ class WorkClassifiedServicesController < ApplicationController
   before_action :set_service, only: [:edit, :update, :destroy, :show]
   before_action :laboratories, only: [:edit, :new, :show]
   before_action :sample_categories, only: [:new, :create, :edit, :update, :show]  
+  before_action :set_sample_methods, only: [:edit, :update]
 
   def index
     @services_unclassified_to_work = Service.unclassified_to_work current_user  
@@ -45,7 +46,7 @@ class WorkClassifiedServicesController < ApplicationController
   private
 
     def service_params
-      params.require(:service).permit(:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
+      params.require(:service).permit(:valid_classified,:laboratory_id, :user_id, :employee_id, :subject, :pick_up_date, sample_preliminaries_attributes: sample_preliminaries, sample_processeds_attributes: sample_processeds)
     end
 
     def sample_preliminaries
@@ -70,5 +71,9 @@ class WorkClassifiedServicesController < ApplicationController
 
     def laboratories
       @laboratories = Laboratory.all
+    end
+
+    def set_sample_methods
+      @sample_methods = SampleMethod.all
     end
 end

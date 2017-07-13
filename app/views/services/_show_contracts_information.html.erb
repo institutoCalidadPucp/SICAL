@@ -1,1 +1,7 @@
-<%= link_to "Descargar Contrato", File.join("/contratos", "ContratoServ-#{@service.id}.pdf") %>
+<br>
+<div class="form-group row">
+  <label class= "col-md-3 col-form-label">Ver Contrato</label>
+  <div class="col-md-9">
+     <td><%= link_to "Descarga", File.join("/contratos", "ContratoServ-#{@service.id}.pdf"), class: "btn btn-info btn-sm" %></td>
+  </div>
+</div>

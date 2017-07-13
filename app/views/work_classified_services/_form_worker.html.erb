@@ -26,7 +26,21 @@
   <div class="form-group row">
     <%= f.label :Evaluación, class: "col-md-3 col-fom-label" %>
     <div class="col-md-9 text-right" >
-      <p><%= link_to_add_association "Agregar valores", f, :sample_features, data: {'association-insertion-method': 'append', 'association-insertion-node': '.samples-values'}, class: "btn btn-primary sical-btn-add-menu btn-add-sample-value" %></p>
+      <p>
+      <%= link_to_add_association "Agregar valores", \
+        f, \
+        :sample_features, \
+        data: {\
+          'association-insertion-method': 'append', \
+        }, \
+        render_options: { \
+          locals: {
+            disabled: false, \
+            editable: true, \
+          }, \
+        }, \
+        class: "btn btn-primary sical-btn-add-menu btn-add-sample-value" %>
+      </p>
     </div>
   </div>
   <div class="form-group row">

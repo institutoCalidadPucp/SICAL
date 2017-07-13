@@ -8,9 +8,9 @@
   <div class="col-md-5">
     <%= f.text_area :description , class: "form-control service-sample-description", rows:"3",required:"required"%>
   </div>
-   <% if current_user.client? and current_page?(action: 'new') %>
+    <% if current_user.client? and current_page?(action: 'new') %>
       <%= link_to_remove_association f do %>
         <i class="fa fa-times" aria-hidden="true"></i>
       <% end %>  
-   <% end %>
+    <% end %>
 </div>

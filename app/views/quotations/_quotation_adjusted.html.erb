@@ -1,15 +1,5 @@
 <% if @service.can_see_quotation_adjust %>
   <div id="adjust_cost" class="tabcontent">
-    <div>
-      <div class="samples-title samples-worker col-md-11">
-        Muestras
-      </div>
-      <div class="col-md-1">
-        <%= link_to_add_association "", f, :sample_processeds %>
-      </div>
-    </div>
-    <%= f.fields_for :sample_processeds do |sample| %>
-      <%= render 'sample_processed_fields', f: sample %>
-    <% end %>
+    <%= render 'add_nested_elements', title: "Muestras", button_message: "", editable: false, f: f, 'association_insert_node': '.service-adjust', fields: :sample_processeds, partial: 'sample_processed_fields' %>
   </div>
 <% end %>

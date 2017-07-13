@@ -23,10 +23,28 @@
         <%= f.text_field :description, class: "form-control", readonly: true %>
     </div>
   </div>
-  <div class="form-group row">
+  <!-- <div class="form-group row">
     <label class= "col-md-3 col-form-label">Métodos de Muestra</label>
      <div class="col-md-9">
-        <%= f.collection_select :sample_method_id, @sample_methods, :id, :name, {}, {class: "form-control", disabled: true} %>
+        <%#= f.collection_select :sample_method_id, @sample_methods, :id, :name, {}, {class: "form-control", disabled: true} %>
+    </div>
+  </div> -->
+  <div class="sample-feature-container col-md-9 offset-md-3">
+    <div class="sample-header">
+      <span>Más Detalles</span>
+    </div>
+    <div class="sample-feature-content">
+      <div class="row">
+        <div class="col-md-9">
+          <%= f.label :Descripción %>
+        </div>
+        <div class="col-md-3">
+          <%= f.label :Valor %>
+        </div>
+      </div>
+      <%= f.fields_for :sample_features do |s_f| %>
+          <%= render 'sample_feature_fields', f: s_f, disabled: true, editable: false %>
+      <% end %>
     </div>
   </div>
   <div class="form-group row">
@@ -36,43 +54,29 @@
         <thead>
           <tr>
             <th>Costo Unitario</th>
-            <th>Monto</th>
-            <th>Descuento</th>
             <th>Subtotal</th>
+            <th>Descuento</th>
+            <th>Monto</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><%= f.text_field :unit_cost,readonly: true ,class: "form-control"%></td>
-            <td><%= f.text_field :amount, readonly: true , class: "form-control"%></td>
-            <td><%= f.text_field :discount, onlyTwoDecimals: true, class: "form-control only-numbers"%></td>
-            <td><%= f.text_field :subtotal_cost, readonly: true , class: "form-control"%></td>
+            <td>
+              <%=  %>
+              <%= f.text_field :unit_cost, readonly: true ,class: "form-control", value: f.object.sample_method %>
+            </td>
+            <td>
+              <%= f.text_field :amount, readonly: true , class: "form-control" %>
+            </td>
+            <td>
+              <%= f.text_field :discount, onlyTwoDecimals: true, class: "form-control only-numbers" %>
+            </td>
+            <td>
+              <%= f.text_field :subtotal_cost, readonly: true , class: "form-control" %>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-
-    <div class="sample-feature-container col-md-9 offset-md-3">
-      <div class="sample-header">
-        <span>Más Detalles</span>
-      </div>
-      <div class="sample-feature-content">
-        <div class="row">
-          <div class="col-md-9">
-            <%= f.label :Descripción %>
-          </div>
-          <div class="col-md-3">
-            <%= f.label :Valor %>
-          </div>
-        </div>
-        <%= f.fields_for :sample_features do |s_f| %>
-            <%= render 'sample_feature_fields', f: s_f %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <%= link_to_add_association "", f, :sample_features%>
-    </div>
 </div>

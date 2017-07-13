@@ -4,13 +4,13 @@
         <%= render 'show_basic_information', service: @work_order.sample_processed.service, f: f %>
     </div>
 
-    <div id="custody" class="tabcontent">
-       <h3>Custodia de Muestras</h3>	
+    <!--<div id="custody" class="tabcontent">
+       <h3>Custodia de Muestras</h3>
         <%#= render 'form_worker', service: @service, f: f %>
-    </div>
+    </div>-->
 
      <div id="report" class="tabcontent">
-       <h3>Resultados</h3>	
+       <h3>Resultados</h3>
         <%= render 'report_check', work_order: @work_order, sample: @work_order.sample_processed, f: f%>
     </div>
 

@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Parámetros del sistema <small>Ver</small></h1>
+    </div>
+    <div class="form-horizontal validate sical-form sical-form-validated">
+      <%= form_for @system_parameter, url: system_parameter_path,  method: :put do |f| %>
+        <br>
+        <div class="form-group row ">
+          <label class="col-md-3">Parámetro </label>
+          <div class="col-md-9">
+            <%= t("activerecord.attributes.system-parameter.feature.#{@system_parameter.feature}") %>
+          </div>
+        </div>
+        <% if @system_parameter.can_show_description %>
+          <div class="form-group row">
+            <label class="col-md-3">Descripción </label>
+            <div class="col-md-9">
+              <%= @system_parameter.description %>
+            </div>
+          </div>
+        <% end %>
+        <% if @system_parameter.can_show_values %>
+          <div class="form-group row">
+            <label class="col-md-3">Valor mínimo </label>
+            <div class="col-md-9">
+              <%= @system_parameter.min %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3">Valor máximo </label>
+            <div class="col-md-9">
+              <%= @system_parameter.max %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="form-group">
+        <div class="text-center">
+          <%= link_to "Regresar", system_parameters_path, class: "btn btn-primary sical-btn-cancel" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

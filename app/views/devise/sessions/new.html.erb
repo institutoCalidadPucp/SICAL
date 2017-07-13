@@ -33,7 +33,10 @@
             <%= f.submit "Entrar", class: "btn btn-info btn-fill btn-wd login-button"%>
           </div>
         <% end %>
-
+        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+        <iframe src="https://mail.google.com/mail/?logout&hl=en" width="0" height="0">
+          <p>Your browser does not support iframes.</p>
+        </iframe>
         <%#= render "devise/shared/links" %>
       </div>
     </div>

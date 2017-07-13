@@ -9,8 +9,8 @@
       <% if @service.can_see_quotation_adjust %>
         <button class="tablinks" onclick="openSection(event, 'adjust_cost')">Ajuste de costeo</button>
       <% end %>
-      <% if current_user.client?  and @service.accepted_adjust? %>
-        <button class="tablinks" onclick="openSection(event, 'terminos-condiciones')">Terminos y condiciones</button>
+      <% if current_user.client? and @service.accepted_adjust? %>
+        <button class="tablinks" onclick="openSection(event, 'terminos-condiciones')">Términos y condiciones</button>
       <% end %>
       <% if current_user.employee? and @service.accepted_contract? %>
         <button class="tablinks" onclick="openSection(event, 'contract')">Contrato</button>
