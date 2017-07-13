@@ -90,6 +90,7 @@ class WorkClassifiedServicesController < ApplicationController
 
     def set_sample_methods
       @sample_methods = SampleMethod.all
+    end
 
     def set_custody_table
       @rows = @sample_preliminary.quantity
