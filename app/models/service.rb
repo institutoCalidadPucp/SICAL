@@ -88,7 +88,6 @@ class Service < ApplicationRecord
     (self.accepted_adjust? or contract_see)
   end
 
-
   def handling_client_process current_user
     #    
     self.accepted_contract! if self.accepted_adjust?

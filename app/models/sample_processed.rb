@@ -35,4 +35,10 @@ class SampleProcessed < ApplicationRecord
 		self.save
   end
 
+  def handle_subtotal
+    service = self.service
+    sample_position = service.sample_processeds.map(&:id).index(self.id)
+    sample_preliminary = service.sample_preliminaries[sample_position]
+    sample_preliminary.quantity.to_f * sample_preliminary.unit_cost.to_f
+  end
 end
