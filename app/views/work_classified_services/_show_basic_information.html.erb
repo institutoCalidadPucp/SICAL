@@ -11,7 +11,6 @@
       <%= service.laboratory.name %>
   </div>
 </div>
-
 <div class="form-group row">
   <label class= "col-md-3 col-form-label">Fecha Próxima de Recojo</label>
   <div class="col-md-9">
@@ -26,25 +25,22 @@
   </div>
 </div>
 
-<div class="form-group row">
-  <label class= "col-md-3 col-form-label">Muestras</label>
-  <div class="col-md-9">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Cantidad</th>
-          <th>Descripción</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% service.sample_preliminaries.each do |sp|%>
-          <tr>
-            <td><%= sp.name %></td>
-            <td><%= sp.quantity %></td>
-            <td><%= sp.description %></td>
-          </tr>
-        <% end %>
-    </table>
-  </div>
-</div>
+
+<table class="table table-no-bordered table-hover">
+    <thead>
+      <th>Nombre Muestra</th>
+      <th>Cantidad</th>
+      <th>Categoría de Muestra</th>
+      <th>Método de Muestra</th>
+      <th>Descripcion</th>     
+    </thead>
+    <tbody>
+    <tr>
+        <td><%= @sample_preliminary.name %></td>
+        <td><%= @sample_preliminary.quantity %></td>
+        <td><%= @sample_preliminary.name %></td>  
+        <td><%= @sample_preliminary.sample_method.name %></td>  
+        <td><%= @sample_preliminary.description %></td>    
+    </tr>
+    </tbody>
+</table>

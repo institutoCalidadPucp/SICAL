@@ -1,0 +1,27 @@
+<div class="material-datatables">
+  <table id="work-datatable" class="table table-hover sical-data-table" data-placeholder="Buscar Empleados">
+    <thead>
+      <tr>
+        <th>Asunto</th>        
+        <th>Supervisor</th>
+        <th>Trabajador</th>
+        <th>Fecha Creación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% works.each do |work| %>
+        <tr>
+          <td><%= work.name %></td>
+          <td><%= User.find(id: work.supervisor.id).name %></td>
+          <td><%= User.find(id: work.employee.id).name %></td>
+          <td><%= work.role.name %></td>
+          <td>
+          <%= link_to show_historic_works_path(work), class: "btn btn-info btn-sm #{current_user.can_view(@controller) ? '' : 'disabled'}", data: { "toggle" => "tooltip" }, title: "Ver"  do %>
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          <% end %>         
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

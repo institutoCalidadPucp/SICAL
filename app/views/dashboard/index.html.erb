@@ -5,7 +5,7 @@
         <div class="card is-card-square">
           <div class="same-row-items">
             <%= image_tag "#{menu.name.parameterize.underscore + '.svg'}", class: "menu-icon" %>
-            <p class="number-data" id="number">3</p>
+            <p class="number-data" id="number"><%= @values_index[menu.tab_reference] %> </p>
           </div>
             <div class="same-row-items">
               <p class="card-name"><%=menu.name%></p>

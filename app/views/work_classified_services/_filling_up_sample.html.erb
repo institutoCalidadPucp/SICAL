@@ -1,0 +1,23 @@
+  <h3>Informacion de Clasificacion</h3>
+  <div class="col-md-12">
+    <div>
+      <%=  render 'sample_feature_form', sp: @custody_order.sample_preliminary %>
+    </div>
+  </div>
+
+  <h3>Valores de Custodia </h3>
+  <div class="" id="sample-feature-table">
+    <%= render 'filling_up_sample_features', samples: rows, features: cols %>
+  </div>
+
+<script type="text/javascript">
+  function filling_up_sample(id) {
+   $.ajax({
+      type: "get",
+      url:  '/work_classified_services/' + id + '/values',
+      data: {},
+      dataType: 'script'
+    });
+  }
+</script>
+

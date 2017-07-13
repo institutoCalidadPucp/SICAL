@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629185001) do
+ActiveRecord::Schema.define(version: 20170701155736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "chain_features", force: :cascade do |t|
     t.string "concept"
@@ -22,6 +23,21 @@ ActiveRecord::Schema.define(version: 20170629185001) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sample_categoryx_sample_method_id"
+  end
+
+  create_table "custody_orders", force: :cascade do |t|
+    t.integer "employee_id"
+    t.integer "supervisor_id"
+    t.integer "sample_preliminary_id"
+    t.string "supervisor_observation"
+    t.integer "service_id"
+    t.string "subject"
+    t.integer "sample_processed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "nr_revision", default: 0
+    t.integer "work_flow", default: 0
+    t.boolean "valid_supervised", default: false
   end
 
   create_table "features", force: :cascade do |t|
@@ -185,6 +201,8 @@ ActiveRecord::Schema.define(version: 20170629185001) do
     t.bigint "sample_method_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "custody_order_id"
+    t.hstore "classified_values", default: {}, null: false
     t.index ["sample_category_id"], name: "index_sample_processeds_on_sample_category_id"
     t.index ["sample_method_id"], name: "index_sample_processeds_on_sample_method_id"
     t.index ["service_id"], name: "index_sample_processeds_on_service_id"
@@ -219,6 +237,7 @@ ActiveRecord::Schema.define(version: 20170629185001) do
     t.string "final_report"
     t.boolean "final_client_check", default: false
     t.float "total"
+    t.integer "priority"
     t.index ["client_id"], name: "index_services_on_client_id"
     t.index ["employee_id"], name: "index_services_on_employee_id"
     t.index ["laboratory_id"], name: "index_services_on_laboratory_id"
@@ -235,6 +254,15 @@ ActiveRecord::Schema.define(version: 20170629185001) do
     t.string "code"
   end
 
+  create_table "system_parameters", force: :cascade do |t|
+    t.integer "feature"
+    t.float "min"
+    t.float "max"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -246,6 +274,10 @@ ActiveRecord::Schema.define(version: 20170629185001) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "provider"
+    t.string "uid"
+    t.string "oauth_token"
+    t.datetime "oauth_expires_at"
     t.bigint "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

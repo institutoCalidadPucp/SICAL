@@ -1,0 +1,39 @@
+<div class="card-group-title">
+  <%= title %>
+</div>
+<div class="card-group-content">
+  <div>
+    <% if elements.empty?%>
+      <div class="form-group">
+        <div class="col-md-12 col-form-label card-group-empty-message">
+          No tiene mensajes sin leer.
+        </div>
+      </div>
+    <% else %>
+      <div class="card-group-elements">
+        <% elements.each do |element| %>
+          <%= link_to send("edit_classified_service_path", element), class: "card-group-element-wrapper" do %>
+            <div class="card-group-element">
+              <div class="col-md-3 text-center subject-date col-form-label">
+                <span class="card-group-text is-small is-block">
+                  <%= element.created_at.strftime('%I:%M %p') %>
+                </span>
+                <span class="card-group-text is-small is-block">
+                  <%= element.created_at.strftime('%^b %d') %>
+                </span>
+              </div>
+              <div class="col-md-9 col-form-label">
+                <span class="card-group-text is-bold is-block">
+                  Asunto:
+                </span>
+                <span class="card-group-text is-small is-block">
+                  <%= element.subject %>
+                </span>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
