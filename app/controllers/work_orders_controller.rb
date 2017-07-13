@@ -1,13 +1,8 @@
 class WorkOrdersController < ApplicationController
-  before_action :set_order, only: [:edit, :update, :destroy, :show]  
-<<<<<<< HEAD
-  before_action :sample_categories, only: [:new, :create, :edit, :update, :show]  
-  before_action :set_sample_methods, only: [:edit, :update]
-=======
+  before_action :set_order, only: [:edit, :update, :destroy, :show]
   before_action :set_custody_table, only: [:edit]
->>>>>>> 5705b4d6814da2fead15ec9b4187fddae47664d5
-	
-	def index
+  
+  def index
     @work_orders_to_work = WorkOrder.work_orders_to_work current_user
     @work_orders_to_rework = WorkOrder.work_orders_to_rework current_user
   end
@@ -64,7 +59,6 @@ class WorkOrdersController < ApplicationController
       @cols = @features.pluck(:concept)
     end
 
-<<<<<<< HEAD
     def sample_categories
       @sample_categories = SampleCategory.own_per_user current_user
     end
@@ -72,6 +66,4 @@ class WorkOrdersController < ApplicationController
     def set_sample_methods
       @sample_methods = SampleMethod.all
     end
-=======
->>>>>>> 5705b4d6814da2fead15ec9b4187fddae47664d5
 end

@@ -2,13 +2,13 @@
   <% if @custody_order.to_work? %>
     <div class="tab">
       <button class="tablinks active" onclick="openSection(event, 'information')">Informacion Cliente</button>
-      <button class="tablinks" onclick="openSection(event, 'custody')">Cadena de Custodia</button>        
+      <button class="tablinks" onclick="openSection(event, 'custody')">Cadena de Custodia</button>
     </div>
     <%= render 'unclassified_orders_to_work'%>
   <% else %>   
   <div class="tab">
     <button class="tablinks active" onclick="openSection(event, 'information')">Informacion Cliente</button>
-      <button class="tablinks" onclick="openSection(event, 'custody')">Revisión de Custodia</button>        
+      <button class="tablinks" onclick="openSection(event, 'custody')">Revisión de Custodia</button>
     </div>
     <%= render 'classified_orders_to_rework'%>
   <% end %>

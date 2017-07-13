@@ -1,25 +1,23 @@
 <%= form_for @work_order, url: work_order_path, :wrapper => false,  method: :put do |f| %>
-  <div id="information" class="tabcontent" style="display: block;">
-    <h3>Información</h3>
-    <%= render 'show_basic_information', service: @work_order.sample_processed.service, f: f %>
-  </div>
-  <div id="custody" class="tabcontent">
-    <h3>Cadena de Custodia</h3>
-    <div>
-      <%= render 'add_nested_elements', title: "Muestras", button_message: "", editable: false, f: f, 'association_insert_node': '.classified-services', fields: :sample_processeds, partial: 'sample_processed_fields' %>
+    <div id="information" class="tabcontent" style="display: block;">
+      <h3>Informacion Cliente</h3>
+        <%= render 'show_basic_information', service: @work_order.sample_processed.service, f: f %>
     </div>
-  </div>  
-  <div id="report" class="tabcontent">
-    <h3>Reporte</h3>
-    <%= render 'report_employee', sample: @work_order.sample_processed, f: f %>
-  </div>
-  <div class="form-group">
-    <div class="text-center save-worker">
-      <%= link_to "Cancelar", work_order_path, class: "btn btn-primary sical-btn-cancel" %>
-      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
-    </div>
-  </div>
+          
+    <div id="custody" class="tabcontent">
+       <h3>Cadena de Custodia</h3>  
+        <%= render 'view_custody', sample: @sample_processed, h: f %>
+    </div>  
+
+     <div id="report" class="tabcontent">
+       <h3>Reporte</h3> 
+        <%= render 'report_employee', sample: @work_order.sample_processed, f: f %>
+    </div>            
+
+    <div class="form-group">
+      <div class="text-center save-worker">
+        <%= link_to "Cancelar", work_order_path, class: "btn btn-primary sical-btn-cancel" %>
+        <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+      </div>
+    </div>  
 <% end %>
-
-
-
