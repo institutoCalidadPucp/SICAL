@@ -1,5 +1,5 @@
  <%= form_for @service, url: classified_service_path, :wrapper => false,  method: :put do |f| %>
-  <div id="service" class="tabcontent">
+  <div id="service" class="tabcontent" style="display: block;">
     <h3>Información</h3>
     <%= render 'show_basic_information', service: @service, f: f %>
   </div>
