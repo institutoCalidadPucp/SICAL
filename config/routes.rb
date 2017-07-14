@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   end
 
   #WEB ROUTES
-  get 'auth/:provider/callback', to: 'session_google#create'
-  get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'session_google#destroy', as: 'signout'
+  get '200.162.7.62.nip.io:3000/auth/:provider/callback', to: 'session_google#create'
+  get '200.162.7.62.nip.io:3000/auth/failure', to: redirect('/')
+  get '200.162.7.62.nip.io:3000/signout', to: 'session_google#destroy', as: 'signout'
 
   get '/dashboard/index', to: 'dashboard#index', as: 'dash'
 
