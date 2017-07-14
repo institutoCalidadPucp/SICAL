@@ -12,7 +12,7 @@
       <td><%= sample.sample_method.name %></td>
       <td><%= sample.sample_method.accredited? %></td>
       <td><%= f.text_field :report_name %></td>
-      <td><%= f.file_field :internal_report %></td>
+      <td><%= f.file_field :internal_report, required:"required" %></td>
     </tr>
   </tbody>
 </table>

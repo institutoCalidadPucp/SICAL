@@ -18,7 +18,7 @@ class Service < ApplicationRecord
   scope :own_per_laboratory, -> (current_user) {where(laboratory_id: current_user.laboratory)}
 
 
-  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :assign_sorter, :classified, :classified_to_rework, :accepted_classified, :accepted_adjust, :accepted_contract, :rejected_contract, :engaged, :completed,:final_completed]
+  enum work_flow: [:initialized, :initial_funded, :initial_accepted, :initial_rejected, :assign_sorter, :classified, :classified_to_rework, :accepted_classified, :accepted_adjust, :accepted_contract, :contract_rejected, :engaged, :completed,:final_completed]
   enum intern_flow: [:internal_accepted, :internal_rejected]
   enum status: [:active, :inactive]
   mount_uploader :final_report, DocumentUploader
@@ -56,7 +56,7 @@ class Service < ApplicationRecord
   end
 
   def self.service_classified_to_rework current_user
-    own_per_laboratory(current_user).classified_to_rework
+    own_per_laboratory(current_user).classified_to_rework.where(:employee_id => current_user.id)
   end
 
   def self.passed_classification current_user
@@ -90,14 +90,23 @@ class Service < ApplicationRecord
 
 
   def handling_client_process current_user
-    #    
-    self.accepted_contract! if self.accepted_adjust?
-    #client accept the initial funded to his services
-    self.initial_accepted! if self.initial_funded? and self.valid_initial_funded
     #client create a service
     if self.initialized?
       (self.client = current_user) 
       self.save
+    end
+
+    if !self.engagement and self.accepted_adjust?
+      self.contract_rejected! 
+    else 
+      self.accepted_contract! if self.accepted_adjust? and self.engagement
+    end
+    #    
+    #client accept the initial funded to his services
+    if !self.valid_initial_funded and self.initial_funded?
+      self.initial_rejected! 
+    else
+      self.initial_accepted! if self.initial_funded? and self.valid_initial_funded
     end
   end
   
