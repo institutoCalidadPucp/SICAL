@@ -34,7 +34,14 @@
         <% end %>
         <div class="text-center device-google">
           <%= link_to "/auth/google_oauth2", id: "sign_in" do %>
-              <%= image_tag "login_with_google.png", alt: "Login with Google" %>
+            <div class="google-sign-in-button">
+              <div class="google-logo">
+                <%= image_tag "google_logo.png", alt: "Google Logo" %>
+              </div>
+              <div class="google-title">
+                Ingresa con Google
+              </div>
+            </div>
           <% end %>
         </div>
         <iframe src="https://mail.google.com/mail/?logout&hl=en" width="0" height="0">
