@@ -91,4 +91,20 @@ $("#rejected").on('change', function() {
       substractPreviousSubTotal($targetId);
     }
   });
+
+  function applyDiscount(index, value) {
+    var $element = $('#service_sample_processeds_attributes_' + index + '_subtotal_cost');
+    var subTotal = parseFloat($('#service_sample_processeds_attributes_' + index + '_amount').val());
+    var newValue = value ? (subTotal - value) : subTotal;
+
+    $element.val(newValue);
+  }
+
+  $('.quotation-discount-field').each(function(index, element) {
+    $(element).on('keyup', function (e) {
+      var value = parseFloat($(this).val());
+
+      applyDiscount(index, value);
+    })
+  });
 })();

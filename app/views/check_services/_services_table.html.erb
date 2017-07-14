@@ -1,10 +1,11 @@
 <div class="material-datatables">
-  <table class="table table-hover sical-data-table sical-data-table" data-placeholder="Buscar Item">
+  <table class="table table-hover sical-data-table" data-placeholder="Buscar Item">
     <thead>
       <tr>
         <th>Asunto</th>
         <th>Cliente</th>
         <th>Estado</th>
+        <th>Fecha de Recojo</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -14,6 +15,7 @@
               <td><%= service.subject %></td>
               <td><%= service.client.name %></td>
               <td><%= t("activerecord.attributes.service.work_flow.#{service.work_flow}") %></td>
+              <td><%= service.pick_up_date.strftime("%d/%m/%Y") %></td>
               <td>
                 <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, check_service_path(service), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>             
               </td>
