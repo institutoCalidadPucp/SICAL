@@ -43,6 +43,14 @@ class QuotationsController < ApplicationController
     end
   end
 
+  def get_sample_method
+    respond_to do |format|
+      format.json {
+        render json: {sample_method: SampleMethod.find(params[:id])}
+      }
+    end
+  end
+
   def update
     begin
     if @service.accepted_contract?

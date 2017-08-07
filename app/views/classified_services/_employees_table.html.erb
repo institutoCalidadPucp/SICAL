@@ -4,20 +4,20 @@
     <th>Categoría</th>
     <th>Método</th>
     <th>Acreditado</th>
-    <th>Asinación</th>
+    <th>Asignación</th>
   </thead>
   <tbody>    
-  <% @service.sample_preliminaries.each do |sample_preliminary| %>             
+  <% @service.sample_preliminaries.each do |sample_preliminary| %>
       <tr>
-        <td><%= sample_preliminary.description %></td>                          
-        <td><%= sample_preliminary.sample_category.name %></td>                          
-        <td><%= sample_preliminary.sample_method_name %></td>                          
+        <td><%= sample_preliminary.description %></td>
+        <td><%= sample_preliminary.sample_category.name %></td>
+        <td><%= sample_preliminary.sample_method_name %></td>
         <td><% if sample_preliminary.sample_method.accredited? %>
             Si
         <% else %> 
             No 
-        <% end %></td>                         
-        <td><%= f.collection_select :id, @employees,:id, :name,{}, {name: "selected_employee_#{sample_preliminary.id}"} %></td>                        
+        <% end %></td>
+        <td><%= f.collection_select :id, @employees,:id, :name, {}, { name: "selected_employee_#{sample_preliminary.id}", class: "form-control" } %></td>
       </tr>     
   <% end %>   
   </tbody>

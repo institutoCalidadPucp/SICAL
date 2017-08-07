@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   resources :sample_methods
   resources :quotations do
     post 'get_sample_methods', on: :collection
+    post 'get_sample_method', on: :collection
   end
   resources :requests
   resources :results
