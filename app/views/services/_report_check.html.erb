@@ -1,24 +1,24 @@
 <table class="table table-no-bordered table-hover">
-    <thead>
-      <th>Código Muestra</th>
-      <th>Método</th>
-      <th>Acreditado</th>
-      <th>Nombre Reporte</th>
-      <th>Reporte</th>
-    </thead>
-    <tbody>
+  <thead>
+    <th>Código Muestra</th>
+    <th>Método</th>
+    <th>Acreditado</th>
+    <th>Nombre Reporte</th>
+    <th>Reporte</th>
+  </thead>
+  <tbody>
     <tr>
-        <td><%= sample.pucp_code %></td>
-        <td><%= sample.sample_method_name %></td>
-        <td><% if sample.sample_method.accredited? %>
-            Si
-        <% else %> 
-            No 
-        <% end %></td> 
-        <td><%= work_order.report_name %></td>
-        <td><%= link_to "Descarga", work_order.internal_report_url, class: "btn btn-info btn-sm" %></td></td>
+      <td><%= sample.pucp_code %></td>
+      <td><%= sample.sample_method_name %></td>
+      <td><% if sample.sample_method.accredited? %>
+        Si
+      <% else %> 
+        No
+      <% end %></td> 
+      <td><%= work_order.report_name %></td>
+      <td><%= link_to "Descarga", work_order.internal_report_url, class: "btn btn-info btn-sm" %></td></td>
     </tr>
-    </tbody>
+  </tbody>
 </table>
  <div class="text-center">
     <h4>Observaciones</h4>
