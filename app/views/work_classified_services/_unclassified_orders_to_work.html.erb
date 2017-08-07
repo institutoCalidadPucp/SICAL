@@ -1,17 +1,17 @@
 <%= nested_form_for @custody_order, url: work_classified_service_path, :wrapper => false,  method: :put do |f| %>
-    <div id="information" class="tabcontent" style="display: block;">
-      <h3>Información</h3>
-        <%= render 'show_basic_information', service: @custody_order.sample_preliminary.service, sample: @custody_order.sample_preliminary, f: f %>
-    </div>
+  <div id="information" class="tabcontent" style="display: block;">
+    <h3>Información</h3>
+      <%= render 'show_basic_information', service: @custody_order.sample_preliminary.service, sample: @custody_order.sample_preliminary, f: f %>
+  </div>
 
-     <div id="custody" class="tabcontent">
-        <%= render 'filling_up_sample', sp: @custody_order.sample_preliminary, rows: @rows, cols: @cols %>
-    </div>
+  <div id="custody" class="tabcontent">
+    <%= render 'filling_up_sample', sp: @custody_order.sample_preliminary, rows: @rows, cols: @cols %>
+  </div>
 
-    <div class="form-group">
-      <div class="text-center save-worker">
-        <%= link_to "Cancelar", work_classified_services_path, class: "btn btn-primary sical-btn-cancel" %>
-        <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
-      </div>
+  <div class="form-group">
+    <div class="text-center save-worker">
+      <%= link_to "Cancelar", work_classified_services_path, class: "btn btn-primary sical-btn-cancel" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
     </div>
+  </div>
 <% end %>

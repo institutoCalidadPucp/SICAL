@@ -1,7 +1,7 @@
 <div class="form-group row">
   <label class= "col-md-3 col-form-label">Cliente</label>
   <div class="col-md-9">
-      <%= service.client.name %>
+    <%= service.client.name %>
   </div>
 </div>
 
@@ -14,33 +14,32 @@
 <div class="form-group row">
   <label class= "col-md-3 col-form-label">Fecha Próxima de Recojo</label>
   <div class="col-md-9">
-      <%= service.pick_up_date.strftime("%d/%m/%Y") %>
+    <%= service.pick_up_date.strftime("%d/%m/%Y") %>
   </div>
 </div>
 
 <div class="form-group row">
   <label class= "col-md-3 col-form-label">Asunto</label>
   <div class="col-md-9">
-      <%= service.subject %>
+    <%= service.subject %>
   </div>
 </div>
 
-
 <table class="table table-no-bordered table-hover">
-    <thead>
-      <th>Nombre Muestra</th>
-      <th>Cantidad</th>
-      <th>Categoría de Muestra</th>
-      <th>Método de Muestra</th>
-      <th>Descripcion</th>     
-    </thead>
-    <tbody>
+  <thead>
+    <th>Nombre Muestra</th>
+    <th>Cantidad</th>
+    <th>Categoría de Muestra</th>
+    <th>Método de Muestra</th>
+    <th>Descripción</th>
+  </thead>
+  <tbody>
     <tr>
-        <td><%= @sample_preliminary.name %></td>
-        <td><%= @sample_preliminary.quantity %></td>
-        <td><%= @sample_preliminary.name %></td>  
-        <td><%= @sample_preliminary.sample_method.name %></td>  
-        <td><%= @sample_preliminary.description %></td>    
+      <td><%= @sample_preliminary.name %></td>
+      <td><%= @sample_preliminary.quantity %></td>
+      <td><%= @sample_preliminary.name %></td>
+      <td><%= @sample_preliminary.sample_method.name %></td>
+      <td><%= @sample_preliminary.description %></td>
     </tr>
-    </tbody>
+  </tbody>
 </table>

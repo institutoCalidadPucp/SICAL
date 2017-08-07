@@ -11,14 +11,14 @@
       <li>
         <a href="#" class="dropdown-toggle nav-link sical-dropdown" data-toggle="dropdown">
           <i class="ti-user nav-icon"></i>
-          <p class="hidden-lg-up">Profile</p>
+          <p class="hidden-lg-up">Perfil</p>
         </a>
         <div class="dropdown-menu only-dropdown" aria-labelledby="notificationList">
-          <%= link_to "Profile", edit_user_path(current_user), method: :get, class: "dropdown-item" %>
+          <%= link_to "Perfil", edit_user_path(current_user), method: :get, class: "dropdown-item" %>
           <% if session[:user_id].nil? %>
-            <%= link_to "Logout", destroy_user_session_path, :method=>'delete', class: "dropdown-item" %>
+            <%= link_to "Cerrar sesión", destroy_user_session_path, :method=>'delete', class: "dropdown-item" %>
           <% else %>
-            <%= link_to "Logout", signout_path, class: "dropdown-item" %>
+            <%= link_to "Cerrar sesión", signout_path, class: "dropdown-item" %>
           <% end %>
         </div>
       </li>

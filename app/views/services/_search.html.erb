@@ -1,10 +1,10 @@
 <%= form_tag search_services_path, class: "sical-form-validated validate", method: :get, remote: true do %>
-  <div class="row form-group">
-    <div class="form-group search-field row cold-md-5">
-      <div class="col-md-3 col-fom-label">
+  <div class="form-group row">
+    <div class="form-group search-field row col-md-5">
+      <div class="col-md-4 col-fom-label">
         <%= label_tag :fecha_de_inicio %>
       </div>
-      <div class="date col-md-9 input-wrapper">
+      <div class="date col-md-8 input-wrapper">
         <div class="input-group sical-input-group">
           <%= text_field_tag :start_date, nil, class: "form-control sical-datepicker", required: true %>
           <div class="input-group-addon">
@@ -13,11 +13,11 @@
         </div>
       </div>
     </div>
-    <div class="form-group search-field row cold-md-5">
-      <div class="col-md-3 col-fom-label">
+    <div class="form-group search-field row col-md-5">
+      <div class="col-md-4 col-fom-label">
         <%= label_tag :fecha_de_fin %>
       </div>
-      <div class="date col-md-9 input-wrapper">
+      <div class="date col-md-8 input-wrapper">
         <div class="input-group sical-input-group">
           <%= text_field_tag :end_date, nil, class: "form-control sical-datepicker", required: true %>
           <div class="input-group-addon">
@@ -26,10 +26,8 @@
         </div>
       </div>
     </div>
-    <div class="form-group search-field row cold-md-2">
-      <div class="col-sm-12">
-        <%= submit_tag "Search", class:"btn btn-default pull-right" %>
-      </div>
+    <div class="search-field col-md-1">
+      <%= submit_tag "Buscar", class:"btn btn-default" %>
     </div>
   </div>
 <% end %>
