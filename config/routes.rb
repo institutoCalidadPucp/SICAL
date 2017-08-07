@@ -84,5 +84,7 @@ Rails.application.routes.draw do
   end
   resources :historic_custodies 
   resources :system_parameters
+  resources :contact_us
+  resources :audits
 
 end

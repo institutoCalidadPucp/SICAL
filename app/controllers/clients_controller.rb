@@ -18,6 +18,7 @@ class ClientsController < ApplicationController
     @client = User.new client_params
     if (@client.set_password).save
       @client.client!
+      current_user.register_audit "Creacion de clientes", "added", @client.id, @client.full_name, @client.class.to_s
       redirect_to clients_path
     else 
       render :new
@@ -29,6 +30,7 @@ class ClientsController < ApplicationController
 
   def update
     @client.assign_attributes client_params.except(:password)
+    current_user.register_audit "Actualizacion informacion cliente", "updated", @client.id, @client.full_name, @client.class.to_s
     if @client.save
       redirect_to clients_path, notice: 'Rol fue editado exitosamente'
     else 
@@ -42,6 +44,7 @@ class ClientsController < ApplicationController
   end
 
   def toggle_status
+    current_user.register_audit @client.tooltip_status + " cliente", "updated", @client.id, @client.full_name, @client.class.to_s
     @client.change_status
     respond_to do |format|
       format.js

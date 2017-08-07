@@ -16,7 +16,8 @@ class SampleMethodsController < ApplicationController
   def create
     @sample_method = SampleMethod.new sample_method_params.merge(:laboratory_id => current_user.laboratory.id) unless current_user.admin?
     @sample_method = SampleMethod.new sample_method_params unless current_user.employee?   
-    if @sample_method.save      
+    if @sample_method.save
+      current_user.register_audit "Creacion de metodo de muestra", "added", @sample_method.id, @sample_method.name, @sample_method.class.to_s
       redirect_to sample_methods_path
     else
       render :new
@@ -29,6 +30,7 @@ class SampleMethodsController < ApplicationController
   def update
     @sample_method.assign_attributes sample_method_params
     if @sample_method.save
+      current_user.register_audit "Actualizacion de informacion de metodo de muestra", "updated", @sample_method.id, @sample_method.name, @sample_method.class.to_s
       redirect_to sample_methods_path
     else
       render :edit
@@ -37,6 +39,7 @@ class SampleMethodsController < ApplicationController
 
   def toggle_status
     @sample_method.change_status
+    current_user.register_audit  @sample_method.tooltip_status +  " metodo de muestra", "updated", @sample_method.id, @sample_method.name, @sample_category.class.to_s
     respond_to do |format|
       format.js
     end

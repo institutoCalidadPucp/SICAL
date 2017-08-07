@@ -19,6 +19,7 @@ class SampleCategoriesController < ApplicationController
     @sample_category = SampleCategory.new sample_category_params.merge(:laboratory_id => current_user.laboratory.id) unless current_user.admin?
     @sample_category = SampleCategory.new sample_category_params unless current_user.employee?
     if @sample_category.save
+      current_user.register_audit "Creacion de categoria de muestra", "added", @sample_category.id, @sample_category.name, @sample_category.class.to_s
       #@sample_category.set_laboratory(current_user)  unless current_user.admin?
       redirect_to sample_categories_path
     else 
@@ -32,6 +33,7 @@ class SampleCategoriesController < ApplicationController
   def update
     @sample_category.assign_attributes sample_category_params
     if @sample_category.save
+      current_user.register_audit "Actualizacion de informacion de categoria de muestra", "updated", @sample_category.id, @sample_category.name, @sample_category.class.to_s
       redirect_to sample_categories_path
     else 
       render :edit
@@ -40,6 +42,7 @@ class SampleCategoriesController < ApplicationController
 
   def toggle_status
     @sample_category.change_status
+    current_user.register_audit  @sample_category.tooltip_status +  " categoria de muestra", "updated", @sample_category.id, @sample_category.name, @sample_category.class.to_s
     respond_to do |format|
       format.js
     end

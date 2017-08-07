@@ -13,6 +13,7 @@ class Laboratory < ApplicationRecord
 
   has_many :sample_methods
   has_many :requests
+  has_many :contact_us
   has_many :services, dependent: :destroy
   has_many :inventories, dependent: :destroy
   has_many :supplies, dependent: :destroy

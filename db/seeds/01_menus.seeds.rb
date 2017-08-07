@@ -14,3 +14,5 @@ MenuPermit.create(name: 'Orden de Trabajo', tab_reference: 'work_orders', tab_ic
 MenuPermit.create(name: 'Roles', tab_reference: 'roles', tab_icon: 'ti-id-badge', available_for_client: false, order: 12, default: true, full_permit: true)
 MenuPermit.create(name: 'Logs', tab_reference: 'logs', tab_icon: 'ti-write', available_for_client: false, order: 13, default: true, full_permit: true)
 MenuPermit.create(name: 'Paremetros del sistema ', tab_reference: 'system_parameters', tab_icon: 'ti-write', available_for_client: false, order: 13, default: true, full_permit: true)
+MenuPermit.create(name: 'Auditoria ', tab_reference: 'audits', tab_icon: 'ti-write', available_for_client: false, order: 14, default: true, full_permit: true)
+MenuPermit.create(name: 'Contactenos ', tab_reference: 'contact_us/new', tab_icon: 'ti-write', available_for_client: false, order: 15, default: true, full_permit: true)

@@ -18,6 +18,7 @@ class RolesController < ApplicationController
   def create
     @role = Role.new role_params
     if (@role.set_tab_reference).save
+      current_user.register_audit "Creacion de rol", "added", @role.id, @role.name, @role.class.to_s
       @role.set_laboratory(current_user) unless current_user.admin?
       redirect_to roles_path
     else 
@@ -31,6 +32,7 @@ class RolesController < ApplicationController
   def update
     @role.assign_attributes role_params
     if @role.save
+      current_user.register_audit "Actualizacion de informacion de rol", "updated", @role.id, @role.name, @role.class.to_s
       redirect_to roles_path
     else
       render :edit
@@ -44,6 +46,7 @@ class RolesController < ApplicationController
 
   def toggle_status
     @role.change_status
+    current_user.register_audit  @role.tooltip_status +  " rol", "updated", @role.id, @role.name, @role.class.to_s
     respond_to do |format|
       format.js
     end

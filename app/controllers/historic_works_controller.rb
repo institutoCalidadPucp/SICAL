@@ -3,7 +3,7 @@ class HistoricWorksController < ApplicationController
     before_action :set_works, only:[:index]
 
     def index
-        @works = WorkOrder.work_orders_related current_user
+      @works = WorkOrder.work_orders_related current_user
     end
 
     def show
@@ -12,7 +12,7 @@ class HistoricWorksController < ApplicationController
     private 
 
     def set_work
-        @work = WorkOrder.find(params[:id])
+      @work = WorkOrder.find(params[:id])
     end
 
     def set_works

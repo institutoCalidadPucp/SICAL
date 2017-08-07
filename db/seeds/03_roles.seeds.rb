@@ -11,6 +11,8 @@ MenuPermit.create(name: 'Ejecución de servicios', tab_reference: 'services', ta
 MenuPermit.create(name: 'Orden de Trabajo', tab_reference: 'work_orders', tab_icon: 'ti-hummer', available_for_client: false, order: 10, default: false, role_id: 1, full_permit: true)
 MenuPermit.create(name: 'Roles', tab_reference: 'roles', tab_icon: 'ti-id-badge', available_for_client: false, order: 11, default: false, role_id: 1, full_permit: true)
 MenuPermit.create(name: 'Paremetros del sistema ', tab_reference: 'system_parameters', tab_icon: 'ti-write', available_for_client: false, order: 12, default: false, role_id: 1, full_permit: true)
+MenuPermit.create(name: 'Auditoria ', tab_reference: 'audits', tab_icon: 'ti-write', available_for_client: false, order: 14, default: false, role_id: 1, full_permit: true)
+MenuPermit.create(name: 'Contactenos ', tab_reference: 'contact_us/new', tab_icon: 'ti-write', available_for_client: false, order: 15, default: false, role_id: 1, full_permit: true)
 Role.create(name: "Analista", description: "test", laboratory_id: 1, status: 0)
 MenuPermit.create(name: 'Orden de Custodia', tab_reference: 'work_classified_services', tab_icon: 'ti-hummer', available_for_client: false, order: 2, default: false, role_id: 2, full_permit: true)
 MenuPermit.create(name: 'Orden de Trabajo', tab_reference: 'work_orders', tab_icon: 'ti-hummer', available_for_client: false, order: 3, default: false, role_id: 2, full_permit: true)

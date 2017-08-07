@@ -20,6 +20,7 @@ class ClassifiedServicesController < ApplicationController
    begin         
       @service.asssign_workers_custody params, current_user
       @service.set_work_flow current_user
+      current_user.register_audit "Asignacion de trabajo", "updated", @service.id, "Trabajo", @service.class.to_s
       redirect_to  classified_services_path      
     rescue Exception => e      
       redirect_to classified_services_path      
@@ -31,6 +32,7 @@ class ClassifiedServicesController < ApplicationController
       @custody_order.assign_attributes order_params
       if @custody_order.valid?
         @custody_order.handling_internal_process(current_user)
+        current_user.register_audit "Revision de orden de trabajo", "updated", @custody_order.id, "Trabajo", @custody_order.class.to_s
         left_orders = CustodyOrder.custody_orders_per_service(@service).where.not(work_flow: :completed)
         if !left_orders.any?
           @service.handling_internal_process(current_user)

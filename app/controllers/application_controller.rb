@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_variables
-helper_method :current_user
-   def after_sign_in_path_for(resources)
+  helper_method :current_user
+  
+  def after_sign_in_path_for(resources)
     root_path 
   end
 
@@ -26,5 +27,7 @@ helper_method :current_user
     else
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
+    #@current_user.register_audit "Inicio de sesion", "action"
+    #@current_user
   end
 end
