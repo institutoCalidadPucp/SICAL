@@ -16,6 +16,7 @@ class LaboratoriesController < ApplicationController
   def create
     @laboratory = Laboratory.new laboratory_params
     if @laboratory.save
+      current_user.register_audit "Creacion de laboratorio", "added", @laboratory.id, @laboratory.name, @laboratory.class.to_s
       redirect_to laboratories_path
     else
       render :new
@@ -28,6 +29,7 @@ class LaboratoriesController < ApplicationController
   def update
     @laboratory.assign_attributes laboratory_params
     if @laboratory.save
+      current_user.register_audit "Actualizacion de informacion de laboratorio", "updated", @laboratory.id, @laboratory.name, @laboratory.class.to_s
       redirect_to laboratories_path
     else
       render :edit
@@ -36,6 +38,7 @@ class LaboratoriesController < ApplicationController
 
   def toggle_status
     @laboratory.change_status
+    current_user.register_audit  @laboratory.tooltip_status +  " laboratorio", "updated", @laboratory.id, @laboratory.name, @laboratory.class.to_s
     respond_to do |format|
       format.js
     end

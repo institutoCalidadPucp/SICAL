@@ -1,0 +1,16 @@
+<section class="custodies-index">
+  <div class="card">
+    <div class="content">
+      <div class="header card-header-text sical-card-header">
+        <h1 class="sical-card-title">
+          Historial de Custodias
+        </h1>        
+      </div>
+      <div class="custodies-content">
+        <div id="custodies-table">
+          <%= render 'custodies_table', custody_orders: @custody_orders %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -21,10 +21,16 @@ class Role < ApplicationRecord
   end
 
   def set_tab_reference
+    ref = nil
     self.menu_permits.each do |menu|
       default_menupermit = MenuPermit.get_default_tab(menu.name)
-      menu.tab_reference = default_menupermit.tab_reference
-      menu.tab_icon = default_menupermit.tab_icon
+      if default_menupermit.is_a?(ActiveRecord::Base)
+        ref = default_menupermit
+      else
+        ref = default_menupermit.first
+      end
+      menu.tab_reference = ref.tab_reference
+      menu.tab_icon = ref.tab_icon
     end
     self
   end

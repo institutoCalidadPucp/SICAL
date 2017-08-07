@@ -80,15 +80,43 @@ $("#rejected").on('change', function() {
       var $unitCostInput = $('#sample-preliminaries-unit-cost-' + $targetId);
       var $subTotalInput = $('#sample-preliminaries-sub-total-' + $targetId);
       var $sampleQuantityInput = $('#sample-preliminaries-quantity-' +$targetId);
-      var sampleMethod = sampleMethods[$(e.target).find(":selected").attr('order')];
       var sampleQuantity = ~~($sampleQuantityInput.attr('value'));
       
-      totalInputValue += sampleMethod.unit_cost * sampleQuantity;
-      $totalInput.attr('value', currency + totalInputValue);
-      $unitCostInput.attr('value', currency + sampleMethod.unit_cost);
-      $subTotalInput.attr('value', currency + (sampleMethod.unit_cost * sampleQuantity));
+      $.ajax({
+        url: '/quotations/get_sample_method',
+        method: 'POST',
+        dataType: 'json',
+        data: {
+          id: $(e.target).find(":selected").attr('value'),
+          authenticity_token: window._token,
+        },
+        success: function(response) {
+          var sampleMethod = response.sample_method;
+
+          totalInputValue += sampleMethod.unit_cost * sampleQuantity;
+          $totalInput.attr('value', currency + totalInputValue);
+          $unitCostInput.attr('value', currency + sampleMethod.unit_cost);
+          $subTotalInput.attr('value', currency + (sampleMethod.unit_cost * sampleQuantity));
+        }
+      });
     } else {
       substractPreviousSubTotal($targetId);
     }
+  });
+
+  function applyDiscount(index, value) {
+    var $element = $('#service_sample_processeds_attributes_' + index + '_subtotal_cost');
+    var subTotal = parseFloat($('#service_sample_processeds_attributes_' + index + '_amount').val());
+    var newValue = value ? (subTotal - value) : subTotal;
+
+    $element.val(newValue);
+  }
+
+  $('.quotation-discount-field').each(function(index, element) {
+    $(element).on('keyup', function (e) {
+      var value = parseFloat($(this).val());
+
+      applyDiscount(index, value);
+    })
   });
 })();

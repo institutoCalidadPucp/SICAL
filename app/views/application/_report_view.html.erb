@@ -1,0 +1,11 @@
+<br>
+<div id="report-final">
+  <div class="form-group row">
+    <label class= "col-md-3 col-form-label">Reporte final</label>
+     <% if service.completed? or service.final_completed?%>
+        <div class="col-md-9">
+           <td><%= link_to "Descarga", @service.final_report_url, class: "btn btn-info btn-sm" %></td>
+        </div>
+    <% end %>
+  </div>
+</div>

@@ -5,19 +5,21 @@ class ServicesController < ApplicationController
   before_action :laboratories, only: [:edit, :new, :show]
   before_action :employees, only: [:edit, :new, :show]
   before_action :sample_categories, only: [:new, :create, :edit, :update, :show]
+  before_action :set_custody_table, only: [:work_check]
 
   def index
-    @services = Service.services_per_client current_user
-    @unattended_services = Service.passed_classification current_user
+    @services = Service.services_per_client current_user  
     @unclassified_services = Service.inital_funded_accepted current_user
     @work_orders_to_check = WorkOrder.work_orders_to_check current_user
-    @internal_completed_services = Service.services_completed current_user
-    #revisar porque antes era completed_Services
-    @final_completed_services = Service.services_completed current_user
+    @completed_services = Service.services_completed current_user
+    @final_completed_services = Service.services_final_completed current_user
   end
 
   def search
-    @services = Service.where "created_at >= :start_date AND created_at <= :end_date", {start_date: params[:start_date], end_date: params[:end_date]}   
+    start_date = params[:start_date].to_date.strftime("%m/%d/%Y")
+    end_date = params[:end_date].to_date.strftime("%m/%d/%Y")
+
+    @services = Service.where "pick_up_date >= :start_date AND pick_up_date <= :end_date", {start_date: start_date, end_date: end_date}
   end
 
   def create
@@ -125,6 +127,7 @@ class ServicesController < ApplicationController
     def set_work_order
       @work_order = WorkOrder.find params[:id]
       @service = @work_order.sample_processed.service
+      @sample_processed = @work_order.sample_processed
     end
 
     def laboratories
@@ -146,4 +149,14 @@ class ServicesController < ApplicationController
         puts 'Error in downloading file'
       end    
     end
+
+  def set_custody_table
+    @rows = @sample_processed.amount        
+    sample_id = @sample_processed.sample_category_id
+    method_id = @sample_processed.sample_method_id
+    cross_table = SampleCategoryxSampleMethod.where(sample_category_id: sample_id).where(sample_method_id: method_id).first
+    @features = ChainFeature.where(sample_categoryx_sample_method_id: cross_table.id)
+    @cols = @features.pluck(:concept)
+  end
+
 end

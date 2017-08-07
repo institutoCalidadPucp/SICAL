@@ -13,7 +13,7 @@
                 <%= render 'work_orders_to_check_card', elements: @work_orders_to_check, title: "Ordenes por Revisar" %>
               </div>
               <div class="col-md-6 sub-section-card is-read-card">
-                <%= render 'services_completed_card', elements: @final_completed_services, title: "Servicios Terminados" %>
+                <%= render 'services_completed_card', elements: @completed_services, title: "Servicios Terminados" %>
               </div>
             </div>
           </div>
@@ -30,10 +30,8 @@
           </h1>
           <%= link_to 'Nueva Solicitud', new_service_path, class: "btn btn-primary align-right"  %>
         </div>
-        <div class="header card-header-text sical-card-header">
-          <h4 class="sical-card-title">
-            <a data-toggle="collapse" href="#search">Filtrar for fechas</a>
-          </h4>
+        <div class="search-button-wrapper">
+          <a class="btn btn-default" data-toggle="collapse" href="#search">Busqueda avanzada</a>
         </div>
         <div class="panel-collapse collapse" id="search">
           <%= render 'search' %>

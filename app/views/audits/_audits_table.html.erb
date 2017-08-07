@@ -1,0 +1,24 @@
+<div class="material-datatable">
+  <table id="client-table" class="table table-no-bordered table-hover sical-data-table" data-placeholder="Buscar Clientes">
+    <thead>
+      <tr>
+        <th>Evento</th>
+        <th>Accion</th>
+        <th>Autor</th>
+        <th>Recurso</th>
+        <th>Laboratorio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% audits.each do |audit| %>
+        <tr>
+          <td><%= audit.event %></td>
+          <td><%= audit.activity_type %></td>
+          <td><%= audit.author_name %></td>
+          <td><%= audit.resource_type %></td>
+          <td><%= audit.laboratory_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

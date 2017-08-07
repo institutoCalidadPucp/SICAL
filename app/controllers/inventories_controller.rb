@@ -18,7 +18,8 @@ class InventoriesController < ApplicationController
   def create
     @inventory = Inventory.new inventory_params
     @inventory.set_laboratory(current_user)  unless current_user.admin?
-    if @inventory.save     
+    if @inventory.save
+      current_user.register_audit "Creacion de inventario", "added", @inventory.id, @inventory.name, @inventory.class.to_s
       redirect_to inventories_path
     else 
       render :new
@@ -31,6 +32,7 @@ class InventoriesController < ApplicationController
   def update
     @inventory.assign_attributes inventory_params
     if @inventory.save
+      current_user.register_audit "Actualizacion de informacion de inventario", "updated", @inventory.id, @inventory.name, @inventory.class.to_s
       redirect_to inventories_path
     else 
       render :edit
@@ -44,6 +46,7 @@ class InventoriesController < ApplicationController
 
   def toggle_status
     @inventory.change_status
+    current_user.register_audit  @inventory.tooltip_status +  " trabajador", "updated", @inventory.id, @inventory.name, @inventory.class.to_s
     respond_to do |format|
       format.js
     end

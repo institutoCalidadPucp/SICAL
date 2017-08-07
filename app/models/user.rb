@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include ApplicationHelper
+  include AuditManager
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -15,8 +16,8 @@ class User < ApplicationRecord
   enum gender: [:male, :female]
   enum status: [:active, :inactive]
 
-  def can_action tab_reference
-   
+  def full_name
+    name.to_s + last_name.to_s
   end
 
   def can_view tab_reference

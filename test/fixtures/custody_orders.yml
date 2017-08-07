@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 1
+  supervisor_id: 1
+  sample_preliminary_id: 1
+  supervisor_observation: MyString
+  service_id: 1
+  subject: MyString
+  sample_processed_id: 1
+
+two:
+  employee_id: 1
+  supervisor_id: 1
+  sample_preliminary_id: 1
+  supervisor_observation: MyString
+  service_id: 1
+  subject: MyString
+  sample_processed_id: 1

@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="content">
+    <div class="header card-header-text sical-card-header">
+      <h1 class="page-header title sical-card-title">Hola <%= current_user.full_name %> cuentanos que necesitas</h1>
+    </div>
+    <%= render 'form', contact: @contact_us, method: :post, path: contact_us_path %>
+  </div>
+</div>

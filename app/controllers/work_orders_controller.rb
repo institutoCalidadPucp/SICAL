@@ -1,9 +1,8 @@
 class WorkOrdersController < ApplicationController
-  before_action :set_order, only: [:edit, :update, :destroy, :show]  
-  before_action :sample_categories, only: [:new, :create, :edit, :update, :show]  
-  before_action :set_sample_methods, only: [:edit, :update]
-	
-	def index
+  before_action :set_order, only: [:edit, :update, :destroy, :show]
+  before_action :set_custody_table, only: [:edit]
+  
+  def index
     @work_orders_to_work = WorkOrder.work_orders_to_work current_user
     @work_orders_to_rework = WorkOrder.work_orders_to_rework current_user
   end
@@ -29,11 +28,12 @@ class WorkOrdersController < ApplicationController
       else
         render :edit
       end    
-    rescue Exception => e
-      p e.to_s
+    rescue Exception => e   
       redirect_to work_orders_path      
     end
   end
+
+
 
   private
     def order_params
@@ -46,6 +46,17 @@ class WorkOrdersController < ApplicationController
 
     def set_order
       @work_order = WorkOrder.find params[:id]
+      @sample_processed = @work_order.sample_processed
+    end
+
+
+    def set_custody_table
+      @rows = @sample_processed.amount        
+      sample_id = @sample_processed.sample_category_id
+      method_id = @sample_processed.sample_method_id
+      cross_table = SampleCategoryxSampleMethod.where(sample_category_id: sample_id).where(sample_method_id: method_id).first
+      @features = ChainFeature.where(sample_categoryx_sample_method_id: cross_table.id)
+      @cols = @features.pluck(:concept)
     end
 
     def sample_categories

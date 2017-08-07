@@ -23,6 +23,7 @@ class EmployeesController < ApplicationController
     @employee.set_laboratory(current_user)  unless current_user.admin?
     if (@employee.set_password).save
       @employee.employee!
+      current_user.register_audit "Creacion de trabajador", "added", @employee.id, @employee.full_name, @employee.class.to_s
       redirect_to employees_path        
     else
       render :new        
@@ -31,6 +32,7 @@ class EmployeesController < ApplicationController
 
   def update    
     if @employee.update employee_params.except(:password)
+      current_user.register_audit "Actualizacion de informacion de trabajador", "updated", @employee.id, @employee.full_name, @employee.class.to_s
       redirect_to employees_path    
     else
       render :edit         
@@ -39,6 +41,7 @@ class EmployeesController < ApplicationController
 
   def toggle_status
     @employee.change_status
+    current_user.register_audit  @employee.tooltip_status +  " trabajador", "updated", @employee.id, @employee.full_name, @employee.class.to_s
     respond_to do |format|
       format.js
     end

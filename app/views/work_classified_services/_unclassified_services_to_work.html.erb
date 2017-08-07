@@ -1,15 +1,19 @@
-<%= nested_form_for @service, url: work_classified_service_path, :wrapper => false,  method: :put do |f| %>
-  <div id="service" class="tabcontent" style="display: block;">
-    <h3>Información</h3>
-      <%= render 'show_basic_information', service: @service, f: f %>
-  </div>
-   <div id="sample" class="tabcontent">
-    <%= render 'add_nested_elements', title: "Muestras", button_message: "Agregar evaluación de la muestra", editable: true, f: f, 'association_insert_node': '.samples-information', fields: :sample_processeds, partial: 'sample_processed_fields' %>
-  </div>
-  <div class="form-group">
-    <div class="text-center save-worker">
-      <%= link_to "Cancelar", work_classified_services_path, class: "btn btn-primary sical-btn-cancel" %>
-      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+<%= form_tag work_classified_service_path, method: :put do %>
+    <div id="service" class="tabcontent" style="display: block;">
+      <h3>Información</h3>
+        <%= render 'show_basic_information', service: @service %>
+    </div>
+
+     <div id="sample" class="tabcontent">
+      <h3>Muestras</h3>
+      <%= render 'filling_up_sample', service: @service, rows: @rows, cols: @cols %>
+    </div>
+
+    <div class="form-group">
+      <div class="text-center save-worker">
+        <%= link_to "Cancelar", work_classified_services_path, class: "btn btn-primary sical-btn-cancel" %>
+        <%= submit_tag "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+      </div>
     </div>
   </div>
 <% end %>

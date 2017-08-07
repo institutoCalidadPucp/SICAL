@@ -48,6 +48,10 @@ Rails.application.routes.draw do
   resources :sample_methods do
     put 'toggle_status', on: :member
   end
+  resources :classified_services do
+    get 'work_check', on: :member
+    put 'work_check_update', on: :member
+  end
   resources :services do
     get 'search', on: :collection
     get 'work_check', on: :member
@@ -61,6 +65,7 @@ Rails.application.routes.draw do
   resources :sample_methods
   resources :quotations do
     post 'get_sample_methods', on: :collection
+    post 'get_sample_method', on: :collection
   end
   resources :requests
   resources :results
@@ -75,6 +80,12 @@ Rails.application.routes.draw do
     get 'search', on: :collection
   end
   resources :classified_services
-  resources :work_classified_services  
+  resources :work_classified_services do 
+    get 'values', on: :member
+  end
+  resources :historic_custodies 
   resources :system_parameters
+  resources :contact_us
+  resources :audits
+
 end

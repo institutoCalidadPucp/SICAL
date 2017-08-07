@@ -10,7 +10,11 @@
     <tr>
         <td><%= sample.pucp_code %></td>
         <td><%= sample.sample_method_name %></td>
-        <td><%= sample.sample_method_accredited? %></td>
+        <td><% if sample.sample_method.accredited? %>
+            Si
+        <% else %> 
+            No 
+        <% end %></td> 
         <td><%= work_order.report_name %></td>
         <td><%= link_to "Descarga", work_order.internal_report_url, class: "btn btn-info btn-sm" %></td></td>
     </tr>

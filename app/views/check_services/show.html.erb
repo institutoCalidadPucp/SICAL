@@ -7,7 +7,11 @@
     <div class="tab">
       <button class="tablinks active" onclick="openSection(event, 'basic_information')">Información</button>
       <!--<button class="tablinks " onclick="openSection(event, 'process_information')">Estado de servicio</button>-->
-      <% if @service.accepted_contract? or @service.engaged? or @service.completed? or @service.final_completed? %>
+      <%# if @service.accepted_contract? or @service.engaged? or @service.completed? or @service.final_completed? %>
+      <% if @service.state_see %>
+        <%#button class="tablinks " onclick="openSection(event, 'process_information')">Estado de servicio</button%>
+      <% end %>
+      <% if @service.contract_see %>
         <button class="tablinks" onclick="openSection(event, 'contracts')">Contrato</button>
       <% end %>
       <% if @service.final_completed? %>
@@ -27,7 +31,7 @@
     </div>
 
     <div id="results" class="tabcontent">
-      <%= render "show_results_information", service: @service%>
+      <%= render "report_view", service: @service%>
     </div>
 
     <div class="sical-form-buttons">

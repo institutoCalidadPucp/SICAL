@@ -12,8 +12,9 @@ class RequestsController < ApplicationController
   end
 
   def create
-     @requests = Request.new request_params
+    @request = Request.new request_params
     if @request.save
+      current_user.register_audit "Creacion de solicitud de orden de trabajo", "added", @request.id, @request.tittle, @request.class.to_s
       redirect_to requests_path
     else 
       render :new
@@ -29,6 +30,7 @@ class RequestsController < ApplicationController
   def update
     @request.assign_attributes laboratory_params
     if @request.save
+      current_user.register_audit "Actualizacion de informacion de solicitud de orden de trabajo", "updated", @request.id, @request.tittle, @request.class.to_s
       redirect_to request_path, notice: 'Solicitud de servicio fue editada exitosamente'
     else 
       render :edit
@@ -37,6 +39,7 @@ class RequestsController < ApplicationController
   
   def toggle_status
     @request.change_status
+    current_user.register_audit  @request.tooltip_status +  " Solicitud de orden de trabajo", "updated", @request.id, @request.tittle, @request.class.to_s
     respond_to do |format|
       format.js
     end

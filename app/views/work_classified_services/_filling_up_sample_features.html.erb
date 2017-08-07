@@ -1,0 +1,30 @@
+<table id="sample-feature" class="table table-hove">
+  <thead>
+    <tr>
+      <th>Nr Muestra</th>
+      <% features.length.times do |index| %>
+        <th><%= features[index] %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% samples.times do |sample| %>
+      <tr>
+        <td><%= sample + 1 %></td>
+        <% features.length.times do |feature| %>
+          <td>
+            <div>
+              <input 
+                type="number"
+                step="any"
+                class="form-control only-numbers"
+                name="sp_value[<%=sample%>-<%=feature%>]"
+                required="required"
+              >
+            </div>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="card sical-login">
     <div class="login-title"><h1>Inicio de Sesión</h1></div>
@@ -33,7 +32,18 @@
             <%= f.submit "Entrar", class: "btn btn-info btn-fill btn-wd login-button"%>
           </div>
         <% end %>
-        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+        <div class="text-center device-google">
+          <%= link_to "/auth/google_oauth2", id: "sign_in" do %>
+            <div class="google-sign-in-button">
+              <div class="google-logo">
+                <%= image_tag "google_logo.png", alt: "Google Logo" %>
+              </div>
+              <div class="google-title">
+                Ingresa con Google
+              </div>
+            </div>
+          <% end %>
+        </div>
         <iframe src="https://mail.google.com/mail/?logout&hl=en" width="0" height="0">
           <p>Your browser does not support iframes.</p>
         </iframe>
@@ -41,4 +51,4 @@
       </div>
     </div>
   </div>
-</div> 
+</div>

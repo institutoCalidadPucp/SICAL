@@ -10,9 +10,13 @@
     <tr>
       <td><%= sample.pucp_code %></td>
       <td><%= sample.sample_method.name %></td>
-      <td><%= sample.sample_method.accredited? %></td>
+      <td><% if sample.sample_method.accredited? %>
+          Si
+      <% else %> 
+          No 
+      <% end %></td>
       <td><%= f.text_field :report_name %></td>
       <td><%= f.file_field :internal_report %></td>
     </tr>
-  </tbody>
-</table>
+    </tbody>
+</table>  

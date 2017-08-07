@@ -1,21 +1,22 @@
 <section class="requests-index">
-  <div class="card">
-    <div class="content">
-      <div class="header card-header-text sical-card-header">
-        <h1 class="sical-card-title">
-          Orden de Custodia
-        </h1>
-      </div>
-      <div class="sical-content">
-        <div class="sub-section-cards">
-          <div class="col-md-6 sub-section-card is-unread-card">
-            <%= render 'sub_section_card', elements: @services_unclassified_to_work, title: "Ordenes por Trabajar", controller: "work_classified_service" %>
-          </div>
-          <div class="col-md-6 sub-section-card is-read-card">
-            <%= render 'sub_section_card', elements: @services_classified_to_rework, title: "Ordenes por Revisar", controller: "work_classified_service" %>
+
+    <div class="card">
+      <div class="content">
+        <div class="header card-header-text sical-card-header">
+          <h1 class="sical-card-title">
+            Orden de Custodia
+          </h1>
+        </div>
+        <div class="sical-content">
+          <div class="sub-section-cards">
+            <div class="col-md-6 sub-section-card is-unread-card">
+              <%= render 'sub_section_card', elements: @custody_orders_to_work, title: "Ordenes por Trabajar", controller: "work_classified_service" %>
+            </div>
+            <div class="col-md-6 sub-section-card is-read-card">
+              <%= render 'sub_section_card', elements: @custody_orders_to_rework, title: "Ordenes por Revisar", controller: "work_classified_service" %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </section>
