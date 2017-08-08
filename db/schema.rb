@@ -10,11 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170701155736) do
+ActiveRecord::Schema.define(version: 20170807160637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "audits", force: :cascade do |t|
+    t.string "event", null: false
+    t.integer "activity_type", null: false
+    t.integer "author_id"
+    t.string "author_type"
+    t.string "author_name"
+    t.integer "resource_id"
+    t.string "resource_name"
+    t.string "resource_type"
+    t.integer "laboratory_id"
+    t.string "laboratory_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "chain_features", force: :cascade do |t|
     t.string "concept"
@@ -23,6 +38,20 @@ ActiveRecord::Schema.define(version: 20170701155736) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sample_categoryx_sample_method_id"
+  end
+
+  create_table "contact_us", force: :cascade do |t|
+    t.bigint "laboratory_id"
+    t.string "subject"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["laboratory_id"], name: "index_contact_us_on_laboratory_id"
+  end
+
+  create_table "contact_us_mailers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "custody_orders", force: :cascade do |t|

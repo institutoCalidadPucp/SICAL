@@ -1,10 +1,14 @@
-<%= form_for contact, url: path, method: method  do |f| %>
+<%= form_for contact, url: path, method: method, \
+    html: {\
+      class: "form-horizontal validate sical-form sical-form-validated", \
+      id: "contact-us-form"\
+    } do |f| %>
   <div class="form-group row">
     <div class="col-md-3 col-fom-label">
       <%= f.label :subject %>
     </div>
     <div class="col-md-9 input-wrapper">
-      <%= f.text_field :subject, class: "form-control" %>
+      <%= f.text_field :subject, class: "form-control", required: "required" %>
     </div>
   </div>
   <div class="form-group row">
@@ -12,7 +16,7 @@
       <%= f.label :message %>
     </div>
     <div class="col-md-9 input-wrapper">
-      <%= f.text_field :message, class: "form-control" %>
+      <%= f.text_area :message, class: "form-control role-description", rows: 5, required: "required" %>
     </div>
   </div>
   <div class="form-group row">
@@ -20,13 +24,12 @@
       <%= f.label :laboratorio %>
     </div>
     <div class="col-md-9 input-wrapper">
-      <%= f.collection_select :laboratory_id, @laboratories, :id, :name, class: "form-control"  %>
+      <%= f.collection_select :laboratory_id, @laboratories, :id, :name, { }, class: "form-control", required: "required" %>
     </div>
   </div>  
   <div class="sical-form-buttons">
     <div class="text-center">
-      <%= link_to "Cancelar", contact_us_path, class: "btn btn-primary sical-btn-cancel" %>
-      <%= f.submit "Guardar", class: "btn btn-primary sical-submit-btn", data: {disable_with: 'Please Wait...'}  %>
+      <%= f.submit "Enviar", class: "btn btn-primary sical-submit-btn", data: {disable_with: 'Please Wait...'}  %>
     </div>
   </div>
 <% end %>
