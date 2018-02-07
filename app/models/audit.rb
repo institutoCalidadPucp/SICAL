@@ -1,9 +1,15 @@
 class Audit < ApplicationRecord
+
+  ACTIVITY_HASH = {"action": "Realizando un","added": "Creando un", "deleted": "Eliminando un", "updated": "Actualizando un", "submitted": "Registrando un" }
+
   before_create :set_laboratory
 
-  enum activity_type: [:action, :added, :deleted, :failed, :passed, :submitted, :updated, :view]
+  enum activity_type: [:action, :added, :deleted, :submitted, :updated]
 
 
+  def self.activities
+    ACTIVITY_HASH  
+  end
 
 
   private
