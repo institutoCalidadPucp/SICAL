@@ -10,29 +10,18 @@ class Role < ApplicationRecord
   accepts_nested_attributes_for :menu_permits, reject_if: :all_blank, allow_destroy: true
 
   enum status: [:active, :inactive]
-
   
   def self.own_per_user current_user
-    if current_user.admin?
-      all
-    else
-      where(laboratory_id: current_user.laboratory)
-    end
+    roles = current_user.admin? ? all : where(laboratory_id: current_user.laboratory)
   end
 
+  def valid
+    set_tab_reference
+    save
+  end
+  
   def set_tab_reference
-    ref = nil
-    self.menu_permits.each do |menu|
-      default_menupermit = MenuPermit.get_default_tab(menu.name)
-      if default_menupermit.is_a?(ActiveRecord::Base)
-        ref = default_menupermit
-      else
-        ref = default_menupermit.first
-      end
-      menu.tab_reference = ref.tab_reference
-      menu.tab_icon = ref.tab_icon
-    end
-    self
+    self.menu_permits.update_attributes
   end
 
   def menus
