@@ -17,8 +17,8 @@ class RolesController < ApplicationController
 
   def create
     @role = Role.new role_params
-    if (@role.set_tab_reference).save
-      current_user.register_audit "Creacion de rol", "added", @role.id, @role.name, @role.class.to_s
+    if @role.valid
+      current_user.register_audit("Creacion de rol", "added", @role.id, @role.name, @role.class.to_s)
       @role.set_laboratory(current_user) unless current_user.admin?
       redirect_to roles_path
     else 

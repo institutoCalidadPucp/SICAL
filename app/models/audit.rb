@@ -1,5 +1,4 @@
 class Audit < ApplicationRecord
-   #validates :event, :activity_type, presence: true
   before_create :set_laboratory
 
   enum activity_type: [:action, :added, :deleted, :failed, :passed, :submitted, :updated, :view]
