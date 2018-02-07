@@ -4,6 +4,9 @@ class Audit < ApplicationRecord
 
   enum activity_type: [:action, :added, :deleted, :failed, :passed, :submitted, :updated, :view]
 
+
+
+
   private
     def set_laboratory
       user = User.find self.author_id
