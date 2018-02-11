@@ -6,7 +6,10 @@
           Empleados
         </h1>
         <div>
-          <%= link_to 'Nuevo Empleado', new_employee_path, class: "btn btn-primary align-right #{current_user.can_create(@controller) ? '' : 'disabled'}" %>
+          <%= link_to 'Nuevo Empleado',
+            new_employee_path,
+            class: "btn btn-primary align-right #{current_user.can_create(@controller) ? '' : 'disabled'}"
+          %>
         </div>
       </div>
       <div class="employees-content">

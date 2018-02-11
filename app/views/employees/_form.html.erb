@@ -1,8 +1,21 @@
-<%= form_for employee, url: path, method: method, :html => { class: "form-horizontal validate sical-form sical-form-validated", id: "employee-form" } do |f| %>
+<%= form_for employee,
+  url: path,
+  method: method,
+  :html => {
+    class: "form-horizontal validate sical-form sical-form-validated",
+    id: "employee-form"
+  } do |f| %>
   <% if @employee.errors.any? %>
     <% @employee.errors.full_messages.each do |m| %>
       <div class="alert alert-danger">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+        <a
+           href="#"
+           class="close"
+           data-dismiss="alert"
+           aria-label="close"
+           title="close">
+          ×
+        </a>
         </button>
         <span>
           <b> Error - </b> <%= m %>
@@ -23,7 +36,10 @@
       <%= f.label :Apellido %>
     </div>
     <div class="col-md-9 input-wrapper">
-      <%= f.text_field :last_name, class: "form-control", required: "required" %>
+      <%= f.text_field :last_name,
+        class: "form-control",
+        required: "required"
+      %>
     </div>
   </div>
   <div class="form-group row">
@@ -31,7 +47,11 @@
       <%= f.label :Correo_Electrónico%>
     </div>
     <div class="col-md-9 input-wrapper">
-      <%= f.text_field :email, class: "form-control", email: "true", required: "required" %>
+      <%= f.text_field :email,
+        class: "form-control",
+        email: "true",
+        required: "required"
+      %>
     </div>
   </div>
   <div class="form-group row">
@@ -47,7 +67,12 @@
       <%= f.label :Teléfono %>
     </div>
     <div class="col-md-9 input-wrapper">
-      <%= f.text_field :phone, class: "form-control only-numbers", minLength: "7", maxLength: "9", required: "required" %>
+      <%= f.text_field :phone,
+        class: "form-control only-numbers",
+        minLength: "7",
+        maxLength: "9",
+        required: "required"
+      %>
     </div>
   </div>
   <div class="form-group row">
@@ -56,7 +81,14 @@
     </div>
     <div class="date col-md-9 input-wrapper">
       <div class="input-group sical-input-group">
-        <%= f.text_field :date_of_birth, value: employee.date_of_birth ? employee.date_of_birth.strftime("%d/%m/%Y") : "", class: "form-control sical-datepicker", required: "required", date: true, birth: true, onlyAdult: true %>
+        <%= f.text_field :date_of_birth,
+            value: employee.date_of_birth ? employee.date_of_birth.strftime("%d/%m/%Y") : "",
+            class: "form-control sical-datepicker",
+            required: "required",
+            date: true,
+            birth: true,
+            onlyAdult: true
+        %>
         <div class="input-group-addon">
           <i class="fa fa-calendar"></i>
         </div>
@@ -70,14 +102,19 @@
     <div class="col-md-9 input-wrapper">
       <div class="employee-gender-options">
         <% User.genders.keys.each do |gender|  %>
-          <%= f.label gender.capitalize, class: "radio form-check-label sical-radio-button #{employee.gender == gender ? "checked" : ""}" do %>
-            <%= f.radio_button :gender, gender, class: "form-check-input sical-input-radio-button", required: "required" %>
+          <%= f.label gender.capitalize,
+              class: "radio form-check-label sical-radio-button #{employee.gender == gender ? "checked" : ""}" do
+          %>
+          <%= f.radio_button :gender,
+              gender,
+              class: "form-check-input sical-input-radio-button",
+              required: "required"
+          %>
             <span class="icons">
               <span class="first-icon fa fa-circle-o"></span>
               <span class="second-icon fa fa-dot-circle-o"></span>
             </span>
             <%= t("activerecord.attributes.employee.gender.#{gender}") %>
-            <%#= gender.capitalize %>
           <% end %>
         <% end %>
       </div>
@@ -88,7 +125,15 @@
       <%= f.label :laboratorio %>
     </div>
     <div class="col-md-9 input-wrapper">
-      <%= f.collection_select :laboratory_id, @laboratories, :id, :name, { selected: current_user.laboratory ? current_user.laboratory.id : f.object.laboratory_id }, class: "form-control", required: "required", disabled: !current_user.admin? %>
+      <%= f.collection_select :laboratory_id,
+          @laboratories,
+          :id,
+          :name,
+          { selected: current_user.laboratory ? current_user.laboratory.id : f.object.laboratory_id },
+          class: "form-control",
+          required: "required",
+          disabled: !current_user.admin?
+      %>
     </div>
   </div>
   <div class="form-group row">
@@ -96,16 +141,26 @@
       <%= f.label :rol %>
     </div>
     <div class="col-md-9 input-wrapper">
-      <% p Role.own_per_user(current_user) %>
-      <%= f.collection_select :role_id, Role.own_per_user(current_user), :id, :name, {}, class: "form-control", required: "required" %>
+      <%= f.collection_select :role_id,
+          Role.own_per_user(current_user),
+          :id,
+          :name,
+          {},
+          class: "form-control",
+          required: "required"
+      %>
     </div>
-  </div>  
+  </div>
   <div class="sical-form-buttons">
     <div class="text-center">
       <%= link_to "Cancelar", employees_path, class: "btn btn-primary sical-btn-cancel" %>
-      <%= f.submit "Guardar", class: "btn btn-primary sical-submit-btn", data: {disable_with: 'Please Wait...'}  %>
+      <%= f.submit "Guardar",
+          class: "btn btn-primary sical-submit-btn",
+          data: {
+            disable_with: 'Please Wait...',
+          }
+      %>
     </div>
   </div>
 <% end %>
-
 

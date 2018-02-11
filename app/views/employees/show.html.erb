@@ -2,7 +2,7 @@
   <div class="content">
     <div class="header card-header-text sical-card-header">
       <h1 class="page-header title sical-card-title">
-        Empleado 
+        <span>Empleado </span>
         <small>Ver</small>
       </h1>
     </div>
@@ -49,9 +49,9 @@
         <label class="col-md-3 col-form-label">Sexo </label>
         <div class="col-md-9">
           <% if @employee.gender == 'male' %>
-            Masculino
+            <span>Masculino</span>
           <% else %>
-            Femenino
+            <span>Femenino</span>
           <% end %>
         </div>
       </div>
@@ -69,7 +69,10 @@
       </div>
       <div class="form-group">
         <div class="text-center">
-          <%= link_to "Regresar", employees_path, class: "btn btn-primary sical-btn-cancel" %>
+          <%= link_to "Regresar",
+              employees_path,
+              class: "btn btn-primary sical-btn-cancel"
+          %>
         </div>
       </div>
     </div>
