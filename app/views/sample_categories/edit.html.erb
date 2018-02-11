@@ -29,7 +29,7 @@
           <div class="col-md-9 input-wrapper">
             <%= f.collection_select :laboratory_id, @laboratories, :id, :name, {}, class: "form-control", required: "required" %>
           </div>
-        </div>    
+        </div>
       <% end %>
       <%= render 'add_nested_elements', title: "Métodos Asociados", button_message: "Agregar métodos", editable: true, f: f, 'association_insert_node': '.samples-information', fields: :sample_categoryx_sample_methods, partial: 'sample_categoryx_sample_method_fields' %>
       <div class="form-group">
